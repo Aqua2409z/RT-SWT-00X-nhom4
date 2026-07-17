@@ -1,0 +1,4 @@
+timestamp_utc,phase,project,module,arm,focal_class,test_class,status,duration_sec,detail
+2026-07-13T18:22:21+00:00,run,,,,,,START,,Experiment runner started
+2026-07-13T18:22:21+00:00,precheck,,,,,,START,,Loading pilot_24_classes.csv
+2026-07-13T18:22:21+00:00,run,,,,,,ERROR,,"ValueError: D:\pilot_delivery\pilot_delivery\pilot_bundle_24\output\pilot_24_classes.csv missing columns: ['Focal_Class', 'Focal_Path', 'Project', 'Test_Class', 'Test_Path']"

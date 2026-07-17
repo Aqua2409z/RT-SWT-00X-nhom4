@@ -1,0 +1,15 @@
+
+PROJECTS
+Total number of projects processed: 5
+Total number of projects processed with evosuite: 5
+Total number of projects processed with gpt-4o-mini-2024-07-18: 0
+Total number of projects processed with gpt-4o-mini-2024-07-18 rbl4-zero-shot: 0
+Total number of projects that have been processed with all the test types and techniques selected by the user: 0
+-------------------------------
+
+CLASSES
+Total number of classes processed: 5
+Total number of classes processed with evosuite: 5
+Total number of classes processed with gpt-4o-mini-2024-07-18: 0
+Total number of classes processed with gpt-4o-mini-2024-07-18 rbl4-zero-shot: 0
+Total number of classes that have been processed with all the test types and techniques selected by the user: 0

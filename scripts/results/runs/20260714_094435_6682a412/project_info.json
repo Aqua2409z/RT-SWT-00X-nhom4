@@ -1,0 +1,393 @@
+{
+  "3526892": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "core"
+    ]
+  },
+  "3526892_core": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "37489990": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "tomcat-gcp-lib"
+    ]
+  },
+  "37489990_tomcat-gcp-lib": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "37728390": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "contrib/geomason"
+    ]
+  },
+  "37728390_contrib/geomason": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "38080174": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "cloud-ot"
+    ]
+  },
+  "38080174_cloud-ot": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "39770930": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "proxy"
+    ]
+  },
+  "39770930_proxy": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "49126308": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "db-scroll-elastic"
+    ]
+  },
+  "49126308_db-scroll-elastic": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "50552134": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.6",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "confucius-commons-lang"
+    ]
+  },
+  "50552134_confucius-commons-lang": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.6",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "5093728": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "core"
+    ]
+  },
+  "5093728_core": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "5175291": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "airship-shared"
+    ]
+  },
+  "5175291_airship-shared": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "54231507": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "core"
+    ]
+  },
+  "54231507_core": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "54620819": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "mvn-golang-wrapper"
+    ]
+  },
+  "54620819_mvn-golang-wrapper": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "56342003": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "kangaroo-server-authz"
+    ]
+  },
+  "56342003_kangaroo-server-authz": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "57251243": {
+    "type": "Gradle",
+    "version": "8.4",
+    "java_version": "1.7",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "wingtips-jersey2"
+    ]
+  },
+  "57251243_wingtips-jersey2": {
+    "type": "Gradle",
+    "version": "8.4",
+    "java_version": "1.7",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "58086354": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "demo/gRPC/okhttp"
+    ]
+  },
+  "58086354_demo/gRPC/okhttp": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "58767125": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "ch.obermuhlner.math.big"
+    ]
+  },
+  "58767125_ch.obermuhlner.math.big": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "6489406": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "ais-lib-communication"
+    ]
+  },
+  "6489406_ais-lib-communication": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "70711909": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "examples/here-oauth-client-example"
+    ]
+  },
+  "70711909_examples/here-oauth-client-example": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "7283919": {
+    "type": "Gradle",
+    "version": "8.4",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "dbfit-java"
+    ]
+  },
+  "7283919_dbfit-java": {
+    "type": "Gradle",
+    "version": "8.4",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "74217": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "flapjack-annotation"
+    ]
+  },
+  "74217_flapjack-annotation": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "74458764": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "session-replacement"
+    ]
+  },
+  "74458764_session-replacement": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "771158": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "common"
+    ]
+  },
+  "771158_common": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "812511": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "ssl-proxies"
+    ]
+  },
+  "812511_ssl-proxies": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  },
+  "89562636": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null,
+    "modules": [
+      "coap-core"
+    ]
+  },
+  "89562636_coap-core": {
+    "type": "Maven",
+    "version": "3.8.1",
+    "java_version": "1.8",
+    "junit_version": "4",
+    "testng_version": null
+  }
+}

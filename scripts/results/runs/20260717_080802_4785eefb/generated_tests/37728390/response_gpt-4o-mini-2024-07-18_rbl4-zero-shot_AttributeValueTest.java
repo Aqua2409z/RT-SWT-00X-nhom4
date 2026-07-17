@@ -1,0 +1,102 @@
+
+package sim.util.geo;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
+public class AttributeValueTest {
+
+    private AttributeValue attributeValue;
+
+    @Before
+    public void setUp() {
+        attributeValue = new AttributeValue();
+    }
+
+    @Test
+    public void testDefaultConstructor() {
+        assertNull(attributeValue.getValue());
+        assertFalse(attributeValue.isHidden());
+    }
+
+    @Test
+    public void testConstructorWithValue() {
+        attributeValue = new AttributeValue(10);
+        assertEquals(Integer.valueOf(10), attributeValue.getValue());
+        assertFalse(attributeValue.isHidden());
+    }
+
+    @Test
+    public void testConstructorWithValueAndHidden() {
+        attributeValue = new AttributeValue("Test", true);
+        assertEquals("Test", attributeValue.getValue());
+        assertTrue(attributeValue.isHidden());
+    }
+
+    @Test
+    public void testToString() {
+        attributeValue = new AttributeValue("Test", false);
+        assertEquals("Value: Test Hidden: false", attributeValue.toString());
+    }
+
+    @Test
+    public void testClone() {
+        attributeValue = new AttributeValue(5, true);
+        AttributeValue cloned = (AttributeValue) attributeValue.clone();
+        assertEquals(attributeValue, cloned);
+        assertNotSame(attributeValue, cloned);
+    }
+
+    @Test
+    public void testEquals() {
+        AttributeValue value1 = new AttributeValue(5, false);
+        AttributeValue value2 = new AttributeValue(5, false);
+        AttributeValue value3 = new AttributeValue(10, true);
+        
+        assertTrue(value1.equals(value2));
+        assertFalse(value1.equals(value3));
+        assertFalse(value1.equals(null));
+        assertFalse(value1.equals(new Object()));
+    }
+
+    @Test
+    public void testHashCode() {
+        AttributeValue value1 = new AttributeValue(5, false);
+        AttributeValue value2 = new AttributeValue(5, false);
+        assertEquals(value1.hashCode(), value2.hashCode());
+    }
+
+    @Test
+    public void testSetValue() {
+        attributeValue.setValue("New Value");
+        assertEquals("New Value", attributeValue.getValue());
+    }
+
+    @Test
+    public void testSetInteger() {
+        attributeValue.setInteger(10);
+        assertEquals(Integer.valueOf(10), attributeValue.getInteger());
+    }
+
+    @Test
+    public void testSetDouble() {
+        attributeValue.setDouble(10.5);
+        assertEquals(Double.valueOf(10.5), attributeValue.getDouble());
+    }
+
+    @Test
+    public void testSetString() {
+        attributeValue.setString("Hello");
+        assertEquals("Hello", attributeValue.getString());
+    }
+
+    @Test
+    public void testSetHidden() {
+        attributeValue.setHidden(true);
+        assertTrue(attributeValue.isHidden());
+        attributeValue.setHidden(false);
+        assertFalse(attributeValue.isHidden());
+    }
+}

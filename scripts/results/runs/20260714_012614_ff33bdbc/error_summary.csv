@@ -1,0 +1,471 @@
+timestamp_utc,source,project,module,arm,focal_class,phase,status,category,severity,explanation_vi,suggested_action_vi,detail
+2026-07-13T18:26:34+00:00,phase_log,3526892.0,,evosuite,Pricing,evosuite_generate,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"ing from spy: http://files.couchbase.com/maven2/org/apache/tomcat/tomcat-jdbc/7.0.35/tomcat-jdbc-7.0.35.pom
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-jdbc/7.0.35/tomcat-jdbc-7.0.35.pom
+Progress (1): 852 B
+Progress (1): 1.5 kB
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-jdbc/7.0.35/tomcat-jdbc-7.0.35.pom (1.5 kB at 10 kB/s)
+Downloading from spy: http://files.couchbase.com/maven2/org/apache/tomcat/tomcat-juli/7.0.35/tomcat-juli-7.0.35.pom
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-juli/7.0.35/tomcat-juli-7.0.35.pom
+Progress (1): 858 B
+Progress (1): 1.3 kB
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/tomcat/tomcat-juli/7.0.35/tomcat-juli-7.0.35.pom (1.3 kB at 11 kB/s)
+Downloading from spy: http://files.couchbase.com/maven2/mysql/mysql-connector-java/5.1.18/mysql-connector-java-5.1.18.pom
+"
+2026-07-13T18:26:50+00:00,phase_log,3526892.0,core,,,maven_verify_jacoco_pit,FAIL,project_dependency_resolution_error,error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","The following general errors were encountered during the Maven build:
+
+- Failed to execute goal on project core: Could not collect dependencies for project com.ipeirotis:core:jar:1.1
+- Failed to read artifact descriptor for spy:spymemcached:jar:2.8.1
+- Caused by: The following artifacts could not be resolved: spy:spymemcached:pom:2.8.1 (absent): Could not transfer artifact spy:spymemcached:pom:2.8.1 from/to spy (http://files.couchbase.com/maven2/): files.couchbase.com
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException"
+2026-07-13T18:29:57+00:00,phase_log,37489990.0,tomcat-gcp-lib,,,maven_verify_jacoco_pit,FAIL,project_compilation_error,error,"Project hoặc module Java không compile được khi đo JaCoCo/PIT; đây là lỗi source/dependency/build của repo, không nhất thiết là lỗi GPT.",Xem phase_log.csv để biết file Java và symbol lỗi; cần sửa dependency/source hoặc loại instance khỏi sample nếu precheck không tái lập buildability.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- D:\pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\37489990\tomcat-gcp-lib\src\test\java\com\google\cloud\runtimes\tomcat\trace\TraceValveTest.java:[50,22] cannot find symbol
+- symbol:   class LifecycleException
+- location: class com.google.cloud.runtimes.tomcat.trace.TraceValveTest
+- D:\pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\37489990\tomcat-gcp-lib\src\test\java\com\google\cloud\runtimes\tomcat\trace\TraceValveTest.java:[56,22] cannot find symbol
+- symbol:   class LifecycleException
+- location: class com.google.cloud.runtimes.tomcat.trace.TraceValveTest"
+2026-07-13T18:30:12+00:00,phase_log,37728390.0,,evosuite,AttributeValue,evosuite_generate,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"cts...
+Downloading from repository: file:///${project.basedir}/repository/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+Downloading from osgeo: https://repo.osgeo.org/repository/release/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+Downloading from repository3: http://maven.geotoolkit.org/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+Downloading from central: https://repo.maven.apache.org/maven2/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[WARNING] 'dependencies.dependency.systemPath' for org.evosuite:evosuite-standalone-runtime:jar should use a variable instead of a hard-coded path D:/pilot_delivery/pilot_delivery/pilot_bundle_24/evosuite-standalone-runtime-1.2.0.jar @ line 163, column 154
+[WARNING] 'dependencies.dependency.systemPath' for com.sun:tools:jar should use a variable instead of a hard-coded path C:/Program Files/Java/jdk1.8.0_172/lib/tools.jar @ line 163, column 391
+[FATAL] Non-"
+2026-07-13T18:30:24+00:00,phase_log,37728390.0,contrib/geomason,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Some problems were encountered while processing the POMs:
+- [FATAL] Non-resolvable parent POM for cs.gmu.edu.eclab.contrib:geomason:1.6: The following artifacts could not be resolved: cs.gmu.edu.eclab:mason-build:pom:20 (absent): Could not transfer artifact cs.gmu.edu.eclab:mason-build:pom:20 from/to repository3 (http://maven.geotoolkit.org/): maven.geotoolkit.org and 'parent.relativePath' points at wrong local POM @ line 4, column 10
+- @
+- The build could not read 1 project -> [Help 1]
+- 
+- The project cs.gmu.edu.eclab.contrib:geomason:1.6 (D:\pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\37728390\contrib\geomason\pom.xml) has 1 error
+- Non-resolvable parent POM for cs.gmu.edu.eclab.contrib:geomason:1.6: The following artifacts could not be resolved: cs.gmu.edu.eclab:mason-build:pom:20 (absent): Could not transfer artifact cs.gmu.edu.eclab:mason-build:pom:20 from/to repository3 (http://maven.geotool"
+2026-07-13T18:30:39+00:00,phase_log,38080174.0,,evosuite,OTAlgorithms,evosuite_generate,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"ogress (2): 94/115 kB | 99 kB
+Progress (2): 99/115 kB | 99 kB
+Progress (2): 103/115 kB | 99 kB
+Progress (2): 107/115 kB | 99 kB
+Progress (2): 111/115 kB | 99 kB
+Progress (2): 115 kB | 99 kB    
+                            
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jmock/jmock/2.8.1/jmock-2.8.1.jar (99 kB at 983 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm/7.2/asm-7.2.jar (115 kB at 1.1 MB/s)
+Progress (1): 3.1 kB
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jmock/jmock-testjar/2.8.1/jmock-testjar-2.8.1.jar (3.1 kB at 15 kB/s)
+Progress (1): 7.5 kB
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jmock/jmock-junit4/2.8.1/jmock-junit4-2.8.1.jar (7.5 kB at 34 kB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] "
+2026-07-13T18:30:55+00:00,phase_log,38080174.0,cloud-ot,,,maven_verify_jacoco_pit,FAIL,project_dependency_resolution_error,error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","The following general errors were encountered during the Maven build:
+
+- Failed to execute goal on project datakernel-ot: Could not resolve dependencies for project io.datakernel:datakernel-ot:jar:3.2-SNAPSHOT
+- dependency: io.datakernel:datakernel-eventloop:jar:3.2-SNAPSHOT (compile)
+- Could not find artifact io.datakernel:datakernel-eventloop:jar:3.2-SNAPSHOT
+- dependency: io.datakernel:datakernel-promise:jar:3.2-SNAPSHOT (compile)
+- Could not find artifact io.datakernel:datakernel-promise:jar:3.2-SNAPSHOT
+- dependency: io.datakernel:datakernel-codec:jar:3.2-SNAPSHOT (compile)
+- Could not find artifact io.datakernel:datakernel-codec:jar:3.2-SNAPSHOT
+- dependency: io.datakernel:datakernel-jmxapi:jar:3.2-SNAPSHOT (compile?)
+- Could not find artifact io.datakernel:datakernel-jmxapi:jar:3.2-SNAPSHOT
+- dependency: io.datakernel:datakernel-test:jar:3.2-SNAPSHOT (test)
+- Could not find artifact io.datakernel:datakernel-test:jar:3.2-SNAPSHOT
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace "
+2026-07-13T18:31:14+00:00,phase_log,39770930.0,,evosuite,WaitAvailableBrowsersChecker,evosuite_generate,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"e.org/maven2/org/seleniumhq/selenium/selenium-support/2.53.0/selenium-support-2.53.0.jar (169 kB at 159 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-firefox-driver/2.53.0/selenium-firefox-driver-2.53.0.jar (822 kB at 771 kB/s)
+Progress (1): 7.7/400 kB
+Progress (1): 15/400 kB 
+Progress (1): 32/400 kB
+Progress (1): 48/400 kB
+Progress (1): 65/400 kB
+Progress (1): 81/400 kB
+Progress (1): 97/400 kB
+Progress (1): 114/400 kB
+Progress (1): 130/400 kB
+Progress (1): 147/400 kB
+Progress (1): 163/400 kB
+Progress (1): 179/400 kB
+Progress (1): 196/400 kB
+Progress (1): 212/400 kB
+Progress (1): 228/400 kB
+Progress (1): 245/400 kB
+Progress (1): 261/400 kB
+Progress (1): 278/400 kB
+Progress (1): 294/400 kB
+Progress (1): 310/400 kB
+Progress (1): 327/400 kB
+Progress (1): 343/400 kB
+Progress (1): 359/400 kB
+Progress (1): 376/400 kB
+Progress (1): 392/400 kB
+Progress (1): 400 kB    
+                    
+Downloaded from central: https://repo.maven.apache."
+2026-07-13T18:31:26+00:00,phase_log,39770930.0,proxy,,,maven_verify_jacoco_pit,FAIL,project_dependency_resolution_error,error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","The following general errors were encountered during the Maven build:
+
+- Failed to execute goal on project gridrouter-proxy: Could not resolve dependencies for project ru.qatools.seleniumkit:gridrouter-proxy:war:1.32-SNAPSHOT
+- dependency: ru.qatools.seleniumkit:gridrouter-config:jar:1.32-SNAPSHOT (compile)
+- ru.qatools.seleniumkit:gridrouter-config:jar:1.32-SNAPSHOT was not found in https://oss.sonatype.org/content/repositories/snapshots during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of sonatype-nexus-snapshots has elapsed or updates are forced
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException"
+2026-07-13T18:31:49+00:00,phase_log,49126308.0,,evosuite,ElasticScroll,evosuite_generate,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.," | 838 kB
+Progress (2): 0.9/1.4 MB | 838 kB
+Progress (2): 0.9/1.4 MB | 838 kB
+                                 
+Downloaded from central: https://repo.maven.apache.org/maven2/com/google/guava/guava-testlib/23.2-jre/guava-testlib-23.2-jre.jar (838 kB at 2.4 MB/s)
+Progress (1): 0.9/1.4 MB
+Progress (1): 0.9/1.4 MB
+Progress (1): 0.9/1.4 MB
+Progress (1): 1.0/1.4 MB
+Progress (1): 1.0/1.4 MB
+Progress (1): 1.0/1.4 MB
+Progress (1): 1.0/1.4 MB
+Progress (1): 1.0/1.4 MB
+Progress (1): 1.0/1.4 MB
+Progress (1): 1.1/1.4 MB
+Progress (1): 1.1/1.4 MB
+Progress (1): 1.1/1.4 MB
+Progress (1): 1.1/1.4 MB
+Progress (1): 1.1/1.4 MB
+Progress (1): 1.1/1.4 MB
+Progress (1): 1.2/1.4 MB
+Progress (1): 1.2/1.4 MB
+Progress (1): 1.2/1.4 MB
+Progress (1): 1.2/1.4 MB
+Progress (1): 1.2/1.4 MB
+Progress (1): 1.2/1.4 MB
+Progress (1): 1.3/1.4 MB
+Progress (1): 1.3/1.4 MB
+Progress (1): 1.3/1.4 MB
+Progress (1): 1.3/1.4 MB
+Progress (1): 1.3/1.4 MB
+Progress (1): 1.3/1.4 MB
+Progress (1): 1.4/1.4 MB
+Progress (1): 1.4/1.4 MB
+Progress (1):"
+2026-07-13T18:32:03+00:00,phase_log,49126308.0,db-scroll-elastic,,,maven_verify_jacoco_pit,FAIL,project_dependency_resolution_error,error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","The following general errors were encountered during the Maven build:
+
+- Failed to execute goal on project db-scroll-elastic: Could not resolve dependencies for project com.jeromeloisel:db-scroll-elastic:jar:5.6.4-SNAPSHOT
+- dependency: com.jeromeloisel:db-scroll-api:jar:5.6.4-SNAPSHOT (compile)
+- Could not find artifact com.jeromeloisel:db-scroll-api:jar:5.6.4-SNAPSHOT
+- dependency: com.jeromeloisel:db-integration-test:jar:5.6.4-SNAPSHOT (test)
+- Could not find artifact com.jeromeloisel:db-integration-test:jar:5.6.4-SNAPSHOT
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException"
+2026-07-13T18:33:57+00:00,phase_log,50552134.0,confucius-commons-lang,,,maven_verify_jacoco_pit,FAIL,project_compilation_error,error,"Project hoặc module Java không compile được khi đo JaCoCo/PIT; đây là lỗi source/dependency/build của repo, không nhất thiết là lỗi GPT.",Xem phase_log.csv để biết file Java và symbol lỗi; cần sửa dependency/source hoặc loại instance khỏi sample nếu precheck không tái lập buildability.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/50552134/confucius-commons-lang/src/test/java/org/confucius/commons/lang/io/scanner/SimpleClassScannerTest.java:[60,34] cannot find symbol
+- symbol:   variable Sets
+- location: class org.confucius.commons.lang.io.scanner.SimpleClassScannerTest
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/50552134/confucius-commons-lang/src/test/java/org/confucius/commons/lang/io/scanner/SimpleClassScannerTest.java:[64,44] filterClassNames(java.util.Set<java.lang.String>,java.lang.String,boolean) has private access in org.confucius.commons.lang.io.scanner.SimpleClassScanner
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/50552134/confucius-commons-lang/src/test/java/org/confucius/commons/lang/io/scanner/SimpleClassScannerTest.java:[73,34] resolveClassPathURL(java.net.URL,java.lang.String) has private access in org.confucius"
+2026-07-13T18:35:35+00:00,phase_log,5093728.0,core,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- There are test failures.
+- 
+- Please refer to D:\pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\5093728\core\target\surefire-reports for the individual test results.
+- Failed to execute goal org.apache.maven.plugins:maven-assembly-plugin:2.2.1:single (make-javadoc) on project core: Failed to create assembly: Error creating assembly archive javadoc: You must set at least one file. -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException"
+2026-07-13T18:35:51+00:00,phase_log,5093728.0,core,,,maven_verify_jacoco_pit,FAIL,project_compilation_error,error,"Project hoặc module Java không compile được khi đo JaCoCo/PIT; đây là lỗi source/dependency/build của repo, không nhất thiết là lỗi GPT.",Xem phase_log.csv để biết file Java và symbol lỗi; cần sửa dependency/source hoặc loại instance khỏi sample nếu precheck không tái lập buildability.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- \pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\5093728\core\src\test\java\com\googlecode\fitchy\FeatureContextTest.java:[7,33] error: cannot find symbol
+- \pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\5093728\core\src\test\java\com\googlecode\fitchy\FeatureContextTest.java:[81,77] error: cannot find symbol"
+2026-07-13T18:37:20+00:00,phase_log,5175291.0,airship-shared,,,maven_verify_jacoco_pit,FAIL,test_framework_dependency_missing,error,"Generated test dùng framework/import không có trong dependency test của module, ví dụ JUnit Jupiter nhưng project chưa có junit-jupiter-api.","Không sửa test sau sinh trong protocol fairness; ghi nhận fail. Nếu chạy pilot debug, cần chọn đúng JUnit version theo project hoặc bổ sung dependency test.","The following compilation errors were encountered during the Maven build:
+
+- 
+- ootstrap class path not set in conjunction with -source 1.7
+- D:\pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\5175291\airship-shared\src\test\java\io\airlift\airship\shared\TestStrings.java:[8,16] error: package org.junit does not exist
+- D:\pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\5175291\airship-shared\src\test\java\io\airlift\airship\shared\TestStrings.java:[9,23] error: package org.junit does not exist
+- D:\pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\5175291\airship-shared\src\test\java\io\airlift\airship\shared\TestStrings.java:[16,3] error: cannot find symbol
+- symbol:   class Test
+- location: class TestStrings
+- D:\pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\5175291\airship-shared\src\test\java\io\airlift\airship\shared\TestStrings.java:[21,3] error: cannot find symbol
+- symbol:   class Test
+- location: class TestStrings
+- D:\pilot_del"
+2026-07-13T18:37:34+00:00,phase_log,5175291.0,airship-shared,,,maven_verify_jacoco_pit,FAIL,project_compilation_error,error,"Project hoặc module Java không compile được khi đo JaCoCo/PIT; đây là lỗi source/dependency/build của repo, không nhất thiết là lỗi GPT.",Xem phase_log.csv để biết file Java và symbol lỗi; cần sửa dependency/source hoặc loại instance khỏi sample nếu precheck không tái lập buildability.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- ootstrap class path not set in conjunction with -source 1.7
+- D:\pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\5175291\airship-shared\src\test\java\io\airlift\airship\shared\TestStrings.java:[26,56] error: lambda expressions are not supported in -source 1.7"
+2026-07-13T18:39:01+00:00,phase_log,54231507.0,core,,,maven_verify_jacoco_pit,FAIL,test_framework_dependency_missing,error,"Generated test dùng framework/import không có trong dependency test của module, ví dụ JUnit Jupiter nhưng project chưa có junit-jupiter-api.","Không sửa test sau sinh trong protocol fairness; ghi nhận fail. Nếu chạy pilot debug, cần chọn đúng JUnit version theo project hoặc bổ sung dependency test.","The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54231507/core/src/test/java/ru/stqa/selenium/decorated/events/EventFiringWebDriverTest.java:[8,17] cannot find symbol
+- symbol:   class Test
+- location: package org.junit
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54231507/core/src/test/java/ru/stqa/selenium/decorated/events/EventFiringWebDriverTest.java:[9,24] cannot find symbol
+- symbol:   class Assert
+- location: package org.junit
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54231507/core/src/test/java/ru/stqa/selenium/decorated/events/EventFiringWebDriverTest.java:[18,4] cannot find symbol
+- symbol:   class Test
+- location: class ru.stqa.selenium.decorated.events.EventFiringWebDriverTest
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54231507/core/src/test/java/ru/stqa/selenium/decorated/events/EventFiringWebDriverTest.java:[24,"
+2026-07-13T18:39:16+00:00,phase_log,54231507.0,core,,,maven_verify_jacoco_pit,FAIL,test_framework_dependency_missing,error,"Generated test dùng framework/import không có trong dependency test của module, ví dụ JUnit Jupiter nhưng project chưa có junit-jupiter-api.","Không sửa test sau sinh trong protocol fairness; ghi nhận fail. Nếu chạy pilot debug, cần chọn đúng JUnit version theo project hoặc bổ sung dependency test.","The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54231507/core/src/test/java/ru/stqa/selenium/decorated/events/EventFiringWebDriverTest.java:[3,17] cannot find symbol
+- symbol:   class Before
+- location: package org.junit
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54231507/core/src/test/java/ru/stqa/selenium/decorated/events/EventFiringWebDriverTest.java:[4,17] cannot find symbol
+- symbol:   class Test
+- location: package org.junit
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54231507/core/src/test/java/ru/stqa/selenium/decorated/events/EventFiringWebDriverTest.java:[21,6] cannot find symbol
+- symbol:   class Before
+- location: class ru.stqa.selenium.decorated.events.EventFiringWebDriverTest
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54231507/core/src/test/java/ru/stqa/selenium/decorated/events/EventFiringWebDriverTest.java:[2"
+2026-07-13T18:47:02+00:00,phase_log,54620819.0,mvn-golang-wrapper,,,maven_verify_jacoco_pit,FAIL,project_compilation_error,error,"Project hoặc module Java không compile được khi đo JaCoCo/PIT; đây là lỗi source/dependency/build của repo, không nhất thiết là lỗi GPT.",Xem phase_log.csv để biết file Java và symbol lỗi; cần sửa dependency/source hoặc loại instance khỏi sample nếu precheck không tái lập buildability.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54620819/mvn-golang-wrapper/src/test/java/com/igormaznitsa/mvngolang/GolangBuildMojoTest.java:[8,19] package org.mockito does not exist
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54620819/mvn-golang-wrapper/src/test/java/com/igormaznitsa/mvngolang/GolangBuildMojoTest.java:[15,26] package org.mockito does not exist
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54620819/mvn-golang-wrapper/src/test/java/com/igormaznitsa/mvngolang/GolangBuildMojoTest.java:[25,25] cannot find symbol
+- symbol:   variable Mockito
+- location: class com.igormaznitsa.mvngolang.GolangBuildMojoTest
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/54620819/mvn-golang-wrapper/src/test/java/com/igormaznitsa/mvngolang/GolangBuildMojoTest.java:[26,13] projectHelper has private access in com.igormaznitsa.mvngolang.Golan"
+2026-07-13T18:47:21+00:00,phase_log,56342003.0,,evosuite,AbstractService,evosuite_generate,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"iumhq/selenium/selenium-firefox-driver/3.6.0/selenium-firefox-driver-3.6.0.jar (796 kB at 847 kB/s)
+Progress (2): 6.4/6.5 MB | 149 kB
+Progress (2): 6.4/6.5 MB | 149 kB
+Progress (2): 6.4/6.5 MB | 149 kB
+Progress (2): 6.4/6.5 MB | 149 kB
+Progress (2): 6.5/6.5 MB | 149 kB
+Progress (2): 6.5/6.5 MB | 149 kB
+Progress (2): 6.5/6.5 MB | 149 kB
+                                 
+Downloaded from central: https://repo.maven.apache.org/maven2/org/seleniumhq/selenium/selenium-support/3.6.0/selenium-support-3.6.0.jar (149 kB at 158 kB/s)
+Progress (1): 6.5/6.5 MB
+Progress (1): 6.5/6.5 MB
+Progress (1): 6.5/6.5 MB
+Progress (1): 6.5 MB    
+Progress (2): 6.5 MB | 4.6 kB
+Progress (3): 6.5 MB | 4.6 kB | 7.7/24 kB
+Progress (3): 6.5 MB | 4.6 kB | 15/24 kB 
+Progress (3): 6.5 MB | 4.6 kB | 24 kB   
+                                     
+Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/jul-to-slf4j/1.7.25/jul-to-slf4j-1.7.25.jar (4.6 kB at 4.7 kB/s)
+Downloaded from central: https://repo.mav"
+2026-07-13T18:47:48+00:00,phase_log,56342003.0,kangaroo-server-authz,,,maven_verify_jacoco_pit,FAIL,project_dependency_resolution_error,error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","The following general errors were encountered during the Maven build:
+
+- Failed to execute goal on project kangaroo-server-authz: Could not resolve dependencies for project net.krotscheck:kangaroo-server-authz:jar:1.1.0-SNAPSHOT
+- dependency: net.krotscheck:kangaroo-common:jar:1.1.0-SNAPSHOT (compile)
+- Could not find artifact net.krotscheck:kangaroo-common:jar:1.1.0-SNAPSHOT
+- dependency: net.krotscheck:kangaroo-common:jar:tests:1.1.0-SNAPSHOT (test)
+- Could not find artifact net.krotscheck:kangaroo-common:jar:tests:1.1.0-SNAPSHOT
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException"
+2026-07-13T18:48:55+00:00,phase_log,57251243.0,wingtips-jersey2,,,gradle_test_jacoco_pitest,FAIL,gradle_build_failed,error,Gradle build fail khi chạy test/JaCoCo/PIT; log hiện tại chỉ có stderr rút gọn nên chưa đủ nguyên nhân sâu.,"Chạy lại Gradle với --stacktrace/--info hoặc mở log thô của module để biết lỗi dependency, compile, plugin hay test runtime.","The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 40s"
+2026-07-13T18:52:37+00:00,phase_log,6489406.0,ais-lib-communication,,,maven_verify_jacoco_pit,FAIL,project_compilation_error,error,"Project hoặc module Java không compile được khi đo JaCoCo/PIT; đây là lỗi source/dependency/build của repo, không nhất thiết là lỗi GPT.",Xem phase_log.csv để biết file Java và symbol lỗi; cần sửa dependency/source hoặc loại instance khỏi sample nếu precheck không tái lập buildability.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/6489406/ais-lib-communication/src/test/java/dk/dma/ais/tracker/scenarioTracker/ScenarioTrackerTest.java:[69,50] cannot find symbol
+- symbol:   method isTagged(java.lang.String)
+- location: class dk.dma.ais.tracker.Target
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/6489406/ais-lib-communication/src/test/java/dk/dma/ais/tracker/scenarioTracker/ScenarioTrackerTest.java:[75,52] Position(double,double) is not public in dk.dma.enav.model.geometry.Position; cannot be accessed from outside package
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/6489406/ais-lib-communication/src/test/java/dk/dma/ais/tracker/scenarioTracker/ScenarioTrackerTest.java:[75,23] dk.dma.ais.message.AisPositionMessage is abstract; cannot be instantiated
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/6489406/ais-lib-commu"
+2026-07-13T18:52:49+00:00,phase_log,70711909.0,,evosuite,GetHereClientCredentialsIdTokenTutorial,evosuite_generate,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"rogress (1): 3.2/4.0 MB
+Progress (1): 3.2/4.0 MB
+Progress (1): 3.2/4.0 MB
+Progress (1): 3.2/4.0 MB
+Progress (1): 3.3/4.0 MB
+Progress (1): 3.3/4.0 MB
+Progress (1): 3.3/4.0 MB
+Progress (1): 3.3/4.0 MB
+Progress (1): 3.3/4.0 MB
+Progress (1): 3.3/4.0 MB
+Progress (1): 3.4/4.0 MB
+Progress (1): 3.4/4.0 MB
+Progress (1): 3.4/4.0 MB
+Progress (1): 3.4/4.0 MB
+Progress (1): 3.4/4.0 MB
+Progress (1): 3.4/4.0 MB
+Progress (1): 3.5/4.0 MB
+Progress (1): 3.5/4.0 MB
+Progress (1): 3.5/4.0 MB
+Progress (1): 3.5/4.0 MB
+Progress (1): 3.5/4.0 MB
+Progress (1): 3.5/4.0 MB
+Progress (1): 3.6/4.0 MB
+Progress (1): 3.6/4.0 MB
+Progress (1): 3.6/4.0 MB
+Progress (1): 3.6/4.0 MB
+Progress (1): 3.6/4.0 MB
+Progress (1): 3.6/4.0 MB
+Progress (1): 3.6/4.0 MB
+Progress (1): 3.7/4.0 MB
+Progress (1): 3.7/4.0 MB
+Progress (1): 3.7/4.0 MB
+Progress (1): 3.7/4.0 MB
+Progress (1): 3.7/4.0 MB
+Progress (1): 3.7/4.0 MB
+Progress (1): 3.8/4.0 MB
+Progress (1): 3.8/4.0 MB
+Progress (1): 3.8/4.0 MB
+Progress (1): 3.8/4.0 MB
+Progress (1): 3.8/4.0 MB
+P"
+2026-07-13T18:53:02+00:00,phase_log,70711909.0,examples/here-oauth-client-example,,,maven_verify_jacoco_pit,FAIL,project_dependency_resolution_error,error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","The following general errors were encountered during the Maven build:
+
+- Failed to execute goal on project here-oauth-client-example: Could not resolve dependencies for project com.here.account:here-oauth-client-example:jar:0.4.36-SNAPSHOT
+- dependency: com.here.account:here-oauth-client:jar:0.4.36-SNAPSHOT (compile)
+- Could not find artifact com.here.account:here-oauth-client:jar:0.4.36-SNAPSHOT
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException"
+2026-07-13T18:53:51+00:00,phase_log,7283919.0,dbfit-java,,,gradle_test_jacoco_pitest,FAIL,gradle_build_failed,error,Gradle build fail khi chạy test/JaCoCo/PIT; log hiện tại chỉ có stderr rút gọn nên chưa đủ nguyên nhân sâu.,"Chạy lại Gradle với --stacktrace/--info hoặc mở log thô của module để biết lỗi dependency, compile, plugin hay test runtime.","The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 24s"
+2026-07-13T18:54:01+00:00,phase_log,74217.0,,evosuite,FieldLocator,evosuite_generate,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"ss (1): 9.0 kB
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/com/mycila/parent-pom/5/parent-pom-5.pom (9.0 kB at 123 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/mycila/maven-license-plugin/maven-license-plugin/1.9.0/maven-license-plugin-1.9.0.jar
+Progress (1): 0.9/54 kB
+Progress (1): 2.3/54 kB
+Progress (1): 3.6/54 kB
+Progress (1): 5.0/54 kB
+Progress (1): 6.4/54 kB
+Progress (1): 7.7/54 kB
+Progress (1): 9.1/54 kB
+Progress (1): 10/54 kB 
+Progress (1): 12/54 kB
+Progress (1): 13/54 kB
+Progress (1): 15/54 kB
+Progress (1): 16/54 kB
+Progress (1): 17/54 kB
+Progress (1): 19/54 kB
+Progress (1): 20/54 kB
+Progress (1): 21/54 kB
+Progress (1): 23/54 kB
+Progress (1): 24/54 kB
+Progress (1): 25/54 kB
+Progress (1): 27/54 kB
+Progress (1): 28/54 kB
+Progress (1): 30/54 kB
+Progress (1): 31/54 kB
+Progress (1): 32/54 kB
+Progress (1): 34/54 kB
+Progress (1): 35/54 kB
+Progress (1): 36/54 kB
+Progress (1): 38/54 kB
+Progress (1): 39/54 kB
+Progress (1)"
+2026-07-13T18:54:09+00:00,phase_log,74217.0,flapjack-annotation,,,maven_verify_jacoco_pit,FAIL,project_dependency_resolution_error,error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","The following general errors were encountered during the Maven build:
+
+- Failed to execute goal on project flapjack-annotation: Could not resolve dependencies for project flapjack:flapjack-annotation:jar:1.0.4-SNAPSHOT
+- dependency: flapjack:flapjack:jar:1.0.4-SNAPSHOT (compile)
+- Could not find artifact flapjack:flapjack:jar:1.0.4-SNAPSHOT
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException"
+2026-07-13T18:54:23+00:00,phase_log,74458764.0,,evosuite,CookieSessionTracking,evosuite_generate,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"[MASTER] 01:54:22.511 [main] ERROR EvoSuite - Fatal crash on main EvoSuite process. Class  using seed 1783968862509. Configuration id : null
+java.lang.IllegalArgumentException: A classpath element should either be a jar or a folder: C:\Users\admin\.m2\repository\org\jboss\shrinkwrap\descriptors\shrinkwrap-descriptors-depchain\2.0.0-alpha-10\shrinkwrap-descriptors-depchain-2.0.0-alpha-10.pom
+	at org.evosuite.classpath.ClassPathHandler.checkIfValidClasspathEntry(ClassPathHandler.java:210)
+	at org.evosuite.classpath.ClassPathHandler.getClassPath(ClassPathHandler.java:115)
+	at org.evosuite.classpath.ClassPathHandler.changeTargetClassPath(ClassPathHandler.java:102)
+	at org.evosuite.CommandLineParameters.handleClassPath(CommandLineParameters.java:232)
+	at org.evosuite.EvoSuite.parseCommandLine(EvoSuite.java:236)
+	at org.evosuite.EvoSuite.main(EvoSuite.java:103)"
+2026-07-13T18:54:39+00:00,phase_log,74458764.0,session-replacement,,,maven_verify_jacoco_pit,FAIL,project_compilation_error,error,"Project hoặc module Java không compile được khi đo JaCoCo/PIT; đây là lỗi source/dependency/build của repo, không nhất thiết là lỗi GPT.",Xem phase_log.csv để biết file Java và symbol lỗi; cần sửa dependency/source hoặc loại instance khỏi sample nếu precheck không tái lập buildability.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/74458764/session-replacement/src/test/java/com/amadeus/session/servlet/TestCookieSessionTracking.java:[33,21] cannot find symbol
+- symbol:   method getHttpServletRequest()
+- location: variable request of type com.amadeus.session.RequestWithSession
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/74458764/session-replacement/src/test/java/com/amadeus/session/servlet/TestCookieSessionTracking.java:[41,9] cannot find symbol
+- symbol:   class IdAndSource
+- location: class com.amadeus.session.servlet.TestCookieSessionTracking
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/74458764/session-replacement/src/test/java/com/amadeus/session/servlet/TestCookieSessionTracking.java:[53,9] cannot find symbol
+- symbol:   class IdAndSource
+- location: class com.amadeus.session.servlet.TestCookieSessionTracking
+- /D:/pilot_deli"
+2026-07-13T19:13:19+00:00,phase_log,771158.0,common,,,maven_verify_jacoco_pit,FAIL,project_compilation_error,error,"Project hoặc module Java không compile được khi đo JaCoCo/PIT; đây là lỗi source/dependency/build của repo, không nhất thiết là lỗi GPT.",Xem phase_log.csv để biết file Java và symbol lỗi; cần sửa dependency/source hoặc loại instance khỏi sample nếu precheck không tái lập buildability.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/771158/common/src/test/java/net/fortytwo/sesametools/StatementComparatorTest.java:[10,26] package org.mockito does not exist
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/771158/common/src/test/java/net/fortytwo/sesametools/StatementComparatorTest.java:[10,1] static import only from classes and interfaces
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/771158/common/src/test/java/net/fortytwo/sesametools/StatementComparatorTest.java:[11,26] package org.mockito does not exist
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/771158/common/src/test/java/net/fortytwo/sesametools/StatementComparatorTest.java:[11,1] static import only from classes and interfaces
+- /D:/pilot_delivery/pilot_delivery/pilot_bundle_24/compiledrepos/771158/common/src/test/java/net/fortytwo/sesametools/StatementComparat"
+2026-07-13T19:13:30+00:00,phase_log,812511.0,,evosuite,SimpleMemoryCertStore,evosuite_generate,FAIL,unclassified_runtime_issue,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"k1.8.0_172/lib/tools.jar @ line 51, column 391
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ org.jglobus:parent:2.2.0-SNAPSHOT, D:\pilot_delivery\pilot_delivery\pilot_bundle_24\compiledrepos\812511\pom.xml, line 64, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ----------------------< org.jglobus:ssl-proxies >-----------------------
+[INFO] Building SSL and proxy certificate support 2.2.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/org/jglobus/test-utils/2.2.0-SNAPSHOT/maven-metadata.xml
+Downloading from sonatype-nexus-snapshots: https://oss."
+2026-07-13T19:13:41+00:00,phase_log,812511.0,ssl-proxies,,,maven_verify_jacoco_pit,FAIL,project_dependency_resolution_error,error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","The following general errors were encountered during the Maven build:
+
+- Failed to execute goal on project ssl-proxies: Could not resolve dependencies for project org.jglobus:ssl-proxies:jar:2.2.0-SNAPSHOT
+- dependency: org.jglobus:test-utils:jar:2.2.0-SNAPSHOT (test)
+- org.jglobus:test-utils:jar:2.2.0-SNAPSHOT was not found in https://oss.sonatype.org/content/repositories/snapshots during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of sonatype-nexus-snapshots has elapsed or updates are forced
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException"
+2026-07-14T02:43:44+00:00,phase_log,,,,,run,CANCELLED,run_cancelled,warning,"Run đã bị dừng trước khi pipeline hoàn tất, nên một số report/metric có thể chỉ là dữ liệu tạm.",Chạy lại full-run tới khi completed nếu cần metrics JaCoCo/PIT đầy đủ; partial artifacts chỉ dùng để debug.,Run cancelled; writing partial diagnostics and artifacts
