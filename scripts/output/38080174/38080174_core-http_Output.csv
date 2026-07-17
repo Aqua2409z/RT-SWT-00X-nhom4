@@ -1,0 +1,4 @@
+ID_Focal_Class,Cyclomatic_Complexity_Focal_Class,Lines_Of_Code_Focal_Class,Generator(LLM/EVOSUITE),Prompt_Technique,Branch_Coverage,Line_Coverage,Method_Coverage,Compilation,Mutation_Coverage,NumberOfMethods,Assertion Roulette,Conditional Test Logic,Constructor Initialization,Default Test,EmptyTest,Exception Catching Throwing,General Fixture,Mystery Guest,Print Statement,Redundant Assertion,Sensitive Equality,Verbose Test,Sleepy Test,Eager Test,Lazy Test,Duplicate Assert,Unknown Test,IgnoredTest,Resource Optimism,Magic Number Test,Dependent Test,Chance
+38080174_HttpMessage,122,173,evosuite,-,0.0,0.0,0.0,1,0.0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,-
+38080174_ContentType,34,65,evosuite,-,0.0,1.54,7.69,1,0.0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-
+38080174_HttpCookie,93,194,evosuite,-,0.0,3.09,2.33,1,0.0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-

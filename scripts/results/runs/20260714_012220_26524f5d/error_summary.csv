@@ -1,0 +1,2 @@
+timestamp_utc,source,project,module,arm,focal_class,phase,status,category,severity,explanation_vi,suggested_action_vi,detail
+2026-07-13T18:22:21+00:00,phase_log,,,,,run,ERROR,unclassified_runtime_issue,error,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"ValueError: D:\pilot_delivery\pilot_delivery\pilot_bundle_24\output\pilot_24_classes.csv missing columns: ['Focal_Class', 'Focal_Path', 'Project', 'Test_Class', 'Test_Path']"

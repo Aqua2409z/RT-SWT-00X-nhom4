@@ -1,0 +1,7 @@
+ID_Focal_Class,Cyclomatic_Complexity_Focal_Class,Lines_Of_Code_Focal_Class,Generator(LLM/EVOSUITE),Prompt_Technique,Branch_Coverage,Line_Coverage,Method_Coverage,Compilation,Mutation_Coverage,NumberOfMethods,Assertion Roulette,Conditional Test Logic,Constructor Initialization,Default Test,EmptyTest,Exception Catching Throwing,General Fixture,Mystery Guest,Print Statement,Redundant Assertion,Sensitive Equality,Verbose Test,Sleepy Test,Eager Test,Lazy Test,Duplicate Assert,Unknown Test,IgnoredTest,Resource Optimism,Magic Number Test,Dependent Test,Chance
+50552134_SimpleClassScanner,13,40,evosuite,-,33.33,40.0,71.43,1,11.11,2,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,-
+50552134_SimpleClassScanner,13,40,gpt-4o-mini-2024-07-18,rbl4-zero-shot,91.67,90.0,100.0,1,77.78,8,4,0,0,0,0,1,0,0,0,0,0,0,0,0,7,0,0,0,0,7,0,-
+50552134_SimpleFileScanner,10,15,evosuite,-,16.67,53.33,75.0,1,14.29,5,0,0,0,0,0,5,0,3,0,0,0,0,0,0,4,0,0,0,3,5,0,-
+50552134_SimpleFileScanner,13,40,gpt-4o-mini-2024-07-18,rbl4-zero-shot,-,-,-,0,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+50552134_SimpleJarEntryScanner,13,25,evosuite,-,8.33,52.0,100.0,1,0.0,2,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,-
+50552134_SimpleJarEntryScanner,13,40,gpt-4o-mini-2024-07-18,rbl4-zero-shot,-,-,-,0,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-

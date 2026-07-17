@@ -1,0 +1,135 @@
+timestamp_utc,source,project,module,arm,focal_class,phase,status,category,severity,explanation_vi,suggested_action_vi,detail
+2026-07-17T00:10:07+00:00,phase_log,37728390.0,contrib/geomason,,AttributeValue,baseline_build,FAIL,repo_baseline_build_failed,error,"Repo/module không build sạch trước khi sinh test, nên class này phải được loại khỏi bước GPT/EvoSuite và không được tính là lỗi generated test.",Sửa dependency/build tool/module metadata hoặc loại instance khỏi sample; sau đó chạy lại để chỉ sinh test trên repo baseline-pass.,"[INFO] Scanning for projects...
+Downloading from repository: file:///${project.basedir}/repository/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+Downloading from osgeo: https://repo.osgeo.org/repository/release/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+Downloading from repository3: http://maven.geotoolkit.org/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+Downloading from central: https://repo.maven.apache.org/maven2/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[FATAL] Non-resolvable parent POM for cs.gmu.edu.eclab.contrib:geomason:1.6: The following artifacts could not be resolved: cs.gmu.edu.eclab:mason-build:pom:20 (absent): Could not transfer artifact cs.gmu.edu.eclab:mason-build:pom:20 from/to repository3 (http://maven.geotoolkit.org/): maven.geotoolkit.org and 'parent.relativePath' points at wrong local POM @ line 7, column 10
+ @ 
+[ERROR] The build could not read 1 project -> [Help 1"
+2026-07-17T00:10:11+00:00,phase_log,38080174.0,boot-jmx,,JmxRegistry,baseline_build,FAIL,repo_baseline_build_failed,error,"Repo/module không build sạch trước khi sinh test, nên class này phải được loại khỏi bước GPT/EvoSuite và không được tính là lỗi generated test.",Sửa dependency/build tool/module metadata hoặc loại instance khỏi sample; sau đó chạy lại để chỉ sinh test trên repo baseline-pass.,"g, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-jmx-stats:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-launcher:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-bytebuf:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-triggers:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-test:jar:3.2-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.848 s
+[INFO] Finished at: 2026-07-17T07:10:11+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute"
+2026-07-17T00:10:15+00:00,phase_log,38080174.0,cloud-fs,,CachedFsClient,baseline_build,FAIL,repo_baseline_build_failed,error,"Repo/module không build sạch trước khi sinh test, nên class này phải được loại khỏi bước GPT/EvoSuite và không được tính là lỗi generated test.",Sửa dependency/build tool/module metadata hoặc loại instance khỏi sample; sau đó chạy lại để chỉ sinh test trên repo baseline-pass.,"nel-net:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-csp:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-codec:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-jmxapi:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-test:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-datastream:jar:3.2-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.736 s
+[INFO] Finished at: 2026-07-17T07:10:15+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-17T00:10:20+00:00,phase_log,38080174.0,core-http,,HttpMessage;ContentType;HttpCookie,baseline_build,FAIL,repo_baseline_build_failed,error,"Repo/module không build sạch trước khi sinh test, nên class này phải được loại khỏi bước GPT/EvoSuite và không được tính là lỗi generated test.",Sửa dependency/build tool/module metadata hoặc loại instance khỏi sample; sau đó chạy lại để chỉ sinh test trên repo baseline-pass.,"16 kB
+Progress (1): 189/516 kB
+Progress (1): 193/516 kB
+Progress (1): 198/516 kB
+Progress (1): 202/516 kB
+Progress (1): 206/516 kB
+Progress (1): 210/516 kB
+Progress (1): 215/516 kB
+Progress (1): 231/516 kB
+Progress (1): 247/516 kB
+Progress (1): 264/516 kB
+Progress (1): 265/516 kB
+Progress (1): 282/516 kB
+Progress (1): 298/516 kB
+Progress (1): 314/516 kB
+Progress (1): 331/516 kB
+Progress (1): 347/516 kB
+Progress (1): 364/516 kB
+Progress (1): 380/516 kB
+Progress (1): 396/516 kB
+Progress (1): 413/516 kB
+Progress (1): 429/516 kB
+Progress (1): 446/516 kB
+Progress (1): 462/516 kB
+Progress (1): 478/516 kB
+Progress (1): 495/516 kB
+Progress (1): 511/516 kB
+Progress (1): 516 kB    
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-core/1.22/jmh-core-1.22.jar (516 kB at 2.7 MB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] -----------------------------------------------------------"
+2026-07-17T00:10:25+00:00,phase_log,38080174.0,uikernel,,ReadSettings,baseline_build,FAIL,repo_baseline_build_failed,error,"Repo/module không build sạch trước khi sinh test, nên class này phải được loại khỏi bước GPT/EvoSuite và không được tính là lỗi generated test.",Sửa dependency/build tool/module metadata hoặc loại instance khỏi sample; sau đó chạy lại để chỉ sinh test trên repo baseline-pass.," for io.datakernel:datakernel-eventloop:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-http:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-test:jar:3.2-SNAPSHOT is missing, no dependency information available
+[INFO] Artifact com.google.code.gson:gson:jar:2.8.6 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Artifact com.google.code.gson:gson:jar:2.8.6 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
+Downloading from central: https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.8.6/gson-2.8.6.j"
+2026-07-17T00:10:29+00:00,phase_log,38080174.0,util-common,,Utils,baseline_build,FAIL,repo_baseline_build_failed,error,"Repo/module không build sạch trước khi sinh test, nên class này phải được loại khỏi bước GPT/EvoSuite và không được tính là lỗi generated test.",Sửa dependency/build tool/module metadata hoặc loại instance khỏi sample; sau đó chạy lại để chỉ sinh test trên repo baseline-pass.,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< io.datakernel:datakernel-common >-------------------
+[INFO] Building DataKernel : Util : Common 3.2-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for io.datakernel:datakernel-jmxapi:jar:3.2-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.740 s
+[INFO] Finished at: 2026-07-17T07:10:28+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project datakernel-common: Could not resolve dependencies for project io.datakernel:datakernel-common:jar:3.2-SNAPSHOT
+[ERROR] dependency: io.datakernel:datakernel-jmxapi:jar:3.2-SNAPSHOT (compile?)
+[ERROR] 	Could not find artifact io"
+2026-07-17T00:10:36+00:00,phase_log,39770930.0,proxy,,JsonWireUtils,baseline_build,FAIL,repo_baseline_build_failed,error,"Repo/module không build sạch trước khi sinh test, nên class này phải được loại khỏi bước GPT/EvoSuite và không được tính là lỗi generated test.",Sửa dependency/build tool/module metadata hoặc loại instance khỏi sample; sau đó chạy lại để chỉ sinh test trên repo baseline-pass.,"t:gridrouter-proxy:war:1.32-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-war-plugin is missing. @ line 16, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] --------------< ru.qatools.seleniumkit:gridrouter-proxy >---------------
+[INFO] Building Selenium Grid Router Proxy 1.32-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/ru/qatools/seleniumkit/gridrouter-config/1.32-SNAPSHOT/maven-metadata.xml
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/ru/qatools/seleniumkit/gridrouter-config/1.32-SNAPSHOT/gridrouter-config-1.3"
+2026-07-17T00:10:41+00:00,phase_log,49126308.0,db-scroll-elastic,,ElasticScroll,baseline_build,FAIL,repo_baseline_build_failed,error,"Repo/module không build sạch trước khi sinh test, nên class này phải được loại khỏi bước GPT/EvoSuite và không được tính là lỗi generated test.",Sửa dependency/build tool/module metadata hoặc loại instance khỏi sample; sau đó chạy lại để chỉ sinh test trên repo baseline-pass.,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.jeromeloisel:db-scroll-elastic >-----------------
+[INFO] Building db-scroll-elastic 5.6.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for com.jeromeloisel:db-scroll-api:jar:5.6.4-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for com.jeromeloisel:db-integration-test:jar:5.6.4-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.330 s
+[INFO] Finished at: 2026-07-17T07:10:40+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project db-scroll-elastic: Could not resolve dependencies for project com.jeromeloisel:db-scroll-elastic:jar:5.6.4"
+2026-07-17T00:12:12+00:00,phase_log,56342003.0,kangaroo-server-authz,,AbstractService;ValidationUtil,baseline_build,FAIL,repo_baseline_build_failed,error,"Repo/module không build sạch trước khi sinh test, nên class này phải được loại khỏi bước GPT/EvoSuite và không được tính là lỗi generated test.",Sửa dependency/build tool/module metadata hoặc loại instance khỏi sample; sau đó chạy lại để chỉ sinh test trên repo baseline-pass.,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< net.krotscheck:kangaroo-server-authz >----------------
+[INFO] Building kangaroo-server-authz 1.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for net.krotscheck:kangaroo-common:jar:1.1.0-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for net.krotscheck:kangaroo-common:jar:tests:1.1.0-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.881 s
+[INFO] Finished at: 2026-07-17T07:12:12+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project kangaroo-server-authz: Could not resolve dependencies for project net.krotscheck:kangaroo-server-authz"
+2026-07-17T00:12:43+00:00,phase_log,,,,,run,CANCELLED,run_cancelled,warning,"Run đã bị dừng trước khi pipeline hoàn tất, nên một số report/metric có thể chỉ là dữ liệu tạm.",Chạy lại full-run tới khi completed nếu cần metrics JaCoCo/PIT đầy đủ; partial artifacts chỉ dùng để debug.,Run cancelled; writing partial diagnostics and artifacts

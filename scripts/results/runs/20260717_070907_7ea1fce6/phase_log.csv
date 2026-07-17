@@ -1,0 +1,169 @@
+timestamp_utc,phase,project,module,arm,focal_class,test_class,status,duration_sec,detail
+2026-07-17T00:09:07+00:00,run,,,,,,START,,Experiment runner started
+2026-07-17T00:09:07+00:00,precheck,,,,,,START,,Loading pilot_60_classes.csv
+2026-07-17T00:09:08+00:00,precheck,,,,,,PASS,,Buildable rows: 60; skipped rows: 0
+2026-07-17T00:09:10+00:00,baseline_build,,,,,,START,,Checking clean build before GPT/EvoSuite generation
+2026-07-17T00:09:10+00:00,baseline_build,35132359,hapi-fhir-base,,UrlUtil,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:09:33+00:00,baseline_build,35132359,hapi-fhir-base,,UrlUtil,,PASS,23.817,requested=1.6 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-17T00:09:33+00:00,baseline_build,3526892,core,,ProjectCommandExecutor,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:09:50+00:00,baseline_build,3526892,core,,ProjectCommandExecutor,,PASS,16.421,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-17T00:09:50+00:00,baseline_build,37489990,tomcat-gcp-lib,,DatastoreManager,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:01+00:00,baseline_build,37489990,tomcat-gcp-lib,,DatastoreManager,,PASS,10.75,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-17T00:10:01+00:00,baseline_build,37728390,contrib/geomason,,AttributeValue,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:07+00:00,baseline_build,37728390,contrib/geomason,,AttributeValue,,FAIL,6.699,"[INFO] Scanning for projects...
+Downloading from repository: file:///${project.basedir}/repository/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+Downloading from osgeo: https://repo.osgeo.org/repository/release/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+Downloading from repository3: http://maven.geotoolkit.org/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+Downloading from central: https://repo.maven.apache.org/maven2/cs/gmu/edu/eclab/mason-build/20/mason-build-20.pom
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[FATAL] Non-resolvable parent POM for cs.gmu.edu.eclab.contrib:geomason:1.6: The following artifacts could not be resolved: cs.gmu.edu.eclab:mason-build:pom:20 (absent): Could not transfer artifact cs.gmu.edu.eclab:mason-build:pom:20 from/to repository3 (http://maven.geotoolkit.org/): maven.geotoolkit.org and 'parent.relativePath' points at wrong local POM @ line 7, column 10
+ @ 
+[ERROR] The build could not read 1 project -> [Help 1"
+2026-07-17T00:10:07+00:00,baseline_build,38080174,boot-jmx,,JmxRegistry,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:11+00:00,baseline_build,38080174,boot-jmx,,JmxRegistry,,FAIL,3.952,"g, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-jmx-stats:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-launcher:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-bytebuf:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-triggers:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-test:jar:3.2-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.848 s
+[INFO] Finished at: 2026-07-17T07:10:11+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute"
+2026-07-17T00:10:11+00:00,baseline_build,38080174,cloud-fs,,CachedFsClient,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:15+00:00,baseline_build,38080174,cloud-fs,,CachedFsClient,,FAIL,3.755,"nel-net:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-csp:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-codec:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-jmxapi:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-test:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-datastream:jar:3.2-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.736 s
+[INFO] Finished at: 2026-07-17T07:10:15+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-17T00:10:15+00:00,baseline_build,38080174,core-http,,HttpMessage;ContentType;HttpCookie,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:20+00:00,baseline_build,38080174,core-http,,HttpMessage;ContentType;HttpCookie,,FAIL,5.064,"16 kB
+Progress (1): 189/516 kB
+Progress (1): 193/516 kB
+Progress (1): 198/516 kB
+Progress (1): 202/516 kB
+Progress (1): 206/516 kB
+Progress (1): 210/516 kB
+Progress (1): 215/516 kB
+Progress (1): 231/516 kB
+Progress (1): 247/516 kB
+Progress (1): 264/516 kB
+Progress (1): 265/516 kB
+Progress (1): 282/516 kB
+Progress (1): 298/516 kB
+Progress (1): 314/516 kB
+Progress (1): 331/516 kB
+Progress (1): 347/516 kB
+Progress (1): 364/516 kB
+Progress (1): 380/516 kB
+Progress (1): 396/516 kB
+Progress (1): 413/516 kB
+Progress (1): 429/516 kB
+Progress (1): 446/516 kB
+Progress (1): 462/516 kB
+Progress (1): 478/516 kB
+Progress (1): 495/516 kB
+Progress (1): 511/516 kB
+Progress (1): 516 kB    
+                    
+Downloaded from central: https://repo.maven.apache.org/maven2/org/openjdk/jmh/jmh-core/1.22/jmh-core-1.22.jar (516 kB at 2.7 MB/s)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] -----------------------------------------------------------"
+2026-07-17T00:10:20+00:00,baseline_build,38080174,uikernel,,ReadSettings,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:25+00:00,baseline_build,38080174,uikernel,,ReadSettings,,FAIL,4.777," for io.datakernel:datakernel-eventloop:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-http:jar:3.2-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for io.datakernel:datakernel-test:jar:3.2-SNAPSHOT is missing, no dependency information available
+[INFO] Artifact com.google.code.gson:gson:jar:2.8.6 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Artifact com.google.code.gson:gson:jar:2.8.6 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [central (https://repo.maven.apache.org/maven2, default, releases)]
+Downloading from central: https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.8.6/gson-2.8.6.j"
+2026-07-17T00:10:25+00:00,baseline_build,38080174,util-common,,Utils,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:29+00:00,baseline_build,38080174,util-common,,Utils,,FAIL,3.675,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< io.datakernel:datakernel-common >-------------------
+[INFO] Building DataKernel : Util : Common 3.2-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for io.datakernel:datakernel-jmxapi:jar:3.2-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.740 s
+[INFO] Finished at: 2026-07-17T07:10:28+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project datakernel-common: Could not resolve dependencies for project io.datakernel:datakernel-common:jar:3.2-SNAPSHOT
+[ERROR] dependency: io.datakernel:datakernel-jmxapi:jar:3.2-SNAPSHOT (compile?)
+[ERROR] 	Could not find artifact io"
+2026-07-17T00:10:29+00:00,baseline_build,39770930,proxy,,JsonWireUtils,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:36+00:00,baseline_build,39770930,proxy,,JsonWireUtils,,FAIL,7.738,"t:gridrouter-proxy:war:1.32-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-war-plugin is missing. @ line 16, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] --------------< ru.qatools.seleniumkit:gridrouter-proxy >---------------
+[INFO] Building Selenium Grid Router Proxy 1.32-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/ru/qatools/seleniumkit/gridrouter-config/1.32-SNAPSHOT/maven-metadata.xml
+Downloading from sonatype-nexus-snapshots: https://oss.sonatype.org/content/repositories/snapshots/ru/qatools/seleniumkit/gridrouter-config/1.32-SNAPSHOT/gridrouter-config-1.3"
+2026-07-17T00:10:36+00:00,baseline_build,49126308,db-scroll-elastic,,ElasticScroll,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:41+00:00,baseline_build,49126308,db-scroll-elastic,,ElasticScroll,,FAIL,4.305,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------< com.jeromeloisel:db-scroll-elastic >-----------------
+[INFO] Building db-scroll-elastic 5.6.4-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for com.jeromeloisel:db-scroll-api:jar:5.6.4-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for com.jeromeloisel:db-integration-test:jar:5.6.4-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.330 s
+[INFO] Finished at: 2026-07-17T07:10:40+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project db-scroll-elastic: Could not resolve dependencies for project com.jeromeloisel:db-scroll-elastic:jar:5.6.4"
+2026-07-17T00:10:41+00:00,baseline_build,50552134,confucius-commons-lang,,SimpleFileScanner;SimpleJarEntryScanner,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:48+00:00,baseline_build,50552134,confucius-commons-lang,,SimpleFileScanner;SimpleJarEntryScanner,,PASS,7.21,requested=1.6 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-17T00:10:48+00:00,baseline_build,5093728,core,,FeatureContext;AnnotationRetriever,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:10:54+00:00,baseline_build,5093728,core,,FeatureContext;AnnotationRetriever,,PASS,6.435,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-17T00:10:54+00:00,baseline_build,5175291,airship-coordinator,,AdminResource,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:11:15+00:00,baseline_build,5175291,airship-coordinator,,AdminResource,,PASS,20.35,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-17T00:11:15+00:00,baseline_build,5175291,airship-shared,,MavenCoordinates,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:11:25+00:00,baseline_build,5175291,airship-shared,,MavenCoordinates,,PASS,10.109,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-17T00:11:25+00:00,baseline_build,54231507,core,,UnhandledAlertHandlingWebDriver,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:11:33+00:00,baseline_build,54231507,core,,UnhandledAlertHandlingWebDriver,,PASS,7.845,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-17T00:11:33+00:00,baseline_build,54620819,mvn-golang-wrapper,,PackageList,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:11:44+00:00,baseline_build,54620819,mvn-golang-wrapper,,PackageList,,PASS,11.813,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-17T00:11:44+00:00,baseline_build,56342003,kangaroo-common,,RequestUtil,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:12:08+00:00,baseline_build,56342003,kangaroo-common,,RequestUtil,,PASS,23.56,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-17T00:12:08+00:00,baseline_build,56342003,kangaroo-server-authz,,AbstractService;ValidationUtil,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:12:12+00:00,baseline_build,56342003,kangaroo-server-authz,,AbstractService;ValidationUtil,,FAIL,4.202,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< net.krotscheck:kangaroo-server-authz >----------------
+[INFO] Building kangaroo-server-authz 1.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for net.krotscheck:kangaroo-common:jar:1.1.0-SNAPSHOT is missing, no dependency information available
+[WARNING] The POM for net.krotscheck:kangaroo-common:jar:tests:1.1.0-SNAPSHOT is missing, no dependency information available
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.881 s
+[INFO] Finished at: 2026-07-17T07:12:12+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project kangaroo-server-authz: Could not resolve dependencies for project net.krotscheck:kangaroo-server-authz"
+2026-07-17T00:12:12+00:00,baseline_build,57251243,wingtips-servlet-api,,WingtipsRequestSpanCompletionAsyncListener,,START,,Checking clean project/module build before generation (Gradle)
+2026-07-17T00:12:43+00:00,run,,,,,,CANCELLED,,Run cancelled; writing partial diagnostics and artifacts

@@ -1,0 +1,23 @@
+ID_Focal_Class,Cyclomatic_Complexity_Focal_Class,Lines_Of_Code_Focal_Class,Generator(LLM/EVOSUITE),Prompt_Technique,Branch_Coverage,Line_Coverage,Method_Coverage,Compilation,Mutation_Coverage,NumberOfMethods,Assertion Roulette,Conditional Test Logic,Constructor Initialization,Default Test,EmptyTest,Exception Catching Throwing,General Fixture,Mystery Guest,Print Statement,Redundant Assertion,Sensitive Equality,Verbose Test,Sleepy Test,Eager Test,Lazy Test,Duplicate Assert,Unknown Test,IgnoredTest,Resource Optimism,Magic Number Test,Dependent Test,Chance
+35132359_UrlUtil,32,59,evosuite,-,98.0,91.53,100.0,1,8.11,27,0,0,0,0,0,27,0,0,0,0,0,0,0,0,25,0,0,0,0,27,0,-
+35132359_UrlUtil,32,59,gpt-4o-mini-2024-07-18,rbl4-zero-shot,68.0,64.41,85.71,1,21.62,6,5,0,0,0,0,0,0,0,0,0,0,0,0,5,5,0,0,0,0,6,0,-
+3526892_ProjectCommandExecutor,23,63,evosuite,-,41.67,57.14,81.82,1,8.0,6,0,0,0,0,0,6,0,0,0,0,0,0,0,1,0,0,0,0,0,6,0,-
+37489990_TraceValve,17,57,evosuite,-,28.57,21.05,60.0,1,0.0,5,0,0,0,0,0,5,0,0,0,0,0,0,0,2,5,0,0,0,0,5,0,-
+37489990_DatastoreManager,19,54,evosuite,-,87.5,46.3,86.67,1,3.85,13,0,0,0,0,0,13,0,0,0,0,0,0,0,1,6,0,0,0,0,13,0,-
+38080174_JmxRegistry,53,230,evosuite,-,55.36,39.57,76.0,1,22.58,21,0,0,0,0,0,21,0,0,0,0,0,0,0,21,33,0,0,0,0,21,0,-
+38080174_CachedFsClient,74,125,evosuite,-,0.0,0.0,0.0,1,0.0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-
+38080174_HttpMessage,122,173,evosuite,-,0.0,0.0,0.0,1,0.0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,-
+38080174_ContentType,34,65,evosuite,-,0.0,1.54,7.69,1,0.0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-
+38080174_HttpCookie,93,194,evosuite,-,0.0,3.09,2.33,1,0.0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-
+38080174_ReadSettings,24,53,evosuite,-,0.0,33.96,90.91,1,4.17,9,0,0,0,0,0,9,0,0,0,0,0,0,0,7,7,0,0,0,0,9,0,-
+39770930_JsonWireUtils,12,16,evosuite,-,100.0,62.5,75.0,1,6.25,8,0,0,0,0,0,8,0,0,0,0,0,0,0,1,4,0,0,0,0,8,0,-
+39770930_JsonWireUtils,12,16,gpt-4o-mini-2024-07-18,rbl4-zero-shot,75.0,81.25,100.0,1,62.5,7,4,0,0,0,0,2,0,0,0,0,0,0,0,4,0,0,0,0,0,7,0,-
+49126308_ElasticScroll,11,41,evosuite,-,0.0,2.44,11.11,1,0.0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,-
+50552134_SimpleClassScanner,13,40,evosuite,-,33.33,40.0,71.43,1,11.11,2,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,-
+50552134_SimpleClassScanner,13,40,gpt-4o-mini-2024-07-18,rbl4-zero-shot,91.67,90.0,100.0,1,77.78,8,4,0,0,0,0,1,0,0,0,0,0,0,0,0,7,0,0,0,0,7,0,-
+50552134_SimpleFileScanner,10,15,evosuite,-,16.67,66.67,100.0,1,14.29,3,0,0,0,0,0,3,0,3,0,0,0,0,0,0,3,0,0,0,3,3,0,-
+50552134_SimpleFileScanner,13,40,gpt-4o-mini-2024-07-18,rbl4-zero-shot,-,-,-,0,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+50552134_SimpleJarEntryScanner,13,25,evosuite,-,8.33,36.0,71.43,1,0.0,2,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,-
+50552134_SimpleJarEntryScanner,13,40,gpt-4o-mini-2024-07-18,rbl4-zero-shot,-,-,-,0,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
+54620819_GolangBuildMojo,41,76,evosuite,-,77.5,77.63,90.48,1,17.5,19,0,0,0,0,0,19,0,0,0,0,0,0,0,12,32,0,0,0,0,19,0,-
+54620819_PackageList,20,34,evosuite,-,100.0,100.0,100.0,1,37.84,22,0,0,0,0,0,22,0,0,0,0,0,0,0,0,4,0,0,0,0,22,0,-

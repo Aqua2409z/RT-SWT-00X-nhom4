@@ -1,0 +1,5 @@
+timestamp_utc,phase,project,module,arm,focal_class,test_class,status,duration_sec,detail
+2026-07-17T00:54:11+00:00,baseline_build,58767125,ch.obermuhlner.math.big,,DefaultBigDecimalMath,,START,,Checking clean project/module build before generation (Gradle)
+2026-07-17T00:54:12+00:00,baseline_build,58767125,__local_gradle_repair__,,,,START,,Applying local Gradle repair patches
+2026-07-17T00:54:12+00:00,baseline_build,58767125,__local_gradle_repair__,,,,PASS,0.001,Local Gradle repair applied: build.gradle
+2026-07-17T00:54:27+00:00,baseline_build,58767125,ch.obermuhlner.math.big,,DefaultBigDecimalMath,,PASS,16.29,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk-1.8

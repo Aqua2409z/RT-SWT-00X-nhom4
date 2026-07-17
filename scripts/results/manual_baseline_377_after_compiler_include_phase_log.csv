@@ -1,0 +1,7 @@
+timestamp_utc,phase,project,module,arm,focal_class,test_class,status,duration_sec,detail
+2026-07-17T00:30:34+00:00,baseline_build,37728390,__project_prepare__,,AttributeValue,,START,,Preparing Maven/Gradle reactor before module builds (Maven)
+2026-07-17T00:30:52+00:00,baseline_build,37728390,__local_maven_repair__,,,,START,,Installing local Maven repair artifacts/modules
+2026-07-17T00:31:03+00:00,baseline_build,37728390,__local_maven_repair__,,,,PASS,10.869,Local Maven repair completed
+2026-07-17T00:31:03+00:00,baseline_build,37728390,__project_prepare__,,,,PASS,29.055,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172; Local Maven repair completed
+2026-07-17T00:31:03+00:00,baseline_build,37728390,contrib/geomason,,AttributeValue,,START,,Checking clean project/module build before generation (Maven)
+2026-07-17T00:31:22+00:00,baseline_build,37728390,contrib/geomason,,AttributeValue,,PASS,19.714,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
