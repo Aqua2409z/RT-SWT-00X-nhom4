@@ -1,6 +1,4 @@
 # Danh sách GAP nghiên cứu tiềm năng (gap-list.md)
-
-> **💡 Bước B2 — Liệt kê GAP từ merged evidence table**
 > Cả nhóm họp, cùng đọc [evidence-table-merged.md](file:///D:/SLR/RT-SWT-00X-nhom4/RT-SWT-00X-nhom4/team-synthesis/evidence-table-merged.md) và rút ra các khoảng trống:
 > Ghi tất cả GAP tiềm năng vào bảng dưới đây.
 
