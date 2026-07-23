@@ -4,7 +4,7 @@
 
 ---
 
-## 📌 Thông Tin Chung
+##  Thông Tin Chung
 * **Môn học:** SWT301 – Software Testing
 * **Hình thức:** Research-Based Learning (RBL)
 * **Học kỳ:** SUMMER 2026
@@ -12,7 +12,7 @@
 
 ---
 
-## 👥 Danh Sách Thành Viên (Nhóm 4)
+##  Danh Sách Thành Viên (Nhóm 4)
 
 | STT | Họ và Tên | Ký hiệu viết tắt | Vai trò | Thư mục cá nhân |
 | :---: | :--- | :---: | :--- | :--- |
