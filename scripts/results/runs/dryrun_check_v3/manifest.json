@@ -1,0 +1,31 @@
+{
+  "timestamp_utc": "2026-07-23T09:07:10+00:00",
+  "run_id": "dryrun_check_v3",
+  "status": "failed",
+  "error": "Preflight failed for 300 classes.",
+  "run_mode": "dry_run",
+  "manifest_csv": "D:\\balanced_delivery\\balanced_bundle_300\\scripts_v2\\data_new\\class_sampling_manifest_final_seed42.csv",
+  "recipes_csv": "D:\\balanced_delivery\\balanced_bundle_300\\scripts_v2\\data_new\\build_recipes_portable.csv",
+  "compiledrepos_root": "D:\\balanced_delivery\\balanced_bundle_300\\compiledrepos",
+  "model": "gpt-4o-mini-2024-07-18",
+  "prompt": "rbl4-zero-shot",
+  "prompt_hash_sha256": "af9bd7227ecbebf631af20b6a3b8bcc774bd14a5c9a3ae90baf77e8217293dd2",
+  "prompt_protocol": "AgoneTest base zero-shot from proposal; no java_language_rules.",
+  "source_sample_n": 300,
+  "buildable_run_n": 0,
+  "precheck_skipped_n": 300,
+  "baseline_pass_n": null,
+  "baseline_failed_n": null,
+  "repo_n": 30,
+  "build_scope_n": 48,
+  "gpt_rows": 0,
+  "evosuite_rows": 0,
+  "fairness_policy": {
+    "replacement_after_dataset_lock": false,
+    "generated_test_repair": false,
+    "prompt": "original AgoneTest zero-shot prompt from proposal",
+    "sandbox_policy": "one focal class per sandbox; only that generated test is installed and measured",
+    "baseline_gate": "all 300 classes/scopes must pass baseline before generation starts",
+    "failure_scoring": "failed generated tests are compilation=0 and strict metrics=0"
+  }
+}

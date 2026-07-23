@@ -431,7 +431,13 @@ def run_gradle_test_command(path, project_dataframe, system):
 
         result = subprocess.run(
                 [gradle_cmd, 'clean', 'test', test_classes, 'pitest', '-x', 'downloadPortal', '-x', 'unzipPortal', '-x', 'check'], cwd=path, capture_output=True, text=True, timeout=900)
-        if result.returncode != 0 and ("not found in root project" in result.stderr or "not found in root project" in result.stdout):
+        combined_output = f"{result.stdout}\n{result.stderr}"
+        missing_excluded_task = (
+            "Task 'downloadPortal' not found" in combined_output
+            or "Task 'unzipPortal' not found" in combined_output
+            or "not found in root project" in combined_output
+        )
+        if result.returncode != 0 and missing_excluded_task:
             result = subprocess.run(
                     [gradle_cmd, 'clean', 'test', test_classes, 'pitest', '-x', 'check'], cwd=path, capture_output=True, text=True, timeout=900)
         if result.stdout.__contains__("BUILD SUCCESSFUL"):  
@@ -486,14 +492,15 @@ def edit_build_gradle_file(path, project_dataframe, junit_version):
     if os.path.exists(build_gradle_path):
         try:
             # Read the build.gradle content
-            with open(build_gradle_path, 'r') as file:
+            with open(build_gradle_kts_path, 'r') as file:
                 build_gradle_content = file.read()
         except Exception as e:
             print(e)
             return None
 
-        # Check if the 'pistest' or 'jacoco' dependency has already been implemented
-        if build_gradle_content.__contains__("pitest") or (build_gradle_content.__contains__("jacoco")):
+        # RBL4 v2: do not skip a sandboxed Gradle module merely because it already
+        # mentions JaCoCo/PIT. The original file is restored after the isolated run.
+        if False and (build_gradle_content.__contains__("pitest") or (build_gradle_content.__contains__("jacoco"))):
             return False
         else:
             if junit_version.startswith('5'):
@@ -517,22 +524,23 @@ def edit_build_gradle_file(path, project_dataframe, junit_version):
         except Exception as e:
             print(e)
             return None
-        # Check if the 'pistest' or 'jacoco' dependency has already been implemented
-        if build_gradle_content.__contains__("pitest") or (build_gradle_content.__contains__("jacoco")):
+        # RBL4 v2: do not skip a sandboxed Gradle module merely because it already
+        # mentions JaCoCo/PIT. The original file is restored after the isolated run.
+        if False and (build_gradle_content.__contains__("pitest") or (build_gradle_content.__contains__("jacoco"))):
             return False
         if junit_version.startswith('5'):
-            add_dependecies = f"""buildscript {{\n    repositories {{\n        mavenCentral()\n    }}\n    dependencies {{\n        classpath ("info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0")\n        classpath ("org.jacoco:org.jacoco.core:0.8.9")\n    }}\n}}\\n\\nallprojects {{\n    apply(plugin = "java")\n    apply(plugin = 'info.solidsoft.pitest")\n    apply(plugin = "jacoco")\n\n    pitest{{\n        junit5PluginVersion = '1.2.1'\n        targetTests = listOf({test_classes}) \n        targetClasses = listOf({focal_classes})\n        outputFormats = listOf("csv")\n        threads = 4\n        failWhenNoMutations = false\n    }}\n    \n    jacocoTestReport {{\n        dependsOn ("test")\n        reports {{\n            xml.required= false\n            html.required = false\n            csv.required = true\n            csv.destination(file("${{buildDir}}/reports/jacoco/jacoco.csv"))\n    }}\n }}\n    task.named("test") {{\n        filter{{\n            setFailOnNoMatchingTests(false)\n        }}\n        finalizedBy ("jacocoTestReport") \n    }}\n\n}}\n"""
+            add_dependecies = f"""buildscript {{\n    repositories {{\n        mavenCentral()\n    }}\n    dependencies {{\n        classpath ("info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0")\n        classpath ("org.jacoco:org.jacoco.core:0.8.9")\n    }}\n}}\\n\\nallprojects {{\n    apply(plugin = "java")\n    apply(plugin = "info.solidsoft.pitest")\n    apply(plugin = "jacoco")\n\n    pitest{{\n        junit5PluginVersion = '1.2.1'\n        targetTests = listOf({test_classes}) \n        targetClasses = listOf({focal_classes})\n        outputFormats = listOf("csv")\n        threads = 4\n        failWhenNoMutations = false\n    }}\n    \n    jacocoTestReport {{\n        dependsOn ("test")\n        reports {{\n            xml.required= false\n            html.required = false\n            csv.required = true\n            csv.destination(file("${{buildDir}}/reports/jacoco/jacoco.csv"))\n    }}\n }}\n    task.named("test") {{\n        filter{{\n            setFailOnNoMatchingTests(false)\n        }}\n        finalizedBy ("jacocoTestReport") \n    }}\n\n}}\n"""
         else:
-            add_dependecies = f"""buildscript {{\n    repositories {{\n        mavenCentral()\n    }}\n    dependencies {{\n        classpath ("info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0")\n        classpath ("org.jacoco:org.jacoco.core:0.8.9")\n    }}\n}}\\n\\nallprojects {{\n    apply(plugin = "java")\n    apply(plugin = 'info.solidsoft.pitest")\n    apply(plugin = "jacoco")\n\n    pitest{{\n        targetTests = listOf({test_classes}) \n        targetClasses = listOf({focal_classes})\n        outputFormats = listOf("csv")\n        threads = 4\n        failWhenNoMutations = false\n    }}\n    \n    jacocoTestReport {{\n        dependsOn ("test")\n        reports {{\n            xml.required= false\n            html.required = false\n            csv.required = true\n            csv.destination(file("${{buildDir}}/reports/jacoco/jacoco.csv"))\n    }}\n }}\n    task.named("test") {{\n        filter{{\n            setFailOnNoMatchingTests(false)\n        }}\n        finalizedBy ("jacocoTestReport") \n    }}\n\n}}\n"""
+            add_dependecies = f"""buildscript {{\n    repositories {{\n        mavenCentral()\n    }}\n    dependencies {{\n        classpath ("info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0")\n        classpath ("org.jacoco:org.jacoco.core:0.8.9")\n    }}\n}}\\n\\nallprojects {{\n    apply(plugin = "java")\n    apply(plugin = "info.solidsoft.pitest")\n    apply(plugin = "jacoco")\n\n    pitest{{\n        targetTests = listOf({test_classes}) \n        targetClasses = listOf({focal_classes})\n        outputFormats = listOf("csv")\n        threads = 4\n        failWhenNoMutations = false\n    }}\n    \n    jacocoTestReport {{\n        dependsOn ("test")\n        reports {{\n            xml.required= false\n            html.required = false\n            csv.required = true\n            csv.destination(file("${{buildDir}}/reports/jacoco/jacoco.csv"))\n    }}\n }}\n    task.named("test") {{\n        filter{{\n            setFailOnNoMatchingTests(false)\n        }}\n        finalizedBy ("jacocoTestReport") \n    }}\n\n}}\n"""
         old_build_gradle_content = build_gradle_content
         build_gradle_content = add_dependecies + build_gradle_content
         try:
-            with open(build_gradle_path, 'w') as file:
+            with open(build_gradle_kts_path, 'w') as file:
                 file.write(build_gradle_content)
         except Exception as e:
             print(e)
             return None
-        return True
+        return old_build_gradle_content
     else:
         return None
     

@@ -218,6 +218,15 @@ def extract_errors(stdout: str, stderr: str):
             formatted_errors = "The following errors were encountered during the Maven build (from stderr):\n"
             formatted_errors += "\n- " + "\n- ".join(cleaned_stderr)
         else:
+            gradle_failure = re.search(
+                r"(FAILURE: Build failed with an exception\..*?)(?:\n\nBUILD FAILED|\Z)",
+                stdout,
+                re.DOTALL,
+            )
+            if gradle_failure:
+                formatted_errors = "The following Gradle failure was encountered:\n"
+                formatted_errors += gradle_failure.group(1).strip()
+                return formatted_errors
             # Fallback: capture all content after '[ERROR]' in stdout if no specific errors are found
             error_lines = []
             capturing = False

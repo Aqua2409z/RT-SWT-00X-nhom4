@@ -1,3 +1,0 @@
-run_scope,run_mode,source_sample_n,buildable_run_n,precheck_skipped_n,arm,compiled_success_n,compiled_success_rate,branch_compiled_mean,branch_compiled_median,line_compiled_mean,line_compiled_median,method_compiled_mean,method_compiled_median,mutation_compiled_mean,mutation_compiled_median,branch_strict_zero_fill_mean,mutation_strict_zero_fill_mean,rq3_binomial_p_greater_0_286,rq1_rq2_interpretation,rq4_wilcoxon_p_noninferiority_margin_5pp,rq4_median_gpt_minus_evosuite_pp,rq4_vargha_delaney_a12_gpt_vs_evosuite
-rbl4_experiment_tool,dry_run,300,300,0,evosuite,0,0.0,,,,,,,,,0.0,0.0,1.0,descriptive_only_compiled_n_lt_60,0.0,0.0,0.5
-rbl4_experiment_tool,dry_run,300,300,0,gpt,0,0.0,,,,,,,,,0.0,0.0,1.0,descriptive_only_compiled_n_lt_60,0.0,0.0,0.5

@@ -9,13 +9,13 @@ from pydantic import BaseModel, Field
 DEFAULT_MODEL = "gpt-4o-mini-2024-07-18"
 DEFAULT_PROMPT = "rbl4-zero-shot"
 
-RunMode = Literal["dry_run", "report_only", "full_run"]
-SampleKey = Literal["full_300", "pilot_60", "part1", "part2", "part3", "pilot_24", "custom"]
+RunMode = Literal["dry_run", "baseline_only", "report_only", "full_run"]
+SampleKey = Literal["full_300", "custom"]
 RunStatus = Literal["queued", "running", "completed", "failed", "cancelled", "unknown"]
 
 
 class RunCreateRequest(BaseModel):
-    sample_key: SampleKey = "part1"
+    sample_key: SampleKey = "full_300"
     custom_sample_csv: str | None = None
     run_mode: RunMode = "dry_run"
     model: str = DEFAULT_MODEL

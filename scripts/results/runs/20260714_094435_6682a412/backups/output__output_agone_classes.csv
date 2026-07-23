@@ -1,6 +1,0 @@
-ID_Focal_Class,Cyclomatic_Complexity_Focal_Class,Lines_Of_Code_Focal_Class,Generator(LLM/EVOSUITE),Prompt_Technique,Branch_Coverage,Line_Coverage,Method_Coverage,Compilation,Mutation_Coverage,NumberOfMethods,Assertion Roulette,Conditional Test Logic,Constructor Initialization,Default Test,EmptyTest,Exception Catching Throwing,General Fixture,Mystery Guest,Print Statement,Redundant Assertion,Sensitive Equality,Verbose Test,Sleepy Test,Eager Test,Lazy Test,Duplicate Assert,Unknown Test,IgnoredTest,Resource Optimism,Magic Number Test,Dependent Test,Chance
-37489990_TraceValve,17,57,evosuite,-,28.57,21.05,60.0,1,0.0,5,0,0,0,0,0,5,0,0,0,0,0,0,0,2,5,0,0,0,0,5,0,-
-50552134_SimpleClassScanner,13,40,evosuite,-,50.0,52.5,85.71,1,11.11,2,0,0,0,0,0,2,0,0,0,0,0,0,0,0,2,0,0,0,0,2,0,-
-54620819_GolangBuildMojo,41,76,evosuite,-,77.5,77.63,90.48,1,20.0,19,0,0,0,0,0,19,0,0,0,0,0,0,0,12,32,0,0,0,0,19,0,-
-6489406_ScenarioTracker,23,53,evosuite,-,9.09,32.08,66.67,1,10.67,23,0,0,0,0,0,23,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,-
-771158_StatementComparator,11,18,evosuite,-,92.86,94.44,100.0,1,7.14,8,0,0,0,0,0,8,0,0,0,0,0,0,0,7,14,0,0,0,0,8,0,-

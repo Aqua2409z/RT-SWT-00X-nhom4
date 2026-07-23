@@ -40,13 +40,15 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 RUNS_DIR = BASE_DIR / "results" / "runs"
 RUNS_DIR.mkdir(parents=True, exist_ok=True)
 SAMPLE_MAP = {
-    "full_300": BASE_DIR / "output" / "classes_main.csv",
-    "pilot_60": BASE_DIR / "output" / "pilot_60_classes.csv",
-    "part1": BASE_DIR / "output" / "classes_part1.csv",
-    "part2": BASE_DIR / "output" / "classes_part2.csv",
-    "part3": BASE_DIR / "output" / "classes_part3.csv",
-    "pilot_24": BASE_DIR / "output" / "pilot_24_classes.csv",
+    "full_300": BASE_DIR / "data_new" / "class_sampling_manifest_final_seed42.csv",
 }
+SAMPLE_LABELS = {
+    "full_300": "Full 300 data_new",
+}
+SAMPLE_ORDER = ["full_300"]
+ACTIVE_MANIFEST = BASE_DIR / "data_new" / "class_sampling_manifest_final_seed42.csv"
+ACTIVE_RECIPES = BASE_DIR / "data_new" / "build_recipes_portable.csv"
+COMPILED_REPOS = Path(os.getenv("RBL4_COMPILED_REPOS", BASE_DIR.parent / "compiledrepos"))
 processes: dict[str, subprocess.Popen[Any]] = {}
 
 
@@ -77,6 +79,122 @@ def resolve_sample(request: RunCreateRequest) -> Path:
     if not sample.exists():
         raise HTTPException(status_code=404, detail=f"Sample CSV not found: {sample}")
     return sample
+
+
+def short_base_path(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(BASE_DIR.resolve()).as_posix()
+    except ValueError:
+        return str(path)
+
+
+def count_dict(df: pd.DataFrame, column: str) -> dict[str, int]:
+    if column not in df.columns:
+        return {}
+    return {str(key): int(value) for key, value in df[column].fillna("").astype(str).value_counts().sort_index().items()}
+
+
+def sample_repo_id(row: pd.Series) -> str:
+    if "repo_id" in row:
+        return str(row.get("repo_id", ""))
+    return str(row.get("Project", ""))
+
+
+def sample_source_path(row: pd.Series, raw_column: str, normalized_column: str) -> Path | None:
+    source_path = row.get(raw_column, row.get(normalized_column, ""))
+    raw = str(source_path or "").strip().replace("\\", "/")
+    if not raw:
+        return None
+    if raw.startswith("compiledrepos/"):
+        return BASE_DIR.parent / raw
+    if raw.startswith("repos/"):
+        parts = raw.split("/", 2)
+        if len(parts) == 3:
+            return COMPILED_REPOS / parts[1] / parts[2]
+        return COMPILED_REPOS
+    repo_id = sample_repo_id(row)
+    if not repo_id:
+        return None
+    return COMPILED_REPOS / repo_id / raw
+
+
+def missing_sample_files(df: pd.DataFrame, raw_column: str, normalized_column: str) -> int:
+    missing = 0
+    for _, row in df.iterrows():
+        path = sample_source_path(row, raw_column, normalized_column)
+        if path is None or not path.exists():
+            missing += 1
+    return missing
+
+
+def duplicate_class_rows(df: pd.DataFrame) -> int:
+    if "class_key" in df.columns:
+        return int(df.duplicated("class_key").sum())
+    columns = [column for column in ["repo_id", "Project", "focal_path", "Focal_Path", "test_path", "Test_Path"] if column in df.columns]
+    if {"repo_id", "focal_path", "test_path"} <= set(columns):
+        return int(df.duplicated(["repo_id", "focal_path", "test_path"]).sum())
+    if {"Project", "Focal_Path", "Test_Path"} <= set(columns):
+        return int(df.duplicated(["Project", "Focal_Path", "Test_Path"]).sum())
+    return 0
+
+
+def has_active_run() -> bool:
+    for status_path in RUNS_DIR.glob("*/status.json"):
+        manifest = read_json(status_path.parent / "manifest.json")
+        if manifest.get("status") in {"completed", "failed", "cancelled"}:
+            continue
+        status_doc = read_json(status_path)
+        if status_doc.get("status") == "running":
+            return True
+    return any(process.poll() is None for process in processes.values())
+
+
+def sample_info(key: str, path: Path, tree_may_be_mutating: bool = False) -> dict[str, Any]:
+    info: dict[str, Any] = {
+        "key": key,
+        "label": SAMPLE_LABELS.get(key, key),
+        "path": short_base_path(path),
+        "exists": path.exists(),
+        "rows": 0,
+        "repos": 0,
+        "selected_type_counts": {},
+        "stratum_counts": {},
+        "duplicate_class_rows": None,
+        "missing_focal_files": None,
+        "missing_test_files": None,
+        "status": "missing",
+    }
+    if not path.exists():
+        return info
+    try:
+        df = pd.read_csv(path, dtype={"repo_id": str, "Project": str})
+        repo_column = "repo_id" if "repo_id" in df.columns else "Project" if "Project" in df.columns else ""
+        stratum_column = "complexity_half" if "complexity_half" in df.columns else "sampling_stratum" if "sampling_stratum" in df.columns else "complexity_bucket" if "complexity_bucket" in df.columns else ""
+        missing_test_files = missing_sample_files(df, "test_path", "Test_Path") if {"test_path", "Test_Path"} & set(df.columns) else 0
+        info.update(
+            {
+                "rows": int(len(df)),
+                "repos": int(df[repo_column].astype(str).nunique()) if repo_column else 0,
+                "selected_type_counts": count_dict(df, "selected_type"),
+                "stratum_counts": count_dict(df, stratum_column) if stratum_column else {},
+                "duplicate_class_rows": duplicate_class_rows(df),
+                "missing_focal_files": missing_sample_files(df, "focal_path", "Focal_Path"),
+                "missing_test_files": missing_test_files,
+            }
+        )
+        has_issue = any(
+            int(info.get(field) or 0) > 0
+            for field in ["duplicate_class_rows", "missing_focal_files", "missing_test_files"]
+        )
+        if has_issue and tree_may_be_mutating:
+            info["status"] = "active_run"
+            info["note"] = "A run is active; source/test file existence may fluctuate while AgoneTest instruments and restores files."
+        else:
+            info["status"] = "warn" if has_issue else "ok"
+    except Exception as exc:
+        info["status"] = "error"
+        info["error"] = f"{type(exc).__name__}: {exc}"
+    return info
 
 
 def write_status(run_dir: Path, payload: dict[str, Any]) -> None:
@@ -133,7 +251,7 @@ def run_info(run_id: str) -> RunInfo:
         run_id=run_id,
         status=status,
         run_mode=manifest.get("run_mode") or status_doc.get("run_mode", "unknown"),
-        sample_csv=manifest.get("source_sample_csv") or status_doc.get("sample_csv", ""),
+        sample_csv=manifest.get("manifest_csv") or manifest.get("source_sample_csv") or status_doc.get("sample_csv", ""),
         model=manifest.get("model") or status_doc.get("model", DEFAULT_MODEL),
         prompt=manifest.get("prompt") or status_doc.get("prompt", DEFAULT_PROMPT),
         created_at=status_doc.get("created_at", ""),
@@ -142,11 +260,11 @@ def run_info(run_id: str) -> RunInfo:
         pid=status_doc.get("pid"),
         return_code=return_code,
         source_sample_n=manifest.get("source_sample_n"),
-        buildable_run_n=manifest.get("buildable_run_n"),
+        buildable_run_n=manifest.get("source_sample_n"),
         precheck_skipped_n=manifest.get("precheck_skipped_n"),
         baseline_pass_n=manifest.get("baseline_pass_n"),
         baseline_failed_n=manifest.get("baseline_failed_n"),
-        generation_run_n=manifest.get("generation_run_n"),
+        generation_run_n=manifest.get("gpt_rows"),
         error=manifest.get("error") or status_doc.get("error"),
         artifacts=[ArtifactInfo(**item) for item in artifact_infos(run_dir)],
     )
@@ -161,9 +279,9 @@ def generated_test_infos(run_dir: Path) -> list[GeneratedTestInfo]:
             size_bytes = 0
         items.append(
             GeneratedTestInfo(
-                project=str(record.get("project", "")),
+                project=str(record.get("project", record.get("repo_id", ""))),
                 arm=str(record.get("arm", "")),
-                file_name=str(record.get("file_name", "")),
+                file_name=str(record.get("file_name", Path(str(record.get("stored_path", ""))).name)),
                 source_path=str(record.get("source_path", "")),
                 stored_path=str(record.get("stored_path", "")),
                 size_bytes=size_bytes,
@@ -251,6 +369,10 @@ def write_partial_cancel_artifacts(run_dir: Path, status_doc: dict[str, Any]) ->
 
 
 def write_partial_metrics(run_dir: Path, status_doc: dict[str, Any]) -> None:
+    # RBL4 v2 writes metrics_long.csv/summary.csv incrementally from rbl4_v2_runner.py.
+    # Avoid importing the legacy runner here because v2 uses a different data schema
+    # without human test paths.
+    return
     staged_classes = run_dir / "staged_classes.csv"
     if not staged_classes.exists() or staged_classes.stat().st_size == 0:
         return
@@ -278,7 +400,13 @@ def write_partial_metrics(run_dir: Path, status_doc: dict[str, Any]) -> None:
         baseline_path = run_dir / "baseline_build.csv"
         baseline_df = pd.read_csv(baseline_path) if baseline_path.exists() and baseline_path.stat().st_size > 0 else None
         legacy.DEFAULT_SAMPLE = sample_csv if sample_csv and sample_csv.exists() else staged_classes
-        metrics_df = legacy.build_metrics_long(sample_df, model, prompt, run_mode, baseline_df=baseline_df if run_mode == "full_run" else None)
+        metrics_df = legacy.build_metrics_long(
+            sample_df,
+            model,
+            prompt,
+            run_mode,
+            baseline_df=baseline_df if run_mode in {"full_run", "baseline_only"} else None,
+        )
         metrics_df["source_sample"] = str(sample_csv) if sample_csv else ""
         summary_df = legacy.build_summary(metrics_df, source_n=source_n, skipped_n=skipped_n)
         if "run_scope" in summary_df.columns:
@@ -296,6 +424,16 @@ def health() -> dict[str, str]:
     return {"status": "ok", "base_dir": str(BASE_DIR)}
 
 
+@app.get("/api/samples")
+def list_samples() -> dict[str, Any]:
+    tree_may_be_mutating = has_active_run()
+    return {
+        "active_manifest": short_base_path(ACTIVE_MANIFEST),
+        "tree_may_be_mutating": tree_may_be_mutating,
+        "samples": [sample_info(key, SAMPLE_MAP[key], tree_may_be_mutating=tree_may_be_mutating) for key in SAMPLE_ORDER if key in SAMPLE_MAP],
+    }
+
+
 @app.post("/api/runs", response_model=RunInfo)
 def create_run(request: RunCreateRequest) -> RunInfo:
     sample = resolve_sample(request)
@@ -305,25 +443,25 @@ def create_run(request: RunCreateRequest) -> RunInfo:
     stdout = (run_dir / "stdout.log").open("w", encoding="utf-8")
     stderr = (run_dir / "stderr.log").open("w", encoding="utf-8")
 
+    mode = "dry_run" if request.run_mode == "report_only" else request.run_mode
     command = [
         sys.executable,
-        "-m",
-        "experiment_tool.runner",
+        str(BASE_DIR / "rbl4_v2_runner.py"),
         "--run-id",
         run_id,
-        "--sample-csv",
+        "--manifest",
         str(sample),
+        "--recipes",
+        str(ACTIVE_RECIPES),
+        "--compiledrepos",
+        str(COMPILED_REPOS),
         "--mode",
-        request.run_mode,
+        mode,
         "--model",
         request.model,
         "--prompt",
         request.prompt,
     ]
-    if request.resume:
-        command.append("--resume")
-    if request.clear_agone_output:
-        command.append("--clear-agone-output")
 
     env = os.environ.copy()
     env["PYTHONPATH"] = str(BASE_DIR)

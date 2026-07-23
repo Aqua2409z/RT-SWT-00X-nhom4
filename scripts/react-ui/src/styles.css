@@ -184,6 +184,65 @@ select:focus {
   padding: 12px;
 }
 
+.sample-audit {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+}
+
+.sample-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.sample-title strong {
+  overflow-wrap: anywhere;
+}
+
+.sample-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.sample-stats div {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.68);
+  padding: 10px;
+}
+
+.sample-stats span,
+.strata-row span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sample-stats strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 18px;
+}
+
+.strata-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.strata-row span {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 7px 9px;
+  text-align: center;
+}
+
 .panel-heading {
   display: flex;
   align-items: center;
@@ -666,6 +725,10 @@ th {
   color: var(--green);
 }
 
+.soft-tag.warning {
+  color: var(--orange);
+}
+
 .soft-tag.bad {
   color: var(--red);
 }
@@ -798,6 +861,7 @@ th {
 
   .stage-row,
   .stat-grid,
+  .sample-stats,
   .api-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -806,6 +870,8 @@ th {
 @media (max-width: 540px) {
   .stage-row,
   .stat-grid,
+  .sample-stats,
+  .strata-row,
   .api-stats,
   .api-call-card {
     grid-template-columns: 1fr;

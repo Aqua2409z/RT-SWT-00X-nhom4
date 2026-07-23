@@ -1,6 +1,0 @@
-Project,Cyclomatic_Complexity,Lines_Of_Code,Generator(LLM/EVOSUITE),Prompt_Technique,Compilation%,Branch_Coverage%,Line_Coverage%,Method_Coverage%,Mutation_Coverage%,NumberOfMethods,Assertion Roulette,Conditional Test Logic,Constructor Initialization,Default Test,EmptyTest,Exception Catching Throwing,General Fixture,Mystery Guest,Print Statement,Redundant Assertion,Sensitive Equality,Verbose Test,Sleepy Test,Eager Test,Lazy Test,Duplicate Assert,Unknown Test,IgnoredTest,Resource Optimism,Magic Number Test,Dependent Test
-771158,-,-,evosuite,-,100.0,92.86,94.44,100.0,7.14,8.0,0.0,0.0,0.0,0.0,0.0,8.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,7.0,14.0,0.0,0.0,0.0,0.0,8.0,0.0
-6489406,-,-,evosuite,-,100.0,9.09,32.08,66.67,10.67,23.0,0.0,0.0,0.0,0.0,0.0,23.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,23.0,0.0
-54620819,-,-,evosuite,-,100.0,77.5,77.63,90.48,20.0,19.0,0.0,0.0,0.0,0.0,0.0,19.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,12.0,32.0,0.0,0.0,0.0,0.0,19.0,0.0
-50552134,-,-,evosuite,-,100.0,50.0,52.5,85.71,11.11,2.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,0.0,0.0,0.0,0.0,2.0,0.0
-37489990,-,-,evosuite,-,100.0,28.57,21.05,60.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,5.0,0.0,0.0,0.0,0.0,5.0,0.0

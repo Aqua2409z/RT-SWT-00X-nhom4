@@ -233,28 +233,52 @@ def classify_issue(phase: str, status: str, detail: str, error_type: str = "") -
 
 def build_error_summary(run_dir: Path) -> Path:
     rows: list[dict[str, Any]] = []
+    baseline_final_pass_keys: set[tuple[str, str]] = set()
+
+    baseline_path = run_dir / "baseline_build.csv"
+    if baseline_path.exists() and baseline_path.stat().st_size > 0:
+        try:
+            baseline_df = pd.read_csv(baseline_path, dtype=str).fillna("")
+            if {"project", "module", "status"}.issubset(baseline_df.columns):
+                passed = baseline_df[baseline_df["status"].astype(str).str.upper() == "PASS"]
+                baseline_final_pass_keys = {
+                    (str(row.get("project", "")), str(row.get("module", "")))
+                    for _, row in passed.iterrows()
+                }
+        except Exception:
+            baseline_final_pass_keys = set()
 
     phase_path = run_dir / "phase_log.csv"
     if phase_path.exists() and phase_path.stat().st_size > 0:
         try:
-            phase_df = pd.read_csv(phase_path).fillna("")
+            phase_df = pd.read_csv(phase_path, dtype=str).fillna("")
             failed = phase_df[phase_df["status"].astype(str).str.upper().isin(["FAIL", "ERROR", "CANCELLED"])]
             for _, row in failed.iterrows():
+                phase = str(row.get("phase", ""))
+                status = str(row.get("status", ""))
+                project = str(row.get("project", ""))
+                module = str(row.get("module", ""))
+                if (
+                    phase.lower() == "baseline_build"
+                    and status.upper() in {"FAIL", "ERROR"}
+                    and (project, module) in baseline_final_pass_keys
+                ):
+                    continue
                 category, severity, explanation, suggested_action = classify_issue(
-                    str(row.get("phase", "")),
-                    str(row.get("status", "")),
+                    phase,
+                    status,
                     str(row.get("detail", "")),
                 )
                 rows.append(
                     {
                         "timestamp_utc": row.get("timestamp_utc", ""),
                         "source": "phase_log",
-                        "project": row.get("project", ""),
-                        "module": row.get("module", ""),
+                        "project": project,
+                        "module": module,
                         "arm": row.get("arm", ""),
                         "focal_class": row.get("focal_class", ""),
-                        "phase": row.get("phase", ""),
-                        "status": row.get("status", ""),
+                        "phase": phase,
+                        "status": status,
                         "category": category,
                         "severity": severity,
                         "explanation_vi": explanation,

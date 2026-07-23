@@ -1,5 +1,0 @@
-ID_Focal_Class,Cyclomatic_Complexity_Focal_Class,Lines_Of_Code_Focal_Class,Generator(LLM/EVOSUITE),Prompt_Technique,Branch_Coverage,Line_Coverage,Method_Coverage,Compilation,Mutation_Coverage,NumberOfMethods,Assertion Roulette,Conditional Test Logic,Constructor Initialization,Default Test,EmptyTest,Exception Catching Throwing,General Fixture,Mystery Guest,Print Statement,Redundant Assertion,Sensitive Equality,Verbose Test,Sleepy Test,Eager Test,Lazy Test,Duplicate Assert,Unknown Test,IgnoredTest,Resource Optimism,Magic Number Test,Dependent Test,Chance
-6489406_ScenarioTracker,23,53,evosuite,-,9.09,32.08,66.67,1,10.67,23,0,0,0,0,0,23,0,0,0,0,0,0,0,0,0,0,0,0,0,23,0,-
-6489406_TargetTracker,54,73,evosuite,-,8.82,42.47,37.84,1,3.85,13,0,0,0,0,0,13,0,0,0,0,0,0,0,0,4,0,0,0,0,13,0,-
-6489406_Track,95,215,evosuite,-,56.67,86.98,93.85,1,33.33,29,0,0,0,0,0,29,0,0,0,0,0,0,0,6,20,0,0,0,0,29,0,-
-6489406_EventEmittingTrackerImpl,62,158,evosuite,-,85.29,90.51,85.71,1,32.43,15,0,0,0,0,0,15,0,0,0,0,0,0,0,0,14,0,0,0,0,15,0,-
