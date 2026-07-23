@@ -1,0 +1,10 @@
+{
+  "run_id": "dryrun_check",
+  "status": "failed",
+  "run_mode": "dry_run",
+  "sample_csv": "D:\\balanced_delivery\\balanced_bundle_300\\scripts_v2\\data_new\\class_sampling_manifest_final_seed42.csv",
+  "model": "gpt-4o-mini-2024-07-18",
+  "prompt": "rbl4-zero-shot",
+  "updated_at": "2026-07-23T09:02:29+00:00",
+  "error": "Preflight failed for 300 classes."
+}

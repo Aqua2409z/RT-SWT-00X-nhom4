@@ -16,11 +16,14 @@ import {
   XCircle
 } from "lucide-react";
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import { API_BASE, ApiCallInfo, GeneratedTestInfo, RunEvent, RunInfo, RunMode, SampleKey, api } from "./lib/api";
+import { API_BASE, ApiCallInfo, GeneratedTestInfo, RunEvent, RunInfo, RunMode, SampleInfo, SampleKey, api } from "./lib/api";
 import { STAGES, stageForPhase, statusTone } from "./lib/stages";
 
 const DEFAULT_MODEL = "gpt-4o-mini-2024-07-18";
 const DEFAULT_PROMPT = "rbl4-zero-shot";
+const FALLBACK_SAMPLES: SampleInfo[] = [
+  { key: "full_300", label: "Full 300 data_new", path: "data_new/class_sampling_manifest_final_seed42.csv", exists: true, rows: 300, repos: 30, selected_type_counts: {}, stratum_counts: {}, status: "ok" }
+];
 
 function formatNumber(value: unknown) {
   if (value === undefined || value === null || value === "") return "-";
@@ -42,7 +45,15 @@ function statusIcon(status: string) {
   return <Clock3 size={16} />;
 }
 
+function sampleStatusClass(status: string) {
+  if (status === "ok") return "ok";
+  if (status === "active_run" || status === "warn") return "warning";
+  return "bad";
+}
+
 export default function App() {
+  const [samples, setSamples] = useState<SampleInfo[]>([]);
+  const [activeManifest, setActiveManifest] = useState("");
   const [runs, setRuns] = useState<RunInfo[]>([]);
   const [selectedRunId, setSelectedRunId] = useState<string>("");
   const [runDetail, setRunDetail] = useState<RunInfo | null>(null);
@@ -56,7 +67,7 @@ export default function App() {
   const [error, setError] = useState("");
   const [logFilter, setLogFilter] = useState("");
   const [form, setForm] = useState({
-    sample_key: "part1" as SampleKey,
+    sample_key: "full_300" as SampleKey,
     custom_sample_csv: "",
     run_mode: "dry_run" as RunMode,
     model: DEFAULT_MODEL,
@@ -64,6 +75,12 @@ export default function App() {
     resume: false,
     clear_agone_output: true
   });
+
+  async function refreshSamples() {
+    const payload = await api.listSamples();
+    setSamples(payload.samples);
+    setActiveManifest(payload.active_manifest);
+  }
 
   async function refreshRuns() {
     const data = await api.listRuns();
@@ -83,6 +100,7 @@ export default function App() {
   }
 
   useEffect(() => {
+    refreshSamples().catch((exc) => setError(exc.message));
     refreshRuns().catch((exc) => setError(exc.message));
   }, []);
 
@@ -105,6 +123,8 @@ export default function App() {
   }, [selectedRunId]);
 
   const selectedRun = runDetail || runs.find((run) => run.run_id === selectedRunId) || null;
+  const sampleOptions = samples.length > 0 ? samples : FALLBACK_SAMPLES;
+  const selectedSample = sampleOptions.find((sample) => sample.key === form.sample_key);
   const filteredEvents = useMemo(() => {
     const query = logFilter.trim().toLowerCase();
     if (!query) return events;
@@ -132,7 +152,7 @@ export default function App() {
       acc[arm] ||= { total: 0, compiled: 0, mutation: [] };
       acc[arm].total += 1;
       if (Number(row.compilation) === 1) acc[arm].compiled += 1;
-      const mutation = Number(row.mutation_score_strict_zero_fill);
+      const mutation = Number(row.strict_mutation_coverage);
       if (!Number.isNaN(mutation)) acc[arm].mutation.push(mutation);
       return acc;
     }, {});
@@ -200,12 +220,11 @@ export default function App() {
           <label>
             Sample
             <select value={form.sample_key} onChange={(event) => setForm({ ...form, sample_key: event.target.value as SampleKey })}>
-              <option value="part1">Pilot Part 1</option>
-              <option value="part2">Pilot Part 2</option>
-              <option value="part3">Pilot Part 3</option>
-              <option value="pilot_60">Pilot 60</option>
-              <option value="pilot_24">Pilot 24 New</option>
-              <option value="full_300">Full 300</option>
+              {sampleOptions.map((sample) => (
+                <option key={sample.key} value={sample.key} disabled={!sample.exists}>
+                  {sample.label}{sample.rows ? ` - ${sample.rows} rows` : ""}
+                </option>
+              ))}
               <option value="custom">Custom CSV</option>
             </select>
           </label>
@@ -219,7 +238,7 @@ export default function App() {
             Mode
             <select value={form.run_mode} onChange={(event) => setForm({ ...form, run_mode: event.target.value as RunMode })}>
               <option value="dry_run">Dry Run</option>
-              <option value="report_only">Report Only</option>
+              <option value="baseline_only">Baseline Only</option>
               <option value="full_run">Full Run</option>
             </select>
           </label>
@@ -233,13 +252,43 @@ export default function App() {
           </label>
           <label className="check-row">
             <input type="checkbox" checked={form.resume} onChange={(event) => setForm({ ...form, resume: event.target.checked })} />
-            Resume previous AgoneTest outputs
+            Keep for API compatibility
           </label>
           <button className="primary" disabled={loading}>
             {loading ? <Loader2 className="spin" size={16} /> : <Play size={16} />}
             Start Run
           </button>
         </form>
+
+        <section className="sample-audit panel">
+          <div className="panel-heading">
+            <span>Dataset v2</span>
+            <button className="icon-button" type="button" onClick={() => refreshSamples()} aria-label="Refresh samples"><RefreshCw size={15} /></button>
+          </div>
+          <p className="path-line">{activeManifest || "data_new/class_sampling_manifest_final_seed42.csv"}</p>
+          {selectedSample && form.sample_key !== "custom" ? (
+            <>
+              <div className="sample-title">
+                <strong>{selectedSample.label}</strong>
+                <span className={`soft-tag ${sampleStatusClass(selectedSample.status)}`}>{selectedSample.status}</span>
+              </div>
+              <div className="sample-stats">
+                <div><span>Rows</span><strong>{formatNumber(selectedSample.rows)}</strong></div>
+                <div><span>Repos</span><strong>{formatNumber(selectedSample.repos)}</strong></div>
+                <div><span>Dup</span><strong>{formatNumber(selectedSample.duplicate_class_rows)}</strong></div>
+                <div><span>Missing</span><strong>{formatNumber((selectedSample.missing_focal_files || 0) + (selectedSample.missing_test_files || 0))}</strong></div>
+              </div>
+              <div className="strata-row">
+                {["lower_complexity_half", "higher_complexity_half"].map((bucket) => (
+                  <span key={bucket}>{bucket}: <b>{formatNumber(selectedSample.stratum_counts[bucket])}</b></span>
+                ))}
+              </div>
+              <p className="path-line">{selectedSample.path}</p>
+            </>
+          ) : (
+            <p className="muted">Custom CSV will be checked when the run starts.</p>
+          )}
+        </section>
 
         <section className="run-list panel">
           <div className="panel-heading">
@@ -271,7 +320,7 @@ export default function App() {
             {selectedRun?.status === "running" && (
               <button className="secondary danger-action" onClick={cancelSelectedRun}><Square size={15} />Cancel</button>
             )}
-            <button className="secondary" onClick={() => selectedRun && refreshRun(selectedRun.run_id)}><RefreshCw size={15} />Refresh</button>
+            <button className="secondary" onClick={() => { refreshSamples(); if (selectedRun) refreshRun(selectedRun.run_id); }}><RefreshCw size={15} />Refresh</button>
           </div>
         </header>
 

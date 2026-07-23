@@ -1,8 +1,0 @@
-ID_Focal_Class,Cyclomatic_Complexity_Focal_Class,Lines_Of_Code_Focal_Class,Generator(LLM/EVOSUITE),Prompt_Technique,Branch_Coverage,Line_Coverage,Method_Coverage,Compilation,Mutation_Coverage,NumberOfMethods,Assertion Roulette,Conditional Test Logic,Constructor Initialization,Default Test,EmptyTest,Exception Catching Throwing,General Fixture,Mystery Guest,Print Statement,Redundant Assertion,Sensitive Equality,Verbose Test,Sleepy Test,Eager Test,Lazy Test,Duplicate Assert,Unknown Test,IgnoredTest,Resource Optimism,Magic Number Test,Dependent Test,Chance
-89562636_CoapServer,49,109,evosuite,-,52.94,61.47,71.88,1,13.04,27,0,0,0,0,0,27,0,0,0,0,0,0,0,8,19,0,0,0,0,27,0,-
-89562636_TransactionManager,40,54,evosuite,-,-,-,0,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
-89562636_TransactionManager,40,54,gpt-4o-mini-2024-07-18,rbl4-zero-shot,-,-,-,0,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-
-89562636_CoapPacket,101,225,evosuite,-,53.45,76.44,97.67,1,17.95,29,0,0,0,0,0,29,0,0,0,0,0,0,0,6,24,0,0,0,0,29,0,-
-89562636_CoapPacket,101,225,gpt-4o-mini-2024-07-18,rbl4-zero-shot,33.62,49.78,74.42,1,20.51,12,7,0,0,0,0,1,9,0,0,0,0,0,0,8,27,0,0,0,0,11,0,-
-89562636_CoapTcpCSM,40,54,evosuite,-,100.0,100.0,100.0,1,10.0,25,0,0,0,0,0,25,0,0,0,0,0,0,0,2,25,0,0,0,0,25,0,-
-89562636_CoapTcpCSM,40,54,gpt-4o-mini-2024-07-18,rbl4-zero-shot,48.08,70.37,92.86,1,45.0,8,7,0,0,0,0,0,0,0,0,0,1,0,0,7,8,1,0,0,0,8,0,-

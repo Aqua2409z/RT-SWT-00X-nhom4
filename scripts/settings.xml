@@ -1,0 +1,40 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <mirrors>
+    <!-- Disable default HTTP blocker -->
+    <mirror>
+      <id>maven-default-http-blocker</id>
+      <mirrorOf>dummy</mirrorOf>
+      <url>http://0.0.0.0/</url>
+      <blocked>false</blocked>
+    </mirror>
+    
+    <!-- Redirect legacy HTTP repos to their HTTPS counterparts -->
+    <mirror>
+      <id>jboss-https</id>
+      <mirrorOf>jboss,jboss-deprecated</mirrorOf>
+      <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+    </mirror>
+    <mirror>
+      <id>zkoss-https</id>
+      <mirrorOf>zkoss,zk-oss</mirrorOf>
+      <url>https://mavensync.zkoss.org/maven2/</url>
+    </mirror>
+    <mirror>
+      <id>conjars-https</id>
+      <mirrorOf>conjars,conjars.org</mirrorOf>
+      <url>https://conjars.org/repo/</url>
+    </mirror>
+    <mirror>
+      <id>codehaus-central</id>
+      <mirrorOf>codehaus,codehaus-deprecated</mirrorOf>
+      <url>https://repo.maven.apache.org/maven2/</url>
+    </mirror>
+    <mirror>
+      <id>twitter-repo-central</id>
+      <mirrorOf>twitter-repo</mirrorOf>
+      <url>https://repo.maven.apache.org/maven2/</url>
+    </mirror>
+  </mirrors>
+</settings>

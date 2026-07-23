@@ -1,2 +1,0 @@
-project,module,source_row_indices,focal_classes,build_tool,java_version,build_path,command,status,duration_sec,detail,prepare_status,prepare_command,prepare_detail
-58767125,ch.obermuhlner.math.big,58,DefaultBigDecimalMath,Gradle,1.8,compiledrepos/58767125/ch.obermuhlner.math.big,D:\balanced_delivery\balanced_bundle_300\repos\58767125\gradlew.bat clean testClasses -x check,PASS,15.03,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk-1.8,,,

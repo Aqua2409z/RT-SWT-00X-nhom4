@@ -33,6 +33,47 @@ def read_text_file(file_path):
         return file.read()
 
 
+def detect_java_source_compatibility(*source_paths):
+    for source_path in source_paths:
+        if not source_path:
+            continue
+        current = os.path.abspath(str(source_path))
+        if os.path.isfile(current):
+            current = os.path.dirname(current)
+        while current and current != os.path.dirname(current):
+            pom_path = os.path.join(current, "pom.xml")
+            if os.path.exists(pom_path):
+                pom_text = read_text_file(pom_path)
+                for pattern in [
+                    r"<maven\.compiler\.source>\s*([^<\s]+)\s*</maven\.compiler\.source>",
+                    r"<source>\s*([^<\s]+)\s*</source>",
+                    r"<release>\s*([^<\s]+)\s*</release>",
+                ]:
+                    match = re.search(pattern, pom_text)
+                    if match:
+                        return match.group(1).strip()
+            current = os.path.dirname(current)
+    return None
+
+
+def java_language_rules(java_version):
+    version = str(java_version or "").strip()
+    if version in {"1.5", "5", "1.6", "6"}:
+        return (
+            "Use only Java 6 compatible syntax: do not use diamond operator <>, "
+            "lambdas, method references, try-with-resources, multi-catch, var, "
+            "or JUnit 5 APIs. Always write explicit generic types."
+        )
+    if version in {"1.7", "7"}:
+        return (
+            "Use only Java 7 compatible syntax: do not use lambdas, method "
+            "references, var, streams, or JUnit 5 APIs."
+        )
+    if version:
+        return f"Use syntax compatible with Java source level {version}."
+    return "Use syntax compatible with the project's configured Java source level."
+
+
 def write_text_file(file_path, content):
     parent = os.path.dirname(file_path)
     if parent:
@@ -649,11 +690,13 @@ def make_api_call(test_type, technique, focal_class, focal_path, testing_framewo
 
     messages = []
 
+    effective_java_version = detect_java_source_compatibility(test_path, focal_path) or java_version
     prompt_data = {
         "focal_class": focal_class,
         "focal path": focal_path,
         "testing_framework": testing_framework,
-        "java_version": java_version,
+        "java_version": effective_java_version,
+        "java_language_rules": java_language_rules(effective_java_version),
         "project_structure": str(project_structure),
         "project_dependencies": str(project_dependencies),
         "java_class_example": java_class_example,
@@ -694,12 +737,13 @@ def make_api_call(test_type, technique, focal_class, focal_path, testing_framewo
                     result = re.sub(r'class (\w+)', f'class {name_test_class}', result)
 
         # Verify if the package is specified in the test class provided by the API call. If not, add it manually.
-        cleaned_content = re.sub(r'//.*', '', result) # Remove the single-line comments
-        cleaned_content = re.sub(r'/\*.*?\*/', '', cleaned_content, flags=re.DOTALL)  # Remove the multi-lines comments
-        pattern = r'package\s+' + re.escape(package_test_class) + r';'
-        match = re.search(pattern, cleaned_content)
-        if match is None:
-            result = 'package' + ' ' + package_test_class + ';' + '\n' + result
+        if package_test_class:
+            cleaned_content = re.sub(r'//.*', '', result) # Remove the single-line comments
+            cleaned_content = re.sub(r'/\*.*?\*/', '', cleaned_content, flags=re.DOTALL)  # Remove the multi-lines comments
+            pattern = r'package\s+' + re.escape(package_test_class) + r';'
+            match = re.search(pattern, cleaned_content)
+            if match is None:
+                result = 'package' + ' ' + package_test_class + ';' + '\n' + result
         messages.append({"role": "assistant", "content": result})  # Aggiungi la risposta al contesto
         return result, messages
     elif "```java" in result and "```" in result:
@@ -718,14 +762,29 @@ def make_api_call(test_type, technique, focal_class, focal_path, testing_framewo
                     result = re.sub(r'class (\w+)', f'class {name_test_class}', result)
 
         # Verify if the package is specified in the test class provided by the API call. If not, add it manually.
-        cleaned_content = re.sub(r'//.*', '', result) # Remove the single-line comments
-        cleaned_content = re.sub(r'/\*.*?\*/', '', cleaned_content, flags=re.DOTALL)  # Remove the multi-lines comments
-        pattern = r'package\s+' + re.escape(package_test_class) + r';'
-        match = re.search(pattern, cleaned_content)
-        if match is None:
-            result = 'package' + ' ' + package_test_class + ';' + '\n' + result
+        if package_test_class:
+            cleaned_content = re.sub(r'//.*', '', result) # Remove the single-line comments
+            cleaned_content = re.sub(r'/\*.*?\*/', '', cleaned_content, flags=re.DOTALL)  # Remove the multi-lines comments
+            pattern = r'package\s+' + re.escape(package_test_class) + r';'
+            match = re.search(pattern, cleaned_content)
+            if match is None:
+                result = 'package' + ' ' + package_test_class + ';' + '\n' + result
         messages.append({"role": "assistant", "content": result})  # Aggiungi la risposta al contesto
         return result, messages
+    elif result and result.strip():
+        result = result.strip()
+        class_name_match = re.search(r'class\s+(\w+)', result)
+        if class_name_match and class_name_match.group(1) != name_test_class:
+            result = re.sub(r'class\s+(\w+)', f'class {name_test_class}', result, count=1)
+        if package_test_class:
+            cleaned_content = re.sub(r'//.*', '', result)
+            cleaned_content = re.sub(r'/\*.*?\*/', '', cleaned_content, flags=re.DOTALL)
+            pattern = r'package\s+' + re.escape(package_test_class) + r';'
+            if re.search(pattern, cleaned_content) is None:
+                result = 'package' + ' ' + package_test_class + ';' + '\n' + result
+        messages.append({"role": "assistant", "content": result})
+        return result, messages
+    return None, messages
 
 
 def set_key_as_os_environ(test_type):
