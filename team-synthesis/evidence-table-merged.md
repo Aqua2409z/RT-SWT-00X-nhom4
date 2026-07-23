@@ -1,7 +1,5 @@
 # Evidence Table Merged
 
-> **Lưu ý kiểm tra:** Theo quy định SLR, các ô trống hoặc thiếu thông tin đều được điền rõ là **N/A** hoặc giữ nguyên trạng thái ghi nhận gốc từ nguồn của bạn, tuyệt đối không suy diễn hay tự điền để bảo vệ tính khách quan, trung thực của nghiên cứu.
-
 | Paper (Tên + Năm + Venue) | DOI/Link | Tool/LLM | Dataset | Metric | Kết quả | Hạn chế tự nêu |
 |:---|:---|:---|:---|:---|:---|:---|
 | A Cascaded Pipeline for Self-Directed, Model-Agnostic Unit Test Generation via LLMs (2025, IEEE QRS) | https://ieeexplore.ieee.org/abstract/document/11229491/) | LLM (generic) | Defects4J, 1,625 methods from 6 projects | Accuracy, Focal method coverage, Line/Branch coverage | Outperforms five SOTA approaches; achieves 88.46% (method), 64.88% (line), 50.26% (branch) coverage | N/A |
