@@ -1,37 +1,37 @@
 # Research data index
 
-Thư mục này phân tách rõ dữ liệu đang dùng cho nghiên cứu và dữ liệu lịch sử.
+This directory separates the active research dataset from historical data.
 
-## Bộ dữ liệu chính thức
+## Canonical dataset
 
-[`v3/`](v3/) là bộ Data V3 dùng cho paper và thực nghiệm hiện tại. Trạng thái đã
-được Step 005 xác nhận:
+[`v3/`](v3/) is the Data V3 release used by the current paper and experiments.
+Step 005 validated the following state:
 
-- 30 repository tại exact commit;
-- 300 focal class chính, đúng 10 class mỗi repository;
-- 60 focal class dự phòng, đúng 2 class mỗi repository;
-- main/backup không trùng nhau;
-- 150 class thuộc nửa độ phức tạp tương đối thấp và 150 class thuộc nửa tương
-  đối cao;
-- 48 build recipe portable phủ đủ 30 repository;
-- effective runtime của vòng sàng lọc là JDK 8.
+- 30 repositories at exact commits;
+- 300 main focal classes, exactly 10 per repository;
+- 60 backup focal classes, exactly 2 per repository;
+- zero overlap between the main and backup samples;
+- 150 classes in the lower relative-complexity half and 150 in the higher half;
+- 48 portable build recipes covering all 30 repositories;
+- JDK 8 as the effective screening runtime.
 
-Điểm bắt đầu để đọc bộ dữ liệu là [`v3/README.md`](v3/README.md).
+Start with [`v3/README.md`](v3/README.md).
 
-## Dữ liệu lịch sử
+## Historical data
 
-[`legacy/v2_week_previous/`](legacy/v2_week_previous/) lưu snapshot từ vòng lấy
-mẫu trước. Snapshot này có 33 repository, 300 main class và 58 backup class,
-đồng thời dùng chiến lược cân bằng CC khác với V3.
+[`legacy/v2_week_previous/`](legacy/v2_week_previous/) preserves the previous
+sampling snapshot. That snapshot contains 33 repositories, 300 main classes,
+58 backup classes, and a CC-balancing policy that is incompatible with V3.
 
-Không dùng file trong `legacy/` để chạy thực nghiệm hoặc trích số liệu cho paper
-Data V3. Các file được giữ lại chỉ để bảo toàn lịch sử nghiên cứu.
+Do not use files under `legacy/` as experimental inputs or as evidence for the
+Data V3 paper. They are retained only for research provenance.
 
-## Tách biệt dữ liệu và chương trình
+## Data and software separation
 
-- Mã dựng Data V3: [`../scripts/data_pipeline_v3/`](../scripts/data_pipeline_v3/)
-- Công cụ kiểm tra/tái build:
+- Data V3 construction source:
+  [`../scripts/data_pipeline_v3/`](../scripts/data_pipeline_v3/)
+- Build verification and replay tools:
   [`../scripts/build_handoff_v3/`](../scripts/build_handoff_v3/)
-- Các repository đóng băng, Docker image và archive nhiều GB không được commit
-  vào Git. Xem [`v3/external_artifacts/`](v3/external_artifacts/) để xác minh gói
-  chuyển giao.
+- Frozen repositories, Docker images, and multi-gigabyte archives are not stored
+  in Git. See [`v3/external_artifacts/`](v3/external_artifacts/) for delivery
+  metadata and checksums.

@@ -1,37 +1,37 @@
 # External Data V3 artifacts
 
-Các binary artifact dung lượng lớn không được commit vào GitHub.
+Large binary artifacts are intentionally excluded from Git.
 
-## Gói đã tạo
+## Prepared delivery
 
-`DELIVERY_MANIFEST.json` và `DELIVERY_SHA256SUMS.csv` mô tả gói
-`V3_BUILD_HANDOFF_20260723_r1`, gồm:
+`DELIVERY_MANIFEST.json` and `DELIVERY_SHA256SUMS.csv` describe
+`V3_BUILD_HANDOFF_20260723_r1`, which includes:
 
 - `V3_BUILD_BUNDLE.tar.gz`;
 - `classes2test-v3-build-handoff-1.0.tar`;
-- hướng dẫn import/chạy;
-- trình xác minh delivery.
+- import and execution instructions;
+- the delivery verifier.
 
-`verify_delivery.py` chỉ kiểm kê manifest, checksum và thành viên archive; nó
-không Maven/Gradle build 30 repository.
+`verify_delivery.py` validates the manifest, checksums, and archive membership.
+It does not invoke Maven or Gradle and does not build the 30 repositories.
 
-## Trạng thái khoa học
+## Scientific status
 
-Manifest delivery đang ghi `CANDIDATE_NOT_CONFIRMED_48_OF_48`. Trạng thái này
-phải được giữ nguyên cho đến khi replay đủ 48 recipe dưới đúng fingerprint môi
-trường và tất cả đều PASS. Không đổi nhãn thành “confirmed” chỉ vì bước đóng gói
-hoặc `--check-only` đã PASS.
+The delivery manifest is currently marked
+`CANDIDATE_NOT_CONFIRMED_48_OF_48`. This status must remain unchanged until all
+48 recipes pass under the recorded receiving-environment fingerprint. A
+successful packaging check or `--check-only` run is not a 48/48 confirmation.
 
-## Vị trí tải
+## Download location
 
-URL lưu trữ archive chưa được công bố trong repository. Khi nhóm chọn Google
-Drive, OneDrive, OSF, Zenodo hoặc GitHub Release phù hợp, bổ sung:
+No archive URL has been published in this repository. After the team chooses
+Google Drive, OneDrive, OSF, Zenodo, or another suitable release service, add:
 
-- URL cố định;
-- ngày upload;
-- dung lượng;
-- SHA-256 trùng `DELIVERY_SHA256SUMS.csv`;
-- quyền truy cập và phiên bản artifact.
+- the stable download URL;
+- upload date;
+- file size;
+- SHA-256 matching `DELIVERY_SHA256SUMS.csv`;
+- access conditions and artifact version.
 
-Không commit trực tiếp file TAR/ZIP hoặc 30 repository của bên thứ ba vào branch
-`main`.
+Do not commit TAR/ZIP files, Docker images, or third-party repository checkouts
+directly to `main`.

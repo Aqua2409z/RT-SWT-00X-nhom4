@@ -1,283 +1,281 @@
-# Data V3 build handoff
+# Data V3 Build Handoff
 
-## 1. Phạm vi và nguyên tắc
+This directory contains the reproducibility tools used to verify and replay the build recipes distributed with Data V3. It is intentionally separate from the frozen dataset-construction pipeline.
 
-Thư mục này là công cụ giao nhận độc lập. Nó không phải Step 006 và không sửa
-`research_pipeline_v3` hay các artifact đã đóng băng trong `data_v3`.
+The handoff runner:
 
-Runner chỉ tái hiện 48 build recipe thắng của 30 repository cuối. Nó không chạy
-JaCoCo, PIT, EvoSuite, không sinh test và không thay đổi tiêu chí lấy mẫu.
+- verifies the delivery manifests and relative repository paths;
+- replays the 48 recorded build recipes across the 30 selected repositories;
+- records stdout, stderr, exit codes, durations, environment fingerprints, and source-tree integrity checks;
+- never runs GPT, EvoSuite, JaCoCo, or PIT.
 
-Nguồn đóng băng luôn được đọc tại:
+The default concurrency is one repository at a time to limit memory pressure and avoid concurrent Gradle daemons.
+
+## 1. Scope and reproducibility principles
+
+The Data V3 construction outputs are frozen. Repository snapshots are read from:
 
 ```text
 data_v3/repos/successful/<repo_id>
 ```
 
-Mỗi lần build diễn ra trên bản sao writable tại `build_work`. Log và bảng kết
-quả mới nằm trong `build_replay_results`. Hai thư mục này không phải bằng chứng
-gốc của pipeline.
+The runner never builds directly inside those frozen directories. It creates writable copies under `build_work`, verifies each copied repository against its recorded commit, runs the selected recipe, and writes replay evidence under `build_replay_results`.
 
-## 2. Bố cục ZIP bắt buộc
+Historical absolute paths in `build_attempts.csv` and processing logs are preserved as immutable provenance. They are not portable commands. Use `build_recipes_portable.csv` and this runner for replay.
 
-Giải nén ba thư mục sau dưới cùng một thư mục cha:
+## 2. Required delivery layout
+
+After extracting the delivery archive, the following relative layout must be preserved:
 
 ```text
 V3_HANDOFF/
-  data_v3/
-  research_pipeline_v3/
-  v3_build_handoff/
+├── data_v3/
+│   ├── successful_repos_manifest.csv
+│   ├── class_sampling_manifest_final_seed42.csv
+│   ├── class_backup_manifest_seed42.csv
+│   ├── build_recipes_portable.csv
+│   └── repos/
+│       └── successful/
+├── research_pipeline_v3/
+└── v3_build_handoff/
+    ├── Dockerfile
+    ├── compose.yaml
+    ├── handoff_config.json
+    ├── README_BUILD_HANDOFF.md
+    ├── native_windows/
+    ├── scripts/
+    └── output/
 ```
 
-Không đổi quan hệ tương đối này nếu vẫn dùng `handoff_config.json` mặc định.
-Không cần đóng gói `build_work`, `build_replay_results` hoặc cache cũ.
+For a tar archive:
 
-Gói đầy đủ cần cả `research_pipeline_v3` vì verifier đối chiếu checksum source
-inventory của Step 005. Giữ nguyên `.git` bên trong 30 repository để kiểm tra
-exact commit và phát hiện tracked-file drift.
-
-Từ thư mục cha `V3_HANDOFF`, ưu tiên TAR.GZ khi giao sang Docker/Linux:
-
-```bat
-tar.exe -czf V3_BUILD_HANDOFF.tar.gz data_v3 research_pipeline_v3 v3_build_handoff
-certutil -hashfile V3_BUILD_HANDOFF.tar.gz SHA256
+```cmd
+tar -czf V3_BUILD_BUNDLE.tar.gz data_v3 research_pipeline_v3 v3_build_handoff
 ```
 
-Nếu team bắt buộc dùng ZIP:
+For a ZIP archive in PowerShell:
 
-```bat
-tar.exe -a -cf V3_BUILD_HANDOFF.zip data_v3 research_pipeline_v3 v3_build_handoff
-certutil -hashfile V3_BUILD_HANDOFF.zip SHA256
+```powershell
+Compress-Archive -Path data_v3,research_pipeline_v3,v3_build_handoff -DestinationPath V3_BUILD_BUNDLE.zip
 ```
 
-Gửi checksum SHA-256 qua kênh tách biệt với archive. Sau khi giải nén, verifier
-mới là kiểm tra cấp file; checksum archive chỉ chứng minh file chuyển giao không
-bị đổi trên đường truyền.
+Do not flatten the directory structure. The configuration and Compose mounts rely on these relative paths.
 
-## 3. Cấu hình tương đối
+## 3. Relative configuration
 
-`handoff_config.json` không chứa đường dẫn của máy tạo dữ liệu. Mọi đường dẫn
-được giải tương đối từ chính file cấu hình:
+`handoff_config.json` contains no machine-specific absolute path:
+
+```json
+{
+  "data_root": "../data_v3",
+  "repository_manifest": "successful_repos_manifest.csv",
+  "final_sample_manifest": "class_sampling_manifest_final_seed42.csv",
+  "backup_manifest": "class_backup_manifest_seed42.csv",
+  "portable_recipes": "build_recipes_portable.csv",
+  "repository_storage_root": "repos/successful",
+  "work_root": "../build_work",
+  "result_root": "../build_replay_results",
+  "default_jobs": 1
+}
+```
+
+For each recipe, the runner resolves:
 
 ```text
-data_root   = ../data_v3
-work_root   = ../build_work
-result_root = ../build_replay_results
+REPO_DIR = <data_root>/<repository_storage_path>
 ```
 
-Trong recipe, `${REPO_DIR}` là placeholder trung lập, không phải cú pháp để
-người dùng gõ trực tiếp trong CMD. Runner thay placeholder bằng đường dẫn
-workspace thực rồi chọn cột lệnh Windows hoặc POSIX. Với 7 recipe có
-`build_root_relative` khác `.`, runner gắn thêm đường dẫn build scope đã ghi
-trong cùng dòng CSV. Việc này tái tạo working directory/lệnh gốc mà không sửa
-artifact portable đã niêm phong.
-
-Ví dụ recipe:
+It then replaces the literal placeholder `${REPO_DIR}` in the portable command with the repository's writable workspace path. For example:
 
 ```text
-v3:46450575:maven:contrib/flo-bigquery
+mvn -B -ntp -DskipTests -DskipITs -f "${REPO_DIR}/pom.xml" -pl contrib/flo-bigquery -am clean test-compile
 ```
 
-sẽ được runner biến thành lệnh Maven có `-f` trỏ đến bản sao writable của repo
-`46450575`. Không cần tự sửa CSV và không copy đường dẫn `D:\material\...`.
-Build luôn dùng bản sao dưới `build_work`, không chạy Maven/Gradle trực tiếp
-trên `data_v3`.
+No user needs to edit a command to insert a Windows or Linux path.
 
-## 4. Kiểm tra gói không build
+## 4. Verify the bundle without building repositories
 
-Từ thư mục `v3_build_handoff`:
+From `v3_build_handoff`:
 
-```bat
+```cmd
 py scripts\verify_bundle.py --config handoff_config.json
-py scripts\verify_bundle.py --config handoff_config.json --full-checksums
 ```
 
-Lệnh đầu kiểm tra cấu trúc, RUN_READY, source inventory Step 005, 30 commit,
-300 main, 60 backup, 10+2 mỗi repo, không overlap, 48 recipe và log bằng chứng.
-`--full-checksums` băm lại toàn bộ inventory build evidence nên chậm hơn.
+On Linux or inside the container:
 
-`verify_bundle.py` và `replay_builds.py --check-only` không tạo workspace, không
-chạy Maven/Gradle và không ghi summary.
-
-## 5. Chạy native Windows
-
-Yêu cầu:
-
-- Python 3.9 trở lên;
-- JDK đầy đủ 8u172 hoặc JDK 8 tương thích, có cả `java` và `javac`;
-- Maven 3.9.15 tại đường dẫn đã cấu hình;
-- Git;
-- mạng hoặc dependency cache cho các dependency/wrapper chưa có.
-
-Máy tạo dữ liệu hiện dùng mặc định:
-
-```text
-C:\Program Files\Java\jdk1.8.0_172
-C:\Program Files\apache-maven-3.9.15
+```sh
+python3 scripts/verify_bundle.py --config handoff_config.json
 ```
 
-Mở **CMD mới**, sau đó:
+The verifier checks:
 
-```bat
-cd /d "D:\duong-dan\V3_HANDOFF\v3_build_handoff"
-call native_windows\setup_jdk8.cmd
-native_windows\preflight.cmd
-```
+- the required manifests exist;
+- the final repository set contains exactly 30 repositories;
+- the main sample contains 300 classes and the backup sample contains 60 classes;
+- each repository contributes 10 main and 2 backup classes;
+- main and backup samples do not overlap;
+- the main sample contains 150 lower-CC and 150 higher-CC classes;
+- every portable recipe belongs to a selected repository;
+- each repository snapshot and recorded commit are available.
 
-Nếu cài ở nơi khác:
+This command reads manifests and repository metadata only. It does not compile the repositories.
 
-```bat
-set "JDK8_HOME=C:\Tools\Java\jdk8"
-set "MAVEN_3915_HOME=C:\Tools\apache-maven-3.9.15"
-call native_windows\setup_jdk8.cmd
-```
+The runner also provides a build-free validation mode:
 
-Không trỏ `JDK8_HOME` tới `jre1.8.0_172`: JRE có `java` nhưng không có `javac`.
-Sau setup, `mvn -version` phải báo Java 8 từ JDK vừa chọn.
-
-Preflight toàn bộ recipe nhưng không build:
-
-```bat
+```cmd
 py scripts\replay_builds.py --config handoff_config.json --check-only
 ```
 
-Build một repository:
+## 5. Native Windows replay
 
-```bat
-py scripts\replay_builds.py --config handoff_config.json --repo-id 46450575
+### Requirements
+
+- a 64-bit JDK 8, including both `java.exe` and `javac.exe`;
+- Maven available as `mvn`;
+- Git available as `git`;
+- Python 3;
+- repository-provided Gradle wrappers for Gradle projects.
+
+Do not use a standalone JRE. The compiler is required.
+
+Open a new `cmd.exe` window and run:
+
+```cmd
+native_windows\setup_jdk8.cmd
+native_windows\preflight.cmd
 ```
 
-Build đúng một recipe:
+If JDK 8 is installed elsewhere, set it explicitly before running the preflight:
 
-```bat
+```cmd
+set "JAVA_HOME=C:\Program Files\Java\jdk1.8.0_202"
+set "PATH=%JAVA_HOME%\bin;%PATH%"
+native_windows\preflight.cmd
+```
+
+Verify one recipe:
+
+```cmd
 py scripts\replay_builds.py --config handoff_config.json --recipe-id v3:46450575:maven:contrib/flo-bigquery
 ```
 
-Build toàn bộ và tiếp tục an toàn sau khi gián đoạn:
+Verify all recipes sequentially and resume from existing PASS results:
 
-```bat
+```cmd
 py scripts\replay_builds.py --config handoff_config.json --all --resume --jobs 1
 ```
 
-`--resume` chỉ bỏ qua một PASS cũ khi cả hash lệnh gốc và fingerprint môi trường
-khớp. Một PASS từ môi trường khác không bị coi là kết quả thay thế hợp lệ.
+Additional selection modes:
 
-## 6. Chạy bằng Docker
+```cmd
+py scripts\replay_builds.py --config handoff_config.json --repo-id 46450575
+py scripts\replay_builds.py --config handoff_config.json --recipe-id v3:46450575:maven:contrib/flo-bigquery
+```
 
-### 6.1 Vai trò của image V2
+## 6. Docker replay
 
-Dockerfile dùng image V2 làm **base toolchain JDK 8**, không chạy script hoặc
-config V2. Nó cài đè Maven toàn cục bằng đúng 3.9.15. Các recipe Gradle cuối đều
-dùng wrapper trong repository; runner không dùng Gradle toàn cục của image V2.
-
-Mặc định:
+The Dockerfile extends the previously validated V2 environment:
 
 ```text
 minhquy266/classes2test-pipeline:pilot-v1
 ```
 
-Nếu image V2 được nạp từ TAR với tag khác, đặt biến trước khi build:
+The handoff image adds the replay scripts and configures Java 8, Maven, Git, Python, and conservative Maven/Gradle runtime options. The repository's own Maven or Gradle wrapper remains responsible for the project-specific build-tool version.
 
-```bat
-set "V2_BASE_IMAGE=ten-image-v2:tag"
+Build the handoff image:
+
+```cmd
 docker compose build
 ```
 
-### 6.2 Build và preflight
+Run a fast environment and manifest check without compiling repositories:
 
-Khởi động Docker Desktop trước, rồi từ `v3_build_handoff`:
-
-```bat
-docker compose build
+```cmd
 docker compose run --rm build-handoff
 ```
 
-Lệnh mặc định là `--check-only`. Compose mount:
+The default Compose command is `--check-only`.
 
-- `data_v3` và `research_pipeline_v3` read-only;
-- `build_work`, `build_replay_results`, Maven cache và Gradle cache read-write.
+Replay one recipe:
 
-Build một recipe mẫu:
-
-```bat
+```cmd
 docker compose run --rm build-handoff python3 scripts/replay_builds.py --config handoff_config.json --recipe-id v3:46450575:maven:contrib/flo-bigquery
 ```
 
-Replay toàn bộ:
+Replay all recipes sequentially, skipping prior PASS results produced under the same environment fingerprint:
 
-```bat
+```cmd
 docker compose run --rm build-handoff python3 scripts/replay_builds.py --config handoff_config.json --all --resume --jobs 1
 ```
 
-Giữ `--jobs 1` trong lần xác nhận đầu tiên. Chỉ tăng song song sau khi đo RAM,
-vì một số Maven reactor/Gradle daemon dùng nhiều bộ nhớ. Runner song song theo
-repository, không chạy đồng thời hai scope trong cùng một repo.
+When using a separately distributed image archive:
 
-JDK trong container là Temurin JDK 8 trên Linux, trong khi lượt thu thập gốc dùng
-Oracle JDK 8u172 trên Windows. Vì vậy Docker là môi trường portability, không
-được tuyên bố là tái hiện thành công cho đến khi đạt 48/48 PASS.
+```cmd
+docker load -i classes2test-v3-build-handoff-1.0.tar
+docker tag <loaded-image-id> classes2test-v3-build-handoff:1.0
+docker compose run --rm build-handoff
+```
 
-## 7. Output và cách đọc
+`docker compose run` does not accept `--no-build` on every Compose version. If the image has already been loaded or built, Compose reuses it automatically unless the configuration explicitly requests another build.
 
-Mỗi attempt mới tạo:
+## 7. Replay flow and recorded evidence
+
+For each selected repository, the runner:
+
+1. confirms that the repository belongs to the final 30-repository manifest;
+2. reads the exact `commit_sha`;
+3. copies the frozen repository to a writable workspace;
+4. verifies `HEAD == commit_sha`;
+5. selects the POSIX or Windows portable command;
+6. checks Java, `javac`, Maven, or the repository's Gradle wrapper;
+7. replaces `${REPO_DIR}` with the writable workspace path;
+8. executes the command;
+9. stores stdout, stderr, exit code, duration, and environment data;
+10. verifies that tracked source files were not changed by the build;
+11. appends the result to `build_replay_summary.csv`.
+
+Expected output layout:
 
 ```text
 build_replay_results/
-  environment.json
-  build_replay_summary.csv
-  logs/<repo_id>/<recipe-id>.stdout.log
-  logs/<repo_id>/<recipe-id>.stderr.log
+├── build_replay_summary.csv
+├── environment.json
+└── logs/
+    └── <recipe-id>/
+        ├── stdout.log
+        ├── stderr.log
+        └── result.json
 ```
 
-`build_replay_summary.csv` ghi recipe, commit, lệnh đã resolve, thời gian, exit
-code, failure category, tracked changes, đường dẫn log và fingerprint môi trường.
-File này là audit append-only: khi resume một FAIL, attempt mới được thêm thay vì
-xóa lịch sử cũ. Khi tính 48/48, lấy attempt mới nhất của từng `recipe_id` trong
-cùng fingerprint môi trường.
+A replay is considered PASS only when:
 
-`resolved_command` và đường dẫn log trong summary cố ý là đường dẫn tuyệt đối của
-máy đã chạy để làm bằng chứng. Không đưa chúng cho máy khác như recipe; máy khác
-luôn đọc lại `build_recipes_portable.csv` qua runner.
+- the command exits with code 0;
+- the checked-out commit matches the manifest;
+- tracked files remain unchanged after the build;
+- the result is written successfully.
 
-Thư mục `v3_build_handoff/output` được chừa cho checksum/archive note của đợt
-bàn giao. Runner không đặt build log ở đó nhằm giữ tách biệt output giao nhận với
-`build_replay_results`.
+Build-generated untracked files such as `target/`, `build/`, and Gradle caches are allowed inside the writable workspace and never modify the frozen dataset.
 
-PASS hợp lệ cần đồng thời:
+## 8. Team acceptance workflow
 
-- process exit code bằng 0;
-- HEAD đúng `commit_sha`;
-- không có tracked file bị sửa sau build.
+Recommended acceptance sequence:
 
-`test-compile` và `testClasses -x test` chỉ biên dịch baseline/main/test source;
-chúng không chạy toàn bộ test suite của repository.
+1. Extract the delivery archive without changing its directory hierarchy.
+2. Run `verify_bundle.py`.
+3. Load the supplied Docker image or build it from the Dockerfile.
+4. Run the default Docker check-only command.
+5. Replay one named recipe.
+6. Inspect its logs and `build_replay_summary.csv`.
+7. Run `--all --resume --jobs 1` when time and resources permit.
+8. Preserve the result directory as the team's independent build-replay evidence.
 
-Nếu dependency server, DNS, TLS hoặc wrapper download lỗi, giữ nguyên log và coi
-đó là lỗi replay/môi trường. Không đổi dependency, build file, commit hoặc recipe
-để ép PASS.
+Do not claim that all 48 recipes were independently reproduced until the summary contains 48 PASS records under the intended environment. A delivery status such as `CANDIDATE_NOT_CONFIRMED_48_OF_48` means that the package structure passed verification, not that every build was replayed successfully.
 
-## 8. Quy trình chấp nhận của team
+## 9. Size, caches, and resource controls
 
-1. Xác minh SHA-256 của file ZIP/TAR do người giao cung cấp.
-2. Giải nén đúng bố cục ba thư mục.
-3. Chạy `verify_bundle.py --full-checksums`.
-4. Chạy `replay_builds.py --check-only`.
-5. Smoke-test recipe `v3:46450575:maven:contrib/flo-bigquery`.
-6. Chạy `--all --resume --jobs 1`.
-7. Chỉ chấp nhận môi trường khi summary mới có 48/48 PASS, 30/30 exact commit và
-   `tracked_changes` trống.
-8. Niêm phong image bằng digest và lưu checksum riêng cho archive, cache (nếu
-   giao cache), summary và log mới.
-
-Không sửa `results/SHA256SUMS.csv`, marker Step 001–005 hoặc checksum bằng chứng
-gốc để thêm kết quả handoff. Kết quả replay là lớp bằng chứng mới, tách biệt.
-
-## 9. Dung lượng và cache
-
-Bản sao workspace có thể cần thêm vài GB vì `data_v3/repos/successful` hiện lớn
-khoảng 3.55 GB. Cache Maven/Gradle giúp replay ổn định hơn nhưng phải được tạo từ
-lượt replay này và niêm phong riêng; không nên giao toàn bộ cache toàn cục lẫn
-artifact không liên quan.
-
-Sau khi team đã lưu log cần thiết, có thể xóa riêng `build_work` để thu hồi dung
-lượng. Không xóa hoặc clean trực tiếp `data_v3/repos/successful`.
+- The repository snapshots are included in the delivery bundle; the recipient does not need to clone them again.
+- Maven and Gradle may download dependencies during first use unless dependency caches are distributed separately.
+- The default `--jobs 1` setting is deliberate. Increase concurrency only after observing memory and CPU use.
+- Gradle recipes use `--no-daemon` where recorded to reduce persistent JVM memory.
+- `--resume` skips only prior PASS results produced under the same environment fingerprint.
+- `build_work` and `build_replay_results` are generated handoff outputs and are not part of the frozen Data V3 inventory.
