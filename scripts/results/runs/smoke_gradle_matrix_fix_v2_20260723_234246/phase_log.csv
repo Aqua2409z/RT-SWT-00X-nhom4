@@ -1,0 +1,30 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T16:43:47+00:00,gradle_test_jacoco,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,,,PASS,55.821,com.linkedin.d2.balancer.zkfs.ZKFSUtil_RBL4Test_ba0e160d
+2026-07-23T16:43:53+00:00,gradle_pitest,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,,,PASS,6.088,com.linkedin.d2.balancer.zkfs.ZKFSUtil_RBL4Test_ba0e160d
+2026-07-23T16:43:53+00:00,gradle_test_jacoco_pitest,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,,,PASS,61.984,com.linkedin.d2.balancer.zkfs.ZKFSUtil_RBL4Test_ba0e160d
+2026-07-23T16:43:59+00:00,gradle_test_jacoco,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,FAIL,5.683,"The following general errors were encountered during the Gradle build:
+
+- BUILD FAILED
+- 
+- Total time: 4.98 secs"
+2026-07-23T16:43:59+00:00,gradle_test_jacoco_pitest,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,FAIL,5.752,"The following general errors were encountered during the Gradle build:
+
+- BUILD FAILED
+- 
+- Total time: 4.98 secs"
+2026-07-23T16:43:59+00:00,coverage_metric_retrieval,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,FAIL,,jacoco_report_missing: compiledrepos/74999474\parsec-clients
+2026-07-23T16:44:14+00:00,gradle_test_jacoco,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,,,FAIL,14.58,"The following general errors were encountered during the Gradle build:
+
+- :test FAILED
+- 
+- BUILD FAILED
+- 
+- Total time: 7.753 secs"
+2026-07-23T16:44:14+00:00,gradle_test_jacoco_pitest,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,,,FAIL,14.66,"The following general errors were encountered during the Gradle build:
+
+- :test FAILED
+- 
+- BUILD FAILED
+- 
+- Total time: 7.753 secs"
+2026-07-23T16:44:14+00:00,coverage_metric_retrieval,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,,,FAIL,,jacoco_report_missing: compiledrepos/41627638\leetcode/battleships-in-a-board

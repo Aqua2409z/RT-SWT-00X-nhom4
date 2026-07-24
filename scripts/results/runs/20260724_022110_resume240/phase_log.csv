@@ -1,0 +1,7 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T19:21:10+00:00,baseline_reuse,,,,,,,,PASS,,source_run=20260724_010022_d3f7f7b1; reused baseline artifacts; rows=240
+2026-07-23T19:21:10+00:00,baseline_reuse_repair,,,,,,,,START,,rerun sandbox readiness for 1 previously failed classes with current runner
+2026-07-23T19:21:10+00:00,baseline_sandbox_readiness,6437134,enav-model,,131,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/boundingbox.java,BoundingBox,BoundingBox_RBL4_1f61159dTest,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T19:21:11+00:00,baseline_sandbox_readiness,6437134,enav-model,,131,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/boundingbox.java,BoundingBox,BoundingBox_RBL4_1f61159dTest,FAIL,0.098,sandbox_prepare_failed; KeyError: 'Focal_Class'
+2026-07-23T19:21:11+00:00,baseline_reuse_repair,,,,,,,,FAIL,,repaired_pass=0/1
+2026-07-23T19:21:11+00:00,runner,,,,,,,,ERROR,,RuntimeError: Reused baseline still has 1 failed classes; generation not started.

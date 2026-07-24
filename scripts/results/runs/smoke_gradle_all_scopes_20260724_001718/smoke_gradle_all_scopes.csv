@@ -1,0 +1,6 @@
+repo,scope_key,module,build_root,gradle_ok,metrics_ok,metric_rows,err
+41627638,gradle:leetcode/battleships-in-a-board,leetcode/battleships-in-a-board,leetcode/battleships-in-a-board,False,False,0,"Command '['java', '-version']' returned non-zero exit status 3221225477."
+6944525,gradle:d2,d2,.,False,False,0,"Command '['java', '-version']' returned non-zero exit status 3221225477."
+74999474,gradle:parsec-clients,parsec-clients,.,False,False,0,"Command '['java', '-version']' returned non-zero exit status 3221225477."
+85795396,gradle:core,core,.,False,False,0,"Command '['java', '-version']' returned non-zero exit status 3221225477."
+85795396,gradle:metrics-dropwizardmetrics,metrics-dropwizardmetrics,.,False,False,0,"Command '['java', '-version']' returned non-zero exit status 3221225477."

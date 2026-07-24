@@ -18,6 +18,43 @@ from execution_manager import ExecutionManager
 load_dotenv()
 
 
+class CrossProcessFileLock:
+    def __init__(self, target_path, timeout_sec=60.0):
+        self.lock_path = f"{target_path}.lock"
+        self.timeout_sec = timeout_sec
+        self.handle = None
+
+    def __enter__(self):
+        parent = os.path.dirname(self.lock_path)
+        if parent:
+            os.makedirs(parent, exist_ok=True)
+        deadline = time.time() + self.timeout_sec
+        while True:
+            try:
+                self.handle = os.open(self.lock_path, os.O_CREAT | os.O_EXCL | os.O_RDWR)
+                os.write(self.handle, str(os.getpid()).encode("ascii", errors="ignore"))
+                return self
+            except FileExistsError:
+                try:
+                    if time.time() - os.path.getmtime(self.lock_path) > max(self.timeout_sec, 300.0):
+                        os.remove(self.lock_path)
+                        continue
+                except OSError:
+                    pass
+                if time.time() >= deadline:
+                    raise TimeoutError(f"Timed out waiting for file lock: {self.lock_path}")
+                time.sleep(0.05)
+
+    def __exit__(self, exc_type, exc, tb):
+        if self.handle is not None:
+            os.close(self.handle)
+            self.handle = None
+        try:
+            os.remove(self.lock_path)
+        except OSError:
+            pass
+
+
 def read_text_file(file_path):
     """
     Reads repository text files with deterministic encodings on Windows.
@@ -109,29 +146,46 @@ def append_phase_log(phase, project="", module="", arm="", focal_class="", test_
         "project": project,
         "module": module,
         "arm": arm,
+        "sample_index": os.getenv("RBL4_SAMPLE_INDEX", ""),
+        "class_key": os.getenv("RBL4_CLASS_KEY", ""),
         "focal_class": focal_class,
         "test_class": test_class,
         "status": status,
         "duration_sec": round(ended_at - started_at, 3) if started_at is not None else "",
-        "detail": str(detail)[:1000],
+        "detail": str(detail)[:4000],
     }
+    fieldnames = [
+        "timestamp_utc",
+        "phase",
+        "project",
+        "module",
+        "arm",
+        "sample_index",
+        "class_key",
+        "focal_class",
+        "test_class",
+        "status",
+        "duration_sec",
+        "detail",
+    ]
     parent = os.path.dirname(log_path)
     if parent:
         os.makedirs(parent, exist_ok=True)
 
     def write_row(target_path):
-        exists = os.path.exists(target_path)
-        with open(target_path, "a", newline="", encoding="utf-8") as file:
-            writer = csv.DictWriter(file, fieldnames=list(row.keys()))
-            if not exists:
-                writer.writeheader()
-            writer.writerow(row)
+        with CrossProcessFileLock(target_path):
+            exists = os.path.exists(target_path)
+            with open(target_path, "a", newline="", encoding="utf-8") as file:
+                writer = csv.DictWriter(file, fieldnames=fieldnames, extrasaction="ignore")
+                if not exists:
+                    writer.writeheader()
+                writer.writerow(row)
 
     for attempt in range(10):
         try:
             write_row(log_path)
             return
-        except PermissionError:
+        except (PermissionError, TimeoutError):
             time.sleep(0.1 * (attempt + 1))
     fallback_path = f"{log_path}.fallback.csv"
     try:
@@ -376,7 +430,16 @@ def retrieve_code_coverage_and_cyclomatic_complexity(project_path, project_dataf
 
     """
     
+    def focal_package_from_path(focal_path):
+        normalized = str(focal_path or "").replace("\\", "/")
+        if "main/java/" not in normalized:
+            return ""
+        rel = normalized.split("main/java/", 1)[1]
+        parts = rel.split("/")[:-1]
+        return ".".join(parts)
+
     project_df = project_dataframe.copy()
+    project_df["Focal_Package"] = project_df["Focal_Path"].map(focal_package_from_path)
     if module is None:
         # find all modules and save their paths in a list for JaCoCo and PITest
         modules = search_modules(project_path, project_df, project_id, type_project)
@@ -387,52 +450,130 @@ def retrieve_code_coverage_and_cyclomatic_complexity(project_path, project_dataf
         
     jacoco_df_all = None
     pitest_df_all = None
+    def first_existing_file(paths):
+        for candidate in paths:
+            if os.path.exists(candidate):
+                return candidate
+        return None
+
+    def gradle_report_roots(project_root, module_name, module_path):
+        roots = [module_path]
+        normalized_module = str(module_name or "").replace("\\", "/").strip("/")
+        if normalized_module:
+            roots.append(os.path.join(project_root, "build", *normalized_module.split("/")))
+            roots.append(os.path.join(project_root, "build", normalized_module.replace("/", "_")))
+        roots.append(project_root)
+        deduped = []
+        seen = set()
+        for root in roots:
+            normalized = os.path.normpath(root)
+            if normalized not in seen:
+                deduped.append(root)
+                seen.add(normalized)
+        return deduped
+
+    def append_nested_pitest_reports(candidates, report_root):
+        for pitest_root in [
+            os.path.join(report_root, f"build/reports/pitest"),
+            os.path.join(report_root, f"reports/pitest"),
+        ]:
+            if not os.path.isdir(pitest_root):
+                continue
+            for current_root, _, files in os.walk(pitest_root):
+                if "mutations.csv" in files:
+                    candidates.append(os.path.join(current_root, "mutations.csv"))
+
     # For each module, retrieve the .csv files and read them to obtain the results from JaCoCo and PITest. All the results are then merged into a single DataFrame.
     for module in modules:
         jacoco_df = None
         pitest_df = None
         path = os.path.join(project_path, module)
         if type_project == 'Maven':
-            if os.path.exists(os.path.join(path, f"target/site/jacoco/jacoco.csv")):
-                jacoco_df = pd.read_csv(os.path.join(path, f"target/site/jacoco/jacoco.csv"))
-            elif os.path.exists(os.path.join(path, f"target/site/jacoco-ut/jacoco.csv")):
-                jacoco_df = pd.read_csv(os.path.join(path, f"target/site/jacoco-ut/jacoco.csv"))
+            jacoco_path = first_existing_file(
+                [
+                    os.path.join(path, f"target/site/jacoco/jacoco.csv"),
+                    os.path.join(path, f"target/site/jacoco-ut/jacoco.csv"),
+                ]
+            )
+            if jacoco_path:
+                jacoco_df = pd.read_csv(jacoco_path)
 
             
-            if os.path.exists(os.path.join(path, f"target/pit-reports/mutations.csv")):
-                pitest_df = pd.read_csv(os.path.join(path, f"target/pit-reports/mutations.csv"), header=None)
+            pitest_path = first_existing_file([os.path.join(path, f"target/pit-reports/mutations.csv")])
+            if pitest_path:
+                pitest_df = pd.read_csv(pitest_path, header=None)
         else:
-            if os.path.exists(os.path.join(path, f"build/reports/jacoco/jacoco.csv")):
-                jacoco_df = pd.read_csv(os.path.join(path, f"build/reports/jacoco/jacoco.csv"))
-            elif os.path.exists(os.path.join(path, f"build/reports/jacoco-ut/jacoco.csv")):
-                jacoco_df = pd.read_csv(os.path.join(path, f"build/reports/jacoco-ut/jacoco.csv"))
-
-            if os.path.exists(os.path.join(path, f"build/reports/pitest/mutations.csv")):
-                pitest_df = pd.read_csv(os.path.join(path, f"build/reports/pitest/mutations.csv"), header=None)
+            jacoco_candidates = []
+            pitest_candidates = []
+            for report_root in gradle_report_roots(project_path, module, path):
+                jacoco_candidates.extend(
+                    [
+                        os.path.join(report_root, f"build/reports/jacoco/jacoco.csv"),
+                        os.path.join(report_root, f"build/reports/jacoco-ut/jacoco.csv"),
+                        os.path.join(report_root, f"reports/jacoco/jacoco.csv"),
+                        os.path.join(report_root, f"reports/jacoco-ut/jacoco.csv"),
+                        os.path.join(report_root, f"reports/jacoco/test/jacocoTestReport.csv"),
+                        os.path.join(report_root, f"reports/jacoco/test/jacoco.csv"),
+                    ]
+                )
+                pitest_candidates.extend(
+                    [
+                        os.path.join(report_root, f"build/reports/pitest/mutations.csv"),
+                        os.path.join(report_root, f"reports/pitest/mutations.csv"),
+                    ]
+                )
+                append_nested_pitest_reports(pitest_candidates, report_root)
+            jacoco_path = first_existing_file(jacoco_candidates)
+            pitest_path = first_existing_file(pitest_candidates)
+            if jacoco_path:
+                jacoco_df = pd.read_csv(jacoco_path)
+            if pitest_path:
+                pitest_df = pd.read_csv(pitest_path, header=None)
         
-        if jacoco_df is None or pitest_df is None:
+        if jacoco_df is None:
+            append_phase_log(
+                "coverage_metric_retrieval",
+                project=project_id,
+                module=module,
+                status="FAIL",
+                detail=f"jacoco_report_missing: {path}",
+            )
             return None
-        
-        pitest_df[0] = pitest_df[0].str.replace('.java', '')
-        pitest_df.columns = ['Focal_Class', 'Package', 'Mutation_Name', 'Method_Name', 'Line_Number', 'Result', 'Killing_test']
-        # Each row of the pitest_df DataFrame represents a mutation
-        # Focal_Class: the name of the focal class without the .java extension
-        # Package: the package of the focal class
-        # Mutation_Name: the name of the engine used for the mutation
-        # Method_Signature: the name of the method involved in the mutation
-        # Line_Number: the number of the line of code involved in the mutation
-        # Killing_Test: the test that ultimately killed the mutation
-        pitest_df = pitest_df.groupby('Focal_Class').agg(
-            {'Result': lambda x: round((x == 'KILLED').sum() / len(x) * 100, 2)})
-        pitest_df = pitest_df.rename(columns={'Result': 'Mutation_Coverage'})
-        pitest_df = pitest_df.reset_index()
+
+        if pitest_df is None:
+            append_phase_log(
+                "coverage_metric_retrieval",
+                project=project_id,
+                module=module,
+                status="WARN",
+                detail=f"pit_report_missing; Mutation_Coverage set to 0: {path}",
+            )
+            pitest_df = project_df[["Focal_Class", "Focal_Package"]].drop_duplicates().copy()
+            pitest_df["Mutation_Coverage"] = 0.0
+        else:
+            pitest_df[0] = pitest_df[0].str.replace('.java', '')
+            pitest_df.columns = ['Focal_Class', 'Qualified_Class', 'Mutation_Name', 'Method_Name', 'Line_Number', 'Result', 'Killing_test']
+            pitest_df['Focal_Package'] = pitest_df['Qualified_Class'].astype(str).apply(
+                lambda value: value.rsplit('.', 1)[0] if '.' in value else ''
+            )
+            # Each row of the pitest_df DataFrame represents a mutation
+            # Focal_Class: the name of the focal class without the .java extension
+            # Package: the package of the focal class
+            # Mutation_Name: the name of the engine used for the mutation
+            # Method_Signature: the name of the method involved in the mutation
+            # Line_Number: the number of the line of code involved in the mutation
+            # Killing_Test: the test that ultimately killed the mutation
+            pitest_df = pitest_df.groupby(['Focal_Class', 'Focal_Package']).agg(
+                {'Result': lambda x: round((x == 'KILLED').sum() / len(x) * 100, 2)})
+            pitest_df = pitest_df.rename(columns={'Result': 'Mutation_Coverage'})
+            pitest_df = pitest_df.reset_index()
         pitest_df_all = pd.concat([pitest_df_all, pitest_df], ignore_index=True)
 
-        jacoco_df = jacoco_df.rename(columns={'CLASS': 'Focal_Class'})
+        jacoco_df = jacoco_df.rename(columns={'CLASS': 'Focal_Class', 'PACKAGE': 'Focal_Package'})
         jacoco_df_all = pd.concat([jacoco_df_all, jacoco_df], ignore_index=True)
 
         
-    project_df = pd.merge(project_df, jacoco_df_all, how="left", on=['Focal_Class'])
+    project_df = pd.merge(project_df, jacoco_df_all, how="left", on=['Focal_Class', 'Focal_Package'])
             
 
     # add branch, method and line coverage as a percentages
@@ -480,8 +621,9 @@ def retrieve_code_coverage_and_cyclomatic_complexity(project_path, project_dataf
     measures_df = pd.merge(project_df, measures_df, how="left",
                             on=['Focal_Class'])
     measures_df = pd.merge(measures_df, pitest_df_all, how="left",
-                                on=['Focal_Class'])
-    measures_df.drop(columns=['GROUP', 'PACKAGE', 'INSTRUCTION_MISSED', 'INSTRUCTION_COVERED', 'BRANCH_MISSED', 'BRANCH_COVERED', 'LINE_MISSED', 'LINE_COVERED', 'COMPLEXITY_MISSED', 'COMPLEXITY_COVERED', 'METHOD_MISSED', 'METHOD_COVERED'], inplace=True)
+                                on=['Focal_Class', 'Focal_Package'])
+    measures_df['Mutation_Coverage'] = measures_df['Mutation_Coverage'].fillna(0.0)
+    measures_df.drop(columns=['GROUP', 'PACKAGE', 'Focal_Package', 'INSTRUCTION_MISSED', 'INSTRUCTION_COVERED', 'BRANCH_MISSED', 'BRANCH_COVERED', 'LINE_MISSED', 'LINE_COVERED', 'COMPLEXITY_MISSED', 'COMPLEXITY_COVERED', 'METHOD_MISSED', 'METHOD_COVERED'], inplace=True, errors='ignore')
 
 
     return measures_df
@@ -522,19 +664,31 @@ def generate_output_csv_test_type(project_id, test_type, technique, measures_df,
         measures_df.at[index, 'Test_Path'] = row['Test_Path'].replace('repos/', 'compiledrepos/')
 
     csv_path = None
+    safe_test_type = safe_file_name(test_type)
+    safe_technique = safe_file_name(technique) if technique is not None else None
+    safe_module = safe_file_name(module) if module is not None else None
     if module is None:
         if technique is not None:
-            csv_path = f'./output/{project_id}/TestClasses_{project_id}_{test_type}_{technique}.csv'
+            csv_path = f'./output/{project_id}/TestClasses_{project_id}_{safe_test_type}_{safe_technique}.csv'
         else:
-            csv_path = f'./output/{project_id}/TestClasses_{project_id}_{test_type}.csv'
+            csv_path = f'./output/{project_id}/TestClasses_{project_id}_{safe_test_type}.csv'
     else:
         if technique is not None:
-            csv_path = f'./output/{project_id}/TestClasses_{project_id}_{module}_{test_type}_{technique}.csv'
+            csv_path = f'./output/{project_id}/TestClasses_{project_id}_{safe_module}_{safe_test_type}_{safe_technique}.csv'
         else:
-            csv_path = f'./output/{project_id}/TestClasses_{project_id}_{module}_{test_type}.csv'
+            csv_path = f'./output/{project_id}/TestClasses_{project_id}_{safe_module}_{safe_test_type}.csv'
     try:
+        os.makedirs(os.path.dirname(csv_path), exist_ok=True)
         measures_df.to_csv(csv_path, index=False, na_rep="-")
     except Exception as e:
+        append_phase_log(
+            "agone_result_csv_write",
+            project=project_id,
+            module=module or "",
+            arm=test_type,
+            status="FAIL",
+            detail=f"{type(e).__name__}: {e}; csv_path={csv_path}",
+        )
         return None
     return csv_path
 
@@ -852,10 +1006,11 @@ def generate_output_csv_project(project, project_dataframe, test_types, techniqu
             if find == False:
                 dataframes[key] = None
     else:
+         safe_module = safe_file_name(module)
          for key in dataframes.keys():
             find = False
             for file in files:
-                if file.__contains__(f"TestClasses_{project}_{module}_{key}"):
+                if file.__contains__(f"TestClasses_{project}_{safe_module}_{key}") or file.__contains__(f"TestClasses_{project}_{module}_{key}"):
                     find = True
                     if file.endswith(".csv"):
                         dataframes[key] = pd.read_csv(f'output/{project}/{file}')

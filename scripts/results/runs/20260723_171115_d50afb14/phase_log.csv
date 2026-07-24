@@ -1,0 +1,1275 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T10:11:19+00:00,baseline_scope_build,3713233,core,,,,,,FAIL,3.187,"POM file ""D:\A_ThucNghiem\compiledrepos\3713233\pom.xml"" specified the -f/--file command-line argument does not exist"
+2026-07-23T10:11:35+00:00,baseline_scope_build,3847504,modules/weblounge-common,,,,,,PASS,16.255,"-----------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Weblounge                                                          [pom]
+[INFO] Weblounge Common API                                            [bundle]
+[INFO] Weblounge Common                                                [bundle]
+[INFO] 
+[INFO] ----------------< ch.entwine.weblounge:weblounge-base >-----------------
+[INFO] Building Weblounge 4.0.0-SNAPSHOT                                  [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ weblounge-base ---
+[INFO] 
+[INFO] -------------< ch.entwine.weblounge:weblounge-common-api >--------------
+[INFO] Building Weblounge Common API 4.0.0-SNAPSHOT                       [2/3]
+[INFO]   from modules\weblounge-common-api\pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ weblounge-common-api ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\3847504\modules\weblounge-common-api\target
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ weblounge-common-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ weblounge-common-api ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 147 source files to D:\A_ThucNghiem\compiledrepos\3847504\modules\weblounge-common-api\target\classes
+[INFO] 
+[INFO] --- resources:2.6:testResources (default-testResources) @ weblounge-common-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\3847504\modules\weblounge-common-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ weblounge-common-api ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to D:\A_ThucNghiem\compiledrepos\3847504\modules\weblounge-common-api\target\test-classes
+[INFO] 
+[INFO] ---------------< ch.entwine.weblounge:weblounge-common >----------------
+[INFO] Building Weblounge Common 4.0.0-SNAPSHOT                           [3/3]
+[INFO]   from modules\weblounge-common\pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ weblounge-common ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\3847504\modules\weblounge-common\target
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ weblounge-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ weblounge-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 185 source files to D:\A_ThucNghiem\compiledrepos\3847504\modules\weblounge-common\target\classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockHttpSession.java: Some input files use or override a deprecated API.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockHttpSession.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/PageTemplateImpl.java: Some input files use unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/PageTemplateImpl.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:2.6:testResources (default-testResources) @ weblounge-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[I"
+2026-07-23T10:11:46+00:00,baseline_scope_build,39195736,jproperties-checks,,,,,,PASS,11.293,"--
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\39195736\jproperties-checks-testkit\target
+[INFO] 
+[INFO] --- buildnumber:1.4:create (default) @ jproperties-checks-testkit ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce) @ jproperties-checks-testkit ---
+[INFO] 
+[INFO] --- license:3.0:check (enforce-license-headers) @ jproperties-checks-testkit ---
+[INFO] Checking licenses...
+[INFO] 
+[INFO] --- jacoco:0.7.9:prepare-agent (agent) @ jproperties-checks-testkit ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.7.9\\org.jacoco.agent-0.7.9-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\39195736\\jproperties-checks-testkit\\..\\target\\jacoco.exec,append=true
+[INFO] 
+[INFO] --- bsh:1.4:run (compute-artifact-display-version) @ jproperties-checks-testkit ---
+[INFO] Executing Script
+[INFO] file class java.lang.Object
+[INFO] script class java.lang.String
+[INFO] evaluating script if (! ""2.7-SNAPSHOT"".endsWith(""-SNAPSHOT"")) { [+ 15 omitted line(s)]
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ jproperties-checks-testkit ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\39195736\jproperties-checks-testkit\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.7.0:compile (default-compile) @ jproperties-checks-testkit ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to D:\A_ThucNghiem\compiledrepos\39195736\jproperties-checks-testkit\target\classes
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ jproperties-checks-testkit ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\39195736\jproperties-checks-testkit\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.7.0:testCompile (default-testCompile) @ jproperties-checks-testkit ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] -----< org.codehaus.sonar-plugins.jproperties:jproperties-checks >------
+[INFO] Building SonarQube Java Properties Analyzer :: Checks 2.7-SNAPSHOT [4/4]
+[INFO]   from jproperties-checks\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.0.0:clean (default-clean) @ jproperties-checks ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\39195736\jproperties-checks\target
+[INFO] 
+[INFO] --- buildnumber:1.4:create (default) @ jproperties-checks ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce) @ jproperties-checks ---
+[INFO] 
+[INFO] --- license:3.0:check (enforce-license-headers) @ jproperties-checks ---
+[INFO] Checking licenses...
+[INFO] 
+[INFO] --- jacoco:0.7.9:prepare-agent (agent) @ jproperties-checks ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.7.9\\org.jacoco.agent-0.7.9-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\39195736\\jproperties-checks\\..\\target\\jacoco.exec,append=true
+[INFO] 
+[INFO] --- bsh:1.4:run (compute-artifact-display-version) @ jproperties-checks ---
+[INFO] Executing Script
+[INFO] file class java.lang.Object
+[INFO] script class java.lang.String
+[INFO] evaluating script if (! ""2.7-SNAPSHOT"".endsWith(""-SNAPSHOT"")) { [+ 15 omitted line(s)]
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ jproperties-checks ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 27 resources
+[INFO] 
+[INFO] --- compiler:3.7.0:compile (default-compile) @ jproperties-checks ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 35 source files to D:\A_ThucNghiem\compiledrepos\39195736\jproperties-checks\target\classes
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ jproperties-checks ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 71 resources
+[INFO] 
+[INFO] --- compiler:3.7.0:testCompile (default-testCompile) @ jproperti"
+2026-07-23T10:11:59+00:00,baseline_scope_build,39195736,sonar-jproperties-plugin,,,,,,PASS,13.164,"detected - recompiling the module!
+[INFO] Compiling 35 source files to D:\A_ThucNghiem\compiledrepos\39195736\jproperties-checks\target\classes
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ jproperties-checks ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 71 resources
+[INFO] 
+[INFO] --- compiler:3.7.0:testCompile (default-testCompile) @ jproperties-checks ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 26 source files to D:\A_ThucNghiem\compiledrepos\39195736\jproperties-checks\target\test-classes
+[INFO] 
+[INFO] --< org.codehaus.sonar-plugins.jproperties:sonar-jproperties-plugin >---
+[INFO] Building SonarQube Java Properties Analyzer :: SonarQube Plugin 2.7-SNAPSHOT [5/5]
+[INFO]   from sonar-jproperties-plugin\pom.xml
+[INFO] ----------------------------[ sonar-plugin ]----------------------------
+[INFO] 
+[INFO] --- clean:3.0.0:clean (default-clean) @ sonar-jproperties-plugin ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\39195736\sonar-jproperties-plugin\target
+[INFO] 
+[INFO] --- buildnumber:1.4:create (default) @ sonar-jproperties-plugin ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce) @ sonar-jproperties-plugin ---
+[INFO] 
+[INFO] --- license:3.0:check (enforce-license-headers) @ sonar-jproperties-plugin ---
+[INFO] Checking licenses...
+[INFO] 
+[INFO] --- sonar-packaging:1.18.0.372:check (default-check) @ sonar-jproperties-plugin ---
+[INFO] 
+[INFO] --- jacoco:0.7.9:prepare-agent (agent) @ sonar-jproperties-plugin ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.7.9\\org.jacoco.agent-0.7.9-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\39195736\\sonar-jproperties-plugin\\..\\target\\jacoco.exec,append=true
+[INFO] 
+[INFO] --- bsh:1.4:run (compute-artifact-display-version) @ sonar-jproperties-plugin ---
+[INFO] Executing Script
+[INFO] file class java.lang.Object
+[INFO] script class java.lang.String
+[INFO] evaluating script if (! ""2.7-SNAPSHOT"".endsWith(""-SNAPSHOT"")) { [+ 15 omitted line(s)]
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ sonar-jproperties-plugin ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\39195736\sonar-jproperties-plugin\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.7.0:compile (default-compile) @ sonar-jproperties-plugin ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 16 source files to D:\A_ThucNghiem\compiledrepos\39195736\sonar-jproperties-plugin\target\classes
+[INFO] /D:/A_ThucNghiem/compiledrepos/39195736/sonar-jproperties-plugin/src/main/java/org/sonar/plugins/jproperties/JavaPropertiesProfile.java: D:\A_ThucNghiem\compiledrepos\39195736\sonar-jproperties-plugin\src\main\java\org\sonar\plugins\jproperties\JavaPropertiesProfile.java uses or overrides a deprecated API.
+[INFO] /D:/A_ThucNghiem/compiledrepos/39195736/sonar-jproperties-plugin/src/main/java/org/sonar/plugins/jproperties/JavaPropertiesProfile.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ sonar-jproperties-plugin ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- compiler:3.7.0:testCompile (default-testCompile) @ sonar-jproperties-plugin ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to D:\A_ThucNghiem\compiledrepos\39195736\sonar-jproperties-plugin\target\test-classes
+[INFO] /D:/A_ThucNghiem/compiledrepos/39195736/sonar-jproperties-plugin/src/test/java/org/sonar/plugins/jproperties/JavaPropertiesProfileTest.java: D:\A_ThucNghiem\compiledrepos\39195736\sonar-jproperties-plugin\src\test\java\org\sonar\plugins\jproperties\JavaPropertiesProfileTest.java uses or overrides a deprecated API.
+[INFO] /D:/A_ThucNghiem/compiledrepos/39195736/sonar-jproperties-plugin/src/test/java/org/sonar/plug"
+2026-07-23T10:12:19+00:00,baseline_scope_build,41547678,turin-compiler,,,,,,PASS,19.162,"rc/main/java/turin/relations/ManyToManyRelation.java: Some input files use unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-standard-library/src/main/java/turin/relations/ManyToManyRelation.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ turin-standard-library ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\41547678\turin-standard-library\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.0:testCompile (default-testCompile) @ turin-standard-library ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to D:\A_ThucNghiem\compiledrepos\41547678\turin-standard-library\target\test-classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-standard-library/src/test/java/turin/relations/Teaching.java: D:\A_ThucNghiem\compiledrepos\41547678\turin-standard-library\src\test\java\turin\relations\Teaching.java uses unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-standard-library/src/test/java/turin/relations/Teaching.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --------------------< me.tomassetti:turin-compiler >--------------------
+[INFO] Building turin-compiler 0.0.3-SNAPSHOT                             [5/5]
+[INFO]   from turin-compiler\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ turin-compiler ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\41547678\turin-compiler\target
+[INFO] 
+[INFO] --- enforcer:1.0:enforce (enforce-maven) @ turin-compiler ---
+[INFO] 
+[INFO] --- jacoco:0.7.5.201505241946:prepare-agent (default-prepare-agent) @ turin-compiler ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.7.5.201505241946\\org.jacoco.agent-0.7.5.201505241946-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\41547678\\turin-compiler\\target\\jacoco.exec
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ turin-compiler ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\41547678\turin-compiler\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.0:compile (default-compile) @ turin-compiler ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 157 source files to D:\A_ThucNghiem\compiledrepos\41547678\turin-compiler\target\classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-compiler/src/main/java/me/tomassetti/turin/compiler/Compilation.java: D:\A_ThucNghiem\compiledrepos\41547678\turin-compiler\src\main\java\me\tomassetti\turin\compiler\Compilation.java uses or overrides a deprecated API.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-compiler/src/main/java/me/tomassetti/turin/compiler/Compilation.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-compiler/src/main/java/me/tomassetti/turin/util/Either.java: D:\A_ThucNghiem\compiledrepos\41547678\turin-compiler\src\main\java\me\tomassetti\turin\util\Either.java uses unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-compiler/src/main/java/me/tomassetti/turin/util/Either.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ turin-compiler ---
+[INFO] Copying 89 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.0:testCompile (default-testCompile) @ turin-compiler ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 50 source files to D:\A_ThucNghiem\compiledrepos\41547678\turin-compiler\target\test-classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-compiler/src/test/java/me/tomassetti/turin/compiler/AbstractCompilerTest.java: Some input files use unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/"
+2026-07-23T10:12:23+00:00,baseline_scope_build,41547678,turin-standard-library,,,,,,PASS,4.921,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< me.tomassetti:turin-standard-library >----------------
+[INFO] Building turin-standard-library 0.0.3-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ turin-standard-library ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\41547678\turin-standard-library\target
+[INFO] 
+[INFO] --- enforcer:1.0:enforce (enforce-maven) @ turin-standard-library ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ turin-standard-library ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\41547678\turin-standard-library\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.0:compile (default-compile) @ turin-standard-library ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to D:\A_ThucNghiem\compiledrepos\41547678\turin-standard-library\target\classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-standard-library/src/main/java/turin/relations/ManyToManyRelation.java: Some input files use unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-standard-library/src/main/java/turin/relations/ManyToManyRelation.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ turin-standard-library ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\41547678\turin-standard-library\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.0:testCompile (default-testCompile) @ turin-standard-library ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to D:\A_ThucNghiem\compiledrepos\41547678\turin-standard-library\target\test-classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-standard-library/src/test/java/turin/relations/Teaching.java: D:\A_ThucNghiem\compiledrepos\41547678\turin-standard-library\src\test\java\turin\relations\Teaching.java uses unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/41547678/turin-standard-library/src/test/java/turin/relations/Teaching.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.748 s
+[INFO] Finished at: 2026-07-23T17:12:23+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T10:12:25+00:00,baseline_scope_build,41627638,leetcode/battleships-in-a-board,,,,,,FAIL,1.385,"'""D:\A_ThucNghiem\compiledrepos\41627638\gradlew.bat""' is not recognized as an internal or external command,
+operable program or batch file."
+2026-07-23T10:12:33+00:00,baseline_scope_build,43105609,weixin-mp,,,,,,PASS,8.677,"-------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ weixin-parent ---
+[INFO] 
+[INFO] -------------------< cn.com.riversoft:weixin-common >-------------------
+[INFO] Building weixin sdk common 0.9.9-SNAPSHOT                          [3/4]
+[INFO]   from weixin-common\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ weixin-common ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\43105609\weixin-common\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ weixin-common ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\43105609\weixin-common\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.0:compile (default-compile) @ weixin-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 69 source files to D:\A_ThucNghiem\compiledrepos\43105609\weixin-common\target\classes
+[WARNING] bootstrap class path not set in conjunction with -source 1.7
+[WARNING] /D:/A_ThucNghiem/compiledrepos/43105609/weixin-common/src/main/java/com/riversoft/weixin/common/util/JsonMapper.java: D:\A_ThucNghiem\compiledrepos\43105609\weixin-common\src\main\java\com\riversoft\weixin\common\util\JsonMapper.java uses or overrides a deprecated API.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/43105609/weixin-common/src/main/java/com/riversoft/weixin/common/util/JsonMapper.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/43105609/weixin-common/src/main/java/com/riversoft/weixin/common/util/JsonMapper.java: D:\A_ThucNghiem\compiledrepos\43105609\weixin-common\src\main\java\com\riversoft\weixin\common\util\JsonMapper.java uses unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/43105609/weixin-common/src/main/java/com/riversoft/weixin/common/util/JsonMapper.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ weixin-common ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\43105609\weixin-common\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.0:testCompile (default-testCompile) @ weixin-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to D:\A_ThucNghiem\compiledrepos\43105609\weixin-common\target\test-classes
+[WARNING] bootstrap class path not set in conjunction with -source 1.7
+[INFO] 
+[INFO] ---------------------< cn.com.riversoft:weixin-mp >---------------------
+[INFO] Building weixin sdk mp 0.9.9-SNAPSHOT                              [4/4]
+[INFO]   from weixin-mp\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ weixin-mp ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\43105609\weixin-mp\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ weixin-mp ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.0:compile (default-compile) @ weixin-mp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 78 source files to D:\A_ThucNghiem\compiledrepos\43105609\weixin-mp\target\classes
+[WARNING] bootstrap class path not set in conjunction with -source 1.7
+[WARNING] /D:/A_ThucNghiem/compiledrepos/43105609/weixin-mp/src/main/java/com/riversoft/weixin/mp/card/Cards.java: D:\A_ThucNghiem\compiledrepos\43105609\weixin-mp\src\main\java\com\riversoft\weixin\mp\card\Cards.java uses unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/43105609/weixin-mp/src/main/java/com/riversoft/weixin/mp/card/Cards.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ weixin-mp ---
+[INFO] Copying 24 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.0:testCompile (default-testCompile) @ weixin-mp ---
+[INFO] Changes detected - "
+2026-07-23T10:12:35+00:00,baseline_scope_build,44308560,src/RobotFrameworkCore/org.robotframework.ide.core-functions,,,,,,FAIL,1.506,"POM file ""D:\A_ThucNghiem\compiledrepos\44308560\pom.xml"" specified the -f/--file command-line argument does not exist"
+2026-07-23T10:12:42+00:00,baseline_scope_build,45997449,WebRex,,,,,,PASS,7.015,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.ebayopensource:WebRex >----------------------
+[INFO] Building WebRex 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ WebRex ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\45997449\WebRex\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ WebRex ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 3 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.0:compile (default-compile) @ WebRex ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
+[INFO] Compiling 143 source files to D:\A_ThucNghiem\compiledrepos\45997449\WebRex\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ WebRex ---
+[WARNING] Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 34 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.0:testCompile (default-testCompile) @ WebRex ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding Cp1252, i.e. build is platform dependent!
+[INFO] Compiling 54 source files to D:\A_ThucNghiem\compiledrepos\45997449\WebRex\target\test-classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/expression/UnifiedELResolverHelperTest.java: D:\A_ThucNghiem\compiledrepos\45997449\WebRex\src\test\java\com\ebayopensource\webrex\resource\expression\UnifiedELResolverHelperTest.java uses or overrides a deprecated API.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/expression/UnifiedELResolverHelperTest.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/impl/DefaultResourceHandlerTest.java: D:\A_ThucNghiem\compiledrepos\45997449\WebRex\src\test\java\com\ebayopensource\webrex\resource\impl\DefaultResourceHandlerTest.java uses unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/impl/DefaultResourceHandlerTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.246 s
+[INFO] Finished at: 2026-07-23T17:12:42+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T10:12:44+00:00,baseline_scope_build,46396068,hbase0.98/hbase-common-0.98,,,,,,FAIL,1.776,"POM file ""D:\A_ThucNghiem\compiledrepos\46396068\hbase-common-0.98\pom.xml"" specified the -f/--file command-line argument does not exist"
+2026-07-23T10:12:46+00:00,baseline_scope_build,46396068,hbase0.98/hbase-manager-0.98,,,,,,FAIL,1.74,"POM file ""D:\A_ThucNghiem\compiledrepos\46396068\pom.xml"" specified the -f/--file command-line argument does not exist"
+2026-07-23T10:12:47+00:00,baseline_scope_build,46396068,hbase0.98/hbase-snapshot-0.98,,,,,,FAIL,1.948,"POM file ""D:\A_ThucNghiem\compiledrepos\46396068\pom.xml"" specified the -f/--file command-line argument does not exist"
+2026-07-23T10:12:49+00:00,baseline_scope_build,46396068,hbase0.98/hbase-table-stat-0.98,,,,,,FAIL,1.915,"POM file ""D:\A_ThucNghiem\compiledrepos\46396068\pom.xml"" specified the -f/--file command-line argument does not exist"
+2026-07-23T10:13:26+00:00,baseline_scope_build,46450575,contrib/flo-bigquery,,,,,,PASS,36.8,"potify:flo-bigquery >----------------------
+[INFO] Building Flo BigQuery 0.6.4-SNAPSHOT                               [6/6]
+[INFO]   from contrib\flo-bigquery\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ flo-bigquery ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-bigquery\target
+[INFO] 
+[INFO] --- enforcer:1.4.1:enforce (enforce) @ flo-bigquery ---
+[INFO] 
+[INFO] --- license:1.9:check-file-header (check-file-header) @ flo-bigquery ---
+[INFO] Will search files to update from root D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-bigquery\src\main\java
+[INFO] Will search files to update from root D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-bigquery\src\test\java
+[INFO] Scan 17 files header done in 90.563ms.
+[INFO] All files are up-to-date.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ flo-bigquery ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-bigquery\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.5.1:compile (default-compile) @ flo-bigquery ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-bigquery\target\classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/contrib/flo-bigquery/src/main/java/com/spotify/flo/contrib/bigquery/GcpOptions.java:[23,52] com.google.api.client.googleapis.auth.oauth2.GoogleCredential in com.google.api.client.googleapis.auth.oauth2 has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/contrib/flo-bigquery/src/main/java/com/spotify/flo/contrib/bigquery/GcpOptions.java:[23,52] com.google.api.client.googleapis.auth.oauth2.GoogleCredential in com.google.api.client.googleapis.auth.oauth2 has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/contrib/flo-bigquery/src/main/java/com/spotify/flo/contrib/bigquery/GcpOptions.java:[23,52] com.google.api.client.googleapis.auth.oauth2.GoogleCredential in com.google.api.client.googleapis.auth.oauth2 has been deprecated
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ flo-bigquery ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-bigquery\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.5.1:testCompile (default-testCompile) @ flo-bigquery ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-bigquery\target\test-classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/contrib/flo-bigquery/src/test/java/com/spotify/flo/contrib/bigquery/BigQueryOutputTest.java:[27,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/contrib/flo-bigquery/src/test/java/com/spotify/flo/contrib/bigquery/BigQueryTasksTest.java:[29,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/contrib/flo-bigquery/src/test/java/com/spotify/flo/contrib/bigquery/BigQueryOutputTest.java:[27,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/contrib/flo-bigquery/src/test/java/com/spotify/flo/contrib/bigquery/BigQueryTasksTest.java:[29,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/contrib/flo-bigquery/src/test/java/com/spotify/flo/contrib/bigquery/BigQueryOutputTest.java:[27,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/contrib/flo-bigquery/src/test/java/com/spotify/flo/contrib/bigquery/BigQueryTasksTest.java:[29,26] org.mockito.Matchers in org.mockito has been deprecated
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Flo 0.6.4-SNAPSHOT:
+[INFO] 
+[INFO] Flo ..............."
+2026-07-23T10:13:48+00:00,baseline_scope_build,46450575,contrib/flo-styx,,,,,,PASS,22.027,"/test/java/com/spotify/flo/context/FloRunnerTest.java:[34,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-runner/src/test/java/com/spotify/flo/context/FloRunnerTest.java:[35,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-runner/src/test/java/com/spotify/flo/context/ChainedListenerTest.java:[23,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-runner/src/test/java/com/spotify/flo/context/FloRunnerTest.java:[33,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-runner/src/test/java/com/spotify/flo/context/FloRunnerTest.java:[34,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-runner/src/test/java/com/spotify/flo/context/FloRunnerTest.java:[35,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-runner/src/test/java/com/spotify/flo/context/OverridingContextTest.java:[75,53] unchecked generic array creation for varargs parameter of type com.spotify.flo.Task<java.lang.Integer>[]
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-runner/src/test/java/com/spotify/flo/context/OverridingContextTest.java:[88,53] unchecked generic array creation for varargs parameter of type com.spotify.flo.Task<java.lang.Integer>[]
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-runner/src/test/java/com/spotify/flo/context/OverridingContextTest.java:[107,53] unchecked generic array creation for varargs parameter of type com.spotify.flo.Task<java.lang.Integer>[]
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-runner/src/test/java/com/spotify/flo/context/OverridingContextTest.java:[123,63] Possible heap pollution from parameterized vararg type com.spotify.flo.Task<java.lang.Integer>
+[INFO] 
+[INFO] ------------------------< com.spotify:flo-styx >------------------------
+[INFO] Building Flo Styx 0.6.4-SNAPSHOT                                   [6/6]
+[INFO]   from contrib\flo-styx\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ flo-styx ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-styx\target
+[INFO] 
+[INFO] --- enforcer:1.4.1:enforce (enforce) @ flo-styx ---
+[INFO] artifact junit:junit-dep: checking for updates from central
+[INFO] artifact junit:junit: checking for updates from central
+[INFO] 
+[INFO] --- license:1.9:check-file-header (check-file-header) @ flo-styx ---
+[INFO] Will search files to update from root D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-styx\src\main\java
+[INFO] Will search files to update from root D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-styx\src\test\java
+[INFO] Scan 8 files header done in 42.235ms.
+[INFO] All files are up-to-date.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ flo-styx ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-styx\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.5.1:compile (default-compile) @ flo-styx ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-styx\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ flo-styx ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.5.1:testCompile (default-testCompile) @ flo-styx ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to D:\A_ThucNghiem\compiledrepos\46450575\contrib\flo-styx\target\test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Flo 0.6.4-SNAPSHOT:
+[INFO] 
+[INFO] Flo ..............."
+2026-07-23T10:13:57+00:00,baseline_scope_build,46450575,flo-workflow,,,,,,PASS,9.171," from root D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\main\java
+[INFO] Will search files to update from root D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\test\java
+[INFO] Scan 61 files header done in 98.493ms.
+[INFO] All files are up-to-date.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ flo-workflow ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.5.1:compile (default-compile) @ flo-workflow ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 37 source files to D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ flo-workflow ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.5.1:testCompile (default-testCompile) @ flo-workflow ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 24 source files to D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\target\test-classes
+17:13:56.871 [main] DEBUG org.trimou.engine.resolver.ReflectionResolver - Initialized [memberCacheMaxSize: 10000]
+17:13:56.875 [main] INFO org.trimou.engine.locator.PathTemplateLocator - ClassPathTemplateLocator initialized [virtualPathSeparator: /, defaultFileEncoding: UTF-8]
+17:13:56.877 [main] INFO org.trimou.engine.MustacheEngineBuilder - Engine built 2.0.1.Final (2016-05-19)
+17:13:56.877 [main] DEBUG org.trimou.engine.MustacheEngineBuilder - Engine configuration: 
+[Template locators]
+org.trimou.engine.locator.ClassPathTemplateLocator [priority: 1, suffix: mustache, rootPath: null]
+----------
+[Resolvers]
+org.trimou.engine.resolver.MapResolver [priority: 17]
+org.trimou.engine.resolver.ReflectionResolver [priority: 11]
+----------
+[Properties]
+org.trimou.engine.config.templateCacheExpirationTimeout=0
+org.trimou.engine.config.templateRecursiveInvocationLimit=10
+org.trimou.engine.config.removeStandaloneLines=true
+org.trimou.engine.config.resolverHintsEnabled=true
+org.trimou.engine.config.startDelimiter={{
+org.trimou.engine.locator.PathTemplateLocator.virtualPathSeparator=/
+org.trimou.engine.config.skipValueEscaping=false
+org.trimou.engine.config.endDelimiter=}}
+org.trimou.engine.config.cacheSectionLiteralBlock=false
+org.trimou.engine.config.reuseLineSeparatorSegments=true
+org.trimou.engine.config.defaultFileEncoding=UTF-8
+org.trimou.engine.config.removeUnnecessarySegments=true
+org.trimou.engine.config.noValueIndicatesProblem=false
+org.trimou.engine.config.nestedTemplateSupportEnabled=true
+org.trimou.engine.config.templateCacheEnabled=true
+org.trimou.engine.resolver.ReflectionResolver.memberCacheMaxSize=10000
+org.trimou.engine.config.precompileAllTemplates=false
+org.trimou.engine.config.debugMode=false
+org.trimou.engine.config.handlebarsSupportEnabled=true
+org.trimou.engine.config.iterationMetadataAlias=iter
+----------
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/ControlledBlockingContext.java:[165,73] unchecked cast
+  required: com.spotify.flo.ControlledBlockingContext.Interceptor<T>
+  "
+2026-07-23T10:16:15+00:00,baseline_scope_build,48046454,hazelcast-jet-core,,,,,,PASS,137.378,"----------------< com.hazelcast.jet:hazelcast-jet-core >----------------
+[INFO] Building hazelcast-jet-core 4.6-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ hazelcast-jet-core ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\48046454\hazelcast-jet-core\target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:3.0.0-M3:enforce (enforce-maven) @ hazelcast-jet-core ---
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:3.1.0:checkstyle (default) @ hazelcast-jet-core ---
+[INFO] Starting audit...
+Audit done.
+[INFO] 
+[INFO] --- git-commit-id-plugin:2.1.10:revision (default) @ hazelcast-jet-core ---
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ hazelcast-jet-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 21 resources
+[INFO] Copying 1 resource
+[INFO] The encoding used to copy filtered properties files have not been set. This means that the same encoding will be used to copy filtered properties files as when copying other filtered resources. This might not be what you want! Run your build with --debug to see which files might be affected. Read more at https://maven.apache.org/plugins/maven-resources-plugin/examples/filtering-properties-files.html
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:compile (default-compile) @ hazelcast-jet-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 475 source files to D:\A_ThucNghiem\compiledrepos\48046454\hazelcast-jet-core\target\classes
+[INFO] /D:/A_ThucNghiem/compiledrepos/48046454/hazelcast-jet-core/src/main/java/com/hazelcast/jet/impl/JobRepository.java: Some input files use or override a deprecated API.
+[INFO] /D:/A_ThucNghiem/compiledrepos/48046454/hazelcast-jet-core/src/main/java/com/hazelcast/jet/impl/JobRepository.java: Recompile with -Xlint:deprecation for details.
+[INFO] /D:/A_ThucNghiem/compiledrepos/48046454/hazelcast-jet-core/src/main/java/com/hazelcast/jet/impl/util/ImdgUtil.java: Some input files use unchecked or unsafe operations.
+[INFO] /D:/A_ThucNghiem/compiledrepos/48046454/hazelcast-jet-core/src/main/java/com/hazelcast/jet/impl/util/ImdgUtil.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] >>> spotbugs-maven-plugin:4.1.3:check (default) > :spotbugs @ hazelcast-jet-core >>>
+[INFO] 
+[INFO] --- spotbugs-maven-plugin:4.1.3:spotbugs (spotbugs) @ hazelcast-jet-core ---
+[INFO] Fork Value is true
+[INFO] Done SpotBugs Analysis....
+[INFO] 
+[INFO] <<< spotbugs-maven-plugin:4.1.3:check (default) < :spotbugs @ hazelcast-jet-core <<<
+[INFO] 
+[INFO] 
+[INFO] --- spotbugs-maven-plugin:4.1.3:check (default) @ hazelcast-jet-core ---
+[INFO] BugInstance size is 0
+[INFO] Error size is 0
+[INFO] No errors/warnings found
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ hazelcast-jet-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 38 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.7.0:testCompile (default-testCompile) @ hazelcast-jet-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 281 source files to D:\A_ThucNghiem\compiledrepos\48046454\hazelcast-jet-core\target\test-classes
+[INFO] /D:/A_ThucNghiem/compiledrepos/48046454/hazelcast-jet-core/src/test/java/com/hazelcast/jet/pipeline/StreamSourceStageTestBase.java: Some input files use or override a deprecated API.
+[INFO] /D:/A_ThucNghiem/compiledrepos/48046454/hazelcast-jet-core/src/test/java/com/hazelcast/jet/pipeline/StreamSourceStageTestBase.java: Recompile with -Xlint:deprecation for details.
+[INFO] /D:/A_ThucNghiem/compiledrepos/48046454/hazelcast-jet-core/src/test/java/com/hazelcast/jet/core/TestUtil.java: Some input files use unchecked or unsafe operations.
+[INFO] /D:/A_ThucNghiem/compiledrepos/48046454/hazelcast-je"
+2026-07-23T10:16:30+00:00,baseline_scope_build,49384652,niubi-job-framework/niubi-job-core,,,,,,PASS,15.128,"[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] com.zuoxiaolong:niubi-job                                          [pom]
+[INFO] com.zuoxiaolong:niubi-job-test                                     [jar]
+[INFO] com.zuoxiaolong:niubi-job-framework                                [pom]
+[INFO] com.zuoxiaolong:niubi-job-core                                     [jar]
+[INFO] 
+[INFO] ---------------------< com.zuoxiaolong:niubi-job >----------------------
+[INFO] Building com.zuoxiaolong:niubi-job 0.9.6.1-SNAPSHOT                [1/4]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ niubi-job ---
+[INFO] 
+[INFO] -------------------< com.zuoxiaolong:niubi-job-test >-------------------
+[INFO] Building com.zuoxiaolong:niubi-job-test 0.9.6.1-SNAPSHOT           [2/4]
+[INFO]   from niubi-job-test\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ niubi-job-test ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-test\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ niubi-job-test ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-test\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ niubi-job-test ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-test\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ niubi-job-test ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-test\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ niubi-job-test ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] ----------------< com.zuoxiaolong:niubi-job-framework >-----------------
+[INFO] Building com.zuoxiaolong:niubi-job-framework 0.9.6.1-SNAPSHOT      [3/4]
+[INFO]   from niubi-job-framework\pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ niubi-job-framework ---
+[INFO] 
+[INFO] -------------------< com.zuoxiaolong:niubi-job-core >-------------------
+[INFO] Building com.zuoxiaolong:niubi-job-core 0.9.6.1-SNAPSHOT           [4/4]
+[INFO]   from niubi-job-framework\niubi-job-core\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ niubi-job-core ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-core\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ niubi-job-core ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-core\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ niubi-job-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 16 source files to D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-core\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ niubi-job-core ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-core\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ niubi-job-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-core\target\test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for com.zuoxiaolong:niubi-job 0.9.6.1-SNAPSHOT:
+[INFO] 
+[INFO] com.zuoxiaol"
+2026-07-23T10:16:49+00:00,baseline_scope_build,49384652,niubi-job-framework/niubi-job-service,,,,,,PASS,19.265,":3.2.0:clean (default-clean) @ niubi-job-scanner ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-scanner\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ niubi-job-scanner ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-scanner\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ niubi-job-scanner ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-scanner\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ niubi-job-scanner ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-scanner\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ niubi-job-scanner ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-scanner\target\test-classes
+[INFO] 
+[INFO] ----------------< com.zuoxiaolong:niubi-job-persistent >----------------
+[INFO] Building com.zuoxiaolong:niubi-job-persistent 0.9.6.1-SNAPSHOT     [7/8]
+[INFO]   from niubi-job-framework\niubi-job-persistent\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ niubi-job-persistent ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-persistent\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ niubi-job-persistent ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ niubi-job-persistent ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-persistent\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ niubi-job-persistent ---
+[INFO] Copying 3 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ niubi-job-persistent ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-persistent\target\test-classes
+[INFO] 
+[INFO] -----------------< com.zuoxiaolong:niubi-job-service >------------------
+[INFO] Building com.zuoxiaolong:niubi-job-service 0.9.6.1-SNAPSHOT        [8/8]
+[INFO]   from niubi-job-framework\niubi-job-service\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ niubi-job-service ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-service\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ niubi-job-service ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ niubi-job-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 29 source files to D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-service\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ niubi-job-service ---
+[INFO] Copying 4 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ niubi-job-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to D:\A_ThucNghiem\compiledrepos\49384652\niubi-job-framework\niubi-job-service\target\test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for com.zuoxiaolong:niubi-job 0"
+2026-07-23T10:16:57+00:00,baseline_scope_build,558963,httpcache4j-api,,,,,,PASS,7.398,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< org.codehaus.httpcache4j:httpcache4j-api >--------------
+[INFO] Building Java HTTP cache :: API 5.2.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ httpcache4j-api ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\558963\httpcache4j-api\target
+[INFO] 
+[INFO] --- resources:3.1.0:resources (default-resources) @ httpcache4j-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- compiler:3.8.0:compile (default-compile) @ httpcache4j-api ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 92 source files to D:\A_ThucNghiem\compiledrepos\558963\httpcache4j-api\target\classes
+[INFO] 
+[INFO] --- resources:3.1.0:testResources (default-testResources) @ httpcache4j-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.8.0:testCompile (default-testCompile) @ httpcache4j-api ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 23 source files to D:\A_ThucNghiem\compiledrepos\558963\httpcache4j-api\target\test-classes
+[INFO] /D:/A_ThucNghiem/compiledrepos/558963/httpcache4j-api/src/test/java/org/codehaus/httpcache4j/auth/DefaultAuthenticatorTest.java: Some input files use or override a deprecated API.
+[INFO] /D:/A_ThucNghiem/compiledrepos/558963/httpcache4j-api/src/test/java/org/codehaus/httpcache4j/auth/DefaultAuthenticatorTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.523 s
+[INFO] Finished at: 2026-07-23T17:16:56+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T10:17:10+00:00,baseline_scope_build,60578004,elastic-jobx-core,,,,,,PASS,13.534,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.dangdang:elastic-jobx-core >-------------------
+[INFO] Building elastic-jobx-core 1.0.2
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ elastic-jobx-core ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\60578004\elastic-jobx-core\target
+[INFO] 
+[INFO] --- enforcer:1.4:enforce (enforce-banned-dependencies) @ elastic-jobx-core ---
+[INFO] 
+[INFO] --- resources:2.7:resources (default-resources) @ elastic-jobx-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\60578004\elastic-jobx-core\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.3:compile (default-compile) @ elastic-jobx-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 106 source files to D:\A_ThucNghiem\compiledrepos\60578004\elastic-jobx-core\target\classes
+[INFO] 
+[INFO] --- resources:2.7:testResources (default-testResources) @ elastic-jobx-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- compiler:3.3:testCompile (default-testCompile) @ elastic-jobx-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 127 source files to D:\A_ThucNghiem\compiledrepos\60578004\elastic-jobx-core\target\test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.922 s
+[INFO] Finished at: 2026-07-23T17:17:10+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T10:17:19+00:00,baseline_scope_build,61565876,injector,,,,,,PASS,8.713,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------------< ch.jalu:injector >--------------------------
+[INFO] Building injector 1.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ injector ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\61565876\injector\target
+[INFO] 
+[INFO] --- jacoco:0.8.14:prepare-agent (prepare-agent) @ injector ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.14\\org.jacoco.agent-0.8.14-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\61565876\\injector\\target\\jacoco.exec
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ injector ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\61565876\injector\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ injector ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 46 source files with javac [debug target 1.8] to target\classes
+[INFO] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/main/java/ch/jalu/injector/testing/DelayedInjectionExtension.java: Some input files use or override a deprecated API.
+[INFO] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/main/java/ch/jalu/injector/testing/DelayedInjectionExtension.java: Recompile with -Xlint:deprecation for details.
+[INFO] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/main/java/ch/jalu/injector/InjectorImpl.java: Some input files use unchecked or unsafe operations.
+[INFO] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/main/java/ch/jalu/injector/InjectorImpl.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ injector ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\61565876\injector\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ injector ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 91 source files with javac [debug target 1.8] to target\test-classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/utils/InjectorUtilsTest.java:[159,59] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/utils/InjectorUtilsTest.java:[160,59] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[WARNING] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/utils/InjectorUtilsTest.java:[161,59] non-varargs call of varargs method with inexact argument type for last parameter;
+  cast to java.lang.Object for a varargs call
+  cast to java.lang.Object[] for a non-varargs call and to suppress this warning
+[INFO] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/testing/runner/MockDependencyHandlerTest.java: Some input files use or override a deprecated API.
+[INFO] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/testing/runner/MockDependencyHandlerTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/InjectorImplTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /D:/A_ThucNghiem/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/InjectorImplTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[IN"
+2026-07-23T10:18:09+00:00,baseline_scope_build,6293402,server,,,,,,PASS,50.017,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.vaadin:vaadin-server >----------------------
+[INFO] Building vaadin-server 8.14-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] Parameter 'overWrite' is unknown for plugin 'maven-dependency-plugin:3.0.1:unpack-dependencies (copy-font-icons)'
+[INFO] 
+[INFO] --- clean:3.0.0:clean (default-clean) @ vaadin-server ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\6293402\server\target
+[INFO] 
+[INFO] --- flatten:1.4.1:clean (flatten-clean) @ vaadin-server ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\6293402\server\.flattened-pom.xml
+[INFO] 
+[INFO] --- build-helper:1.10:parse-version (parse-version) @ vaadin-server ---
+[INFO] 
+[INFO] --- dependency:3.0.1:unpack-dependencies (copy-font-icons) @ vaadin-server ---
+[INFO] Unpacking C:\Users\admin\.m2\repository\com\vaadin\vaadin-icons\3.0.2\vaadin-icons-3.0.2.jar to D:\A_ThucNghiem\compiledrepos\6293402\server\target\vaadin-icons with includes ""com/vaadin/icons/VaadinIcons.java"" and excludes """"
+[INFO] 
+[INFO] --- build-helper:1.10:add-source (add-source) @ vaadin-server ---
+[INFO] Source directory: D:\A_ThucNghiem\compiledrepos\6293402\server\target\vaadin-icons added.
+[INFO] 
+[INFO] --- checkstyle:2.17:checkstyle (default) @ vaadin-server ---
+[INFO] 
+[INFO] --- build-helper:1.10:add-resource (add-dependency-resources) @ vaadin-server ---
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ vaadin-server ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\6293402\server\target\dependency-unpack
+[INFO] 
+[INFO] --- flatten:1.4.1:flatten (flatten) @ vaadin-server ---
+[INFO] Generating flattened POM of project com.vaadin:vaadin-server:jar:8.14-SNAPSHOT...
+[INFO] 
+[INFO] --- resources:2.6:copy-resources (copy-sources) @ vaadin-server ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] Copying 554 resources
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.5.1:compile (default-compile) @ vaadin-server ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 555 source files to D:\A_ThucNghiem\compiledrepos\6293402\server\target\classes
+[INFO] /D:/A_ThucNghiem/compiledrepos/6293402/server/src/main/java/com/vaadin/ui/Component.java: Some input files use or override a deprecated API.
+[INFO] /D:/A_ThucNghiem/compiledrepos/6293402/server/src/main/java/com/vaadin/ui/Component.java: Recompile with -Xlint:deprecation for details.
+[INFO] /D:/A_ThucNghiem/compiledrepos/6293402/server/src/main/java/com/vaadin/server/AbstractClientConnector.java: Some input files use unchecked or unsafe operations.
+[INFO] /D:/A_ThucNghiem/compiledrepos/6293402/server/src/main/java/com/vaadin/server/AbstractClientConnector.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- bnd:3.5.0:bnd-process (default) @ vaadin-server ---
+[WARNING] D:\A_ThucNghiem\compiledrepos\6293402\server\bnd.bnd [0:0]: Invalid package name: 'com.vaadin.ui.doc-files'
+[INFO] 
+[INFO] --- resources:2.6:testResources (default-testResources) @ vaadin-server ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 14 resources
+[INFO] 
+[INFO] --- compiler:3.5.1:testCompile (default-testCompile) @ vaadin-server ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 406 source files to D:\A_ThucNghiem\compiledrepos\6293402\server\target\test-classes
+[INFO] /D:/A_ThucNghiem/compiledrepos/6293402/server/src/test/java/com/vaadin/tests/design/DeclarativeTestBase.java: Some input files use or override a deprecated API.
+[INFO] /D:/A_ThucNghiem/compiledrepos/6293402/server/src/test/java/com/vaadin/tests/design/DeclarativeTestBase.java: Recompile with -Xlint:deprecation for details.
+[INFO] /D:/A_ThucNghiem/compiledrepos/6293402/server/src/test/java/com/vaadin/tests/design/Declarat"
+2026-07-23T10:18:14+00:00,baseline_scope_build,6437134,enav-model,,,,,,PASS,5.586,"[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] eNav Parent                                                        [pom]
+[INFO] eNav Util                                                          [jar]
+[INFO] eNav Model                                                         [jar]
+[INFO] 
+[INFO] ----------------------< dk.dma.enav:enav-parent >-----------------------
+[INFO] Building eNav Parent 0.6-SNAPSHOT                                  [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ enav-parent ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-parent ---
+[INFO] 
+[INFO] -----------------------< dk.dma.enav:enav-util >------------------------
+[INFO] Building eNav Util 0.6-SNAPSHOT                                    [2/3]
+[INFO]   from enav-util\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ enav-util ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\6437134\enav-util\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-util ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-util ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\6437134\enav-util\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-util ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-util\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-util ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\6437134\enav-util\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-util ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-util\target\test-classes
+[INFO] 
+[INFO] -----------------------< dk.dma.enav:enav-model >-----------------------
+[INFO] Building eNav Model 0.6-SNAPSHOT                                   [3/3]
+[INFO]   from enav-model\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ enav-model ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\6437134\enav-model\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-model ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-model ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 64 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-model\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-model ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\6437134\enav-model\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-model\target\test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for eNav Parent 0.6-SNAPSHOT:
+[INFO] 
+[INFO] eNav Parent ........................................ SUCCESS [  0.586 s]
+[INFO] eNav Util .......................................... SUCCESS [  1.105 s]
+[INFO] eNav Model ......................................... SUCCESS [  0.820 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ---------------------------------------------------"
+2026-07-23T10:18:20+00:00,baseline_scope_build,6437134,enav-serialization,,,,,,PASS,5.942,"NFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ enav-parent ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-parent ---
+[INFO] 
+[INFO] -----------------------< dk.dma.enav:enav-util >------------------------
+[INFO] Building eNav Util 0.6-SNAPSHOT                                    [2/4]
+[INFO]   from enav-util\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ enav-util ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\6437134\enav-util\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-util ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-util ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\6437134\enav-util\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-util ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-util\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-util ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\6437134\enav-util\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-util ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-util\target\test-classes
+[INFO] 
+[INFO] -----------------------< dk.dma.enav:enav-model >-----------------------
+[INFO] Building eNav Model 0.6-SNAPSHOT                                   [3/4]
+[INFO]   from enav-model\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ enav-model ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\6437134\enav-model\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-model ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-model ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 64 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-model\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-model ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\6437134\enav-model\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-model\target\test-classes
+[INFO] 
+[INFO] -------------------< dk.dma.enav:enav-serialization >-------------------
+[INFO] Building eNav Serialization 0.6-SNAPSHOT                           [4/4]
+[INFO]   from enav-serialization\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ enav-serialization ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\6437134\enav-serialization\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-serialization ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-serialization ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\6437134\enav-serialization\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-serialization\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-serialization ---
+[INFO] Copying 8 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (def"
+2026-07-23T10:18:25+00:00,baseline_scope_build,6437134,enav-util,,,,,,PASS,4.976,"[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< dk.dma.enav:enav-util >------------------------
+[INFO] Building eNav Util 0.6-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:2.5:clean (default-clean) @ enav-util ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\6437134\enav-util\target
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-util ---
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-util ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\6437134\enav-util\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-util ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-util\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-util ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\6437134\enav-util\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-util ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to D:\A_ThucNghiem\compiledrepos\6437134\enav-util\target\test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.894 s
+[INFO] Finished at: 2026-07-23T17:18:25+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T10:18:34+00:00,baseline_scope_build,64487983,bridge,,,,,,PASS,8.775,"[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.iluwatar:bridge:jar:1.12.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.jacoco:jacoco-maven-plugin @ com.iluwatar:java-design-patterns:1.12.0-SNAPSHOT, D:\A_ThucNghiem\compiledrepos\64487983\pom.xml, line 338, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ------------------------< com.iluwatar:bridge >-------------------------
+[INFO] Building bridge 1.12.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ bridge ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\64487983\bridge\target
+[INFO] 
+[INFO] --- checkstyle:2.17:check (validate) @ bridge ---
+[INFO] Starting audit...
+Audit done.
+[INFO] 
+[INFO] --- jacoco:0.7.5.201505241946:prepare-agent (prepare-agent) @ bridge ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.7.5.201505241946\\org.jacoco.agent-0.7.5.201505241946-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\64487983\\bridge\\target\\jacoco.exec,excludes=domainapp/dom/modules/simple/QSimpleObject.class
+[INFO] 
+[INFO] --- jacoco:0.7.5.201505241946:prepare-agent (default) @ bridge ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.7.5.201505241946\\org.jacoco.agent-0.7.5.201505241946-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\64487983\\bridge\\target\\jacoco.exec,excludes=domainapp/dom/modules/simple/QSimpleObject.class
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ bridge ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\64487983\bridge\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.0:compile (default-compile) @ bridge ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 12 source files to D:\A_ThucNghiem\compiledrepos\64487983\bridge\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ bridge ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\64487983\bridge\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.0:testCompile (default-testCompile) @ bridge ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to D:\A_ThucNghiem\compiledrepos\64487983\bridge\target\test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.713 s
+[INFO] Finished at: 2026-07-23T17:18:34+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T10:18:42+00:00,baseline_scope_build,64487983,dependency-injection,,,,,,PASS,7.57,"[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.iluwatar:dependency-injection:jar:1.12.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.jacoco:jacoco-maven-plugin @ com.iluwatar:java-design-patterns:1.12.0-SNAPSHOT, D:\A_ThucNghiem\compiledrepos\64487983\pom.xml, line 338, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -----------------< com.iluwatar:dependency-injection >------------------
+[INFO] Building dependency-injection 1.12.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ dependency-injection ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\64487983\dependency-injection\target
+[INFO] 
+[INFO] --- checkstyle:2.17:check (validate) @ dependency-injection ---
+[INFO] Starting audit...
+Audit done.
+[INFO] 
+[INFO] --- jacoco:0.7.5.201505241946:prepare-agent (prepare-agent) @ dependency-injection ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.7.5.201505241946\\org.jacoco.agent-0.7.5.201505241946-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\64487983\\dependency-injection\\target\\jacoco.exec,excludes=domainapp/dom/modules/simple/QSimpleObject.class
+[INFO] 
+[INFO] --- jacoco:0.7.5.201505241946:prepare-agent (default) @ dependency-injection ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.7.5.201505241946\\org.jacoco.agent-0.7.5.201505241946-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\64487983\\dependency-injection\\target\\jacoco.exec,excludes=domainapp/dom/modules/simple/QSimpleObject.class
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ dependency-injection ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\64487983\dependency-injection\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.0:compile (default-compile) @ dependency-injection ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 10 source files to D:\A_ThucNghiem\compiledrepos\64487983\dependency-injection\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ dependency-injection ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\64487983\dependency-injection\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.0:testCompile (default-testCompile) @ dependency-injection ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to D:\A_ThucNghiem\compiledrepos\64487983\dependency-injection\target\test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.558 s
+[INFO] Finished at: 2026-07-23T17:18:42+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T10:18:50+00:00,baseline_scope_build,64487983,hexagonal,,,,,,PASS,7.862,"[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.iluwatar:hexagonal:jar:1.12.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.(groupId:artifactId)' must be unique but found duplicate declaration of plugin org.jacoco:jacoco-maven-plugin @ com.iluwatar:java-design-patterns:1.12.0-SNAPSHOT, D:\A_ThucNghiem\compiledrepos\64487983\pom.xml, line 338, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -----------------------< com.iluwatar:hexagonal >-----------------------
+[INFO] Building hexagonal 1.12.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hexagonal ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\64487983\hexagonal\target
+[INFO] 
+[INFO] --- checkstyle:2.17:check (validate) @ hexagonal ---
+[INFO] Starting audit...
+Audit done.
+[INFO] 
+[INFO] --- jacoco:0.7.5.201505241946:prepare-agent (prepare-agent) @ hexagonal ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.7.5.201505241946\\org.jacoco.agent-0.7.5.201505241946-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\64487983\\hexagonal\\target\\jacoco.exec,excludes=domainapp/dom/modules/simple/QSimpleObject.class
+[INFO] 
+[INFO] --- jacoco:0.7.5.201505241946:prepare-agent (default) @ hexagonal ---
+[INFO] argLine set to -javaagent:C:\\Users\\admin\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.7.5.201505241946\\org.jacoco.agent-0.7.5.201505241946-runtime.jar=destfile=D:\\A_ThucNghiem\\compiledrepos\\64487983\\hexagonal\\target\\jacoco.exec,excludes=domainapp/dom/modules/simple/QSimpleObject.class
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ hexagonal ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\64487983\hexagonal\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.0:compile (default-compile) @ hexagonal ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 17 source files to D:\A_ThucNghiem\compiledrepos\64487983\hexagonal\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hexagonal ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\64487983\hexagonal\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.0:testCompile (default-testCompile) @ hexagonal ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 9 source files to D:\A_ThucNghiem\compiledrepos\64487983\hexagonal\target\test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.203 s
+[INFO] Finished at: 2026-07-23T17:18:49+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T10:19:28+00:00,baseline_scope_build,66303306,event,,,,,,PASS,38.336,"ner/OstrichOwnerGroup.java:[165,50] unchecked cast
+  required: T
+  found:    com.google.common.util.concurrent.Service
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/main/java/com/bazaarvoice/emodb/event/core/ClosedClaimSetException.java:[3,8] serializable class com.bazaarvoice.emodb.event.core.ClosedClaimSetException has no definition of serialVersionUID
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/main/java/com/bazaarvoice/emodb/event/db/astyanax/AstyanaxManifestPersister.java:[131,29] propagate(java.lang.Throwable) in com.google.common.base.Throwables has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/main/java/com/bazaarvoice/emodb/event/db/astyanax/BatchUpdate.java:[87,29] propagate(java.lang.Throwable) in com.google.common.base.Throwables has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/main/java/com/bazaarvoice/emodb/sortedq/db/astyanax/AstyanaxQueueDAO.java:[233,29] propagate(java.lang.Throwable) in com.google.common.base.Throwables has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/main/java/com/bazaarvoice/emodb/sortedq/core/PersistentSortedQueue.java:[290,29] propagate(java.lang.Throwable) in com.google.common.base.Throwables has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/main/java/com/bazaarvoice/emodb/sortedq/core/PersistentSortedQueue.java:[626,74] serializable class <anonymous com.bazaarvoice.emodb.sortedq.core.PersistentSortedQueue$3> has no definition of serialVersionUID
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/main/java/com/bazaarvoice/emodb/sortedq/core/Segment.java:[92,29] propagate(java.lang.Throwable) in com.google.common.base.Throwables has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/main/java/com/bazaarvoice/emodb/sortedq/core/Segment.java:[119,29] propagate(java.lang.Throwable) in com.google.common.base.Throwables has been deprecated
+[INFO] 
+[INFO] --- resources:3.2.0:testResources (default-testResources) @ emodb-event ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 0 resource
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\66303306\event\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ emodb-event ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 15 source files to D:\A_ThucNghiem\compiledrepos\66303306\event\target\test-classes
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/test/java/com/bazaarvoice/emodb/sortedq/core/SegmentSnapshotJsonTest.java:[103,46] unchecked conversion
+  required: com.bazaarvoice.emodb.sortedq.core.SplitQueue<com.bazaarvoice.emodb.sortedq.core.Segment>
+  found:    com.bazaarvoice.emodb.sortedq.core.SplitQueue
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/test/java/com/bazaarvoice/emodb/event/core/DedupQueueTest.java:[82,87] found raw type: org.mockito.stubbing.Answer
+  missing type arguments for generic class org.mockito.stubbing.Answer<T>
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/test/java/com/bazaarvoice/emodb/sortedq/core/PersistentSortedQueueWithRetry.java:[158,33] propagate(java.lang.Throwable) in com.google.common.base.Throwables has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/test/java/com/bazaarvoice/emodb/sortedq/core/PersistentSortedQueueTest.java:[752,29] propagate(java.lang.Throwable) in com.google.common.base.Throwables has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/event/src/test/java/com/bazaarvoice/emodb/sortedq/core/SimulatedFailureException.java:[3,1] serializable class com.bazaarvoice.emodb.sortedq.core.SimulatedFailureException has no definition of serialVersionUID
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for EmoDB Parent 6"
+2026-07-23T10:21:10+00:00,baseline_scope_build,66303306,web,,,,,,PASS,102.029,"c class com.bazaarvoice.emodb.job.api.JobIdentifier<Q,R>
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/web/src/test/java/com/bazaarvoice/emodb/web/settings/SettingsManagerTest.java:[39,57] unchecked conversion
+  required: com.google.common.cache.Cache<java.lang.String,?>
+  found:    com.google.common.cache.Cache
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/web/src/test/java/com/bazaarvoice/emodb/web/settings/SettingsManagerTest.java:[87,24] found raw type: com.google.common.cache.Cache
+  missing type arguments for generic class com.google.common.cache.Cache<K,V>
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/web/src/test/java/com/bazaarvoice/emodb/web/settings/SettingsManagerTest.java:[88,71] unchecked conversion
+  required: com.google.common.cache.Cache<java.lang.String,?>
+  found:    com.google.common.cache.Cache
+[WARNING] /D:/A_ThucNghiem/compiledrepos/66303306/web/src/test/java/com/bazaarvoice/emodb/auth/apikey/ApiKeyRealmTest.java:[159,90] unchecked generic array creation for varargs parameter of type java.util.Set<org.apache.shiro.authz.Permission>[]
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for EmoDB 6.5.215-SNAPSHOT:
+[INFO] 
+[INFO] EmoDB Parent ....................................... SUCCESS [  0.801 s]
+[INFO] EmoDB Common API Classes ........................... SUCCESS [  1.181 s]
+[INFO] EmoDB Json Utilities ............................... SUCCESS [  0.717 s]
+[INFO] EmoDB ZooKeeper Utilities .......................... SUCCESS [  0.617 s]
+[INFO] EmoDB Dropwizard Utilities ......................... SUCCESS [  1.067 s]
+[INFO] EmoDB Cassandra Astyanax Utilities ................. SUCCESS [  1.473 s]
+[INFO] EmoDB UUID Utilities ............................... SUCCESS [  0.158 s]
+[INFO] EmoDB Stash Utilities .............................. SUCCESS [  4.670 s]
+[INFO] EmoDB Generic Client Classes ....................... SUCCESS [  0.527 s]
+[INFO] EmoDB Dropwizard Jersey Client Classes ............. SUCCESS [  0.489 s]
+[INFO] EmoDB Authentication Client ........................ SUCCESS [  0.171 s]
+[INFO] EmoDB User Access Control API ...................... SUCCESS [  0.426 s]
+[INFO] EmoDB System of Record API ......................... SUCCESS [  2.899 s]
+[INFO] EmoDB Data Center Abstraction ...................... SUCCESS [  1.230 s]
+[INFO] EmoDB In-Memory Cache Manager ...................... SUCCESS [  3.477 s]
+[INFO] EmoDB Authentication ............................... SUCCESS [  3.255 s]
+[INFO] EmoDB Authentication Storage ....................... SUCCESS [  1.015 s]
+[INFO] EmoDB .............................................. SUCCESS [  0.009 s]
+[INFO] EmoDB Authentication Util .......................... SUCCESS [  0.154 s]
+[INFO] EmoDB Queue Service API ............................ SUCCESS [  0.540 s]
+[INFO] EmoDB Databus API .................................. SUCCESS [  0.960 s]
+[INFO] EmoDB Blob Store API ............................... SUCCESS [  0.581 s]
+[INFO] EmoDB Job API ...................................... SUCCESS [  0.215 s]
+[INFO] EmoDB Event Store .................................. SUCCESS [  3.247 s]
+[INFO] EmoDB Table Abstraction ............................ SUCCESS [  4.916 s]
+[INFO] EmoDB Queue Client Common .......................... SUCCESS [  0.584 s]
+[INFO] EmoDB Queue HTTP Client ............................ SUCCESS [  6.945 s]
+[INFO] EmoDB Queue Service ................................ SUCCESS [  4.450 s]
+[INFO] EmoDB Jobs ......................................... SUCCESS [  1.402 s]
+[INFO] EmoDB System of Record Client Common ............... SUCCESS [  1.387 s]
+[INFO] EmoDB System of Record HTTP Client ................. SUCCESS [  1.759 s]
+[INFO] EmoDB System of Record ............................. SUCCESS [  8.540 s]
+[INFO] EmoDB Databus Client Common ........................ SUCCESS [  0.581 s]
+[INFO] EmoDB Databus HTTP Client .......................... SUCCESS [  1.050 s]
+[INFO] EmoDB Databus ..................................."
+2026-07-23T10:21:47+00:00,run,,,,,,CANCELLED,,Run cancelled; writing partial diagnostics and artifacts

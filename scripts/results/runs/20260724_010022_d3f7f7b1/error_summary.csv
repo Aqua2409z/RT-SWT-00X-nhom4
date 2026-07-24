@@ -1,0 +1,32 @@
+timestamp_utc,source,project,module,arm,sample_index,class_key,focal_class,test_class,phase,status,category,failure_owner,owner_note_vi,severity,explanation_vi,suggested_action_vi,detail
+2026-07-23T18:31:29+00:00,phase_log,6437134,enav-model,,131,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/boundingbox.java,BoundingBox,,maven_reactor_prewarm,FAIL,maven_reactor_prewarm_failed,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,"Bước chuẩn bị dependency reactor trong sandbox thất bại, nên tool chưa tạo được điều kiện build tương đương baseline cho focal class.",Mở phase_log.csv ở dòng maven_reactor_prewarm để sửa recipe/module selector/JDK/dependency trước khi chạy GPT/EvoSuite.,"test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-util ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-util ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\20260724_010022_d3f7f7b1__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-util\target\enav-util-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-util ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\20260724_010022_d3f7f7b1__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-util\target\enav-util-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-util\0.6-SNAPSHOT\enav-util-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\20260724_010022_d3f7f7b1__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-util\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-util\0.6-SNAPSHOT\enav-util-0.6-SNAPSHOT.pom
+[INFO] 
+[INFO] -----------------------< dk.dma.enav:enav-model >-----------------------
+[INFO] Building eNav Model 0.6-SNAPSHOT                                   [3/3]
+[INFO]   from enav-model\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-model ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-model ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 64 source files to D:\A_ThucNghiem\scripts_v2\workspaces\20260724_010022_d3f7f7b1__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-model\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-model ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspa"
+2026-07-23T18:31:29+00:00,phase_log,6437134,enav-model,,131,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/boundingbox.java,BoundingBox,BoundingBox_RBL4_1f61159dTest,baseline_sandbox_readiness,FAIL,baseline_sandbox_readiness_failed,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,"Class đã qua baseline scope build nhưng chưa qua điều kiện sandbox/prewarm giống chạy thật, nên generation phải bị chặn trước khi gọi GPT/EvoSuite.",Mở baseline_sandbox_readiness.csv và các phase prewarm liên quan để sửa recipe/tool; không tính lỗi này là lỗi năng lực sinh test.,maven_reactor_prewarm_failed; Maven reactor prewarm failed in baseline-equivalent sandbox
+2026-07-23T19:02:44+00:00,phase_log,,,,,,,,runner,ERROR,baseline_sandbox_readiness_gate_failed,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,"Runner dừng đúng chính sách vì còn class chưa qua sandbox readiness, nên chưa gọi GPT/EvoSuite.","Sửa các dòng baseline_sandbox_readiness/maven_reactor_prewarm fail trước đó rồi chạy lại; lỗi này là hệ quả của readiness gate, không phải lỗi năng lực sinh test.",RuntimeError: Baseline/sandbox readiness gate failed for 1 classes; generation not started.

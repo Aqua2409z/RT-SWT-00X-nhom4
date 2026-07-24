@@ -1,0 +1,11 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T17:17:20+00:00,gradle_test_jacoco_pitest,41627638,leetcode/battleships-in-a-board,,,,,,ERROR,0.073,"Command '['java', '-version']' returned non-zero exit status 3221225477."
+2026-07-23T17:17:20+00:00,coverage_metric_retrieval,41627638,leetcode/battleships-in-a-board,,,,,,FAIL,,jacoco_report_missing: D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_all_scopes_20260724_001718\003_41627638_899cbe08\compiledrepos\41627638\leetcode/battleships-in-a-board
+2026-07-23T17:17:55+00:00,gradle_test_jacoco_pitest,6944525,d2,,,,,,ERROR,0.031,"Command '['java', '-version']' returned non-zero exit status 3221225477."
+2026-07-23T17:17:55+00:00,coverage_metric_retrieval,6944525,d2,,,,,,FAIL,,jacoco_report_missing: D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_all_scopes_20260724_001718\097_6944525_ba0e160d\compiledrepos\6944525\d2
+2026-07-23T17:17:55+00:00,gradle_test_jacoco_pitest,74999474,parsec-clients,,,,,,ERROR,0.025,"Command '['java', '-version']' returned non-zero exit status 3221225477."
+2026-07-23T17:17:55+00:00,coverage_metric_retrieval,74999474,parsec-clients,,,,,,FAIL,,jacoco_report_missing: D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_all_scopes_20260724_001718\001_74999474_d0018ed9\compiledrepos\74999474\parsec-clients
+2026-07-23T17:17:56+00:00,gradle_test_jacoco_pitest,85795396,core,,,,,,ERROR,0.057,"Command '['java', '-version']' returned non-zero exit status 3221225477."
+2026-07-23T17:17:56+00:00,coverage_metric_retrieval,85795396,core,,,,,,FAIL,,jacoco_report_missing: D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_all_scopes_20260724_001718\023_85795396_d33c3262\compiledrepos\85795396\core
+2026-07-23T17:17:56+00:00,gradle_test_jacoco_pitest,85795396,metrics-dropwizardmetrics,,,,,,ERROR,0.024,"Command '['java', '-version']' returned non-zero exit status 3221225477."
+2026-07-23T17:17:56+00:00,coverage_metric_retrieval,85795396,metrics-dropwizardmetrics,,,,,,FAIL,,jacoco_report_missing: D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_all_scopes_20260724_001718\014_85795396_3f1ba9c7\compiledrepos\85795396\metrics-dropwizardmetrics

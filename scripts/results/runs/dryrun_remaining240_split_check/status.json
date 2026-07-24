@@ -1,0 +1,14 @@
+{
+  "run_id": "dryrun_remaining240_split_check",
+  "status": "completed",
+  "run_mode": "dry_run",
+  "sample_csv": "D:\\A_ThucNghiem\\scripts_v2\\data_new\\class_sampling_manifest_remaining240_seed42.csv",
+  "model": "gpt-4o-mini-2024-07-18",
+  "prompt": "rbl4-zero-shot",
+  "created_at": "2026-07-23T11:12:03+00:00",
+  "started_at": "2026-07-23T11:12:03+00:00",
+  "pid": 22964,
+  "return_code": null,
+  "updated_at": "2026-07-23T11:12:03+00:00",
+  "error": null
+}

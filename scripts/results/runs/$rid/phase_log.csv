@@ -1,0 +1,284 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-24T01:18:31+00:00,baseline_reuse,,,,,,,,PASS,,source_run=20260723_215359_ccfee980; reused baseline artifacts; rows=60
+2026-07-24T01:18:31+00:00,generation_workers,,,,,,,,PASS,,workers=4; classes=60
+2026-07-24T01:18:31+00:00,class_sandbox_start,3713233,core,,0,3713233:core/src/main/java/org/junithelper/core/file/filesearcherfactory.java,FileSearcherFactory,FileSearcherFactory_RBL4Test_5e446228,START,,
+2026-07-24T01:18:31+00:00,class_sandbox_start,3713233,core,,1,3713233:core/src/main/java/org/junithelper/core/extractor/constructormetaextractor.java,ConstructorMetaExtractor,ConstructorMetaExtractor_RBL4Test_aefe9473,START,,
+2026-07-24T01:18:31+00:00,class_sandbox_start,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,QuartzJob_RBL4Test_b84fb44f,START,,
+2026-07-24T01:18:31+00:00,class_sandbox_start,3847504,modules/weblounge-common,,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,PageImpl,PageImpl_RBL4Test_f985aed1,START,,
+2026-07-24T01:18:41+00:00,class_agone_env,3713233,core,,1,3713233:core/src/main/java/org/junithelper/core/extractor/constructormetaextractor.java,ConstructorMetaExtractor,ConstructorMetaExtractor_RBL4Test_aefe9473,PASS,,requested=1.6 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-24T01:18:41+00:00,class_agone_env,3713233,core,,0,3713233:core/src/main/java/org/junithelper/core/file/filesearcherfactory.java,FileSearcherFactory,FileSearcherFactory_RBL4Test_5e446228,PASS,,requested=1.6 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-24T01:19:33+00:00,class_agone_run,3713233,core,,0,3713233:core/src/main/java/org/junithelper/core/file/filesearcherfactory.java,FileSearcherFactory,FileSearcherFactory_RBL4Test_5e446228,PASS,62.785,
+2026-07-24T01:19:33+00:00,class_sandbox_start,39195736,jproperties-checks,,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,MissingTranslationsCheck_RBL4Test_be7ec32e,START,,
+2026-07-24T01:19:40+00:00,maven_reactor_prewarm,39195736,jproperties-checks,,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,,START,,prewarm reactor dependencies for -pl jproperties-checks; synthesized placeholder test hidden during prewarm: MissingTranslationsCheck_RBL4Test_be7ec32e.java
+2026-07-24T01:19:46+00:00,generation_progress,,,,,,,,PASS,,1/60 classes completed; workers=4
+2026-07-24T01:19:55+00:00,maven_reactor_prewarm,39195736,jproperties-checks,,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,,PASS,15.004,"dehaus\sonar-plugins\jproperties\jproperties-checks-testkit\2.7-SNAPSHOT\jproperties-checks-testkit-2.7-SNAPSHOT.pom
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\$rid\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks-testkit\target\jproperties-checks-testkit-2.7-SNAPSHOT-sources.jar to C:\Users\admin\.m2\repository\org\codehaus\sonar-plugins\jproperties\jproperties-checks-testkit\2.7-SNAPSHOT\jproperties-checks-testkit-2.7-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -----< org.codehaus.sonar-plugins.jproperties:jproperties-checks >------
+[INFO] Building SonarQube Java Properties Analyzer :: Checks 2.7-SNAPSHOT [4/4]
+[INFO]   from jproperties-checks\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- buildnumber:1.4:create (default) @ jproperties-checks ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce) @ jproperties-checks ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- license:3.0:check (enforce-license-headers) @ jproperties-checks ---
+[INFO] 
+[INFO] --- jacoco:0.7.9:prepare-agent (agent) @ jproperties-checks ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] argLine set to empty
+[INFO] 
+[INFO] --- bsh:1.4:run (compute-artifact-display-version) @ jproperties-checks ---
+[INFO] Executing Script
+[INFO] file class java.lang.Object
+[INFO] script class java.lang.String
+[INFO] evaluating script if (! ""2.7-SNAPSHOT"".endsWith(""-SNAPSHOT"")) { [+ 15 omitted line(s)]
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ jproperties-checks ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 27 resources
+[INFO] 
+[INFO] --- compiler:3.7.0:compile (default-compile) @ jproperties-checks ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 35 source files to D:\A_ThucNghiem\scripts_v2\workspaces\$rid\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\classes
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ jproperties-checks ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 71 resources
+[INFO] 
+[INFO] --- compiler:3.7.0:testCompile (default-testCompile) @ jproperties-checks ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 26 source files to D:\A_ThucNghiem\scripts_v2\workspaces\$rid\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.20.1:test (default-test) @ jproperties-checks ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ jproperties-checks ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\$rid\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\jproperties-checks-2.7-SNAPSHOT.jar
+[INFO] 
+[INFO] --- javadoc:2.10.4:jar (attach-javadocs) @ jproperties-checks ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- source:3.0.1:jar-no-fork (attach-sources) @ jproperties-checks ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\$rid\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\jproperties-checks-2.7-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ jproperties-checks ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\$rid\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\jproperties-checks-2.7-SNAPSHOT.jar to C:\Users\admin\.m2\repository\org\codehaus\sonar-plugins\jproperties\jproperties-checks\2.7-SNAPSHOT\jproperties-checks-2.7-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\$rid\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\pom.xml to C:\Users\admin\.m2\repository\org\codehaus\sonar-plugins\jproperties\jproperties-checks\2.7-SNAPSHOT\jproperties-checks-2.7-SNAPSHOT.pom
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\$rid\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\jproperties-checks-2.7-SNAPSHOT-sources.jar to C:\Users\admin\.m2\repository\org\codehaus\sonar-plugins\jproperties\jproperties-checks\2.7-SNAPSHOT\jproperties-checks-2.7-SNAPSHOT-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for SonarQube Java Properties Analyzer 2.7-SNAPSHOT:
+[INFO] 
+[INFO] SonarQube Java Properties Analyzer ................. SUCCESS [  3.002 s]
+[INFO] SonarQube Java Properties Analyzer :: Frontend ..... SUCCESS [  3.070 s]
+[INFO] SonarQube Java Properties Analyzer :: Check Test Toolkit SUCCESS [  1.025 s]
+[INFO] SonarQube Java Properties Analyzer :: Checks ....... SUCCESS [  2.201 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.104 s
+[INFO] Finished at: 2026-07-24T08:19:55+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-24T01:19:58+00:00,class_agone_env,39195736,jproperties-checks,,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,MissingTranslationsCheck_RBL4Test_be7ec32e,PASS,,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-24T01:20:05+00:00,maven_reactor_prewarm,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,,START,,prewarm reactor dependencies for -pl modules/weblounge-common; synthesized placeholder test hidden during prewarm: QuartzJob_RBL4Test_b84fb44f.java
+2026-07-24T01:20:22+00:00,maven_reactor_prewarm,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,,PASS,17.868,"O] Deploy to stage:
+     [copy] Copying 1 file to D:\A_ThucNghiem\scripts_v2\workspaces\$rid\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common-api\${env.WEBLOUNGE_HOME}\lib\weblounge
+[INFO] Executed tasks
+[INFO] 
+[INFO] ---------------< ch.entwine.weblounge:weblounge-common >----------------
+[INFO] Building Weblounge Common 4.0.0-SNAPSHOT                           [3/3]
+[INFO]   from modules\weblounge-common\pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[WARNING] Parameter 'encoding' is unknown for plugin 'maven-surefire-plugin:2.16:test (default-test)'
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ weblounge-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ weblounge-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 185 source files to D:\A_ThucNghiem\scripts_v2\workspaces\$rid\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common\target\classes
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/$rid/002_3847504_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockHttpSession.java: Some input files use or override a deprecated API.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/$rid/002_3847504_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockHttpSession.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/$rid/002_3847504_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockServletContext.java: Some input files use unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/$rid/002_3847504_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockServletContext.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:2.6:testResources (default-testResources) @ weblounge-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 39 resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ weblounge-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 97 source files to D:\A_ThucNghiem\scripts_v2\workspaces\$rid\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ weblounge-common ---
+[WARNING]  Parameter 'systemProperties' is deprecated: Use systemPropertyVariables instead.
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- bundle:2.4.0:bundle (default-bundle) @ weblounge-common ---
+[INFO] 
+[INFO] --- checkstyle:2.11:check (default) @ weblounge-common ---
+[INFO] 
+[INFO] --- install:2.5.1:install (default-install) @ weblounge-common ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\$rid\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common\target\weblounge-common-4.0.0-SNAPSHOT.jar to C:\Users\admin\.m2\repository\ch\entwine\weblounge\weblounge-common\4.0.0-SNAPSHOT\weblounge-common-4.0.0-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\$rid\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common\pom.xml to C:\Users\admin\.m2\repository\ch\entwine\weblounge\weblounge-common\4.0.0-SNAPSHOT\weblounge-common-4.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --- bundle:2.4.0:install (default-install) @ weblounge-common ---
+[INFO] Installing ch/entwine/weblounge/weblounge-common/4.0.0-SNAPSHOT/weblounge-common-4.0.0-SNAPSHOT.jar
+[INFO] Writing OBR metadata
+[INFO] 
+[INFO] --- antrun:1.7:run (deploy) @ weblounge-common ---
+[INFO] Executing tasks
+
+[INFO] Deploy to stage:
+     [copy] Copying 1 file to D:\A_ThucNghiem\scripts_v2\workspaces\$rid\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common\${env.WEBLOUNGE_HOME}\lib\weblounge
+[INFO] Executed tasks
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Weblounge 4.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Weblounge .......................................... SUCCESS [  1.516 s]
+[INFO] Weblounge Common API ............................... SUCCESS [  4.016 s]
+[INFO] Weblounge Common ................................... SUCCESS [  6.796 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.080 s
+[INFO] Finished at: 2026-07-24T08:20:22+07:00
+[INFO] ------------------------------------------------------------------------
+
+     [copy] Warning: Could not find file D:\A_ThucNghiem\scripts_v2\workspaces\$rid\002_3847504_b84fb44f\compiledrepos\3847504\target\weblounge-base-4.0.0-SNAPSHOT.jar to copy."
+2026-07-24T01:20:22+00:00,maven_reactor_prewarm_wait,3847504,modules/weblounge-common,,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,PageImpl,,PASS,17.87,waited 17.870s for same repo prewarm lock: maven:modules/weblounge-common
+2026-07-24T01:20:22+00:00,maven_reactor_prewarm,3847504,modules/weblounge-common,,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,PageImpl,,START,,prewarm reactor dependencies for -pl modules/weblounge-common; synthesized placeholder test hidden during prewarm: PageImpl_RBL4Test_f985aed1.java
+2026-07-24T01:20:25+00:00,class_agone_env,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,QuartzJob_RBL4Test_b84fb44f,PASS,,requested=1.7 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-24T01:20:29+00:00,class_agone_run,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,QuartzJob_RBL4Test_b84fb44f,FAIL,118.916,return_code=3221225786; stdout=002_3847504_QuartzJob.stdout.log; stderr=002_3847504_QuartzJob.stdout.stderr.log
+2026-07-24T01:20:29+00:00,class_failure_diagnosis,3847504,,gpt,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,,FAIL,,"agone_runtime_failed; artifact=; Traceback (most recent call last): File ""D:\A_ThucNghiem\scripts_v2\agone_one.py"", line 253, in <module> raise SystemExit(main()) File ""D:\A_ThucNghiem\scripts_v2\agone_one.py"", line 235, in main patch_api_logging() File ""D:\A_ThucNghiem\scripts_v2\agone_one.py"", line 132, in patch_api_logging import utils # type: ignore File ""D:\A_ThucNghiem\scripts_v2\AgoneTest\utils.py"", line 12, in <module> import mavenLib File ""D:\A_ThucNghiem\scripts_v2\AgoneTest\mavenLib.py"", line 11, in <module> import errorCorrection File ""D:\A_ThucNghiem\scripts_v2\AgoneTest\errorCorrection.py"", line 7, in <module> from litellm import completion File ""C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\site-packages\litellm\__init__.py"", line 903, in <module> from .llms.custom_llm import CustomLLM File ""C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\site-packages\litellm\llms\custom_llm.py"", line 48, in <module> from .prompt_templates.factory import custom_prompt, prompt_factory File ""C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\site-packages\litellm\llms\prompt_templates\factory.py"", line 10, in <module> from jinja2 import BaseLoader, Template, exceptions, meta File ""C:\U"
+2026-07-24T01:20:29+00:00,class_failure_diagnosis,3847504,,evosuite,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,,FAIL,,"agone_runtime_failed; artifact=; Traceback (most recent call last): File ""D:\A_ThucNghiem\scripts_v2\agone_one.py"", line 253, in <module> raise SystemExit(main()) File ""D:\A_ThucNghiem\scripts_v2\agone_one.py"", line 235, in main patch_api_logging() File ""D:\A_ThucNghiem\scripts_v2\agone_one.py"", line 132, in patch_api_logging import utils # type: ignore File ""D:\A_ThucNghiem\scripts_v2\AgoneTest\utils.py"", line 12, in <module> import mavenLib File ""D:\A_ThucNghiem\scripts_v2\AgoneTest\mavenLib.py"", line 11, in <module> import errorCorrection File ""D:\A_ThucNghiem\scripts_v2\AgoneTest\errorCorrection.py"", line 7, in <module> from litellm import completion File ""C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\site-packages\litellm\__init__.py"", line 903, in <module> from .llms.custom_llm import CustomLLM File ""C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\site-packages\litellm\llms\custom_llm.py"", line 48, in <module> from .prompt_templates.factory import custom_prompt, prompt_factory File ""C:\Users\admin\AppData\Local\Programs\Python\Python310\lib\site-packages\litellm\llms\prompt_templates\factory.py"", line 10, in <module> from jinja2 import BaseLoader, Template, exceptions, meta File ""C:\U"
+2026-07-24T01:20:29+00:00,class_sandbox_start,39195736,jproperties-checks,,5,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/separatorconventioncheck.java,SeparatorConventionCheck,SeparatorConventionCheck_RBL4Test_f2dcb8d8,START,,
+2026-07-24T01:20:30+00:00,maven_reactor_prewarm,39195736,jproperties-checks,,5,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/separatorconventioncheck.java,SeparatorConventionCheck,,START,,prewarm reactor dependencies for -pl jproperties-checks; synthesized placeholder test hidden during prewarm: SeparatorConventionCheck_RBL4Test_f2dcb8d8.java
+2026-07-24T01:20:32+00:00,class_agone_run,3713233,core,,1,3713233:core/src/main/java/org/junithelper/core/extractor/constructormetaextractor.java,ConstructorMetaExtractor,ConstructorMetaExtractor_RBL4Test_aefe9473,FAIL,121.533,return_code=1; stdout=001_3713233_ConstructorMetaExtractor.stdout.log; stderr=001_3713233_ConstructorMetaExtractor.stdout.stderr.log
+2026-07-24T01:20:32+00:00,class_failure_diagnosis,3713233,,gpt,1,3713233:core/src/main/java/org/junithelper/core/extractor/constructormetaextractor.java,ConstructorMetaExtractor,,FAIL,,"agone_runtime_failed; artifact=; Initializing ExecutionManager... Loaded prompts: {'rbl4-zero-shot': [{'role': 'system', 'content': 'You are provided with Java class. Create a test class that fully tests the proposed Java class using the project information for imports. Reply with code only, do not add other text that is not code.'}, {'role': 'user', 'content': 'The project uses {{testing_framework}} and Java {{java_version}} and Java class is:\n<code>\n{{focal_class}}\n</code>'}]} Loaded agents: {'evosuite': {}, 'gpt-4o-mini-2024-07-18': {'temperature': 0, 'top_p': 1, 'max_tokens': 2048, 'frequency_penalty': 0, 'presence_penalty': 0}} Fetching agents list... Fetching prompts list... Starting to generate files At least 1 projects are compatible for evosuite execution! ------------------------------------------------------------------- PROCESSING PROJECT: '3713233' ---- Processing project: 3713233, module: core [RBL4] requested=1.6 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172 3713233_core is a Maven project ---- STARTING evosuite test typ --//loading evosuite generation..// Evosuite generation performed correctly for the ConstructorMetaExtractor class --//loading maven execution..// Test classes: -Dt"
+2026-07-24T01:20:32+00:00,class_failure_diagnosis,3713233,,evosuite,1,3713233:core/src/main/java/org/junithelper/core/extractor/constructormetaextractor.java,ConstructorMetaExtractor,,FAIL,,"agone_runtime_failed; artifact=output\3713233\TestClasses_3713233_core_evosuite.csv; Initializing ExecutionManager... Loaded prompts: {'rbl4-zero-shot': [{'role': 'system', 'content': 'You are provided with Java class. Create a test class that fully tests the proposed Java class using the project information for imports. Reply with code only, do not add other text that is not code.'}, {'role': 'user', 'content': 'The project uses {{testing_framework}} and Java {{java_version}} and Java class is:\n<code>\n{{focal_class}}\n</code>'}]} Loaded agents: {'evosuite': {}, 'gpt-4o-mini-2024-07-18': {'temperature': 0, 'top_p': 1, 'max_tokens': 2048, 'frequency_penalty': 0, 'presence_penalty': 0}} Fetching agents list... Fetching prompts list... Starting to generate files At least 1 projects are compatible for evosuite execution! ------------------------------------------------------------------- PROCESSING PROJECT: '3713233' ---- Processing project: 3713233, module: core [RBL4] requested=1.6 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172 3713233_core is a Maven project ---- STARTING evosuite test typ --//loading evosuite generation..// Evosuite generation performed correctly for the ConstructorMetaExtractor class --//loading maven execution..// Test classes: -Dt"
+2026-07-24T01:20:32+00:00,class_sandbox_start,41547678,turin-standard-library,,6,41547678:turin-standard-library/src/main/java/turin/context/context.java,Context,Context_RBL4Test_34266f79,START,,
+2026-07-24T01:20:37+00:00,maven_reactor_prewarm,39195736,jproperties-checks,,5,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/separatorconventioncheck.java,SeparatorConventionCheck,,FAIL,6.77,"prewarm reactor dependencies for -pl jproperties-checks; synthesized placeholder test hidden during prewarm: SeparatorConventionCheck_RBL4Test_f2dcb8d8.java
+command=mvn -B -ntp -nsu -s ""D:\A_ThucNghiem\scripts_v2\settings.xml"" -DskipTests -DskipITs -Dgpg.skip=true -Dcheckstyle.skip=true -Drat.skip=true -Dlicense.skip=true -Ddependency-check.skip=true -Dfrontend.skip=true -Dskip.npm=true -Dskip.bower=true -Dskip.yarn=true -Dskip.grunt=true -Dskip.gulp=true -Dskip.webpack=true -Denforcer.skip=true -Dspotbugs.skip=true -Dspotless.skip=true -Dspotless.apply.skip=true -Dspotless.check.skip=true -Dfindbugs.skip=true -Dpmd.skip=true -Dcpd.skip=true -Dformatter.skip=true -Dexec.skip=true -Dspring-boot.repackage.skip=true -Djacoco.skip=true -Dmaven.javadoc.skip=true -DfailIfNoTests=false -DfailIfNoSpecifiedTests=false -f ""D:\A_ThucNghiem\scripts_v2\workspaces\$rid\005_39195736_f2dcb8d8\compiledrepos\39195736\pom.xml"" -pl ""jproperties-checks"" -am install
+[INFO] Scanning for projects...
+[INFO] Inspecting build with total of 4 modules...
+[INFO] Installing Nexus Staging features:
+[INFO]   ... total of 4 executions of maven-deploy-plugin replaced with nexus-staging-maven-plugin
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] SonarQube Java Properties Analyzer                                 [pom]
+[INFO] SonarQube Java Properties Analyzer :: Frontend                     [jar]
+[INFO] SonarQube Java Properties Analyzer :: Check Test Toolkit           [jar]
+[INFO] SonarQube Java Properties Analyzer :: Checks                       [jar]
+[INFO] 
+[INFO] ---------< org.codehaus.sonar-plugins.jproperties:jproperties >---------
+[INFO] Building SonarQube Java Properties Analyzer 2.7-SNAPSHOT           [1/4]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- buildnumber:1.4:create (default) @ jproperties ---
+[WARNING] Cannot get the revision information from the scm repository, proceeding with revision of 0 : 
+No such provider: 'git@github.com'.
+[INFO] Storing buildNumber: 0 at timestamp: 1784856035441
+[WARNING] Cannot get the branch information from the git repository: 
+No such provider: 'git@github.com'.
+[WARNING] Cannot get the branch information from the scm repository, proceeding with UNKNOWN_BRANCH : 
+No such provider: 'git@github.com'.
+[INFO] Storing buildScmBranch: UNKNOWN_BRANCH
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce) @ jproperties ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- license:3.0:check (enforce-license-headers) @ jproperties ---
+[INFO] 
+[INFO] --- jacoco:0.7.9:prepare-agent (agent) @ jproperties ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] argLine set to empty
+[INFO] 
+[INFO] --- bsh:1.4:run (compute-artifact-display-version) @ jproperties ---
+[INFO] Executing Script
+[INFO] file class java.lang.Object
+[INFO] script class java.lang.String
+[INFO] evaluating script if (! ""2.7-SNAPSHOT"".endsWith(""-SNAPSHOT"")) { [+ 15 omitted line(s)]
+[INFO] 
+[INFO] --- javadoc:2.10.4:jar (attach-javadocs) @ jproperties ---
+
+^C"
+2026-07-24T01:20:37+00:00,class_agone_run,39195736,jproperties-checks,,5,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/separatorconventioncheck.java,SeparatorConventionCheck,SeparatorConventionCheck_RBL4Test_f2dcb8d8,FAIL,7.016,maven_reactor_prewarm_failed; AgoneTest was not invoked for this class
+2026-07-24T01:20:37+00:00,class_failure_diagnosis,39195736,,gpt,5,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/separatorconventioncheck.java,SeparatorConventionCheck,,FAIL,,maven_reactor_prewarm_failed; artifact=; 
+2026-07-24T01:20:37+00:00,class_failure_diagnosis,39195736,,evosuite,5,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/separatorconventioncheck.java,SeparatorConventionCheck,,FAIL,,maven_reactor_prewarm_failed; artifact=; 
+2026-07-24T01:20:37+00:00,class_sandbox_start,41547678,turin-compiler,,7,41547678:turin-compiler/src/main/java/me/tomassetti/turin/resolvers/srcsymbolresolver.java,SrcSymbolResolver,SrcSymbolResolver_RBL4Test_8fe4f5a7,START,,
+2026-07-24T01:20:37+00:00,maven_reactor_prewarm,3847504,modules/weblounge-common,,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,PageImpl,,FAIL,14.134,"NG] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for ch.entwine.weblounge:weblounge-security-sql:bundle:4.0.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for ch.entwine.weblounge:weblounge-system:jar:4.0.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for ch.entwine.weblounge:weblounge-taglib:bundle:4.0.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for ch.entwine.weblounge:weblounge-test:bundle:4.0.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for ch.entwine.weblounge:weblounge-ui:bundle:4.0.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for ch.entwine.weblounge:weblounge-workbench:bundle:4.0.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for ch.entwine.weblounge:weblounge-base:pom:4.0.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter. @ line 545, column 26
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project ch.entwine.weblounge:weblounge-base:pom:4.0.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Weblounge                                                          [pom]
+[INFO] Weblounge Common API                                            [bundle]
+[INFO] Weblounge Common                                                [bundle]
+[INFO] 
+[INFO] ----------------< ch.entwine.weblounge:weblounge-base >-----------------
+[INFO] Building Weblounge 4.0.0-SNAPSHOT                                  [1/3]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- checkstyle:2.11:check (default) @ weblounge-base ---
+[INFO] 
+[INFO] --- install:2.5.1:install (default-install) @ weblounge-base ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\$rid\003_3847504_f985aed1\compiledrepos\3847504\pom.xml to C:\Users\admin\.m2\repository\ch\entwine\weblounge\weblounge-base\4.0.0-SNAPSHOT\weblounge-base-4.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --- antrun:1.7:run (deploy) @ weblounge-base ---
+[INFO] Executing tasks
+
+[INFO] Deploy to stage:
+[INFO] Executed tasks
+[INFO] 
+[INFO] -------------< ch.entwine.weblounge:weblounge-common-api >--------------
+[INFO] Building Weblounge Common API 4.0.0-SNAPSHOT                       [2/3]
+[INFO]   from modules\weblounge-common-api\pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[WARNING] Parameter 'encoding' is unknown for plugin 'maven-surefire-plugin:2.16:test (default-test)'
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ weblounge-common-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ weblounge-common-api ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 147 source files to D:\A_ThucNghiem\scripts_v2\workspaces\$rid\003_3847504_f985aed1\compiledrepos\3847504\modules\weblounge-common-api\target\classes
+Terminate batch job (Y/N)? 
+     [copy] Warning: Could not find file D:\A_ThucNghiem\scripts_v2\workspaces\$rid\003_3847504_f985aed1\compiledrepos\3847504\target\weblounge-base-4.0.0-SNAPSHOT.jar to copy.
+^C"
+2026-07-24T01:20:37+00:00,class_agone_run,3847504,modules/weblounge-common,,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,PageImpl,PageImpl_RBL4Test_f985aed1,FAIL,125.962,maven_reactor_prewarm_failed; AgoneTest was not invoked for this class
+2026-07-24T01:20:37+00:00,class_failure_diagnosis,3847504,,gpt,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,PageImpl,,FAIL,,maven_reactor_prewarm_failed; artifact=; 

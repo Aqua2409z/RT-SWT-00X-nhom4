@@ -1,0 +1,8 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T16:30:46+00:00,gradle_test_jacoco,6944525,d2,,97,smoke-rerun,,,FAIL,7.667,"The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 7s"
+2026-07-23T16:30:46+00:00,gradle_test_jacoco_pitest,6944525,d2,,97,smoke-rerun,,,FAIL,7.759,"The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 7s"
+2026-07-23T16:30:46+00:00,coverage_metric_retrieval,6944525,d2,,97,smoke-rerun,,,FAIL,,jacoco_report_missing: compiledrepos/6944525\d2

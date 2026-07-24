@@ -1,0 +1,15 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T12:36:33+00:00,gradle_sandbox_prewarm,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,Solution,,START,,normalized Gradle wrapper D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_20260723_193633\003_41627638_Solution_899cbe08\compiledrepos\41627638\gradlew.bat -> D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_20260723_193633\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board\gradlew.bat; baseline cwd D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_20260723_193633\003_41627638_Solution_899cbe08\compiledrepos\41627638 -> D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_20260723_193633\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; compile Gradle sandbox before AgoneTest/EvoSuite
+2026-07-23T12:36:44+00:00,gradle_sandbox_prewarm,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,Solution,,FAIL,10.849,"Gradle command passed but build/classes/java/main was not found; command=call ""D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_20260723_193633\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board\gradlew.bat"" --no-daemon --console=plain --stacktrace clean testClasses -x test
+normalized Gradle wrapper D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_20260723_193633\003_41627638_Solution_899cbe08\compiledrepos\41627638\gradlew.bat -> D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_20260723_193633\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board\gradlew.bat; baseline cwd D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_20260723_193633\003_41627638_Solution_899cbe08\compiledrepos\41627638 -> D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_20260723_193633\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; compile Gradle sandbox before AgoneTest/EvoSuite
+:clean UP-TO-DATE
+:compileJava
+:processResources UP-TO-DATE
+:classes
+:compileTestJava
+:processTestResources
+:testClasses
+
+BUILD SUCCESSFUL
+
+Total time: 6.015 secs"

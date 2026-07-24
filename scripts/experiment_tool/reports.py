@@ -11,9 +11,18 @@ import pandas as pd
 
 ARTIFACT_NAMES = [
     "metrics_long.csv",
+    "metrics_wide.csv",
     "summary.csv",
+    "rq_decisions.csv",
+    "statistical_test_inputs.csv",
+    "rq4_pairwise_strict_mutation.csv",
     "generated_failures.csv",
-    "baseline_build.csv",
+    "failure_diagnostics.csv",
+    "baseline_scope_build.csv",
+    "baseline_sandbox_readiness.csv",
+    "baseline_classes.csv",
+    "preflight_classes.csv",
+    "preflight_report.json",
     "generation_classes.csv",
     "generated_tests_manifest.csv",
     "generated_tests.zip",
@@ -21,6 +30,7 @@ ARTIFACT_NAMES = [
     "skipped_classes.csv",
     "phase_log.csv",
     "api_log.csv",
+    "api_prompts.jsonl",
     "runtime_errors.csv",
     "environment_checks.csv",
     "manifest.json",
@@ -47,8 +57,16 @@ def write_excel_report(run_dir: Path) -> Path:
     sheets = {
         "Summary": run_dir / "summary.csv",
         "Metrics": run_dir / "metrics_long.csv",
+        "Metrics Wide": run_dir / "metrics_wide.csv",
+        "RQ Decisions": run_dir / "rq_decisions.csv",
+        "Stats Inputs": run_dir / "statistical_test_inputs.csv",
+        "RQ4 Pairwise": run_dir / "rq4_pairwise_strict_mutation.csv",
         "Failures": run_dir / "generated_failures.csv",
-        "Baseline Build": run_dir / "baseline_build.csv",
+        "Failure Diagnostics": run_dir / "failure_diagnostics.csv",
+        "Baseline Scopes": run_dir / "baseline_scope_build.csv",
+        "Sandbox Readiness": run_dir / "baseline_sandbox_readiness.csv",
+        "Baseline Classes": run_dir / "baseline_classes.csv",
+        "Preflight Classes": run_dir / "preflight_classes.csv",
         "Generation Classes": run_dir / "generation_classes.csv",
         "Generated Tests": run_dir / "generated_tests_manifest.csv",
         "Error Summary": run_dir / "error_summary.csv",
@@ -91,7 +109,7 @@ def write_excel_report(run_dir: Path) -> Path:
 
 def classify_issue(phase: str, status: str, detail: str, error_type: str = "") -> tuple[str, str, str, str]:
     text = f"{phase}\n{status}\n{detail}\n{error_type}".lower()
-    if phase.lower() == "baseline_build" and status.upper() in {"FAIL", "ERROR"}:
+    if phase.lower() in {"baseline_build", "baseline_scope_build"} and status.upper() in {"FAIL", "ERROR"}:
         return (
             "repo_baseline_build_failed",
             "error",
@@ -128,12 +146,88 @@ def classify_issue(phase: str, status: str, detail: str, error_type: str = "") -
             "EvoSuite 1.2.0 bị lỗi nội bộ khi archive/criterion không khớp, khiến generate kết thúc mà không ghi test class.",
             "Runner đã cấu hình EvoSuite CLI với -Dtest_archive=false và -Dcriterion=BRANCH; chạy lại bằng phiên bản tool mới để tránh lỗi này.",
         )
+    if (
+        phase.lower() == "evosuite_generate"
+        and (
+            "displaynamegenerator" in text
+            or "innerclasses attribute" in text
+            or "mockmethodadvice" in text
+            or "mockmethoddispatcher" in text
+            or "should be in target project, but could not be found" in text
+        )
+    ):
+        return (
+            "evosuite_test_framework_classpath_crash",
+            "error",
+            "EvoSuite 1.2.0 bị crash khi phân tích các dependency test-framework như JUnit Jupiter/Mockito/ByteBuddy nằm trong projectCP, trước khi sinh được test.",
+            "Chạy lại bằng runner mới: Maven EvoSuite sẽ retry với classpath đã lọc test-framework jars khỏi bước generation, trong khi Maven verify vẫn giữ dependency của project.",
+        )
     if "attachnotsupportedexception" in text or "no providers installed" in text or "error during attachment" in text:
         return (
             "evosuite_runtime_agent_attach_failure",
             "error",
             "Generated EvoSuite test đang kích hoạt runtime agent/InitializingListener nhưng JVM test fork không attach được agent.",
             "Runner đã sinh EvoSuite test không scaffolding/EvoRunner và bỏ InitializingListener; chạy lại để tránh self-attach khi đo JaCoCo/PIT.",
+        )
+    if (
+        ("failed to transfer metadata" in text or "failed to read artifact descriptor" in text or "could not collect dependencies" in text)
+        and "snapshot" in text
+        and ("-am" in text or "public-snapshots" in text or "sonatype" in text or "cached in the local repository" in text)
+    ):
+        return (
+            "maven_reactor_scope_dependency_error",
+            "error",
+            "Baseline build đã pass theo reactor/module scope nhưng bước sinh hoặc đo test đang chạy Maven trong module rời, làm Maven cố tải dependency SNAPSHOT/sibling module từ remote thay vì dùng reactor local.",
+            "Chạy bằng phiên bản runner có maven_reactor_prewarm hoặc giữ nguyên Maven reactor context (-f root pom -pl module -am) cho cả EvoSuite và GPT; không tính lỗi này là lỗi năng lực sinh test.",
+        )
+    if phase.lower() == "maven_reactor_prewarm" and status.upper() in {"FAIL", "ERROR"}:
+        if "jar:tests" in text and "was not found" in text:
+            return (
+                "maven_prewarm_testjar_classifier_missing",
+                "error",
+                "Prewarm Maven dùng install nhưng đã skip phần test quá mạnh, làm module phụ không tạo tests-classifier jar cần cho module kế tiếp trong reactor.",
+                "Chạy lại bằng runner mới: maven_reactor_prewarm không dùng -Dmaven.test.skip=true để giữ hành vi test-compile tương đương baseline.",
+            )
+        if "rbl4test" in text and ("no header" in text or "check-file-header" in text):
+            return (
+                "maven_prewarm_placeholder_license_header",
+                "error",
+                "Prewarm Maven bị nhiễu bởi placeholder test tạm của tool; license plugin kiểm tra file test rỗng trước khi GPT/EvoSuite thật sự sinh test.",
+                "Chạy lại bằng runner mới: placeholder test được ẩn trong lúc prewarm để baseline/prewarm chỉ phản ánh source gốc.",
+            )
+        return (
+            "maven_reactor_prewarm_failed",
+            "error",
+            "Bước chuẩn bị dependency reactor trong sandbox thất bại, nên tool chưa tạo được điều kiện build tương đương baseline cho focal class.",
+            "Mở phase_log.csv ở dòng maven_reactor_prewarm để sửa recipe/module selector/JDK/dependency trước khi chạy GPT/EvoSuite.",
+        )
+    if phase.lower() == "baseline_sandbox_readiness" and status.upper() in {"FAIL", "ERROR"}:
+        return (
+            "baseline_sandbox_readiness_failed",
+            "error",
+            "Class đã qua baseline scope build nhưng chưa qua điều kiện sandbox/prewarm giống chạy thật, nên generation phải bị chặn trước khi gọi GPT/EvoSuite.",
+            "Mở baseline_sandbox_readiness.csv và các phase prewarm liên quan để sửa recipe/tool; không tính lỗi này là lỗi năng lực sinh test.",
+        )
+    if phase.lower() == "runner" and "baseline/sandbox readiness gate failed" in text:
+        return (
+            "baseline_sandbox_readiness_gate_failed",
+            "error",
+            "Runner dừng đúng chính sách vì còn class chưa qua sandbox readiness, nên chưa gọi GPT/EvoSuite.",
+            "Sửa các dòng baseline_sandbox_readiness/maven_reactor_prewarm fail trước đó rồi chạy lại; lỗi này là hệ quả của readiness gate, không phải lỗi năng lực sinh test.",
+        )
+    if phase.lower() == "gradle_sandbox_prewarm" and status.upper() in {"FAIL", "ERROR"}:
+        return (
+            "gradle_sandbox_prewarm_failed",
+            "error",
+            "Sandbox Gradle chưa compile được module/focal class trước khi gọi AgoneTest, nên tool chưa tạo được build/classes/java/main tương đương baseline.",
+            "Mở phase_log.csv ở dòng gradle_sandbox_prewarm để sửa recipe Gradle/module wrapper/JDK; GPT/EvoSuite chưa được gọi cho class này.",
+        )
+    if "missing build/classes/java/main" in text or "missing gradle main classes directory" in text:
+        return (
+            "gradle_evosuite_missing_compiled_classes",
+            "error",
+            "EvoSuite Gradle cần thư mục compiled main classes nhưng sandbox đã bỏ qua thư mục build và chưa compile lại hoặc chưa nhận diện đúng layout Gradle.",
+            "Chạy lại bằng runner có gradle_sandbox_prewarm để mỗi sandbox tự chạy Gradle testClasses trước khi gọi EvoSuite/GPT.",
         )
     if "unsupportedclassversionerror" in text or "unsupported major.minor version" in text:
         return (
@@ -160,6 +254,20 @@ def classify_issue(phase: str, status: str, detail: str, error_type: str = "") -
             "Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.",
             "Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.",
         )
+    if "build.gradle.kts" in text and ("no such file or directory" in text or "filenotfounderror" in text):
+        return (
+            "gradle_build_file_path_resolution_bug",
+            "error",
+            "Tool Gradle mở nhầm build.gradle/build.gradle.kts hoặc ghép sai path module trên Windows, nên chưa tới bước sinh/đo test thật.",
+            "Chạy lại bằng bản đã sửa gradleLib.edit_build_gradle_file; không tính lỗi này là lỗi năng lực EvoSuite/GPT.",
+        )
+    if "exec-maven-plugin" in text and ("python-test" in text or "command execution failed" in text):
+        return (
+            "maven_external_exec_goal_interference",
+            "error",
+            "Maven verify kích hoạt goal phụ ngoài protocol RBL-4, ví dụ exec-maven-plugin chạy python-test, làm nhiễu phép đo focal generated test.",
+            "Chạy lại bằng bản có -Dexec.skip=true trong Maven measurement; nếu repo vẫn bắt buộc goal ngoài Java thì ghi nhận là tool/protocol exclusion, không phải generated-test failure.",
+        )
     if "non-parseable pom" in text or "expected root element 'project' but found 'ns0:project'" in text:
         return (
             "pom_rewrite_namespace_error",
@@ -180,6 +288,17 @@ def classify_issue(phase: str, status: str, detail: str, error_type: str = "") -
             "error",
             "Test/source đang dùng cú pháp Java mới hơn mức compiler của project, ví dụ diamond operator nhưng Maven compile với -source 1.6.",
             "Dùng đúng JDK/source level theo project hoặc sửa/loại test sinh ra dùng cú pháp không tương thích; với thực nghiệm fairness thì nên ghi nhận fail_stage thay vì sửa test.",
+        )
+    if (
+        "compilation errors were encountered" in text
+        and ("src/test/java" in text or "src\\test\\java" in text)
+        and ("rbl4" in text or "evosuite" in text)
+    ):
+        return (
+            "generated_test_compile_failed",
+            "error",
+            "Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",
+            "Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.",
         )
     if "build failed" in text and "gradle" in text:
         return (
@@ -231,11 +350,65 @@ def classify_issue(phase: str, status: str, detail: str, error_type: str = "") -
     )
 
 
+def failure_owner_for_issue(category: str, phase: str, detail: str, arm: str = "") -> tuple[str, str]:
+    text = f"{category}\n{phase}\n{detail}\n{arm}".lower()
+    owner_map = {
+        "repo_baseline_build_failed": "repository_or_environment",
+        "project_dependency_resolution_error": "repository_or_environment",
+        "java_runtime_too_old_for_maven": "repository_or_environment",
+        "maven_plugin_management_policy_failure": "repository_or_environment",
+        "generated_test_compile_failed": "generator_output",
+        "generated_test_assertion_failure": "generator_output",
+        "java_source_level_incompatible": "generator_output",
+        "gpt_generation_failed": "generator_output",
+        "llm_api_error": "llm_api_or_network",
+        "evosuite_archive_criterion_mismatch": "evosuite_engine",
+        "evosuite_test_framework_classpath_crash": "evosuite_engine",
+        "evosuite_runtime_agent_attach_failure": "evosuite_engine",
+        "maven_reactor_scope_dependency_error": "agonetest_harness",
+        "maven_reactor_prewarm_failed": "agonetest_harness",
+        "maven_prewarm_testjar_classifier_missing": "agonetest_harness",
+        "maven_prewarm_placeholder_license_header": "agonetest_harness",
+        "baseline_sandbox_readiness_failed": "agonetest_harness",
+        "baseline_sandbox_readiness_gate_failed": "agonetest_harness",
+        "gradle_sandbox_prewarm_failed": "agonetest_harness",
+        "gradle_evosuite_missing_compiled_classes": "agonetest_harness",
+        "gradle_build_file_path_resolution_bug": "agonetest_harness",
+        "gradle_build_failed": "agonetest_harness",
+        "gradle_testng_pitest_unsupported": "agonetest_harness",
+        "agone_metric_extraction_failed": "agonetest_harness",
+        "agone_result_csv_write_failed": "agonetest_harness",
+        "pom_rewrite_namespace_error": "agonetest_harness",
+        "test_smell_output_path_invalid": "agonetest_harness",
+        "maven_external_exec_goal_interference": "agonetest_harness",
+        "metric_failure_without_parser_detail": "agonetest_harness",
+    }
+    owner = owner_map.get(category, "")
+    if not owner:
+        if phase.lower().startswith("baseline"):
+            owner = "repository_or_environment"
+        elif "src/test/java" in text or "src\\test\\java" in text:
+            owner = "generator_output"
+        elif "gradle" in text or "agone" in text or "prewarm" in text or "jacoco" in text or "pit" in text:
+            owner = "agonetest_harness"
+        else:
+            owner = "unknown_needs_manual_review"
+    explanations = {
+        "repository_or_environment": "Lỗi nằm ở repo/dependency/JDK/recipe build đầu vào hoặc môi trường, không phải do năng lực sinh test.",
+        "agonetest_harness": "Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",
+        "generator_output": "Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.",
+        "evosuite_engine": "EvoSuite 1.2.0 crash hoặc không sinh được test trước bước đo; đây là giới hạn/lỗi engine EvoSuite.",
+        "llm_api_or_network": "Lỗi ở API/model/network/quota, không phản ánh chất lượng test đã sinh.",
+        "unknown_needs_manual_review": "Chưa đủ dấu hiệu tự động để quy trách nhiệm, cần đọc log thô.",
+    }
+    return owner, explanations.get(owner, "")
+
+
 def build_error_summary(run_dir: Path) -> Path:
     rows: list[dict[str, Any]] = []
     baseline_final_pass_keys: set[tuple[str, str]] = set()
 
-    baseline_path = run_dir / "baseline_build.csv"
+    baseline_path = run_dir / "baseline_scope_build.csv"
     if baseline_path.exists() and baseline_path.stat().st_size > 0:
         try:
             baseline_df = pd.read_csv(baseline_path, dtype=str).fillna("")
@@ -259,7 +432,7 @@ def build_error_summary(run_dir: Path) -> Path:
                 project = str(row.get("project", ""))
                 module = str(row.get("module", ""))
                 if (
-                    phase.lower() == "baseline_build"
+                    phase.lower() in {"baseline_build", "baseline_scope_build"}
                     and status.upper() in {"FAIL", "ERROR"}
                     and (project, module) in baseline_final_pass_keys
                 ):
@@ -269,6 +442,12 @@ def build_error_summary(run_dir: Path) -> Path:
                     status,
                     str(row.get("detail", "")),
                 )
+                failure_owner, owner_note = failure_owner_for_issue(
+                    category,
+                    phase,
+                    str(row.get("detail", "")),
+                    str(row.get("arm", "")),
+                )
                 rows.append(
                     {
                         "timestamp_utc": row.get("timestamp_utc", ""),
@@ -276,10 +455,15 @@ def build_error_summary(run_dir: Path) -> Path:
                         "project": project,
                         "module": module,
                         "arm": row.get("arm", ""),
+                        "sample_index": row.get("sample_index", ""),
+                        "class_key": row.get("class_key", ""),
                         "focal_class": row.get("focal_class", ""),
+                        "test_class": row.get("test_class", ""),
                         "phase": phase,
                         "status": status,
                         "category": category,
+                        "failure_owner": failure_owner,
+                        "owner_note_vi": owner_note,
                         "severity": severity,
                         "explanation_vi": explanation,
                         "suggested_action_vi": suggested_action,
@@ -294,10 +478,15 @@ def build_error_summary(run_dir: Path) -> Path:
                     "project": "",
                     "module": "",
                     "arm": "",
+                    "sample_index": "",
+                    "class_key": "",
                     "focal_class": "",
+                    "test_class": "",
                     "phase": "error_summary",
                     "status": "ERROR",
                     "category": "error_summary_parse_failed",
+                    "failure_owner": "agonetest_harness",
+                    "owner_note_vi": "Không parse được log/report do tool hoặc artifact bị lỗi.",
                     "severity": "error",
                     "explanation_vi": f"Không đọc được phase_log.csv: {type(exc).__name__}: {exc}",
                     "suggested_action_vi": "Mở phase_log.csv thủ công để kiểm tra định dạng.",
@@ -318,6 +507,12 @@ def build_error_summary(run_dir: Path) -> Path:
                     detail,
                     str(row.get("error_type", "")),
                 )
+                failure_owner, owner_note = failure_owner_for_issue(
+                    category,
+                    "runtime_error",
+                    detail,
+                    "",
+                )
                 rows.append(
                     {
                         "timestamp_utc": row.get("timestamp_utc", ""),
@@ -325,10 +520,15 @@ def build_error_summary(run_dir: Path) -> Path:
                         "project": row.get("project", ""),
                         "module": "",
                         "arm": "",
+                        "sample_index": row.get("sample_index", ""),
+                        "class_key": row.get("class_key", ""),
                         "focal_class": "",
+                        "test_class": "",
                         "phase": "runtime_error",
                         "status": row.get("status", ""),
                         "category": category,
+                        "failure_owner": failure_owner,
+                        "owner_note_vi": owner_note,
                         "severity": severity,
                         "explanation_vi": explanation,
                         "suggested_action_vi": suggested_action,
@@ -345,10 +545,15 @@ def build_error_summary(run_dir: Path) -> Path:
         "project",
         "module",
         "arm",
+        "sample_index",
+        "class_key",
         "focal_class",
+        "test_class",
         "phase",
         "status",
         "category",
+        "failure_owner",
+        "owner_note_vi",
         "severity",
         "explanation_vi",
         "suggested_action_vi",

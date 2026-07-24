@@ -1,0 +1,195 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T14:07:23+00:00,baseline_scope_build,46396068,hbase0.98/hbase-manager-0.98,,,,,,PASS,10.514,"drepos/46396068/hbase0.98/hbase-common-0.98/src/main/java/com/kakao/hbase/common/HBaseClient.java:[181,28] sun.security.krb5.Config is internal proprietary API and may be removed in a future release
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46396068/hbase0.98/hbase-common-0.98/src/main/java/com/kakao/hbase/common/HBaseClient.java:[187,13] sun.security.krb5.Config is internal proprietary API and may be removed in a future release
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hbase-common-0.98 ---
+[INFO] Copying 2 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.2:testCompile (default-testCompile) @ hbase-common-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 11 source files to D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-common-0.98\target\test-classes
+[INFO] /D:/A_ThucNghiem/compiledrepos/46396068/hbase0.98/hbase-common-0.98/src/test/java/com/kakao/hbase/specific/HBaseAdminWrapperListTableTest.java: D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-common-0.98\src\test\java\com\kakao\hbase\specific\HBaseAdminWrapperListTableTest.java uses unchecked or unsafe operations.
+[INFO] /D:/A_ThucNghiem/compiledrepos/46396068/hbase0.98/hbase-common-0.98/src/test/java/com/kakao/hbase/specific/HBaseAdminWrapperListTableTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] ---------------< com.kakao.hbase:hbase-table-stat-0.98 >----------------
+[INFO] Building hbase-table-stat-0.98 1.6.0                               [3/4]
+[INFO]   from hbase-table-stat-0.98\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hbase-table-stat-0.98 ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-table-stat-0.98\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ hbase-table-stat-0.98 ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.2:compile (default-compile) @ hbase-table-stat-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-table-stat-0.98\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hbase-table-stat-0.98 ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-table-stat-0.98\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.2:testCompile (default-testCompile) @ hbase-table-stat-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-table-stat-0.98\target\test-classes
+[INFO] 
+[INFO] -----------------< com.kakao.hbase:hbase-manager-0.98 >-----------------
+[INFO] Building hbase-manager-0.98 1.6.0                                  [4/4]
+[INFO]   from hbase-manager-0.98\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hbase-manager-0.98 ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ hbase-manager-0.98 ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.2:compile (default-compile) @ hbase-manager-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hbase-manager-0.98 ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.2:testCompile (default-testC"
+2026-07-23T14:07:36+00:00,baseline_scope_build,46450575,flo-workflow,,,,,,PASS,12.266," from root D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\main\java
+[INFO] Will search files to update from root D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\test\java
+[INFO] Scan 61 files header done in 90.865ms.
+[INFO] All files are up-to-date.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ flo-workflow ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.5.1:compile (default-compile) @ flo-workflow ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 37 source files to D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ flo-workflow ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.5.1:testCompile (default-testCompile) @ flo-workflow ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 24 source files to D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\target\test-classes
+21:07:34.576 [main] DEBUG org.trimou.engine.resolver.ReflectionResolver - Initialized [memberCacheMaxSize: 10000]
+21:07:34.581 [main] INFO org.trimou.engine.locator.PathTemplateLocator - ClassPathTemplateLocator initialized [virtualPathSeparator: /, defaultFileEncoding: UTF-8]
+21:07:34.583 [main] INFO org.trimou.engine.MustacheEngineBuilder - Engine built 2.0.1.Final (2016-05-19)
+21:07:34.584 [main] DEBUG org.trimou.engine.MustacheEngineBuilder - Engine configuration: 
+[Template locators]
+org.trimou.engine.locator.ClassPathTemplateLocator [priority: 1, suffix: mustache, rootPath: null]
+----------
+[Resolvers]
+org.trimou.engine.resolver.MapResolver [priority: 17]
+org.trimou.engine.resolver.ReflectionResolver [priority: 11]
+----------
+[Properties]
+org.trimou.engine.config.templateCacheExpirationTimeout=0
+org.trimou.engine.config.templateRecursiveInvocationLimit=10
+org.trimou.engine.config.removeStandaloneLines=true
+org.trimou.engine.config.resolverHintsEnabled=true
+org.trimou.engine.config.startDelimiter={{
+org.trimou.engine.locator.PathTemplateLocator.virtualPathSeparator=/
+org.trimou.engine.config.skipValueEscaping=false
+org.trimou.engine.config.endDelimiter=}}
+org.trimou.engine.config.cacheSectionLiteralBlock=false
+org.trimou.engine.config.reuseLineSeparatorSegments=true
+org.trimou.engine.config.defaultFileEncoding=UTF-8
+org.trimou.engine.config.removeUnnecessarySegments=true
+org.trimou.engine.config.noValueIndicatesProblem=false
+org.trimou.engine.config.nestedTemplateSupportEnabled=true
+org.trimou.engine.config.templateCacheEnabled=true
+org.trimou.engine.resolver.ReflectionResolver.memberCacheMaxSize=10000
+org.trimou.engine.config.precompileAllTemplates=false
+org.trimou.engine.config.debugMode=false
+org.trimou.engine.config.handlebarsSupportEnabled=true
+org.trimou.engine.config.iterationMetadataAlias=iter
+----------
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/ControlledBlockingContext.java:[165,73] unchecked cast
+  required: com.spotify.flo.ControlledBlockingContext.Interceptor<T>
+  "
+2026-07-23T14:07:36+00:00,baseline_sandbox_readiness,46396068,hbase0.98/hbase-manager-0.98,,0,46396068:hbase0.98/hbase-manager-0.98/src/main/java/com/kakao/hbase/manager/command/mc.java,MC,MC_RBL4Test_d7f89729,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T14:07:36+00:00,maven_reactor_prewarm,46396068,hbase0.98/hbase-manager-0.98,,0,46396068:hbase0.98/hbase-manager-0.98/src/main/java/com/kakao/hbase/manager/command/mc.java,MC,,START,,normalized missing POM D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\pom.xml -> D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\pom.xml; prewarm reactor dependencies for -pl hbase-manager-0.98; synthesized placeholder test hidden during prewarm: MC_RBL4Test_d7f89729.java
+2026-07-23T14:08:24+00:00,maven_reactor_prewarm,46396068,hbase0.98/hbase-manager-0.98,,0,46396068:hbase0.98/hbase-manager-0.98/src/main/java/com/kakao/hbase/manager/command/mc.java,MC,,PASS,47.885,"te_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\hbase-table-stat-0.98\target\hbase-table-stat-0.98-1.6.0-sources.jar
+[INFO] 
+[INFO] --- javadoc:2.10.3:jar (attach-javadocs) @ hbase-table-stat-0.98 ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] -----------------< com.kakao.hbase:hbase-manager-0.98 >-----------------
+[INFO] Building hbase-manager-0.98 1.6.0                                  [4/4]
+[INFO]   from hbase-manager-0.98\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ hbase-manager-0.98 ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.2:compile (default-compile) @ hbase-manager-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hbase-manager-0.98 ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.2:testCompile (default-testCompile) @ hbase-manager-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 18 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.18.1:test (default-test) @ hbase-manager-0.98 ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ hbase-manager-0.98 ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target\hbase-manager-0.98-1.6.0.jar
+[INFO] 
+[INFO] --- assembly:2.5.3:single (create-jar) @ hbase-manager-0.98 ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target\hbase-manager-0.98-1.6.0-jar-with-dependencies.jar
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ hbase-manager-0.98 ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\pom.xml to C:\Users\admin\.m2\repository\com\kakao\hbase\hbase-manager-0.98\1.6.0\hbase-manager-0.98-1.6.0.pom
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target\hbase-manager-0.98-1.6.0.jar to C:\Users\admin\.m2\repository\com\kakao\hbase\hbase-manager-0.98\1.6.0\hbase-manager-0.98-1.6.0.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target\hbase-manager-0.98-1.6.0-jar-with-dependencies.jar to C:\Users\admin\.m2\repository\com\kakao\hbase\hbase-manager-0.98\1.6.0\hbase-manager-0.98-1.6.0-jar-with-dependencies.jar
+[INFO] 
+[INFO] --- source:2.4:jar-no-fork (attach-sources) @ hbase-manager-0.98 ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\000_46396068_MC_d7f89729\compil"
+2026-07-23T14:08:24+00:00,baseline_sandbox_readiness,46396068,hbase0.98/hbase-manager-0.98,,0,46396068:hbase0.98/hbase-manager-0.98/src/main/java/com/kakao/hbase/manager/command/mc.java,MC,MC_RBL4Test_d7f89729,PASS,48.402,ok; sandbox readiness passed
+2026-07-23T14:08:24+00:00,baseline_sandbox_readiness,46450575,flo-workflow,,1,46450575:flo-workflow/src/main/java/com/spotify/flo/context/asynccontext.java,AsyncContext,AsyncContext_RBL4Test_acb5f0dc,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T14:08:24+00:00,maven_reactor_prewarm,46450575,flo-workflow,,1,46450575:flo-workflow/src/main/java/com/spotify/flo/context/asynccontext.java,AsyncContext,,START,,prewarm reactor dependencies for -pl flo-workflow; synthesized placeholder test hidden during prewarm: AsyncContext_RBL4Test_acb5f0dc.java
+2026-07-23T14:08:39+00:00,maven_reactor_prewarm,46450575,flo-workflow,,1,46450575:flo-workflow/src/main/java/com/spotify/flo/context/asynccontext.java,AsyncContext,,PASS,14.564,"ompileAllTemplates=false
+org.trimou.engine.config.debugMode=false
+org.trimou.engine.config.handlebarsSupportEnabled=true
+org.trimou.engine.config.iterationMetadataAlias=iter
+----------
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/debug_baseline_gate_three_after_fix__baseline_readiness/001_46450575_AsyncContext_acb5f0dc/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/debug_baseline_gate_three_after_fix__baseline_readiness/001_46450575_AsyncContext_acb5f0dc/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/debug_baseline_gate_three_after_fix__baseline_readiness/001_46450575_AsyncContext_acb5f0dc/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/debug_baseline_gate_three_after_fix__baseline_readiness/001_46450575_AsyncContext_acb5f0dc/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/debug_baseline_gate_three_after_fix__baseline_readiness/001_46450575_AsyncContext_acb5f0dc/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/ControlledBlockingContext.java:[165,73] unchecked cast
+  required: com.spotify.flo.ControlledBlockingContext.Interceptor<T>
+  found:    com.spotify.flo.ControlledBlockingContext.Interceptor<capture#1 of ?>
+[INFO] 
+[INFO] --- surefire:2.21.0:test (default-test) @ flo-workflow ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ flo-workflow ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\001_46450575_AsyncContext_acb5f0dc\compiledrepos\46450575\flo-workflow\target\flo-workflow-0.6.4-SNAPSHOT.jar
+[INFO] 
+[INFO] --- shade:3.1.1:shade (default) @ flo-workflow ---
+[INFO] Excluding org.slf4j:slf4j-api:jar:1.7.30 from the shaded jar.
+[INFO] Including io.grpc:grpc-context:jar:1.22.1 in the shaded jar.
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\001_46450575_AsyncContext_acb5f0dc\compiledrepos\46450575\flo-workflow\target\flo-workflow-0.6.4-SNAPSHOT.jar with D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\001_46450575_AsyncContext_acb5f0dc\compiledrepos\46450575\flo-workflow\target\flo-workflow-0.6.4-SNAPSHOT-shaded.jar
+[INFO] Dependency-reduced POM written at: D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\001_46450575_AsyncContext_acb5f0dc\compiledrepos\46450575\flo-workflow\dependency-reduced-pom.xml
+[INFO] 
+[INFO] --- failsafe:2.19.1:integration-test (default) @ flo-workflow ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- failsafe:2.19.1:verify (default) @ flo-workflow ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ flo-workflow ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\001_46450575_AsyncContext_acb5f0dc\compiledrepos\46450575\flo-workflow\dependency-reduced-pom.xml to C:\Users\admin\.m2\repository\com\spotify\flo-workflow\0.6.4-SNAPSHOT\flo-workflow-0.6.4-SNAPSHOT.pom
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_baseline_gate_three_after_fix__baseline_readiness\001_46450575_AsyncContext_acb5f0dc\compiledrepos\46450575\flo-workflow\target\flo-workflow-0.6.4-SNAPSHOT.jar to C:\Users\admin\.m2\repo"
+2026-07-23T14:08:39+00:00,baseline_sandbox_readiness,46450575,flo-workflow,,1,46450575:flo-workflow/src/main/java/com/spotify/flo/context/asynccontext.java,AsyncContext,AsyncContext_RBL4Test_acb5f0dc,PASS,14.934,ok; sandbox readiness passed
+2026-07-23T14:08:39+00:00,baseline_sandbox_readiness,46450575,flo-workflow,,2,46450575:flo-workflow/src/main/java/com/spotify/flo/taskids.java,TaskIds,TaskIds_RBL4Test_b7d06a10,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T14:08:39+00:00,baseline_sandbox_readiness,46450575,flo-workflow,,2,46450575:flo-workflow/src/main/java/com/spotify/flo/taskids.java,TaskIds,TaskIds_RBL4Test_b7d06a10,PASS,0.39,ok; sandbox readiness passed

@@ -22,6 +22,8 @@ import { STAGES, stageForPhase, statusTone } from "./lib/stages";
 const DEFAULT_MODEL = "gpt-4o-mini-2024-07-18";
 const DEFAULT_PROMPT = "rbl4-zero-shot";
 const FALLBACK_SAMPLES: SampleInfo[] = [
+  { key: "pilot_60", label: "Pilot 60 - 2 classes/repo", path: "data_new/class_sampling_manifest_pilot60_seed42.csv", exists: true, rows: 60, repos: 30, selected_type_counts: {}, stratum_counts: {}, status: "ok" },
+  { key: "remaining_240", label: "Remaining 240 - after pilot", path: "data_new/class_sampling_manifest_remaining240_seed42.csv", exists: true, rows: 240, repos: 30, selected_type_counts: {}, stratum_counts: {}, status: "ok" },
   { key: "full_300", label: "Full 300 data_new", path: "data_new/class_sampling_manifest_final_seed42.csv", exists: true, rows: 300, repos: 30, selected_type_counts: {}, stratum_counts: {}, status: "ok" }
 ];
 
@@ -32,8 +34,21 @@ function formatNumber(value: unknown) {
   return Number.isInteger(parsed) ? String(parsed) : parsed.toFixed(2);
 }
 
+function firstValue(row: Record<string, unknown>, keys: string[]) {
+  for (const key of keys) {
+    const value = row[key];
+    if (value !== undefined && value !== null && value !== "") return value;
+  }
+  return "";
+}
+
 function shortPath(path: string) {
   return path.replace(/\\/g, "/").split("/").slice(-2).join("/");
+}
+
+function shortText(value: unknown, maxLength = 120) {
+  const text = String(value || "");
+  return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
 }
 
 function statusIcon(status: string) {
@@ -67,11 +82,12 @@ export default function App() {
   const [error, setError] = useState("");
   const [logFilter, setLogFilter] = useState("");
   const [form, setForm] = useState({
-    sample_key: "full_300" as SampleKey,
+    sample_key: "pilot_60" as SampleKey,
     custom_sample_csv: "",
     run_mode: "dry_run" as RunMode,
     model: DEFAULT_MODEL,
     prompt: DEFAULT_PROMPT,
+    workers: 1,
     resume: false,
     clear_agone_output: true
   });
@@ -187,6 +203,7 @@ export default function App() {
     try {
       const created = await api.createRun({
         ...form,
+        workers: Math.max(1, Number(form.workers) || 1),
         custom_sample_csv: form.sample_key === "custom" ? form.custom_sample_csv : undefined
       });
       setSelectedRunId(created.run_id);
@@ -249,6 +266,16 @@ export default function App() {
           <label>
             Prompt
             <input value={form.prompt} onChange={(event) => setForm({ ...form, prompt: event.target.value })} />
+          </label>
+          <label>
+            Workers
+            <input
+              type="number"
+              min={1}
+              max={32}
+              value={form.workers}
+              onChange={(event) => setForm({ ...form, workers: Math.max(1, Number(event.target.value) || 1) })}
+            />
           </label>
           <label className="check-row">
             <input type="checkbox" checked={form.resume} onChange={(event) => setForm({ ...form, resume: event.target.checked })} />
@@ -345,6 +372,7 @@ export default function App() {
               <div><span>Baseline OK</span><strong>{formatNumber(selectedRun?.baseline_pass_n)}</strong></div>
               <div><span>Baseline Fail</span><strong>{formatNumber(selectedRun?.baseline_failed_n)}</strong></div>
               <div><span>Generation</span><strong>{formatNumber(selectedRun?.generation_run_n)}</strong></div>
+              <div><span>Workers</span><strong>{formatNumber(selectedRun?.workers)}</strong></div>
               <div><span>Artifacts</span><strong>{selectedRun?.artifacts.length || 0}</strong></div>
             </div>
             <p className="path-line">{selectedRun?.sample_csv ? shortPath(selectedRun.sample_csv) : "Start a run to stage an experiment sample."}</p>
@@ -400,6 +428,7 @@ export default function App() {
                     <th>Line</th>
                     <th>Mutation</th>
                     <th>Fail Stage</th>
+                    <th>Detail</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -409,14 +438,15 @@ export default function App() {
                       <td>{String(row.project || "-")}</td>
                       <td>{String(row.focal_class || "-")}</td>
                       <td>{formatNumber(row.compilation)}</td>
-                      <td>{formatNumber(row.branch_coverage_strict_zero_fill)}</td>
-                      <td>{formatNumber(row.line_coverage_strict_zero_fill)}</td>
-                      <td>{formatNumber(row.mutation_score_strict_zero_fill)}</td>
+                      <td>{formatNumber(firstValue(row, ["strict_branch_coverage", "branch_coverage_strict_zero_fill", "branch_coverage"]))}</td>
+                      <td>{formatNumber(firstValue(row, ["strict_line_coverage", "line_coverage_strict_zero_fill", "line_coverage"]))}</td>
+                      <td>{formatNumber(firstValue(row, ["strict_mutation_coverage", "mutation_score_strict_zero_fill", "mutation_coverage"]))}</td>
                       <td><span className="soft-tag">{String(row.fail_stage || "-")}</span></td>
+                      <td title={String(row.failure_detail || row.failure_artifact || "")}>{shortText(row.failure_detail || row.failure_artifact || "-")}</td>
                     </tr>
                   ))}
                   {metrics.length === 0 && (
-                    <tr><td colSpan={8} className="empty-cell">No metrics loaded.</td></tr>
+                    <tr><td colSpan={9} className="empty-cell">No metrics loaded.</td></tr>
                   )}
                 </tbody>
               </table>
@@ -530,7 +560,7 @@ export default function App() {
             {summary.map((row, index) => (
               <div className="summary-card" key={index}>
                 <span>{String(row.arm || "summary")}</span>
-                <strong>{formatNumber(row.compiled_success_rate)}</strong>
+                <strong>{formatNumber(firstValue(row, ["compilation_success_rate", "compiled_success_rate"]))}</strong>
                 <small>compiled success rate</small>
               </div>
             ))}

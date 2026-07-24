@@ -12,6 +12,10 @@ import toolchains
 
 
 EVOSUITE_TIMEOUT_SECONDS = int(os.getenv("RBL4_EVOSUITE_TIMEOUT_SECONDS", "240"))
+GRADLE_PITEST_PLUGIN_VERSION_OVERRIDE = os.getenv("RBL4_GRADLE_PITEST_PLUGIN_VERSION", "").strip()
+PITEST_JUNIT5_PLUGIN_VERSION = os.getenv("RBL4_PITEST_JUNIT5_PLUGIN_VERSION", "1.2.1")
+PITEST_TESTNG_PLUGIN_VERSION = os.getenv("RBL4_PITEST_TESTNG_PLUGIN_VERSION", "1.0.0")
+GRADLE_JACOCO_TOOL_VERSION = os.getenv("RBL4_GRADLE_JACOCO_TOOL_VERSION", "0.8.6")
 
 
 def command_output_tail(result, limit=2500):
@@ -37,6 +41,196 @@ def java_command():
         if candidate.exists():
             return str(candidate)
     return "java"
+
+
+def is_testng_project(testng_version):
+    return testng_version is not None and str(testng_version).strip() not in {"", "None", "none", "nan"}
+
+
+def is_junit5_project(junit_version):
+    return junit_version is not None and str(junit_version).strip().startswith("5")
+
+
+def parse_gradle_version(compiler_version):
+    match = re.search(r"(\d+)(?:\.(\d+))?", str(compiler_version or ""))
+    if not match:
+        return None
+    major = int(match.group(1))
+    minor = int(match.group(2) or 0)
+    return major, minor
+
+
+def gradle_version_at_least(compiler_version, major, minor=0):
+    parsed = parse_gradle_version(compiler_version)
+    if parsed is None:
+        return True
+    return parsed >= (major, minor)
+
+
+def pitest_plugin_version_for_gradle(compiler_version):
+    if GRADLE_PITEST_PLUGIN_VERSION_OVERRIDE:
+        return GRADLE_PITEST_PLUGIN_VERSION_OVERRIDE
+    parsed = parse_gradle_version(compiler_version)
+    if parsed is None:
+        return "1.15.0"
+    if parsed < (4, 0):
+        return "1.3.0"
+    if parsed < (5, 6):
+        return "1.4.0"
+    if parsed < (6, 4):
+        return "1.6.0"
+    return "1.15.0"
+
+
+def testng_pitest_dependency_for_plugin(pitest_plugin_version):
+    parsed = parse_gradle_version(pitest_plugin_version)
+    if parsed is None:
+        return PITEST_TESTNG_PLUGIN_VERSION
+    if parsed >= (1, 9):
+        return PITEST_TESTNG_PLUGIN_VERSION
+    if (1, 7) <= parsed < (1, 9):
+        return "0.1"
+    return None
+
+
+def gradle_test_classes(project_dataframe):
+    project_df = project_dataframe.copy()
+    classes = []
+    for test_path in project_df["Test_Path"].tolist():
+        normalized = str(test_path).replace("\\", "/")
+        if "test/java/" not in normalized:
+            continue
+        classes.append(normalized.split("test/java/", 1)[1].replace("/", ".").replace(".java", ""))
+    return classes
+
+
+def gradle_test_selector_args(test_classes):
+    args = []
+    for test_class in test_classes:
+        args.extend(["--tests", test_class])
+    return args
+
+
+def gradle_test_include_patterns(test_classes):
+    patterns = []
+    for test_class in test_classes:
+        simple_name = str(test_class).split(".")[-1]
+        if simple_name:
+            patterns.append(f"**/{simple_name}.class")
+    return list(dict.fromkeys(patterns))
+
+
+def gradle_quoted_list(test_classes):
+    return ",".join("'" + test_class + "'" for test_class in test_classes)
+
+
+def gradle_kts_quoted_list(test_classes):
+    return ",".join('"' + test_class + '"' for test_class in test_classes)
+
+
+def gradle_include_lines(patterns):
+    return "".join(f"        include '{pattern}'\n" for pattern in patterns)
+
+
+def gradle_include_lines_kts(patterns):
+    return "".join(f'    include("{pattern}")\n' for pattern in patterns)
+
+
+def resolve_generated_test_path(path, test_path):
+    normalized = str(test_path or "").replace("\\", "/")
+    candidates = [
+        Path(normalized),
+        Path(normalized.replace("repos/", "compiledrepos/", 1)),
+    ]
+    if "repos/" in normalized:
+        rel = normalized.split("repos/", 1)[1]
+        current = Path(path).resolve()
+        for _ in range(8):
+            candidates.append(current / "compiledrepos" / rel)
+            candidates.append(current / rel)
+            if current.parent == current:
+                break
+            current = current.parent
+    for candidate in candidates:
+        if candidate.exists():
+            return candidate
+    return None
+
+
+def generated_tests_use_testng(path, project_dataframe):
+    for test_path in project_dataframe.get("Test_Path", []):
+        resolved = resolve_generated_test_path(path, test_path)
+        if not resolved or not resolved.exists():
+            continue
+        try:
+            text = resolved.read_text(encoding="utf-8", errors="replace").lower()
+        except Exception:
+            continue
+        if "org.testng" in text or "testng.annotations" in text:
+            return True
+    return False
+
+
+def gradle_command_with_common_exclusions(gradle_cmd, args, path, timeout):
+    command = [gradle_cmd] + args + ["-x", "downloadPortal", "-x", "unzipPortal", "-x", "check"]
+    result = subprocess.run(command, cwd=path, capture_output=True, text=True, timeout=timeout)
+    combined_output = f"{result.stdout}\n{result.stderr}"
+    missing_excluded_task = (
+        "Task 'downloadPortal' not found" in combined_output
+        or "Task 'unzipPortal' not found" in combined_output
+        or "not found in root project" in combined_output
+    )
+    if result.returncode != 0 and missing_excluded_task:
+        command = [gradle_cmd] + args + ["-x", "check"]
+        result = subprocess.run(command, cwd=path, capture_output=True, text=True, timeout=timeout)
+    return result
+
+
+def normalize_gradle_rel_path(value):
+    value = str(value or "").replace("\\", "/").strip()
+    if value in {"", ".", "None", "none", "nan"}:
+        return ""
+    return value.strip("/")
+
+
+def repo_root_from_module_path(path, module):
+    current = Path(path).resolve()
+    module_rel = normalize_gradle_rel_path(module)
+    if module_rel:
+        parts = Path(module_rel).parts
+        for _ in parts:
+            current = current.parent
+        return current
+    if current.name == "compiledrepos":
+        return current
+    return current
+
+
+def gradle_task_prefix(module_selector):
+    selector = normalize_gradle_rel_path(module_selector)
+    if not selector:
+        return ""
+    return ":" + selector.replace("/", ":") + ":"
+
+
+def gradle_execution_context(path, project_dataframe):
+    project_df = project_dataframe.copy()
+    if project_df.empty:
+        return Path(path).resolve(), ""
+    first = project_df.iloc[0]
+    module = first.get("Module", "")
+    build_root = normalize_gradle_rel_path(first.get("Build_Root", ""))
+    module_selector = first.get("Module_Selector", "")
+    repo_root = repo_root_from_module_path(path, module)
+    if build_root:
+        execution_dir = repo_root / build_root
+    elif normalize_gradle_rel_path(module_selector):
+        execution_dir = repo_root
+    else:
+        execution_dir = Path(path).resolve()
+    if not execution_dir.exists():
+        execution_dir = Path(path).resolve()
+    return execution_dir, gradle_task_prefix(module_selector)
 
 
 
@@ -261,6 +455,38 @@ def extract_info_build_gradle(path, compiler_search):
 
 
 
+def find_gradle_main_classes_location(location):
+    """
+    Finds the Gradle project directory and compiled main-classes directory for old and new Gradle layouts.
+    """
+    def class_dir_candidates(base):
+        return [
+            os.path.join(base, "build", "classes", "java", "main"),
+            os.path.join(base, "build", "classes", "main"),
+            os.path.join(base, "build", "classes", "kotlin", "main"),
+        ]
+
+    current = os.path.abspath(location)
+    while True:
+        for classes_dir in class_dir_candidates(current):
+            if os.path.isdir(classes_dir):
+                return current, str(Path(classes_dir).resolve())
+        parent = os.path.dirname(current)
+        module_name = os.path.basename(current)
+        if module_name:
+            for relative in [
+                os.path.join("build", module_name, "classes", "java", "main"),
+                os.path.join("build", module_name, "classes", "main"),
+                os.path.join("build", module_name, "classes", "kotlin", "main"),
+            ]:
+                classes_dir = os.path.join(parent, relative)
+                if os.path.isdir(classes_dir):
+                    return current, str(Path(classes_dir).resolve())
+        if parent == current or current == '':
+            return '', ''
+        current = parent
+
+
 def run_evosuite_generation_gradle(focal_path):
     """
     Given a focal class of a Gradle project, it runs EvoSuite to generate the corresponding test class.
@@ -283,17 +509,9 @@ def run_evosuite_generation_gradle(focal_path):
         return False
     name_focal_class = focal_class_path.replace(".java", "").replace("/", ".")
     project = focal_path_norm.split("compiledrepos/")[1].split("/")[0] if "compiledrepos/" in focal_path_norm else ""
-    location = focal_path_abs
-    while not os.path.isdir(os.path.join(location, "build", "classes", "java", "main")):
-        parent = os.path.dirname(location)
-        if parent == location or location == '':
-            location = ''
-            break
-        location = parent
-    if location != '':
-        project_cp = str(Path(location, "build", "classes", "java", "main").resolve())
-    else:
-        utils.append_phase_log("evosuite_generate", project=project, arm="evosuite", focal_class=name_focal_class.split(".")[-1], status="FAIL", started_at=started_at, detail="missing build/classes/java/main")
+    location, project_cp = find_gradle_main_classes_location(focal_path_abs)
+    if location == '':
+        utils.append_phase_log("evosuite_generate", project=project, arm="evosuite", focal_class=name_focal_class.split(".")[-1], status="FAIL", started_at=started_at, detail="missing Gradle main classes directory; checked build/classes/java/main, build/classes/main, build/classes/kotlin/main")
         return False
 
     command = [
@@ -400,19 +618,15 @@ def run_gradle_test_command(path, project_dataframe, system):
     project = str(project_df.iloc[0].get('Project', '')) if not project_df.empty else ''
     module = str(project_df.iloc[0].get('Module', '')) if not project_df.empty and 'Module' in project_df.columns else ''
     try:
-        # Create -Dtest= parameter only for the test classes that exist
-        test_classes = project_df['Test_Path'].tolist()
-        result = None
-        # convert the test pathresult =  to the correct format cut after test/java/
-        test_classes = [test_path.split('test/java/')[1].replace('/', '.').replace('.java', '') for test_path in
-                        test_classes]
-        test_classes = ','.join(test_classes)
-        test_classes = f'--tests={test_classes}'
-        print(f"Test classes: {test_classes}")
-        subprocess.check_call(['java', '-version'])
+        test_classes = gradle_test_classes(project_df)
+        test_detail = ",".join(test_classes)
+        framework_args = ["-Prbl4TestFramework=testng"] if generated_tests_use_testng(path, project_df) else []
+        print(f"Test classes: {test_detail}")
+        subprocess.check_call([java_command(), '-version'])
+        execution_dir, task_prefix = gradle_execution_context(path, project_df)
         # Find gradlew / gradlew.bat by checking path and parent directories
         gradlew_name = 'gradlew.bat' if system == 'Windows' else 'gradlew'
-        curr = path
+        curr = str(execution_dir)
         gradlew_path = None
         for _ in range(4):
             candidate = os.path.join(curr, gradlew_name)
@@ -429,111 +643,303 @@ def run_gradle_test_command(path, project_dataframe, system):
         else: 
             gradle_cmd = gradlew_path if gradlew_path else 'gradle'
 
-        result = subprocess.run(
-                [gradle_cmd, 'clean', 'test', test_classes, 'pitest', '-x', 'downloadPortal', '-x', 'unzipPortal', '-x', 'check'], cwd=path, capture_output=True, text=True, timeout=900)
-        combined_output = f"{result.stdout}\n{result.stderr}"
-        missing_excluded_task = (
-            "Task 'downloadPortal' not found" in combined_output
-            or "Task 'unzipPortal' not found" in combined_output
-            or "not found in root project" in combined_output
+        test_started_at = time.time()
+        result = gradle_command_with_common_exclusions(
+            gradle_cmd,
+            framework_args + [f'{task_prefix}clean', f'{task_prefix}test', f'{task_prefix}jacocoTestReport'],
+            str(execution_dir),
+            timeout=900,
         )
-        if result.returncode != 0 and missing_excluded_task:
-            result = subprocess.run(
-                    [gradle_cmd, 'clean', 'test', test_classes, 'pitest', '-x', 'check'], cwd=path, capture_output=True, text=True, timeout=900)
-        if result.stdout.__contains__("BUILD SUCCESSFUL"):  
-            utils.append_phase_log("gradle_test_jacoco_pitest", project=project, module=module, status="PASS", started_at=started_at, detail=test_classes)
-            return True, None
-        else:
+        if result.returncode != 0:
             errori = errorCorrection.extract_gradle_errors(result.stdout, result.stderr)
             print("\n--------------------")
             print(errori)
             print("\n--------------------")
-            utils.append_phase_log("gradle_test_jacoco_pitest", project=project, module=module, status="FAIL", started_at=started_at, detail=errori)
+            detail = f"cwd={execution_dir}; tasks={task_prefix}test,{task_prefix}jacocoTestReport; {errori}"
+            utils.append_phase_log("gradle_test_jacoco", project=project, module=module, status="FAIL", started_at=test_started_at, detail=detail)
+            utils.append_phase_log("gradle_test_jacoco_pitest", project=project, module=module, status="FAIL", started_at=started_at, detail=detail)
             return False, errori
+
+        utils.append_phase_log("gradle_test_jacoco", project=project, module=module, status="PASS", started_at=test_started_at, detail=f"cwd={execution_dir}; tasks={task_prefix}test,{task_prefix}jacocoTestReport; tests={test_detail}")
+
+        pit_started_at = time.time()
+        pit_result = gradle_command_with_common_exclusions(
+            gradle_cmd,
+            framework_args + [f'{task_prefix}pitest'],
+            str(execution_dir),
+            timeout=int(os.getenv("RBL4_GRADLE_PIT_TIMEOUT_SECONDS", "900")),
+        )
+        if pit_result.returncode != 0:
+            errori = errorCorrection.extract_gradle_errors(pit_result.stdout, pit_result.stderr)
+            print("\n--------------------")
+            print(errori)
+            print("\n--------------------")
+            utils.append_phase_log("gradle_pitest", project=project, module=module, status="FAIL", started_at=pit_started_at, detail=f"cwd={execution_dir}; task={task_prefix}pitest; {errori}")
+            utils.append_phase_log(
+                "gradle_test_jacoco_pitest",
+                project=project,
+                module=module,
+                status="PASS",
+                started_at=started_at,
+                detail=f"cwd={execution_dir}; tests={test_detail}; pitest_failed_after_successful_test_jacoco: {errori}",
+            )
+            return True, errori
+
+        utils.append_phase_log("gradle_pitest", project=project, module=module, status="PASS", started_at=pit_started_at, detail=f"cwd={execution_dir}; task={task_prefix}pitest; tests={test_detail}")
+        utils.append_phase_log("gradle_test_jacoco_pitest", project=project, module=module, status="PASS", started_at=started_at, detail=f"cwd={execution_dir}; tests={test_detail}")
+        return True, None
             
     except Exception as e:
             utils.append_phase_log("gradle_test_jacoco_pitest", project=project, module=module, status="ERROR", started_at=started_at, detail=e)
             print(e)
-            return False
+            return False, str(e)
     
 
 
-def edit_build_gradle_file(path, project_dataframe, junit_version):
+def edit_build_gradle_file(path, project_dataframe, junit_version, testng_version=None, compiler_version=None):
     """
-    Edits the build.gradle file to add Jacoco and PITest dependencies
-        Parameters:
-                    project_path: the path of the project or of the module
-                    project_dataframe (Dataframe): the dataframe containing all the focal classes and test classes that are to be executed with PITest 
-                    junit_version: the JUnit version of the Gradle project, "None" if the project does not include the JUnit framework
-
-        Returns:
-                    build_gradle_content: the content of the build.gradle file before the edit (if the build.gradle file has been edited successfully),'False' if the 'pistest' or 'jacoco' dependency has already been implemented (currently, it is not possible to edit the build.gradle file if it already has the PITest or Jacoco dependency implemented), 'None' if an error occured
+    Edits the build.gradle file to add JaCoCo and PIT dependencies.
+    The injected Gradle syntax is selected from the project Gradle version so
+    old wrappers such as Gradle 2.x/5.x are not broken by modern plugin APIs.
     """
     project_df = project_dataframe.copy()
     build_gradle_path = os.path.join(path, 'build.gradle')
     build_gradle_kts_path = os.path.join(path, 'build.gradle.kts')
-    # Get the test classes
-    test_classes = project_df['Test_Path'].tolist()
-    test_classes = [test_path.split('test/java/')[1].replace('/', '.').replace('.java', '') for test_path in
-                    test_classes]
-    for i in range(len(test_classes)):
-        test_classes[i] = "'" + test_classes[i] + "'"
-    test_classes = ','.join(test_classes)
 
-    # Get the focal classes
+    test_class_names = gradle_test_classes(project_df)
+    test_classes = gradle_quoted_list(test_class_names)
+    test_classes_kts = gradle_kts_quoted_list(test_class_names)
+    test_include_patterns = gradle_test_include_patterns(test_class_names)
+    test_include_config = gradle_include_lines(test_include_patterns)
+    test_include_config_kts = gradle_include_lines_kts(test_include_patterns)
+
     focal_classes = project_df['Focal_Path'].tolist()
-    focal_classes = [focal_path.split('main/java/')[1].replace('/', '.').replace('.java', '') for focal_path in
-                    focal_classes]
-    for i in range(len(focal_classes)):
-        focal_classes[i] = "'" + focal_classes[i] + "'"
-    focal_classes = ','.join(focal_classes)
+    focal_classes = [focal_path.split('main/java/')[1].replace('/', '.').replace('.java', '') for focal_path in focal_classes]
+    focal_classes_groovy = gradle_quoted_list(focal_classes)
+    focal_classes_kts = gradle_kts_quoted_list(focal_classes)
 
+    pitest_plugin_version = pitest_plugin_version_for_gradle(compiler_version)
+    junit5_pitest_config = f"        junit5PluginVersion = '{PITEST_JUNIT5_PLUGIN_VERSION}'\n" if is_junit5_project(junit_version) else ""
+    junit5_pitest_config_kts = f'        junit5PluginVersion.set("{PITEST_JUNIT5_PLUGIN_VERSION}")\n' if is_junit5_project(junit_version) else ""
+    if gradle_version_at_least(compiler_version, 7, 0):
+        junit_dependency = """
+    dependencies {
+        testImplementation 'junit:junit:4.13.2'
+        testRuntimeOnly 'org.hamcrest:hamcrest-core:1.3'
+    }
+"""
+        junit_dependency_kts = """
+dependencies {
+    "testImplementation"("junit:junit:4.13.2")
+    "testRuntimeOnly"("org.hamcrest:hamcrest-core:1.3")
+}
+"""
+    else:
+        junit_dependency = """
+    dependencies {
+        testCompile 'junit:junit:4.13.2'
+        testRuntime 'org.hamcrest:hamcrest-core:1.3'
+    }
+"""
+        junit_dependency_kts = """
+dependencies {
+    "testCompile"("junit:junit:4.13.2")
+    "testRuntime"("org.hamcrest:hamcrest-core:1.3")
+}
+"""
+
+    if gradle_version_at_least(compiler_version, 7, 0):
+        jacoco_reports_config = """            xml.required = false
+            html.required = false
+            csv.required = true
+            csv.outputLocation = file("${buildDir}/reports/jacoco/jacoco.csv")
+"""
+        jacoco_reports_config_kts = """            xml.required.set(false)
+            html.required.set(false)
+            csv.required.set(true)
+            csv.outputLocation.set(file("${buildDir}/reports/jacoco/jacoco.csv"))
+"""
+    else:
+        jacoco_reports_config = """            xml.enabled = false
+            html.enabled = false
+            csv.enabled = true
+            csv.destination file("${buildDir}/reports/jacoco/jacoco.csv")
+"""
+        jacoco_reports_config_kts = """            xml.isEnabled = false
+            html.isEnabled = false
+            csv.isEnabled = true
+            csv.destination = file("${buildDir}/reports/jacoco/jacoco.csv")
+"""
+
+    if gradle_version_at_least(compiler_version, 4, 7):
+        test_filter_config = """        filter {
+            setFailOnNoMatchingTests(false)
+        }
+"""
+        test_filter_config_kts = """        filter {
+            setFailOnNoMatchingTests(false)
+        }
+"""
+    else:
+        test_filter_config = ""
+        test_filter_config_kts = ""
+
+    if is_testng_project(testng_version):
+        testng_pitest_dependency_version = testng_pitest_dependency_for_plugin(pitest_plugin_version)
+        if testng_pitest_dependency_version:
+            testng_dependency = f"""
+    dependencies {{
+        pitest 'org.pitest:pitest-testng-plugin:{testng_pitest_dependency_version}'
+    }}
+"""
+            testng_dependency_kts = f"""
+    dependencies {{
+        "pitest"("org.pitest:pitest-testng-plugin:{testng_pitest_dependency_version}")
+    }}
+"""
+            testng_pitest_config = """        if (project.hasProperty('rbl4TestFramework') && project.property('rbl4TestFramework') == 'testng') {
+            testPlugin = 'testng'
+        }
+"""
+            testng_pitest_config_kts = """    if ((project.findProperty("rbl4TestFramework") as String?) == "testng") {
+        testPlugin.set("testng")
+    }
+"""
+        else:
+            testng_dependency = ""
+            testng_dependency_kts = ""
+            testng_pitest_config = ""
+            testng_pitest_config_kts = ""
+        testng_test_config = """        if (project.hasProperty('rbl4TestFramework') && project.property('rbl4TestFramework') == 'testng') {
+            useTestNG()
+        }
+"""
+        testng_test_config_kts = """    if ((project.findProperty("rbl4TestFramework") as String?) == "testng") {
+        useTestNG()
+    }
+"""
+    else:
+        testng_dependency = ""
+        testng_dependency_kts = ""
+        testng_pitest_config = ""
+        testng_pitest_config_kts = ""
+        testng_test_config = ""
+        testng_test_config_kts = ""
 
     if os.path.exists(build_gradle_path):
         try:
-            # Read the build.gradle content
+            with open(build_gradle_path, 'r') as file:
+                build_gradle_content = file.read()
+        except Exception as e:
+            print(e)
+            return None
+
+        add_dependecies = f"""buildscript {{
+    repositories {{
+        mavenCentral()
+    }}
+    dependencies {{
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:{pitest_plugin_version}'
+        classpath 'org.jacoco:org.jacoco.core:0.8.9'
+    }}
+}}
+
+"""
+        configure_measurement = f"""
+
+allprojects {{
+    apply plugin: 'java'
+    apply plugin: 'info.solidsoft.pitest'
+    apply plugin: 'jacoco'
+
+    repositories {{
+        mavenCentral()
+    }}
+{junit_dependency}
+{testng_dependency}
+    pitest {{
+{junit5_pitest_config}{testng_pitest_config}        targetTests = [{test_classes}]
+        targetClasses = [{focal_classes_groovy}]
+        outputFormats = ['csv']
+        threads = 4
+        failWhenNoMutations = false
+    }}
+
+    jacoco {{
+        toolVersion = '{GRADLE_JACOCO_TOOL_VERSION}'
+    }}
+
+    jacocoTestReport {{
+        dependsOn test
+        reports {{
+{jacoco_reports_config}        }}
+    }}
+
+    test {{
+{testng_test_config}{test_include_config}{test_filter_config}        finalizedBy jacocoTestReport
+    }}
+}}
+"""
+        old_build_gradle_content = build_gradle_content
+        build_gradle_content = add_dependecies + build_gradle_content + configure_measurement
+        try:
+            with open(build_gradle_path, 'w') as file:
+                file.write(build_gradle_content)
+        except Exception as e:
+            print(e)
+            return None
+        return old_build_gradle_content
+
+    if os.path.exists(build_gradle_kts_path):
+        try:
             with open(build_gradle_kts_path, 'r') as file:
                 build_gradle_content = file.read()
         except Exception as e:
             print(e)
             return None
 
-        # RBL4 v2: do not skip a sandboxed Gradle module merely because it already
-        # mentions JaCoCo/PIT. The original file is restored after the isolated run.
-        if False and (build_gradle_content.__contains__("pitest") or (build_gradle_content.__contains__("jacoco"))):
-            return False
-        else:
-            if junit_version.startswith('5'):
-                add_dependecies=f"""buildscript {{\n    repositories {{\n        mavenCentral()\n    }}\n    dependencies {{\n        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0'\n        classpath 'org.jacoco:org.jacoco.core:0.8.9'\n    }}\n}}\\n\\nallprojects {{\n    apply plugin: 'java'\n    apply plugin: 'info.solidsoft.pitest'\n    apply plugin: 'jacoco'\n\n    pitest{{\n        junit5PluginVersion = '1.2.1'\n        targetTests = [{test_classes}] \n        targetClasses = [{focal_classes}]\n        outputFormats = ['csv']\n        threads = 4\n        failWhenNoMutations = false\n    }}\n    \n    jacocoTestReport {{\n        dependsOn test\n        reports {{\n            xml.required= false\n            html.required = false\n            csv.required = true\n            csv.destination file("${{buildDir}}/reports/jacoco/jacoco.csv")\n    }}\n }}\n    test {{\n        filter{{\n            setFailOnNoMatchingTests(false)\n        }}\n        finalizedBy jacocoTestReport \n    }}\n\n}}\n"""
-            else:
-                add_dependecies=f"""buildscript {{\n    repositories {{\n        mavenCentral()\n    }}\n    dependencies {{\n        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0'\n        classpath 'org.jacoco:org.jacoco.core:0.8.9'\n    }}\n}}\n\nallprojects {{\n    apply plugin: 'java'\n    apply plugin: 'info.solidsoft.pitest'\n    apply plugin: 'jacoco'\n\n    pitest{{\n           targetTests = [{test_classes}] \n        targetClasses = [{focal_classes}]\n        outputFormats = ['csv']\n        threads = 4\n        failWhenNoMutations = false\n    }}\n    \n    jacocoTestReport {{\n        dependsOn test\n        reports {{\n            xml.required= false\n            html.required = false\n            csv.required = true\n            csv.destination file("${{buildDir}}/reports/jacoco/jacoco.csv")\n    }}\n }}\n    test {{\n        filter{{\n            setFailOnNoMatchingTests(false)\n        }}\n        finalizedBy jacocoTestReport \n    }}\n\n}}\n"""
-            old_build_gradle_content = build_gradle_content
-            build_gradle_content = add_dependecies + build_gradle_content
-            try:
-                with open(build_gradle_path, 'w') as file:
-                    file.write(build_gradle_content)
-            except Exception as e:
-                print(e)
-                return None
-            return old_build_gradle_content
-    elif os.path.exists(build_gradle_kts_path):
-        try:
-            # Read the build.gradle content
-            with open(build_gradle_path, 'r') as file:
-                build_gradle_content = file.read()
-        except Exception as e:
-            print(e)
-            return None
-        # RBL4 v2: do not skip a sandboxed Gradle module merely because it already
-        # mentions JaCoCo/PIT. The original file is restored after the isolated run.
-        if False and (build_gradle_content.__contains__("pitest") or (build_gradle_content.__contains__("jacoco"))):
-            return False
-        if junit_version.startswith('5'):
-            add_dependecies = f"""buildscript {{\n    repositories {{\n        mavenCentral()\n    }}\n    dependencies {{\n        classpath ("info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0")\n        classpath ("org.jacoco:org.jacoco.core:0.8.9")\n    }}\n}}\\n\\nallprojects {{\n    apply(plugin = "java")\n    apply(plugin = "info.solidsoft.pitest")\n    apply(plugin = "jacoco")\n\n    pitest{{\n        junit5PluginVersion = '1.2.1'\n        targetTests = listOf({test_classes}) \n        targetClasses = listOf({focal_classes})\n        outputFormats = listOf("csv")\n        threads = 4\n        failWhenNoMutations = false\n    }}\n    \n    jacocoTestReport {{\n        dependsOn ("test")\n        reports {{\n            xml.required= false\n            html.required = false\n            csv.required = true\n            csv.destination(file("${{buildDir}}/reports/jacoco/jacoco.csv"))\n    }}\n }}\n    task.named("test") {{\n        filter{{\n            setFailOnNoMatchingTests(false)\n        }}\n        finalizedBy ("jacocoTestReport") \n    }}\n\n}}\n"""
-        else:
-            add_dependecies = f"""buildscript {{\n    repositories {{\n        mavenCentral()\n    }}\n    dependencies {{\n        classpath ("info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0")\n        classpath ("org.jacoco:org.jacoco.core:0.8.9")\n    }}\n}}\\n\\nallprojects {{\n    apply(plugin = "java")\n    apply(plugin = "info.solidsoft.pitest")\n    apply(plugin = "jacoco")\n\n    pitest{{\n        targetTests = listOf({test_classes}) \n        targetClasses = listOf({focal_classes})\n        outputFormats = listOf("csv")\n        threads = 4\n        failWhenNoMutations = false\n    }}\n    \n    jacocoTestReport {{\n        dependsOn ("test")\n        reports {{\n            xml.required= false\n            html.required = false\n            csv.required = true\n            csv.destination(file("${{buildDir}}/reports/jacoco/jacoco.csv"))\n    }}\n }}\n    task.named("test") {{\n        filter{{\n            setFailOnNoMatchingTests(false)\n        }}\n        finalizedBy ("jacocoTestReport") \n    }}\n\n}}\n"""
         old_build_gradle_content = build_gradle_content
-        build_gradle_content = add_dependecies + build_gradle_content
+        plugin_lines = f'    id("info.solidsoft.pitest") version "{pitest_plugin_version}"\n    jacoco\n'
+        if re.search(r'(?m)^\s*plugins\s*\{', build_gradle_content):
+            build_gradle_content = re.sub(
+                r'(?m)^(\s*plugins\s*\{\s*)',
+                lambda match: match.group(1) + "\n" + plugin_lines,
+                build_gradle_content,
+                count=1,
+            )
+        else:
+            build_gradle_content = f"plugins {{\n{plugin_lines}}}\n\n" + build_gradle_content
+
+        configure_measurement = f"""
+
+repositories {{
+    mavenCentral()
+}}
+{junit_dependency_kts}
+{testng_dependency_kts}
+pitest {{
+{junit5_pitest_config_kts}{testng_pitest_config_kts}    targetTests.set(setOf({test_classes_kts}))
+    targetClasses.set(setOf({focal_classes_kts}))
+    outputFormats.set(setOf("csv"))
+    threads.set(4)
+    failWhenNoMutations.set(false)
+}}
+
+extensions.configure<org.gradle.testing.jacoco.plugins.JacocoPluginExtension>("jacoco") {{
+    toolVersion = "{GRADLE_JACOCO_TOOL_VERSION}"
+}}
+
+tasks.named<org.gradle.testing.jacoco.tasks.JacocoReport>("jacocoTestReport") {{
+    dependsOn(tasks.named("test"))
+    reports {{
+{jacoco_reports_config_kts}    }}
+}}
+
+tasks.named<org.gradle.api.tasks.testing.Test>("test") {{
+{testng_test_config_kts}{test_include_config_kts}{test_filter_config_kts}    finalizedBy("jacocoTestReport")
+}}
+"""
+        build_gradle_content = build_gradle_content + configure_measurement
         try:
             with open(build_gradle_kts_path, 'w') as file:
                 file.write(build_gradle_content)
@@ -541,8 +947,8 @@ def edit_build_gradle_file(path, project_dataframe, junit_version):
             print(e)
             return None
         return old_build_gradle_content
-    else:
-        return None
+
+    return None
     
 
 
@@ -592,13 +998,12 @@ def process_gradle_project(project, test_types, techniques, project_path, projec
                 0(int) if the process failed.
     """
     swtich_to_next_project = False
-    if testng_version is not None:
-        print(f"{project} skipped because pitest is not compatible with testng on gradle projects. Switch to next project...")
-        return 0 # Switch to next project
+    if is_testng_project(testng_version):
+        print(f"{project} is a Gradle TestNG project; enabling TestNG execution and PIT TestNG plugin support.")
     gradle_directory = r"/Gradle"
     utils.set_gradle_variable(gradle_directory, '8', system)
     # add jacoco and pitest dependecies to build.gradle
-    original_build_gradle = edit_build_gradle_file(project_path, project_df, junit_version)
+    original_build_gradle = edit_build_gradle_file(project_path, project_df, junit_version, testng_version, compiler_version)
     if(original_build_gradle==False):
         print(f"{project} skipped because pitest or jacoco is already implemented in the build.gradle file. Switch to next project...")
         return 0 # Switch to next project
@@ -859,7 +1264,7 @@ def process_gradle_project(project, test_types, techniques, project_path, projec
                     testing_framework = None
                     if junit_version is not None:
                         testing_framework = 'Junit version ' + junit_version
-                    elif testng_version is not None:
+                    elif is_testng_project(testng_version):
                         testing_framework = 'testNG version ' + testng_version
                     try:
                         focal_class = utils.read_text_file(focal_path)
@@ -1016,13 +1421,12 @@ def process_gradle_module(project, module, test_types, techniques, path, module_
     Returns:
                 0(int) if the process failed.
     """
-    if testng_version is not None:
-        print(f"{project} skipped because pitest is not compatible with testng on gradle projects. Switch to next project/module...")
-        return 0 # Switch to next project or module
+    if is_testng_project(testng_version):
+        print(f"{project}_{module} is a Gradle TestNG module; enabling TestNG execution and PIT TestNG plugin support.")
     gradle_directory = r"/Gradle"
     utils.set_gradle_variable(gradle_directory, '8', system)
     # add jacoco and pitest dependecies to build.gradle
-    original_build_gradle = edit_build_gradle_file(path, module_df, junit_version)
+    original_build_gradle = edit_build_gradle_file(path, module_df, junit_version, testng_version, compiler_version)
     if(original_build_gradle==False):
         print(f"{project} skipped because pitest or jacoco is already implemented in the build.gradle file. Switch to next project/module...")
         return 0 # Switch to next project or module
@@ -1221,7 +1625,7 @@ def process_gradle_module(project, module, test_types, techniques, path, module_
                     print("The test smell detector ended successfully")  
                 if last_execution == False: # if last gradle execution outcome is False, then I run one more time gradle
                     print("--//loading gradle execution..//")
-                    if run_gradle_test_command(path, module, system)[0]==False: # if error while running gradle
+                    if run_gradle_test_command(path, module_df, system)[0]==False: # if error while running gradle
                         print('An error occured while trying to execute the final version of test classes.\n')
                         try:
                             write_build_gradle(path, build_gradle_before_evosuite)
@@ -1280,7 +1684,7 @@ def process_gradle_module(project, module, test_types, techniques, path, module_
                     testing_framework = None
                     if junit_version is not None:
                         testing_framework = 'Junit version ' + junit_version
-                    elif testng_version is not None:
+                    elif is_testng_project(testng_version):
                         testing_framework = 'testNG version ' + testng_version
                     try:
                         focal_class = utils.read_text_file(focal_path)
