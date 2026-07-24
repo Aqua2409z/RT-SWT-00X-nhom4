@@ -1,19 +1,20 @@
 # Legacy sampling snapshot
 
-Các file trong thư mục này được chuyển nguyên trạng từ `data/` để tránh bị hiểu
-nhầm là kết quả Data V3.
+The files in this directory were moved unchanged from the former `data/` root
+so that they cannot be mistaken for Data V3 results.
 
-Snapshot lịch sử này báo cáo 33 repository, 300 main class và 58 backup class.
-Nó còn chứa lệnh build với đường dẫn tuyệt đối của máy thu thập dữ liệu và một
-số dòng pilot ở trạng thái `PENDING`. Phương pháp lấy mẫu cũng dùng CC làm biến
-eligibility/phân bổ, khác với protocol V3 đã đóng băng.
+This historical snapshot reports 33 repositories, 300 main classes, and 58
+backup classes. It also contains build commands with creator-machine absolute
+paths and pilot rows still marked `PENDING`. Its sampling methodology uses CC
+for eligibility and allocation, unlike the frozen V3 protocol.
 
-Không dùng snapshot này cho:
+Do not use this snapshot for:
 
-- input của GPT hoặc EvoSuite;
-- thống kê dataset trong paper hiện tại;
-- tái build 30 repository V3;
-- thay thế manifest chính thức tại `../../v3/`.
+- GPT or EvoSuite inputs;
+- dataset statistics in the current paper;
+- replaying the 30 Data V3 repositories;
+- replacing the canonical manifests under `../../v3/`.
 
-Việc lưu snapshot trong Git chỉ nhằm bảo toàn provenance và khả năng giải thích
-sự thay đổi phương pháp giữa các vòng nghiên cứu.
+The original files include Vietnamese historical documentation. They remain
+byte-for-byte unchanged because they are immutable provenance, not current
+project documentation.

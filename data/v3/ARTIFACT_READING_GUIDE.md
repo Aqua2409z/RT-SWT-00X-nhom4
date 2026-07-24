@@ -1,106 +1,114 @@
-# Hướng dẫn đọc và kiểm tra artifact Data V3
+# Data V3 artifact reading and verification guide
 
-Tài liệu này mô tả snapshot ngay sau khi Step 003 hoàn thành. Ba file
-`ARTIFACT_READING_GUIDE.md`, `build_recipes_portable.csv` và
-`BUILD_EVIDENCE_SHA256SUMS.csv` là artifact dẫn xuất; chúng không thay thế và
-không sửa lịch sử gốc.
+This guide describes the snapshot immediately after Step 003. The files
+`ARTIFACT_READING_GUIDE.md`, `build_recipes_portable.csv`, and
+`BUILD_EVIDENCE_SHA256SUMS.csv` are derived artifacts. They do not replace or
+rewrite the original execution history.
 
-## Trạng thái Step 003 đã niêm phong
+## Sealed Step 003 state
 
-- 30 repository qualified, mỗi repository có một exact commit.
-- Tất cả baseline build được thực hiện bằng effective JDK 8.
-- 678 class đồng thời đạt structural eligibility và thuộc build scope PASS.
-- Mỗi repository có 12–71 class như trên.
-- 48 winning build scope duy nhất thuộc 30 repository.
-- 43 scope Maven và 5 scope Gradle.
-- Không winning recipe nào sửa source/build/dependency file.
-- Không winning recipe nào dùng ancillary-skip hoặc external-repository fallback.
+- 30 repositories qualified, each at one exact commit.
+- All baseline builds used JDK 8 as the effective runtime.
+- 678 classes passed structural eligibility and belonged to a passing build
+  scope.
+- Each qualified repository contributed between 12 and 71 such classes.
+- The final 30 repositories contain 48 unique winning build scopes.
+- The winning scopes comprise 43 Maven scopes and 5 Gradle scopes.
+- No winning recipe modified source, build, or dependency files.
+- No winning recipe used an ancillary-skip or external-repository fallback.
 
-Marker chính thức là `state/step003.done.json`. Các file mới trong tài liệu này
-không được mô tả như output gốc của marker Step 003.
+The authoritative marker is `state/step003.done.json`. The derived files listed
+above must not be described as original outputs recorded by that marker.
 
-## Thứ tự đọc
+## Recommended reading order
 
-| Thứ tự | File | Ý nghĩa |
+| Order | File | Meaning |
 |---:|---|---|
-| 1 | `state/step003.done.json` | Marker PASS, checksum output lõi và tổng số repository/class. |
-| 2 | `successful_repos_manifest.csv` | 30 repository cuối, URL, exact commit, số class buildable và vị trí clone. |
-| 3 | `build_recipes.jsonl` | 48 winning recipe chính xác như đã chạy trên máy gốc. |
-| 4 | `build_recipes_portable.csv` | Bản dẫn xuất có placeholder để replay trên máy khác. |
-| 5 | `class_metrics_all.csv` | Metric của mọi focal class thuộc 30 repository cuối. |
-| 6 | `excluded_classes_log.csv` | Class bị loại vì eligibility hoặc vì build scope không PASS. |
-| 7 | `build_attempts.csv` | Nhật ký mọi attempt, kể cả repo bị loại, retry và resume. |
-| 8 | `logs/build/*.log` | stdout/stderr thô của từng build attempt. |
-| 9 | `BUILD_EVIDENCE_SHA256SUMS.csv` | SHA-256 dùng để phát hiện artifact/log bị thay đổi sau khi niêm phong. |
+| 1 | `state/step003.done.json` | PASS marker, core-output checksums, and repository/class totals. |
+| 2 | `successful_repos_manifest.csv` | The final 30 repositories, URLs, exact commits, buildable-class counts, and checkout locations. |
+| 3 | `build_recipes.jsonl` | The 48 winning recipes exactly as executed on the creator machine. |
+| 4 | `build_recipes_portable.csv` | Derived replay templates with machine-independent placeholders. |
+| 5 | `class_metrics_all.csv` | Metrics for every focal class in the final repositories. |
+| 6 | `excluded_classes_log.csv` | Classes excluded by structural eligibility or non-passing build scope. |
+| 7 | `build_attempts.csv` | Every attempt, including rejected repositories, retries, and resumed work. |
+| 8 | `logs/build/*.log` | Raw stdout and stderr from each build attempt. |
+| 9 | `BUILD_EVIDENCE_SHA256SUMS.csv` | SHA-256 values for detecting post-seal evidence changes. |
 
-## Cách hiểu `build_attempts.csv`
+## Understanding `build_attempts.csv`
 
-`build_attempts.csv` là audit trail, không phải danh sách build cuối. Snapshot này
-có 1.422 attempt thuộc 69 repository đã đi đến bước build; 1.335 attempt failed
-và 87 attempt success. Queue đầy đủ có 30 qualified, 68 rejected và 1.150 pending
-khi pipeline dừng vì đã đủ 30 repository.
+`build_attempts.csv` is an audit trail, not the final build list. The snapshot
+contains 1,422 attempts across 69 repositories that reached the build stage:
+1,335 failed attempts and 87 successful attempts. When the target of 30
+qualified repositories was reached, the full queue contained 30 qualified, 68
+rejected, and 1,150 still-pending repositories.
 
-Một scope có thể fail rồi success vì recipe ladder được khai báo trước:
+A scope may fail and later pass because the recipe ladder was declared in
+advance:
 
-1. thử module trực tiếp;
-2. thử biến thể policy đã đăng ký;
-3. thử Maven reactor với `-pl <module> -am`, hoặc scope Gradle tương ứng;
-4. chỉ khi đúng category cho phép mới thử fallback tiếp theo.
+1. try the module directly;
+2. try a registered policy variant;
+3. try the Maven reactor with `-pl <module> -am`, or the equivalent Gradle scope;
+4. continue to another fallback only for an allowed failure category.
 
-Do đó fail rồi success không có nghĩa pipeline sửa code để ép build. Ví dụ module
-Maven có thể không tự resolve được dependency từ module anh em, trong khi reactor
-build thành công vì build luôn upstream module.
+Therefore, a fail-then-pass sequence does not imply that the pipeline edited
+code to force a successful build. For example, a Maven module may fail to
+resolve a sibling dependency when built alone but pass in a reactor build that
+also builds the upstream module.
 
-Một repository cũng có thể có nhiều scope chứa focal classes. Vì vậy 30 repository
-có tổng cộng 48 winning scopes.
+A repository may contain multiple scopes with eligible focal classes. This is
+why the final 30 repositories have 48 winning scopes.
 
-Hai repository qualified có success row lặp do lịch sử resume:
+Two qualified repositories contain repeated historical success rows caused by
+resume operations:
 
 - `41627638`
 - `48046454`
 
-Đây là dòng lịch sử, không phải hai winning scope khác nhau.
-`build_recipes.jsonl` và `build_recipes_portable.csv` chỉ có một recipe duy nhất
-cho mỗi `repo_id + scope_key`.
+These are audit-history duplicates, not additional winning scopes.
+`build_recipes.jsonl` and `build_recipes_portable.csv` contain exactly one recipe
+for each `repo_id + scope_key`.
 
-## Cách hiểu eligibility
+## Understanding eligibility
 
-Trong `class_metrics_all.csv`, `eligible_for_sampling=True` mới chỉ nói class đạt
-gate cấu trúc. Class thuộc frame cuối khi đồng thời:
+In `class_metrics_all.csv`, `eligible_for_sampling=True` means only that a class
+passed the structural gates. A class belongs to the final sampling frame only
+when both conditions hold:
 
 ```text
 eligible_for_sampling=True
 build_scope_pass=True
 ```
 
-Snapshot có 1.307 class đạt gate cấu trúc, nhưng chỉ 678 class đồng thời thuộc
-scope build PASS. Step 004 chỉ được lấy mẫu từ giao 678 class này.
+The snapshot contains 1,307 structurally eligible classes, of which 678 also
+belong to passing build scopes. Step 004 samples only from this 678-class
+intersection.
 
-## Cấu trúc `build_recipes_portable.csv`
+## `build_recipes_portable.csv` schema
 
-Mỗi dòng tương ứng đúng một dòng winning recipe trong `build_recipes.jsonl`.
+Each row corresponds to one winning recipe in `build_recipes.jsonl`.
 
-| Cột | Ý nghĩa |
+| Column | Meaning |
 |---|---|
-| `recipe_id` | ID duy nhất của winning recipe. |
-| `repo_url`, `commit_sha` | Nguồn và exact commit phải checkout. |
-| `build_tool`, `scope_key` | Build tool và scope đã được chứng minh PASS. |
-| `build_root_relative`, `module_dir_relative`, `module_selector` | Vị trí build tương đối trong repository. |
-| `working_directory_placeholder` | Luôn là `${REPO_DIR}`. |
-| `portable_command_windows` | Template cho Windows. |
-| `portable_command_posix` | Template cho Linux/macOS. |
-| `validation_log_relative` | Log PASS gốc trong `data_v3`. |
-| `validation_log_sha256` | Hash của log PASS gốc. |
-| `original_command_sha256` | Hash UTF-8 của command tuyệt đối trong JSONL gốc. |
+| `recipe_id` | Unique winning-recipe identifier. |
+| `repo_url`, `commit_sha` | Source repository and exact commit to check out. |
+| `build_tool`, `scope_key` | Build tool and scope proven to pass. |
+| `build_root_relative`, `module_dir_relative`, `module_selector` | Build location relative to the repository root. |
+| `working_directory_placeholder` | Always `${REPO_DIR}`. |
+| `portable_command_windows` | Windows command template. |
+| `portable_command_posix` | Linux/macOS command template. |
+| `validation_log_relative` | Original passing log path within `data_v3`. |
+| `validation_log_sha256` | SHA-256 of the original passing log. |
+| `original_command_sha256` | SHA-256 of the UTF-8 absolute command in the original JSONL. |
 
-Portable CSV cố ý không chứa đường dẫn ổ đĩa của máy gốc. `${REPO_DIR}` là token
-phải được thay bằng đường dẫn clone trên máy replay; nó không tự động là biến môi
-trường của CMD, PowerShell hay Bash.
+The portable CSV intentionally excludes creator-machine drive paths.
+`${REPO_DIR}` is a literal runner token that must be replaced with the replay
+checkout path. It is not automatically a CMD, PowerShell, or Bash environment
+variable.
 
-## Replay một winning recipe trên máy khác
+## Replaying one winning recipe
 
-1. Đọc `repo_url` và `commit_sha` từ dòng cần replay.
-2. Clone repository cùng submodule và checkout exact commit:
+1. Read `repo_url` and `commit_sha` from the selected row.
+2. Clone submodules and check out the exact commit:
 
    ```text
    git clone --recurse-submodules <repo_url> <repo_dir>
@@ -108,30 +116,35 @@ trường của CMD, PowerShell hay Bash.
    git -C <repo_dir> submodule update --init --recursive
    ```
 
-3. Dùng JDK 8. Đối chiếu Maven, Gradle và môi trường máy gốc trong
-   `results/environment_versions.json`, `state/preflight.json` và config snapshot.
-4. Chọn `portable_command_windows` hoặc `portable_command_posix`.
-5. Thay literal `${REPO_DIR}` bằng đường dẫn tuyệt đối của clone và chạy command
-   từ chính repository root.
-6. Không sửa source, build file hoặc dependency declaration để đạt PASS.
-7. Lưu stdout/stderr, exit code, tool version và thời điểm replay thành evidence mới;
-   không ghi đè log gốc.
+3. Use JDK 8. Compare Maven, Gradle, and environment details with
+   `results/environment_versions.json`, `state/preflight.json`, and the
+   configuration snapshot.
+4. Select `portable_command_windows` or `portable_command_posix`.
+5. Replace the literal `${REPO_DIR}` with the absolute checkout path and run the
+   command from the recorded build root.
+6. Do not edit source files, build files, or dependency declarations to obtain
+   a pass.
+7. Preserve stdout, stderr, exit code, tool versions, and replay time as new
+   evidence. Never overwrite the original validation log.
 
-Trên POSIX, wrapper có thể cần quyền thực thi. Việc cấp quyền thực thi cho wrapper
-không được phép thay đổi tracked content; kiểm tra lại bằng `git status --porcelain`.
+On POSIX systems, a repository wrapper may require execute permission. Granting
+execute permission must not change tracked file content; verify the checkout
+afterward with `git status --porcelain`.
 
-Các winning command dùng Maven `clean test-compile` hoặc Gradle `testClasses -x test`.
-Chúng compile baseline và test sources nhưng không thực thi test suite. Không được
-mô tả kết quả này là “toàn bộ unit test PASS”.
+Winning Maven commands use `clean test-compile`; winning Gradle commands use
+`testClasses -x test`. These commands compile baseline main and test sources but
+do not execute the full test suite. They must not be reported as “all unit tests
+passed.”
 
-Replay có thể thất bại về sau do repository phụ thuộc bên ngoài biến mất hoặc mạng
-thay đổi. Khi đó phải báo cáo là replay failure cùng môi trường/thời điểm mới, không
-được sửa lịch sử PASS gốc.
+A later replay may fail because an external dependency host, DNS, TLS endpoint,
+or wrapper distribution is no longer available. Report that event as a replay
+failure under the new environment and timestamp. Do not rewrite the original
+passing history.
 
-## Kiểm tra checksum evidence
+## Verifying sealed evidence
 
-Đóng Excel/editor đang mở CSV trước khi kiểm tra. Mở PowerShell tại thư mục
-`data_v3` và chạy:
+Close Excel or any editor that may hold a CSV open. From PowerShell in the
+`data_v3` directory, run:
 
 ```powershell
 $bad = @()
@@ -153,31 +166,39 @@ if ($bad.Count -eq 0) {
 }
 ```
 
-`BUILD_EVIDENCE_SHA256SUMS.csv` bao phủ:
+`BUILD_EVIDENCE_SHA256SUMS.csv` covers:
 
-- attempt audit và deterministic repository queue;
-- exact và portable winning recipes;
-- manifest, class metric frame và excluded-class audit;
-- Step 003 marker, config snapshots, amendment và environment evidence;
-- toàn bộ build, clone, submodule và pipeline-step log có mặt tại thời điểm niêm phong.
+- the build-attempt audit and deterministic repository queue;
+- exact and portable winning recipes;
+- manifests, class metrics, and excluded-class evidence;
+- the Step 003 marker, configuration snapshots, amendments, and environment
+  evidence;
+- all build, clone, submodule, and pipeline-step logs present when the snapshot
+  was sealed.
 
-Checksum manifest không tự chứa checksum của chính nó vì điều đó tạo vòng tham
-chiếu. Nếu bất kỳ evidence gốc nào thay đổi hoặc có log mới, phải tạo một checksum
-manifest phiên bản mới thay vì ghi đè và giả vờ đó là snapshot cũ.
+The checksum manifest cannot contain its own checksum without creating a
+circular reference. If original evidence changes or new logs are added, create
+a new versioned checksum manifest. Never overwrite the prior manifest and
+present it as the original snapshot.
 
-## Kiểm tra tiếp ở Step 004 và Step 005
+## Step 004 and Step 005 verification
 
-Step 004 tạo đúng 300 main và 60 backup bằng deterministic seeded hashing. Seed 42
-nằm trong chuỗi đầu vào SHA-256; SHA-256 tạo thứ tự ổn định chứ không thay thế seed.
-Complexity không tham gia selection.
+Step 004 produces exactly 300 main and 60 backup classes through deterministic
+seeded hashing. Seed 42 is part of the SHA-256 input; SHA-256 provides a stable
+ordering and does not replace the seed. Complexity does not influence selection.
 
-Step 005 tái dựng selection từ frame, kiểm tra 30 × (10 main + 2 backup), uniqueness,
-zero overlap, exact focal paths, effective JDK 8 và chia relative complexity 150/150.
-Chỉ khi tất cả PASS mới tạo `results/RUN_READY` cùng các báo cáo:
+Step 005 reconstructs the selection and verifies:
+
+- 30 × (10 main + 2 backup);
+- uniqueness and zero main/backup overlap;
+- exact focal paths and the effective JDK 8 runtime;
+- two relative complexity halves of 150 classes each.
+
+Only after all checks pass does the pipeline create `results/RUN_READY` and:
 
 - `results/validation_report.md`
 - `results/sampling_methodology.md`
 - `results/data_integrity_report.md`
 - `results/SHA256SUMS.csv`
 
-Không bắt đầu GPT/EvoSuite nếu chưa có `RUN_READY`.
+Do not start GPT or EvoSuite experiments without `RUN_READY`.
