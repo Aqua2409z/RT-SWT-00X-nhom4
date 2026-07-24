@@ -5,6 +5,7 @@ import csv
 import hashlib
 import json
 import os
+import random
 import sys
 import time
 import traceback
@@ -45,22 +46,24 @@ def append_csv(path: Path, row: dict[str, Any], fieldnames: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     for attempt in range(10):
         try:
-            exists = path.exists()
-            with path.open("a", newline="", encoding="utf-8") as f:
-                writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
-                if not exists:
-                    writer.writeheader()
-                writer.writerow(row)
+            with cross_process_file_lock(path):
+                exists = path.exists()
+                with path.open("a", newline="", encoding="utf-8") as f:
+                    writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+                    if not exists:
+                        writer.writeheader()
+                    writer.writerow(row)
             return
-        except PermissionError:
+        except (PermissionError, TimeoutError):
             time.sleep(0.1 * (attempt + 1))
     fallback = path.with_name(path.name + ".fallback.csv")
-    exists = fallback.exists()
-    with fallback.open("a", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
-        if not exists:
-            writer.writeheader()
-        writer.writerow(row)
+    with cross_process_file_lock(fallback):
+        exists = fallback.exists()
+        with fallback.open("a", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+            if not exists:
+                writer.writeheader()
+            writer.writerow(row)
 
 
 def append_jsonl(path: Path, row: dict[str, Any]) -> None:
@@ -68,13 +71,50 @@ def append_jsonl(path: Path, row: dict[str, Any]) -> None:
     line = json.dumps(row, ensure_ascii=False)
     for attempt in range(10):
         try:
-            with path.open("a", encoding="utf-8") as f:
-                f.write(line + "\n")
+            with cross_process_file_lock(path):
+                with path.open("a", encoding="utf-8") as f:
+                    f.write(line + "\n")
             return
-        except PermissionError:
+        except (PermissionError, TimeoutError):
             time.sleep(0.1 * (attempt + 1))
-    with path.with_name(path.name + ".fallback.jsonl").open("a", encoding="utf-8") as f:
-        f.write(line + "\n")
+    with cross_process_file_lock(path.with_name(path.name + ".fallback.jsonl")):
+        with path.with_name(path.name + ".fallback.jsonl").open("a", encoding="utf-8") as f:
+            f.write(line + "\n")
+
+
+class cross_process_file_lock:
+    def __init__(self, target: Path, timeout_sec: float = 60.0) -> None:
+        self.lock_path = target.with_name(target.name + ".lock")
+        self.timeout_sec = timeout_sec
+        self.handle: int | None = None
+
+    def __enter__(self) -> "cross_process_file_lock":
+        self.lock_path.parent.mkdir(parents=True, exist_ok=True)
+        deadline = time.time() + self.timeout_sec
+        while True:
+            try:
+                self.handle = os.open(str(self.lock_path), os.O_CREAT | os.O_EXCL | os.O_RDWR)
+                os.write(self.handle, str(os.getpid()).encode("ascii", errors="ignore"))
+                return self
+            except FileExistsError:
+                try:
+                    if time.time() - self.lock_path.stat().st_mtime > max(self.timeout_sec, 300.0):
+                        self.lock_path.unlink(missing_ok=True)
+                        continue
+                except OSError:
+                    pass
+                if time.time() >= deadline:
+                    raise TimeoutError(f"Timed out waiting for file lock: {self.lock_path}")
+                time.sleep(0.05)
+
+    def __exit__(self, exc_type: Any, exc: Any, tb: Any) -> None:
+        if self.handle is not None:
+            os.close(self.handle)
+            self.handle = None
+        try:
+            self.lock_path.unlink(missing_ok=True)
+        except OSError:
+            pass
 
 
 def message_content(messages: Any) -> str:
@@ -136,7 +176,8 @@ def patch_api_logging() -> None:
             },
         )
         last_exc: BaseException | None = None
-        for attempt in range(1, 4):
+        max_attempts = max(1, int(os.getenv("RBL4_API_MAX_ATTEMPTS", "5")))
+        for attempt in range(1, max_attempts + 1):
             row["attempts"] = attempt
             try:
                 response = original_completion(*args, **kwargs)
@@ -169,8 +210,8 @@ def patch_api_logging() -> None:
                         "error_message": str(exc)[:1000],
                     }
                 )
-                if attempt < 3:
-                    time.sleep(2**attempt)
+                if attempt < max_attempts:
+                    time.sleep(min(60.0, float(2**attempt) + random.uniform(0.0, 1.0)))
         append_csv(api_log, row, API_FIELDS)
         assert last_exc is not None
         raise last_exc

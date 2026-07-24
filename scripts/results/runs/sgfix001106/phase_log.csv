@@ -1,0 +1,16 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T17:11:32+00:00,gradle_test_jacoco,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,PASS,20.304,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgfix001106\001_74999474_d0018ed9\compiledrepos\74999474; tasks=:parsec-clients:test,:parsec-clients:jacocoTestReport; tests=com.yahoo.parsec.clients.ParsecAsyncCompletionHandlerBase_RBL4_d0018ed9Test"
+2026-07-23T17:11:38+00:00,gradle_pitest,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,FAIL,6.43,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgfix001106\001_74999474_d0018ed9\compiledrepos\74999474; task=:parsec-clients:pitest; The following task errors were encountered during the Gradle build:
+
+- parsec-clients"
+2026-07-23T17:11:38+00:00,gradle_test_jacoco_pitest,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,PASS,26.891,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgfix001106\001_74999474_d0018ed9\compiledrepos\74999474; tests=com.yahoo.parsec.clients.ParsecAsyncCompletionHandlerBase_RBL4_d0018ed9Test; pitest_failed_after_successful_test_jacoco: The following task errors were encountered during the Gradle build:
+
+- parsec-clients"
+2026-07-23T17:11:38+00:00,coverage_metric_retrieval,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,WARN,,pit_report_missing; Mutation_Coverage set to 0: compiledrepos/74999474\parsec-clients
+2026-07-23T17:11:48+00:00,gradle_test_jacoco,85795396,metrics-dropwizardmetrics,,14,85795396:metrics-dropwizardmetrics/src/main/java/org/apache/calcite/avatica/metrics/dropwizard/dropwizardgauge.java,,,FAIL,7.805,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgfix001106\014_85795396_3f1ba9c7\compiledrepos\85795396; tasks=:metrics-dropwizardmetrics:test,:metrics-dropwizardmetrics:jacocoTestReport; The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 6s"
+2026-07-23T17:11:48+00:00,gradle_test_jacoco_pitest,85795396,metrics-dropwizardmetrics,,14,85795396:metrics-dropwizardmetrics/src/main/java/org/apache/calcite/avatica/metrics/dropwizard/dropwizardgauge.java,,,FAIL,7.898,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgfix001106\014_85795396_3f1ba9c7\compiledrepos\85795396; tasks=:metrics-dropwizardmetrics:test,:metrics-dropwizardmetrics:jacocoTestReport; The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 6s"
+2026-07-23T17:11:48+00:00,coverage_metric_retrieval,85795396,metrics-dropwizardmetrics,,14,85795396:metrics-dropwizardmetrics/src/main/java/org/apache/calcite/avatica/metrics/dropwizard/dropwizardgauge.java,,,FAIL,,jacoco_report_missing: compiledrepos/85795396\metrics-dropwizardmetrics

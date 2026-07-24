@@ -1,0 +1,17 @@
+sample_index,class_key,project,repo_id,focal_class,module,complexity_half,gpt_strict_mutation_coverage,evosuite_strict_mutation_coverage,strict_mutation_diff_gpt_minus_evosuite,rq4_wilcoxon_shifted_value
+0,3713233:core/src/main/java/org/junithelper/core/file/filesearcherfactory.java,3713233,3713233,FileSearcherFactory,core,lower_complexity_half,100.0,0.0,100.0,105.0
+1,3713233:core/src/main/java/org/junithelper/core/extractor/constructormetaextractor.java,3713233,3713233,ConstructorMetaExtractor,core,higher_complexity_half,11.54,3.85,7.6899999999999995,12.69
+2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,3847504,3847504,QuartzJob,modules/weblounge-common,higher_complexity_half,0.0,0.0,0.0,5.0
+3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,3847504,3847504,PageImpl,modules/weblounge-common,higher_complexity_half,0.0,0.0,0.0,5.0
+4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,39195736,39195736,MissingTranslationsCheck,jproperties-checks,lower_complexity_half,0.0,0.0,0.0,5.0
+5,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/separatorconventioncheck.java,39195736,39195736,SeparatorConventionCheck,jproperties-checks,higher_complexity_half,0.0,0.0,0.0,5.0
+6,41547678:turin-standard-library/src/main/java/turin/context/context.java,41547678,41547678,Context,turin-standard-library,lower_complexity_half,100.0,0.0,100.0,105.0
+7,41547678:turin-compiler/src/main/java/me/tomassetti/turin/resolvers/srcsymbolresolver.java,41547678,41547678,SrcSymbolResolver,turin-compiler,higher_complexity_half,0.0,0.0,0.0,5.0
+8,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/battleship/solution.java,41627638,41627638,Solution,leetcode/battleships-in-a-board,lower_complexity_half,0.0,0.0,0.0,5.0
+9,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/maxpointonline/plainloop/solution.java,41627638,41627638,Solution,leetcode/battleships-in-a-board,higher_complexity_half,0.0,0.0,0.0,5.0
+10,43105609:weixin-mp/src/main/java/com/riversoft/weixin/mp/care/caremessages.java,43105609,43105609,CareMessages,weixin-mp,lower_complexity_half,0.0,0.0,0.0,5.0
+11,43105609:weixin-mp/src/main/java/com/riversoft/weixin/mp/media/materials.java,43105609,43105609,Materials,weixin-mp,higher_complexity_half,0.0,0.0,0.0,5.0
+12,44308560:src/robotframeworkcore/org.robotframework.ide.core-functions/src/main/java/org/rf/ide/core/execution/argumentsfile.java,44308560,44308560,ArgumentsFile,src/RobotFrameworkCore/org.robotframework.ide.core-functions,lower_complexity_half,0.0,0.0,0.0,5.0
+13,44308560:src/robotframeworkcore/org.robotframework.ide.core-functions/src/main/java/org/rf/ide/core/execution/debug/stackframevariables.java,44308560,44308560,StackFrameVariables,src/RobotFrameworkCore/org.robotframework.ide.core-functions,higher_complexity_half,0.0,0.0,0.0,5.0
+14,45997449:webrex/src/main/java/com/ebayopensource/webrex/resource/resourcewrapper.java,45997449,45997449,ResourceWrapper,WebRex,lower_complexity_half,0.0,0.0,0.0,5.0
+15,45997449:webrex/src/main/java/com/ebayopensource/webrex/resource/expression/resourceelevaluator.java,45997449,45997449,ResourceELEvaluator,WebRex,higher_complexity_half,0.0,57.14,-57.14,-52.14

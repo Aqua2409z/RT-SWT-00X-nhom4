@@ -10,7 +10,7 @@ DEFAULT_MODEL = "gpt-4o-mini-2024-07-18"
 DEFAULT_PROMPT = "rbl4-zero-shot"
 
 RunMode = Literal["dry_run", "baseline_only", "report_only", "full_run"]
-SampleKey = Literal["full_300", "custom"]
+SampleKey = Literal["full_300", "pilot_60", "remaining_240", "custom"]
 RunStatus = Literal["queued", "running", "completed", "failed", "cancelled", "unknown"]
 
 
@@ -20,6 +20,7 @@ class RunCreateRequest(BaseModel):
     run_mode: RunMode = "dry_run"
     model: str = DEFAULT_MODEL
     prompt: str = DEFAULT_PROMPT
+    workers: int = Field(default=1, ge=1, le=32)
     resume: bool = False
     clear_agone_output: bool = True
 
@@ -61,6 +62,7 @@ class RunInfo(BaseModel):
     sample_csv: str
     model: str
     prompt: str
+    workers: int | None = None
     created_at: str
     started_at: str | None = None
     completed_at: str | None = None

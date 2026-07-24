@@ -1,0 +1,14 @@
+{
+  "run_id": "debug_baseline_gate_three_after_fix",
+  "status": "completed",
+  "run_mode": "baseline_only",
+  "sample_csv": "D:\\A_ThucNghiem\\scripts_v2\\results\\runs\\debug_baseline_gate_three_manifest.csv",
+  "model": "gpt-4o-mini-2024-07-18",
+  "prompt": "rbl4-zero-shot",
+  "created_at": "2026-07-23T14:07:13+00:00",
+  "started_at": "2026-07-23T14:07:13+00:00",
+  "pid": 17528,
+  "return_code": null,
+  "updated_at": "2026-07-23T14:08:41+00:00",
+  "error": null
+}

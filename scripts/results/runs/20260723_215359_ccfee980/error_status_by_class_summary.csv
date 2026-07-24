@@ -1,0 +1,8 @@
+arm_status,primary_failure_owner,build_tool,classes
+both_fail,generator_output,Maven,16
+gpt_fail_only,generator_output,Maven,15
+both_fail,agonetest_harness,Maven,10
+both_fail,agonetest_harness,Gradle,8
+both_ok,ok,Maven,8
+both_fail,repository_or_environment,Maven,2
+evosuite_fail_only,generator_output,Maven,1

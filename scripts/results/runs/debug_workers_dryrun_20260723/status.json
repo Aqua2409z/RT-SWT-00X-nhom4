@@ -1,0 +1,15 @@
+{
+  "run_id": "debug_workers_dryrun_20260723",
+  "status": "completed",
+  "run_mode": "dry_run",
+  "sample_csv": "D:\\A_ThucNghiem\\scripts_v2\\data_new\\class_sampling_manifest_pilot60_seed42.csv",
+  "model": "gpt-4o-mini-2024-07-18",
+  "prompt": "rbl4-zero-shot",
+  "workers": 2,
+  "created_at": "2026-07-23T14:48:49+00:00",
+  "started_at": "2026-07-23T14:48:49+00:00",
+  "pid": 26872,
+  "return_code": null,
+  "updated_at": "2026-07-23T14:48:51+00:00",
+  "error": null
+}

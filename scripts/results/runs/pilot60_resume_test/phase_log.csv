@@ -1,0 +1,223 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-24T01:20:48+00:00,baseline_reuse,,,,,,,,PASS,,source_run=20260723_215359_ccfee980; reused baseline artifacts; rows=60
+2026-07-24T01:20:48+00:00,generation_workers,,,,,,,,PASS,,workers=4; classes=60
+2026-07-24T01:20:48+00:00,class_sandbox_start,3713233,core,,0,3713233:core/src/main/java/org/junithelper/core/file/filesearcherfactory.java,FileSearcherFactory,FileSearcherFactory_RBL4Test_5e446228,START,,
+2026-07-24T01:20:48+00:00,class_sandbox_start,3713233,core,,1,3713233:core/src/main/java/org/junithelper/core/extractor/constructormetaextractor.java,ConstructorMetaExtractor,ConstructorMetaExtractor_RBL4Test_aefe9473,START,,
+2026-07-24T01:20:48+00:00,class_sandbox_start,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,QuartzJob_RBL4Test_b84fb44f,START,,
+2026-07-24T01:20:48+00:00,class_sandbox_start,3847504,modules/weblounge-common,,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,PageImpl,PageImpl_RBL4Test_f985aed1,START,,
+2026-07-24T01:20:52+00:00,class_agone_env,3713233,core,,1,3713233:core/src/main/java/org/junithelper/core/extractor/constructormetaextractor.java,ConstructorMetaExtractor,ConstructorMetaExtractor_RBL4Test_aefe9473,PASS,,requested=1.6 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-24T01:20:52+00:00,class_agone_env,3713233,core,,0,3713233:core/src/main/java/org/junithelper/core/file/filesearcherfactory.java,FileSearcherFactory,FileSearcherFactory_RBL4Test_5e446228,PASS,,requested=1.6 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-24T01:20:52+00:00,maven_reactor_prewarm,3847504,modules/weblounge-common,,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,PageImpl,,START,,prewarm reactor dependencies for -pl modules/weblounge-common; synthesized placeholder test hidden during prewarm: PageImpl_RBL4Test_f985aed1.java
+2026-07-24T01:21:06+00:00,maven_reactor_prewarm,3847504,modules/weblounge-common,,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,PageImpl,,PASS,13.896,"pi\${env.WEBLOUNGE_HOME}\lib\weblounge
+[INFO] Executed tasks
+[INFO] 
+[INFO] ---------------< ch.entwine.weblounge:weblounge-common >----------------
+[INFO] Building Weblounge Common 4.0.0-SNAPSHOT                           [3/3]
+[INFO]   from modules\weblounge-common\pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[WARNING] Parameter 'encoding' is unknown for plugin 'maven-surefire-plugin:2.16:test (default-test)'
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ weblounge-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ weblounge-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 185 source files to D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\003_3847504_f985aed1\compiledrepos\3847504\modules\weblounge-common\target\classes
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/pilot60_resume_test/003_3847504_f985aed1/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockHttpSession.java: Some input files use or override a deprecated API.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/pilot60_resume_test/003_3847504_f985aed1/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockHttpSession.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/pilot60_resume_test/003_3847504_f985aed1/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/PageletRendererImpl.java: Some input files use unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/pilot60_resume_test/003_3847504_f985aed1/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/PageletRendererImpl.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:2.6:testResources (default-testResources) @ weblounge-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 39 resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ weblounge-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 97 source files to D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\003_3847504_f985aed1\compiledrepos\3847504\modules\weblounge-common\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ weblounge-common ---
+[WARNING]  Parameter 'systemProperties' is deprecated: Use systemPropertyVariables instead.
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- bundle:2.4.0:bundle (default-bundle) @ weblounge-common ---
+[INFO] 
+[INFO] --- checkstyle:2.11:check (default) @ weblounge-common ---
+[INFO] 
+[INFO] --- install:2.5.1:install (default-install) @ weblounge-common ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\003_3847504_f985aed1\compiledrepos\3847504\modules\weblounge-common\target\weblounge-common-4.0.0-SNAPSHOT.jar to C:\Users\admin\.m2\repository\ch\entwine\weblounge\weblounge-common\4.0.0-SNAPSHOT\weblounge-common-4.0.0-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\003_3847504_f985aed1\compiledrepos\3847504\modules\weblounge-common\pom.xml to C:\Users\admin\.m2\repository\ch\entwine\weblounge\weblounge-common\4.0.0-SNAPSHOT\weblounge-common-4.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --- bundle:2.4.0:install (default-install) @ weblounge-common ---
+[INFO] Installing ch/entwine/weblounge/weblounge-common/4.0.0-SNAPSHOT/weblounge-common-4.0.0-SNAPSHOT.jar
+[INFO] Writing OBR metadata
+[INFO] 
+[INFO] --- antrun:1.7:run (deploy) @ weblounge-common ---
+[INFO] Executing tasks
+
+[INFO] Deploy to stage:
+     [copy] Copying 1 file to D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\003_3847504_f985aed1\compiledrepos\3847504\modules\weblounge-common\${env.WEBLOUNGE_HOME}\lib\weblounge
+[INFO] Executed tasks
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Weblounge 4.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Weblounge .......................................... SUCCESS [  0.981 s]
+[INFO] Weblounge Common API ............................... SUCCESS [  2.598 s]
+[INFO] Weblounge Common ................................... SUCCESS [  6.344 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  10.946 s
+[INFO] Finished at: 2026-07-24T08:21:06+07:00
+[INFO] ------------------------------------------------------------------------
+
+     [copy] Warning: Could not find file D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\003_3847504_f985aed1\compiledrepos\3847504\target\weblounge-base-4.0.0-SNAPSHOT.jar to copy."
+2026-07-24T01:21:06+00:00,maven_reactor_prewarm_wait,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,,PASS,13.874,waited 13.874s for same repo prewarm lock: maven:modules/weblounge-common
+2026-07-24T01:21:06+00:00,maven_reactor_prewarm,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,,START,,prewarm reactor dependencies for -pl modules/weblounge-common; synthesized placeholder test hidden during prewarm: QuartzJob_RBL4Test_b84fb44f.java
+2026-07-24T01:21:10+00:00,class_agone_env,3847504,modules/weblounge-common,,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,PageImpl,PageImpl_RBL4Test_f985aed1,PASS,,requested=1.7 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-24T01:21:26+00:00,maven_reactor_prewarm,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,,PASS,20.345,"weblounge-common-api\${env.WEBLOUNGE_HOME}\lib\weblounge
+[INFO] Executed tasks
+[INFO] 
+[INFO] ---------------< ch.entwine.weblounge:weblounge-common >----------------
+[INFO] Building Weblounge Common 4.0.0-SNAPSHOT                           [3/3]
+[INFO]   from modules\weblounge-common\pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[WARNING] Parameter 'encoding' is unknown for plugin 'maven-surefire-plugin:2.16:test (default-test)'
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ weblounge-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ weblounge-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 185 source files to D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common\target\classes
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/pilot60_resume_test/002_3847504_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockHttpSession.java: Some input files use or override a deprecated API.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/pilot60_resume_test/002_3847504_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockHttpSession.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/pilot60_resume_test/002_3847504_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/SearchQueryImpl.java: Some input files use unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/pilot60_resume_test/002_3847504_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/SearchQueryImpl.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:2.6:testResources (default-testResources) @ weblounge-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 39 resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ weblounge-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 97 source files to D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ weblounge-common ---
+[WARNING]  Parameter 'systemProperties' is deprecated: Use systemPropertyVariables instead.
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- bundle:2.4.0:bundle (default-bundle) @ weblounge-common ---
+[INFO] 
+[INFO] --- checkstyle:2.11:check (default) @ weblounge-common ---
+[INFO] 
+[INFO] --- install:2.5.1:install (default-install) @ weblounge-common ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common\target\weblounge-common-4.0.0-SNAPSHOT.jar to C:\Users\admin\.m2\repository\ch\entwine\weblounge\weblounge-common\4.0.0-SNAPSHOT\weblounge-common-4.0.0-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common\pom.xml to C:\Users\admin\.m2\repository\ch\entwine\weblounge\weblounge-common\4.0.0-SNAPSHOT\weblounge-common-4.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --- bundle:2.4.0:install (default-install) @ weblounge-common ---
+[INFO] Installing ch/entwine/weblounge/weblounge-common/4.0.0-SNAPSHOT/weblounge-common-4.0.0-SNAPSHOT.jar
+[INFO] Writing OBR metadata
+[INFO] 
+[INFO] --- antrun:1.7:run (deploy) @ weblounge-common ---
+[INFO] Executing tasks
+
+[INFO] Deploy to stage:
+     [copy] Copying 1 file to D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\002_3847504_b84fb44f\compiledrepos\3847504\modules\weblounge-common\${env.WEBLOUNGE_HOME}\lib\weblounge
+[INFO] Executed tasks
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Weblounge 4.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Weblounge .......................................... SUCCESS [  1.406 s]
+[INFO] Weblounge Common API ............................... SUCCESS [  3.730 s]
+[INFO] Weblounge Common ................................... SUCCESS [  8.977 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  15.810 s
+[INFO] Finished at: 2026-07-24T08:21:26+07:00
+[INFO] ------------------------------------------------------------------------
+
+     [copy] Warning: Could not find file D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\002_3847504_b84fb44f\compiledrepos\3847504\target\weblounge-base-4.0.0-SNAPSHOT.jar to copy."
+2026-07-24T01:21:30+00:00,class_agone_env,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,QuartzJob_RBL4Test_b84fb44f,PASS,,requested=1.7 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-24T01:21:51+00:00,class_agone_run,3713233,core,,0,3713233:core/src/main/java/org/junithelper/core/file/filesearcherfactory.java,FileSearcherFactory,FileSearcherFactory_RBL4Test_5e446228,PASS,62.254,
+2026-07-24T01:21:51+00:00,class_sandbox_start,39195736,jproperties-checks,,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,MissingTranslationsCheck_RBL4Test_be7ec32e,START,,
+2026-07-24T01:21:52+00:00,maven_reactor_prewarm,39195736,jproperties-checks,,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,,START,,prewarm reactor dependencies for -pl jproperties-checks; synthesized placeholder test hidden during prewarm: MissingTranslationsCheck_RBL4Test_be7ec32e.java
+2026-07-24T01:21:52+00:00,generation_progress,,,,,,,,PASS,,1/60 classes completed; workers=4
+2026-07-24T01:22:17+00:00,maven_reactor_prewarm,39195736,jproperties-checks,,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,,PASS,25.03,"FO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks-testkit\target\jproperties-checks-testkit-2.7-SNAPSHOT-sources.jar to C:\Users\admin\.m2\repository\org\codehaus\sonar-plugins\jproperties\jproperties-checks-testkit\2.7-SNAPSHOT\jproperties-checks-testkit-2.7-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] -----< org.codehaus.sonar-plugins.jproperties:jproperties-checks >------
+[INFO] Building SonarQube Java Properties Analyzer :: Checks 2.7-SNAPSHOT [4/4]
+[INFO]   from jproperties-checks\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- buildnumber:1.4:create (default) @ jproperties-checks ---
+[INFO] 
+[INFO] --- enforcer:3.0.0-M1:enforce (enforce) @ jproperties-checks ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- license:3.0:check (enforce-license-headers) @ jproperties-checks ---
+[INFO] 
+[INFO] --- jacoco:0.7.9:prepare-agent (agent) @ jproperties-checks ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] argLine set to empty
+[INFO] 
+[INFO] --- bsh:1.4:run (compute-artifact-display-version) @ jproperties-checks ---
+[INFO] Executing Script
+[INFO] file class java.lang.Object
+[INFO] script class java.lang.String
+[INFO] evaluating script if (! ""2.7-SNAPSHOT"".endsWith(""-SNAPSHOT"")) { [+ 15 omitted line(s)]
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ jproperties-checks ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 27 resources
+[INFO] 
+[INFO] --- compiler:3.7.0:compile (default-compile) @ jproperties-checks ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 35 source files to D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\classes
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ jproperties-checks ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 71 resources
+[INFO] 
+[INFO] --- compiler:3.7.0:testCompile (default-testCompile) @ jproperties-checks ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 26 source files to D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.20.1:test (default-test) @ jproperties-checks ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ jproperties-checks ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\jproperties-checks-2.7-SNAPSHOT.jar
+[INFO] 
+[INFO] --- javadoc:2.10.4:jar (attach-javadocs) @ jproperties-checks ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- source:3.0.1:jar-no-fork (attach-sources) @ jproperties-checks ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\jproperties-checks-2.7-SNAPSHOT-sources.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ jproperties-checks ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\jproperties-checks-2.7-SNAPSHOT.jar to C:\Users\admin\.m2\repository\org\codehaus\sonar-plugins\jproperties\jproperties-checks\2.7-SNAPSHOT\jproperties-checks-2.7-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\pom.xml to C:\Users\admin\.m2\repository\org\codehaus\sonar-plugins\jproperties\jproperties-checks\2.7-SNAPSHOT\jproperties-checks-2.7-SNAPSHOT.pom
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\pilot60_resume_test\004_39195736_be7ec32e\compiledrepos\39195736\jproperties-checks\target\jproperties-checks-2.7-SNAPSHOT-sources.jar to C:\Users\admin\.m2\repository\org\codehaus\sonar-plugins\jproperties\jproperties-checks\2.7-SNAPSHOT\jproperties-checks-2.7-SNAPSHOT-sources.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for SonarQube Java Properties Analyzer 2.7-SNAPSHOT:
+[INFO] 
+[INFO] SonarQube Java Properties Analyzer ................. SUCCESS [  7.745 s]
+[INFO] SonarQube Java Properties Analyzer :: Frontend ..... SUCCESS [  6.159 s]
+[INFO] SonarQube Java Properties Analyzer :: Check Test Toolkit SUCCESS [  1.664 s]
+[INFO] SonarQube Java Properties Analyzer :: Checks ....... SUCCESS [  2.590 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.607 s
+[INFO] Finished at: 2026-07-24T08:22:16+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-24T01:22:21+00:00,class_agone_env,39195736,jproperties-checks,,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,MissingTranslationsCheck_RBL4Test_be7ec32e,PASS,,requested=1.8 selected_jdk=8 java_home=C:\Program Files\Java\jdk1.8.0_172
+2026-07-24T01:22:43+00:00,class_agone_run,39195736,jproperties-checks,,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,MissingTranslationsCheck_RBL4Test_be7ec32e,FAIL,52.785,return_code=3221225786; stdout=004_39195736_MissingTranslationsCheck.stdout.log; stderr=004_39195736_MissingTranslationsCheck.stdout.stderr.log
+2026-07-24T01:22:43+00:00,class_failure_diagnosis,39195736,,gpt,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,,FAIL,,agone_runtime_failed; artifact=; 
+2026-07-24T01:22:43+00:00,class_failure_diagnosis,39195736,,evosuite,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,MissingTranslationsCheck,,FAIL,,agone_runtime_failed; artifact=; 

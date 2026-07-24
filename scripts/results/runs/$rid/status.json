@@ -1,0 +1,15 @@
+{
+  "run_id": "$rid",
+  "status": "running",
+  "run_mode": "full_run",
+  "sample_csv": "D:\\A_ThucNghiem\\scripts_v2\\data_new\\class_sampling_manifest_pilot60_seed42.csv",
+  "model": "gpt-4o-mini-2024-07-18",
+  "prompt": "rbl4-zero-shot",
+  "workers": 4,
+  "created_at": "2026-07-24T01:18:30+00:00",
+  "started_at": "2026-07-24T01:18:30+00:00",
+  "pid": 32616,
+  "return_code": null,
+  "updated_at": "2026-07-24T01:18:30+00:00",
+  "error": null
+}

@@ -1,0 +1,25 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T17:06:50+00:00,gradle_test_jacoco,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,,,PASS,95.133,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgctx000328\097_6944525_ba0e160d\compiledrepos\6944525\d2; tasks=:d2:test,:d2:jacocoTestReport; tests=com.linkedin.d2.balancer.zkfs.ZKFSUtil_RBL4_ba0e160dTest"
+2026-07-23T17:06:59+00:00,gradle_pitest,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,,,PASS,8.44,cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgctx000328\097_6944525_ba0e160d\compiledrepos\6944525\d2; task=:d2:pitest; tests=com.linkedin.d2.balancer.zkfs.ZKFSUtil_RBL4_ba0e160dTest
+2026-07-23T17:06:59+00:00,gradle_test_jacoco_pitest,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,,,PASS,103.658,cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgctx000328\097_6944525_ba0e160d\compiledrepos\6944525\d2; tests=com.linkedin.d2.balancer.zkfs.ZKFSUtil_RBL4_ba0e160dTest
+2026-07-23T17:07:12+00:00,gradle_test_jacoco,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,FAIL,9.51,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgctx000328\001_74999474_d0018ed9\compiledrepos\74999474\parsec-clients; tasks=:parsec-clients:test,:parsec-clients:jacocoTestReport; The following general errors were encountered during the Gradle build:
+
+- BUILD FAILED
+- 
+- Total time: 3.46 secs"
+2026-07-23T17:07:12+00:00,gradle_test_jacoco_pitest,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,FAIL,9.594,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgctx000328\001_74999474_d0018ed9\compiledrepos\74999474\parsec-clients; tasks=:parsec-clients:test,:parsec-clients:jacocoTestReport; The following general errors were encountered during the Gradle build:
+
+- BUILD FAILED
+- 
+- Total time: 3.46 secs"
+2026-07-23T17:07:12+00:00,coverage_metric_retrieval,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,FAIL,,jacoco_report_missing: compiledrepos/74999474\parsec-clients
+2026-07-23T17:07:44+00:00,gradle_test_jacoco,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,,,PASS,14.403,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgctx000328\003_41627638_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; tasks=test,jacocoTestReport; tests=com.github.SingleNumber.Solution_RBL4_899cbe08Test"
+2026-07-23T17:07:56+00:00,gradle_pitest,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,,,PASS,11.947,cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgctx000328\003_41627638_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; task=pitest; tests=com.github.SingleNumber.Solution_RBL4_899cbe08Test
+2026-07-23T17:07:56+00:00,gradle_test_jacoco_pitest,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,,,PASS,26.467,cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgctx000328\003_41627638_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; tests=com.github.SingleNumber.Solution_RBL4_899cbe08Test
+2026-07-23T17:08:32+00:00,gradle_test_jacoco,85795396,metrics-dropwizardmetrics,,14,85795396:metrics-dropwizardmetrics/src/main/java/org/apache/calcite/avatica/metrics/dropwizard/dropwizardgauge.java,,,FAIL,19.655,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgctx000328\014_85795396_3f1ba9c7\compiledrepos\85795396\metrics-dropwizardmetrics; tasks=:metrics-dropwizardmetrics:test,:metrics-dropwizardmetrics:jacocoTestReport; The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 18s"
+2026-07-23T17:08:32+00:00,gradle_test_jacoco_pitest,85795396,metrics-dropwizardmetrics,,14,85795396:metrics-dropwizardmetrics/src/main/java/org/apache/calcite/avatica/metrics/dropwizard/dropwizardgauge.java,,,FAIL,19.75,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\sgctx000328\014_85795396_3f1ba9c7\compiledrepos\85795396\metrics-dropwizardmetrics; tasks=:metrics-dropwizardmetrics:test,:metrics-dropwizardmetrics:jacocoTestReport; The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 18s"
+2026-07-23T17:08:32+00:00,coverage_metric_retrieval,85795396,metrics-dropwizardmetrics,,14,85795396:metrics-dropwizardmetrics/src/main/java/org/apache/calcite/avatica/metrics/dropwizard/dropwizardgauge.java,,,FAIL,,jacoco_report_missing: compiledrepos/85795396\metrics-dropwizardmetrics

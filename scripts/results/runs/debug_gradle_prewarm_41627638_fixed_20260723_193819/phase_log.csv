@@ -1,0 +1,16 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T12:38:19+00:00,gradle_sandbox_prewarm,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,Solution,,START,,normalized Gradle wrapper D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_fixed_20260723_193819\003_41627638_Solution_899cbe08\compiledrepos\41627638\gradlew.bat -> D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_fixed_20260723_193819\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board\gradlew.bat; baseline cwd D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_fixed_20260723_193819\003_41627638_Solution_899cbe08\compiledrepos\41627638 -> D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_fixed_20260723_193819\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; compile Gradle sandbox before AgoneTest/EvoSuite
+2026-07-23T12:38:28+00:00,gradle_sandbox_prewarm,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,Solution,,PASS,8.85,"normalized Gradle wrapper D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_fixed_20260723_193819\003_41627638_Solution_899cbe08\compiledrepos\41627638\gradlew.bat -> D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_fixed_20260723_193819\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board\gradlew.bat; baseline cwd D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_fixed_20260723_193819\003_41627638_Solution_899cbe08\compiledrepos\41627638 -> D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_fixed_20260723_193819\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; compile Gradle sandbox before AgoneTest/EvoSuite; classes_dir=D:\A_ThucNghiem\scripts_v2\workspaces\debug_gradle_prewarm_41627638_fixed_20260723_193819\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board\build\classes\main
+:clean UP-TO-DATE
+:compileJava
+:processResources UP-TO-DATE
+:classes
+:compileTestJava
+:processTestResources
+:testClasses
+
+BUILD SUCCESSFUL
+
+Total time: 6.638 secs"
+2026-07-23T12:49:27+00:00,evosuite_generate,41627638,,evosuite,,,solution,,FAIL,0.054,
+2026-07-23T12:50:02+00:00,evosuite_generate,41627638,,evosuite,,,Solution,,FAIL,0.025,

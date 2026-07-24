@@ -1,0 +1,393 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T19:12:54+00:00,baseline_sandbox_readiness_workers,,,,,,,,PASS,,workers=4; classes=8
+2026-07-23T19:12:54+00:00,baseline_sandbox_readiness,6437134,enav-util,,128,6437134:enav-util/src/main/java/dk/dma/enav/util/coordinateconverter.java,CoordinateConverter,CoordinateConverter_RBL4_8d23156cTest,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T19:12:54+00:00,baseline_sandbox_readiness,6437134,enav-util,,129,6437134:enav-util/src/main/java/dk/dma/enav/util/compass/compassutils.java,CompassUtils,CompassUtils_RBL4_262d6b6cTest,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T19:12:54+00:00,baseline_sandbox_readiness,6437134,enav-model,,130,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/ellipse.java,Ellipse,Ellipse_RBL4_2da8caedTest,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T19:12:54+00:00,baseline_sandbox_readiness,6437134,enav-model,,131,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/boundingbox.java,BoundingBox,BoundingBox_RBL4_1f61159dTest,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T19:12:57+00:00,baseline_sandbox_readiness,6437134,enav-util,,129,6437134:enav-util/src/main/java/dk/dma/enav/util/compass/compassutils.java,CompassUtils,CompassUtils_RBL4_262d6b6cTest,PASS,2.8,ok; sandbox readiness passed
+2026-07-23T19:12:57+00:00,baseline_sandbox_readiness,6437134,enav-serialization,,132,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/routerouteparser.java,RouteRouteParser,RouteRouteParser_RBL4_6c97342fTest,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T19:12:57+00:00,baseline_sandbox_readiness,6437134,enav-util,,128,6437134:enav-util/src/main/java/dk/dma/enav/util/coordinateconverter.java,CoordinateConverter,CoordinateConverter_RBL4_8d23156cTest,PASS,2.809,ok; sandbox readiness passed
+2026-07-23T19:12:57+00:00,maven_reactor_prewarm,6437134,enav-model,,131,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/boundingbox.java,BoundingBox,,START,,prewarm reactor dependencies for -pl enav-model; synthesized placeholder test hidden during prewarm: BoundingBox_RBL4_1f61159dTest.java
+2026-07-23T19:12:57+00:00,baseline_sandbox_readiness,6437134,enav-serialization,,133,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/rourouteparser.java,RouRouteParser,RouRouteParser_RBL4_4b2ecd0dTest,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T19:13:20+00:00,maven_reactor_prewarm,6437134,enav-model,,131,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/boundingbox.java,BoundingBox,,PASS,22.746," source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-util\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-util ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-util\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-util ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-util\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-util ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-util ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-util\target\enav-util-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-util ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-util\target\enav-util-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-util\0.6-SNAPSHOT\enav-util-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-util\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-util\0.6-SNAPSHOT\enav-util-0.6-SNAPSHOT.pom
+[INFO] 
+[INFO] -----------------------< dk.dma.enav:enav-model >-----------------------
+[INFO] Building eNav Model 0.6-SNAPSHOT                                   [3/3]
+[INFO]   from enav-model\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-model ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-model ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 64 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-model\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-model ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-model\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-model\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-model ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-model ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-model ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\131_6437134_1f61159d\compiledrepos\6437134\enav-model\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for eNav Parent 0.6-SNAPSHOT:
+[INFO] 
+[INFO] eNav Parent ........................................ SUCCESS [  1.832 s]
+[INFO] eNav Util .......................................... SUCCESS [  7.508 s]
+[INFO] eNav Model ......................................... SUCCESS [  1.773 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  12.232 s
+[INFO] Finished at: 2026-07-24T02:13:20+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T19:13:20+00:00,maven_reactor_prewarm_wait,6437134,enav-model,,130,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/ellipse.java,Ellipse,,PASS,22.749,waited 22.749s for same repo prewarm lock: maven:enav-model
+2026-07-23T19:13:20+00:00,baseline_sandbox_readiness,6437134,enav-model,,131,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/boundingbox.java,BoundingBox,BoundingBox_RBL4_1f61159dTest,PASS,25.554,ok; sandbox readiness passed
+2026-07-23T19:13:20+00:00,maven_reactor_prewarm,6437134,enav-model,,130,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/ellipse.java,Ellipse,,START,,prewarm reactor dependencies for -pl enav-model; synthesized placeholder test hidden during prewarm: Ellipse_RBL4_2da8caedTest.java
+2026-07-23T19:13:20+00:00,baseline_sandbox_readiness,6437134,enav-serialization,,134,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/simplerouteparser.java,SimpleRouteParser,SimpleRouteParser_RBL4_3ed00afbTest,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T19:13:27+00:00,maven_reactor_prewarm,6437134,enav-model,,130,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/ellipse.java,Ellipse,,PASS,7.496,"8 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-util\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-util ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-util\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-util ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-util\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-util ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-util ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-util\target\enav-util-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-util ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-util\target\enav-util-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-util\0.6-SNAPSHOT\enav-util-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-util\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-util\0.6-SNAPSHOT\enav-util-0.6-SNAPSHOT.pom
+[INFO] 
+[INFO] -----------------------< dk.dma.enav:enav-model >-----------------------
+[INFO] Building eNav Model 0.6-SNAPSHOT                                   [3/3]
+[INFO]   from enav-model\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-model ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-model ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 64 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-model\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-model ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-model\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-model\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-model ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-model ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-model ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\130_6437134_2da8caed\compiledrepos\6437134\enav-model\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for eNav Parent 0.6-SNAPSHOT:
+[INFO] 
+[INFO] eNav Parent ........................................ SUCCESS [  0.705 s]
+[INFO] eNav Util .......................................... SUCCESS [  1.795 s]
+[INFO] eNav Model ......................................... SUCCESS [  0.990 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.904 s
+[INFO] Finished at: 2026-07-24T02:13:27+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T19:13:27+00:00,baseline_sandbox_readiness,6437134,enav-model,,130,6437134:enav-model/src/main/java/dk/dma/enav/model/geometry/ellipse.java,Ellipse,Ellipse_RBL4_2da8caedTest,PASS,33.056,ok; sandbox readiness passed
+2026-07-23T19:13:27+00:00,maven_reactor_prewarm_wait,6437134,enav-serialization,,132,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/routerouteparser.java,RouteRouteParser,,PASS,29.921,waited 29.921s for same repo prewarm lock: maven:enav-serialization
+2026-07-23T19:13:27+00:00,baseline_sandbox_readiness,6437134,enav-serialization,,135,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/rt3routeparser.java,Rt3RouteParser,Rt3RouteParser_RBL4_b2fce36cTest,START,,prepare per-class sandbox and run generation prewarm without invoking GPT/EvoSuite
+2026-07-23T19:13:27+00:00,maven_reactor_prewarm,6437134,enav-serialization,,132,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/routerouteparser.java,RouteRouteParser,,START,,prewarm reactor dependencies for -pl enav-serialization; synthesized placeholder test hidden during prewarm: RouteRouteParser_RBL4_6c97342fTest.java
+2026-07-23T19:13:35+00:00,maven_reactor_prewarm,6437134,enav-serialization,,132,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/routerouteparser.java,RouteRouteParser,,PASS,7.463,"NFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-model\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-model\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-model ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-model ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-model ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-model\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.pom
+[INFO] 
+[INFO] -------------------< dk.dma.enav:enav-serialization >-------------------
+[INFO] Building eNav Serialization 0.6-SNAPSHOT                           [4/4]
+[INFO]   from enav-serialization\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-serialization ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-serialization ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-serialization\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-serialization\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-serialization ---
+[INFO] Copying 8 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-serialization\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-serialization ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-serialization ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-serialization\target\enav-serialization-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-serialization ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-serialization\target\enav-serialization-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-serialization\0.6-SNAPSHOT\enav-serialization-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\132_6437134_6c97342f\compiledrepos\6437134\enav-serialization\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-serialization\0.6-SNAPSHOT\enav-serialization-0.6-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for eNav Parent 0.6-SNAPSHOT:
+[INFO] 
+[INFO] eNav Parent ........................................ SUCCESS [  0.715 s]
+[INFO] eNav Util .......................................... SUCCESS [  1.749 s]
+[INFO] eNav Model ......................................... SUCCESS [  0.894 s]
+[INFO] eNav Serialization ................................. SUCCESS [  0.766 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.505 s
+[INFO] Finished at: 2026-07-24T02:13:35+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T19:13:35+00:00,maven_reactor_prewarm_wait,6437134,enav-serialization,,133,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/rourouteparser.java,RouRouteParser,,PASS,37.382,waited 37.382s for same repo prewarm lock: maven:enav-serialization
+2026-07-23T19:13:35+00:00,baseline_sandbox_readiness,6437134,enav-serialization,,132,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/routerouteparser.java,RouteRouteParser,RouteRouteParser_RBL4_6c97342fTest,PASS,37.723,ok; sandbox readiness passed
+2026-07-23T19:13:35+00:00,maven_reactor_prewarm,6437134,enav-serialization,,133,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/rourouteparser.java,RouRouteParser,,START,,prewarm reactor dependencies for -pl enav-serialization; synthesized placeholder test hidden during prewarm: RouRouteParser_RBL4_4b2ecd0dTest.java
+2026-07-23T19:13:42+00:00,maven_reactor_prewarm,6437134,enav-serialization,,133,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/rourouteparser.java,RouRouteParser,,PASS,7.187,"NFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-model\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-model\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-model ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-model ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-model ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-model\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.pom
+[INFO] 
+[INFO] -------------------< dk.dma.enav:enav-serialization >-------------------
+[INFO] Building eNav Serialization 0.6-SNAPSHOT                           [4/4]
+[INFO]   from enav-serialization\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-serialization ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-serialization ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-serialization\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-serialization\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-serialization ---
+[INFO] Copying 8 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-serialization\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-serialization ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-serialization ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-serialization\target\enav-serialization-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-serialization ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-serialization\target\enav-serialization-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-serialization\0.6-SNAPSHOT\enav-serialization-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\133_6437134_4b2ecd0d\compiledrepos\6437134\enav-serialization\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-serialization\0.6-SNAPSHOT\enav-serialization-0.6-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for eNav Parent 0.6-SNAPSHOT:
+[INFO] 
+[INFO] eNav Parent ........................................ SUCCESS [  0.695 s]
+[INFO] eNav Util .......................................... SUCCESS [  1.774 s]
+[INFO] eNav Model ......................................... SUCCESS [  0.930 s]
+[INFO] eNav Serialization ................................. SUCCESS [  0.728 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.493 s
+[INFO] Finished at: 2026-07-24T02:13:42+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T19:13:42+00:00,maven_reactor_prewarm_wait,6437134,enav-serialization,,134,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/simplerouteparser.java,SimpleRouteParser,,PASS,21.936,waited 21.936s for same repo prewarm lock: maven:enav-serialization
+2026-07-23T19:13:42+00:00,baseline_sandbox_readiness,6437134,enav-serialization,,133,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/rourouteparser.java,RouRouteParser,RouRouteParser_RBL4_4b2ecd0dTest,PASS,44.904,ok; sandbox readiness passed
+2026-07-23T19:13:42+00:00,maven_reactor_prewarm,6437134,enav-serialization,,134,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/simplerouteparser.java,SimpleRouteParser,,START,,prewarm reactor dependencies for -pl enav-serialization; synthesized placeholder test hidden during prewarm: SimpleRouteParser_RBL4_3ed00afbTest.java
+2026-07-23T19:13:49+00:00,maven_reactor_prewarm,6437134,enav-serialization,,134,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/simplerouteparser.java,SimpleRouteParser,,PASS,7.136,"NFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-model\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-model\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-model ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-model ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-model ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-model\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.pom
+[INFO] 
+[INFO] -------------------< dk.dma.enav:enav-serialization >-------------------
+[INFO] Building eNav Serialization 0.6-SNAPSHOT                           [4/4]
+[INFO]   from enav-serialization\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-serialization ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-serialization ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-serialization\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-serialization\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-serialization ---
+[INFO] Copying 8 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-serialization\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-serialization ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-serialization ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-serialization\target\enav-serialization-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-serialization ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-serialization\target\enav-serialization-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-serialization\0.6-SNAPSHOT\enav-serialization-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\134_6437134_3ed00afb\compiledrepos\6437134\enav-serialization\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-serialization\0.6-SNAPSHOT\enav-serialization-0.6-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for eNav Parent 0.6-SNAPSHOT:
+[INFO] 
+[INFO] eNav Parent ........................................ SUCCESS [  0.694 s]
+[INFO] eNav Util .......................................... SUCCESS [  1.648 s]
+[INFO] eNav Model ......................................... SUCCESS [  0.888 s]
+[INFO] eNav Serialization ................................. SUCCESS [  0.678 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.305 s
+[INFO] Finished at: 2026-07-24T02:13:49+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T19:13:49+00:00,maven_reactor_prewarm_wait,6437134,enav-serialization,,135,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/rt3routeparser.java,Rt3RouteParser,,PASS,21.693,waited 21.693s for same repo prewarm lock: maven:enav-serialization
+2026-07-23T19:13:49+00:00,baseline_sandbox_readiness,6437134,enav-serialization,,134,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/simplerouteparser.java,SimpleRouteParser,SimpleRouteParser_RBL4_3ed00afbTest,PASS,29.297,ok; sandbox readiness passed
+2026-07-23T19:13:49+00:00,maven_reactor_prewarm,6437134,enav-serialization,,135,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/rt3routeparser.java,Rt3RouteParser,,START,,prewarm reactor dependencies for -pl enav-serialization; synthesized placeholder test hidden during prewarm: Rt3RouteParser_RBL4_b2fce36cTest.java
+2026-07-23T19:13:56+00:00,maven_reactor_prewarm,6437134,enav-serialization,,135,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/rt3routeparser.java,Rt3RouteParser,,PASS,7.041,"NFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-model\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-model ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 6 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-model\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-model ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-model ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-model ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-model\target\enav-model-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-model\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-model\0.6-SNAPSHOT\enav-model-0.6-SNAPSHOT.pom
+[INFO] 
+[INFO] -------------------< dk.dma.enav:enav-serialization >-------------------
+[INFO] Building eNav Serialization 0.6-SNAPSHOT                           [4/4]
+[INFO]   from enav-serialization\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.0.0-M2:enforce (enforce-maven) @ enav-serialization ---
+[INFO] Skipping Rule Enforcement.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ enav-serialization ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-serialization\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ enav-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-serialization\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ enav-serialization ---
+[INFO] Copying 8 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ enav-serialization ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-serialization\target\test-classes
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ enav-serialization ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ enav-serialization ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-serialization\target\enav-serialization-0.6-SNAPSHOT.jar
+[INFO] 
+[INFO] --- install:2.5.2:install (default-install) @ enav-serialization ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-serialization\target\enav-serialization-0.6-SNAPSHOT.jar to C:\Users\admin\.m2\repository\dk\dma\enav\enav-serialization\0.6-SNAPSHOT\enav-serialization-0.6-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_6437134_prewarm_lock_check__baseline_readiness\135_6437134_b2fce36c\compiledrepos\6437134\enav-serialization\pom.xml to C:\Users\admin\.m2\repository\dk\dma\enav\enav-serialization\0.6-SNAPSHOT\enav-serialization-0.6-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for eNav Parent 0.6-SNAPSHOT:
+[INFO] 
+[INFO] eNav Parent ........................................ SUCCESS [  0.635 s]
+[INFO] eNav Util .......................................... SUCCESS [  1.699 s]
+[INFO] eNav Model ......................................... SUCCESS [  0.878 s]
+[INFO] eNav Serialization ................................. SUCCESS [  0.656 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.227 s
+[INFO] Finished at: 2026-07-24T02:13:56+07:00
+[INFO] ------------------------------------------------------------------------"
+2026-07-23T19:13:56+00:00,baseline_sandbox_readiness,6437134,enav-serialization,,135,6437134:enav-serialization/src/main/java/dk/dma/enav/serialization/rt3routeparser.java,Rt3RouteParser,Rt3RouteParser_RBL4_b2fce36cTest,PASS,28.845,ok; sandbox readiness passed

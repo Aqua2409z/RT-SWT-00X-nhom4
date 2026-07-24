@@ -1,0 +1,6 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T14:49:08+00:00,generation_workers,,,,,,,,PASS,,workers=2; classes=4
+2026-07-23T14:49:10+00:00,generation_progress,,,,,,,,PASS,,1/4 classes completed; workers=2
+2026-07-23T14:49:10+00:00,generation_progress,,,,,,,,PASS,,2/4 classes completed; workers=2
+2026-07-23T14:49:10+00:00,generation_progress,,,,,,,,PASS,,3/4 classes completed; workers=2
+2026-07-23T14:49:10+00:00,generation_progress,,,,,,,,PASS,,4/4 classes completed; workers=2

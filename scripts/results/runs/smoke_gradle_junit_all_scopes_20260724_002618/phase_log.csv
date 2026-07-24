@@ -1,0 +1,31 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T17:26:39+00:00,gradle_test_jacoco,41627638,leetcode/battleships-in-a-board,,,,,,PASS,14.853,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\003_41627638_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; tasks=test,jacocoTestReport; tests=com.github.SingleNumber.Solution_RBL4_899cbe08Test"
+2026-07-23T17:26:49+00:00,gradle_pitest,41627638,leetcode/battleships-in-a-board,,,,,,PASS,9.931,cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\003_41627638_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; task=pitest; tests=com.github.SingleNumber.Solution_RBL4_899cbe08Test
+2026-07-23T17:26:49+00:00,gradle_test_jacoco_pitest,41627638,leetcode/battleships-in-a-board,,,,,,PASS,25.224,cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\003_41627638_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; tests=com.github.SingleNumber.Solution_RBL4_899cbe08Test
+2026-07-23T17:27:36+00:00,gradle_test_jacoco,6944525,d2,,,,,,FAIL,35.879,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\097_6944525_ba0e160d\compiledrepos\6944525; tasks=test,jacocoTestReport; The following task errors were encountered during the Gradle build:
+
+- buildSrc
+- entity-stream"
+2026-07-23T17:27:36+00:00,gradle_test_jacoco_pitest,6944525,d2,,,,,,FAIL,36.028,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\097_6944525_ba0e160d\compiledrepos\6944525; tasks=test,jacocoTestReport; The following task errors were encountered during the Gradle build:
+
+- buildSrc
+- entity-stream"
+2026-07-23T17:27:36+00:00,coverage_metric_retrieval,6944525,d2,,,,,,FAIL,,jacoco_report_missing: D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\097_6944525_ba0e160d\compiledrepos\6944525\d2
+2026-07-23T17:28:13+00:00,gradle_test_jacoco,74999474,parsec-clients,,,,,,PASS,34.92,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\001_74999474_d0018ed9\compiledrepos\74999474; tasks=test,jacocoTestReport; tests=com.yahoo.parsec.clients.ParsecAsyncCompletionHandlerBase_RBL4_d0018ed9Test"
+2026-07-23T17:28:25+00:00,gradle_pitest,74999474,parsec-clients,,,,,,PASS,12.415,cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\001_74999474_d0018ed9\compiledrepos\74999474; task=pitest; tests=com.yahoo.parsec.clients.ParsecAsyncCompletionHandlerBase_RBL4_d0018ed9Test
+2026-07-23T17:28:25+00:00,gradle_test_jacoco_pitest,74999474,parsec-clients,,,,,,PASS,47.421,cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\001_74999474_d0018ed9\compiledrepos\74999474; tests=com.yahoo.parsec.clients.ParsecAsyncCompletionHandlerBase_RBL4_d0018ed9Test
+2026-07-23T17:28:25+00:00,coverage_metric_retrieval,74999474,parsec-clients,,,,,,FAIL,,jacoco_report_missing: D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\001_74999474_d0018ed9\compiledrepos\74999474\parsec-clients
+2026-07-23T17:28:41+00:00,gradle_test_jacoco,85795396,core,,,,,,FAIL,13.553,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\023_85795396_d33c3262\compiledrepos\85795396; tasks=test,jacocoTestReport; The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 12s"
+2026-07-23T17:28:41+00:00,gradle_test_jacoco_pitest,85795396,core,,,,,,FAIL,13.647,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\023_85795396_d33c3262\compiledrepos\85795396; tasks=test,jacocoTestReport; The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 12s"
+2026-07-23T17:28:41+00:00,coverage_metric_retrieval,85795396,core,,,,,,FAIL,,jacoco_report_missing: D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\023_85795396_d33c3262\compiledrepos\85795396\core
+2026-07-23T17:28:51+00:00,gradle_test_jacoco,85795396,metrics-dropwizardmetrics,,,,,,FAIL,8.279,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\014_85795396_3f1ba9c7\compiledrepos\85795396; tasks=test,jacocoTestReport; The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 7s"
+2026-07-23T17:28:51+00:00,gradle_test_jacoco_pitest,85795396,metrics-dropwizardmetrics,,,,,,FAIL,8.4,"cwd=D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\014_85795396_3f1ba9c7\compiledrepos\85795396; tasks=test,jacocoTestReport; The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 7s"
+2026-07-23T17:28:51+00:00,coverage_metric_retrieval,85795396,metrics-dropwizardmetrics,,,,,,FAIL,,jacoco_report_missing: D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_junit_all_scopes_20260724_002618\014_85795396_3f1ba9c7\compiledrepos\85795396\metrics-dropwizardmetrics

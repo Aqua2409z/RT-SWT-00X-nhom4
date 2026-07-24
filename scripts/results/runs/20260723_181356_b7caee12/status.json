@@ -1,0 +1,14 @@
+{
+  "run_id": "20260723_181356_b7caee12",
+  "status": "completed",
+  "run_mode": "dry_run",
+  "sample_csv": "D:\\A_ThucNghiem\\scripts_v2\\data_new\\class_sampling_manifest_pilot60_seed42.csv",
+  "model": "gpt-4o-mini-2024-07-18",
+  "prompt": "rbl4-zero-shot",
+  "created_at": "2026-07-23T11:13:56+00:00",
+  "started_at": "2026-07-23T11:13:56+00:00",
+  "pid": 7444,
+  "return_code": null,
+  "updated_at": "2026-07-23T11:13:56+00:00",
+  "error": null
+}

@@ -1,0 +1,12 @@
+failure_owner,category,classes
+generator_output,generated_test_compile_failed,30
+agonetest_harness,unclassified_runtime_issue,6
+agonetest_harness,gradle_build_failed,4
+generator_output,unclassified_runtime_issue,3
+agonetest_harness,maven_reactor_prewarm_failed,2
+agonetest_harness,pom_rewrite_namespace_error,2
+repository_or_environment,project_dependency_resolution_error,2
+unknown_needs_manual_review,unclassified_runtime_issue,2
+generator_output,generated_test_assertion_failure,1
+generator_output,java_source_level_incompatible,1
+llm_api_or_network,llm_api_error,1

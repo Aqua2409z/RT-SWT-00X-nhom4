@@ -41,11 +41,15 @@ RUNS_DIR = BASE_DIR / "results" / "runs"
 RUNS_DIR.mkdir(parents=True, exist_ok=True)
 SAMPLE_MAP = {
     "full_300": BASE_DIR / "data_new" / "class_sampling_manifest_final_seed42.csv",
+    "pilot_60": BASE_DIR / "data_new" / "class_sampling_manifest_pilot60_seed42.csv",
+    "remaining_240": BASE_DIR / "data_new" / "class_sampling_manifest_remaining240_seed42.csv",
 }
 SAMPLE_LABELS = {
     "full_300": "Full 300 data_new",
+    "pilot_60": "Pilot 60 - 2 classes/repo",
+    "remaining_240": "Remaining 240 - after pilot",
 }
-SAMPLE_ORDER = ["full_300"]
+SAMPLE_ORDER = ["pilot_60", "remaining_240", "full_300"]
 ACTIVE_MANIFEST = BASE_DIR / "data_new" / "class_sampling_manifest_final_seed42.csv"
 ACTIVE_RECIPES = BASE_DIR / "data_new" / "build_recipes_portable.csv"
 COMPILED_REPOS = Path(os.getenv("RBL4_COMPILED_REPOS", BASE_DIR.parent / "compiledrepos"))
@@ -75,7 +79,7 @@ def resolve_sample(request: RunCreateRequest) -> Path:
     try:
         sample.relative_to(BASE_DIR.resolve())
     except ValueError as exc:
-        raise HTTPException(status_code=400, detail="Sample CSV must live inside data2/class2test") from exc
+        raise HTTPException(status_code=400, detail="Sample CSV must live inside scripts_v2") from exc
     if not sample.exists():
         raise HTTPException(status_code=404, detail=f"Sample CSV not found: {sample}")
     return sample
@@ -254,6 +258,7 @@ def run_info(run_id: str) -> RunInfo:
         sample_csv=manifest.get("manifest_csv") or manifest.get("source_sample_csv") or status_doc.get("sample_csv", ""),
         model=manifest.get("model") or status_doc.get("model", DEFAULT_MODEL),
         prompt=manifest.get("prompt") or status_doc.get("prompt", DEFAULT_PROMPT),
+        workers=manifest.get("workers") or status_doc.get("workers"),
         created_at=status_doc.get("created_at", ""),
         started_at=status_doc.get("started_at"),
         completed_at=manifest.get("timestamp_utc") if status in {"completed", "failed", "cancelled"} else None,
@@ -397,7 +402,7 @@ def write_partial_metrics(run_dir: Path, status_doc: dict[str, Any]) -> None:
             source_n = int(len(sample_df))
         skipped_path = run_dir / "skipped_classes.csv"
         skipped_n = int(len(pd.read_csv(skipped_path))) if skipped_path.exists() and skipped_path.stat().st_size > 0 else 0
-        baseline_path = run_dir / "baseline_build.csv"
+        baseline_path = run_dir / "baseline_classes.csv"
         baseline_df = pd.read_csv(baseline_path) if baseline_path.exists() and baseline_path.stat().st_size > 0 else None
         legacy.DEFAULT_SAMPLE = sample_csv if sample_csv and sample_csv.exists() else staged_classes
         metrics_df = legacy.build_metrics_long(
@@ -461,6 +466,8 @@ def create_run(request: RunCreateRequest) -> RunInfo:
         request.model,
         "--prompt",
         request.prompt,
+        "--workers",
+        str(request.workers),
     ]
 
     env = os.environ.copy()
@@ -478,6 +485,7 @@ def create_run(request: RunCreateRequest) -> RunInfo:
             "run_mode": request.run_mode,
             "model": request.model,
             "prompt": request.prompt,
+            "workers": request.workers,
             "pid": process.pid,
             "return_code": None,
         },
@@ -538,7 +546,10 @@ def cancel_run(run_id: str) -> RunInfo:
     if not run_dir.exists():
         raise HTTPException(status_code=404, detail="Run not found")
     if proc and proc.poll() is None:
-        proc.terminate()
+        if os.name == "nt":
+            subprocess.run(["taskkill", "/PID", str(proc.pid), "/T", "/F"], capture_output=True, text=True)
+        else:
+            proc.terminate()
         try:
             proc.wait(timeout=10)
         except subprocess.TimeoutExpired:

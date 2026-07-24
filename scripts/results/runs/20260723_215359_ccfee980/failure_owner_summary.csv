@@ -1,0 +1,9 @@
+build_tool,arm,fail_stage,failure_owner,rows
+Maven,gpt,missing_or_failed_output,agonetest_harness,41
+Maven,evosuite,missing_or_failed_output,agonetest_harness,27
+Maven,evosuite,ok,ok,23
+Maven,gpt,ok,ok,9
+Gradle,evosuite,missing_or_failed_output,agonetest_harness,8
+Gradle,gpt,missing_or_failed_output,agonetest_harness,8
+Maven,evosuite,maven_reactor_prewarm_failed,agonetest_harness,2
+Maven,gpt,maven_reactor_prewarm_failed,agonetest_harness,2

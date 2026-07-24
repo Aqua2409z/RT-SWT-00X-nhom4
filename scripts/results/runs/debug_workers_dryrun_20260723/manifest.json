@@ -1,0 +1,47 @@
+{
+  "timestamp_utc": "2026-07-23T14:48:51+00:00",
+  "run_id": "debug_workers_dryrun_20260723",
+  "status": "completed",
+  "error": null,
+  "run_mode": "dry_run",
+  "manifest_csv": "D:\\A_ThucNghiem\\scripts_v2\\data_new\\class_sampling_manifest_pilot60_seed42.csv",
+  "manifest_sha256": "23e25f337fcf4de55c84925f30cc1d3113c5ac5f3d34de70f71f38f357a36629",
+  "recipes_csv": "D:\\A_ThucNghiem\\scripts_v2\\data_new\\build_recipes_portable.csv",
+  "recipes_sha256": "3407de675ec6cb2798b8f96c2f7ff94004015d679eb9441ac9f993629d4d7a7f",
+  "compiledrepos_root": "D:\\A_ThucNghiem\\compiledrepos",
+  "model": "gpt-4o-mini-2024-07-18",
+  "prompt": "rbl4-zero-shot",
+  "workers": 2,
+  "prompt_hash_sha256": "af9bd7227ecbebf631af20b6a3b8bcc774bd14a5c9a3ae90baf77e8217293dd2",
+  "prompt_protocol": "AgoneTest base zero-shot from proposal; no java_language_rules.",
+  "source_sample_n": 60,
+  "buildable_run_n": 60,
+  "precheck_skipped_n": 0,
+  "baseline_pass_n": null,
+  "baseline_failed_n": null,
+  "repo_n": 30,
+  "build_scope_n": 48,
+  "classes_per_repo_min": 2,
+  "classes_per_repo_max": 2,
+  "split_name_counts": {
+    "pilot60": 60
+  },
+  "complexity_half_counts": {
+    "higher_complexity_half": 31,
+    "lower_complexity_half": 29
+  },
+  "build_tool_counts": {
+    "gradle": 8,
+    "maven": 52
+  },
+  "gpt_rows": 0,
+  "evosuite_rows": 0,
+  "fairness_policy": {
+    "replacement_after_dataset_lock": false,
+    "generated_test_repair": false,
+    "prompt": "original AgoneTest zero-shot prompt from proposal",
+    "sandbox_policy": "one focal class per sandbox; only that generated test is installed and measured",
+    "baseline_gate": "all classes/scopes must pass clean baseline build and per-class sandbox prewarm readiness before generation starts",
+    "failure_scoring": "failed generated tests are compilation=0 and strict metrics=0"
+  }
+}

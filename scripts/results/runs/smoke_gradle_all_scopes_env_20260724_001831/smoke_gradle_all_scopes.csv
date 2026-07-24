@@ -1,0 +1,21 @@
+repo,scope_key,module,build_root,gradle_version,junit,testng,gradle_ok,metrics_ok,metric_rows,err
+41627638,gradle:leetcode/battleships-in-a-board,leetcode/battleships-in-a-board,leetcode/battleships-in-a-board,2.13,4,,False,False,0,"The following general errors were encountered during the Gradle build:
+
+- :test FAILED
+- 
+- BUILD FAILED
+- 
+- Total time: 6.312 secs"
+6944525,gradle:d2,d2,.,6.9.4,,7,False,False,0,"The following task errors were encountered during the Gradle build:
+
+- buildSrc"
+74999474,gradle:parsec-clients,parsec-clients,.,5.2.1,,7,True,False,0,"The following task errors were encountered during the Gradle build:
+
+- compileJava NO-SOURCE
+> Task "
+85795396,gradle:core,core,.,8.14.4,4,,False,False,0,"The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 19s"
+85795396,gradle:metrics-dropwizardmetrics,metrics-dropwizardmetrics,.,8.14.4,4,,False,False,0,"The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 14s"

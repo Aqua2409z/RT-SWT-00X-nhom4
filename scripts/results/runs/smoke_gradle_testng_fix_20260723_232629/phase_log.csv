@@ -1,0 +1,34 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T16:28:49+00:00,gradle_sandbox_prewarm,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,ZKFSUtil,,START,,compile Gradle sandbox before AgoneTest/EvoSuite; synthesized placeholder test hidden during prewarm: ZKFSUtil_RBL4Test_ba0e160d.java
+2026-07-23T16:30:06+00:00,gradle_sandbox_prewarm,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,ZKFSUtil,,PASS,77.161,"es\zk\SharedZkConnectionProviderTest.java:187: warning: [deprecation] ZooKeeperAnnouncer(com.linkedin.d2.balancer.servers.ZooKeeperServer,boolean) in com.linkedin.d2.balancer.servers.ZooKeeperAnnouncer has been deprecated
+      ZooKeeperAnnouncer announcer = new ZooKeeperAnnouncer(server, true);
+                                     ^
+D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_testng_fix_20260723_232629\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\discovery\stores\zk\SharedZkConnectionProviderTest.java:282: warning: [deprecation] com.linkedin.d2.balancer.LastSeenBalancerWithFacilitiesFactory in com.linkedin.d2.balancer has been deprecated
+        .setLoadBalancerWithFacilitiesFactory(new LastSeenBalancerWithFacilitiesFactory())
+                                                  ^
+D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_testng_fix_20260723_232629\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\discovery\stores\zk\SharedZkConnectionProviderTest.java:279: warning: [deprecation] setZkHosts(java.lang.String) in com.linkedin.d2.balancer.D2ClientBuilder has been deprecated
+    d2ClientBuilder.setZkHosts(""localhost:"" + ZK_PORT)
+                   ^
+D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_testng_fix_20260723_232629\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\discovery\stores\zk\SharedZkConnectionProviderTest.java:280: warning: [deprecation] setZkSessionTimeout(long,java.util.concurrent.TimeUnit) in com.linkedin.d2.balancer.D2ClientBuilder has been deprecated
+        .setZkSessionTimeout(ZK_TIMEOUT, TimeUnit.MILLISECONDS)
+        ^
+D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_testng_fix_20260723_232629\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\discovery\stores\zk\SharedZkConnectionProviderTest.java:281: warning: [deprecation] setZKConnectionForloadBalancer(com.linkedin.d2.discovery.stores.zk.ZKPersistentConnection) in com.linkedin.d2.balancer.D2ClientBuilder has been deprecated
+        .setZKConnectionForloadBalancer(zkConnectionToUse)
+        ^
+D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_testng_fix_20260723_232629\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\discovery\util\TestD2Utils.java:59: warning: [unchecked] unchecked conversion
+    Map<String, String> env = mock(Map.class);
+                                  ^
+  required: java.util.Map<java.lang.String,java.lang.String>
+  found:    java.util.Map
+D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_testng_fix_20260723_232629\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\jmx\D2LoadBalancerJmxTest.java:60: warning: [deprecation] com.linkedin.d2.balancer.LastSeenBalancerWithFacilitiesFactory in com.linkedin.d2.balancer has been deprecated
+    return new Object[][]{{new LastSeenBalancerWithFacilitiesFactory()}, {new ZKFSLoadBalancerWithFacilitiesFactory()}};
+                               ^
+D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_testng_fix_20260723_232629\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\jmx\D2LoadBalancerJmxTest.java:60: warning: [deprecation] com.linkedin.d2.balancer.ZKFSLoadBalancerWithFacilitiesFactory in com.linkedin.d2.balancer has been deprecated
+    return new Object[][]{{new LastSeenBalancerWithFacilitiesFactory()}, {new ZKFSLoadBalancerWithFacilitiesFactory()}};
+                                                                              ^
+D:\A_ThucNghiem\scripts_v2\workspaces\smoke_gradle_testng_fix_20260723_232629\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\jmx\D2LoadBalancerJmxTest.java:102: warning: [deprecation] setZkHosts(java.lang.String) in com.linkedin.d2.balancer.D2ClientBuilder has been deprecated
+                   .setZkHosts(""localhost:"" + ZK_PORT)
+                   ^
+D:\A_ThucNghie"
+2026-07-23T16:30:11+00:00,gradle_test_jacoco_pitest,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,,,ERROR,0.05,"Command '['java', '-version']' returned non-zero exit status 3221225477."
+2026-07-23T16:30:11+00:00,coverage_metric_retrieval,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,,,FAIL,,jacoco_report_missing: compiledrepos/6944525\d2

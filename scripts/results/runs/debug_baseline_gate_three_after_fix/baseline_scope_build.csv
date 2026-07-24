@@ -1,0 +1,143 @@
+project,scope_key,module,class_rows,focal_classes,build_tool,java_version,command,status,duration_sec,detail
+46396068,maven:hbase0.98/hbase-manager-0.98,hbase0.98/hbase-manager-0.98,1,MC,Maven,1.8,"mvn -B -ntp -DskipTests -DskipITs -f ""D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\pom.xml"" -pl hbase-manager-0.98 -am clean test-compile",PASS,10.514,"drepos/46396068/hbase0.98/hbase-common-0.98/src/main/java/com/kakao/hbase/common/HBaseClient.java:[181,28] sun.security.krb5.Config is internal proprietary API and may be removed in a future release
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46396068/hbase0.98/hbase-common-0.98/src/main/java/com/kakao/hbase/common/HBaseClient.java:[187,13] sun.security.krb5.Config is internal proprietary API and may be removed in a future release
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hbase-common-0.98 ---
+[INFO] Copying 2 resources from src\test\resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.2:testCompile (default-testCompile) @ hbase-common-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 11 source files to D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-common-0.98\target\test-classes
+[INFO] /D:/A_ThucNghiem/compiledrepos/46396068/hbase0.98/hbase-common-0.98/src/test/java/com/kakao/hbase/specific/HBaseAdminWrapperListTableTest.java: D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-common-0.98\src\test\java\com\kakao\hbase\specific\HBaseAdminWrapperListTableTest.java uses unchecked or unsafe operations.
+[INFO] /D:/A_ThucNghiem/compiledrepos/46396068/hbase0.98/hbase-common-0.98/src/test/java/com/kakao/hbase/specific/HBaseAdminWrapperListTableTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] ---------------< com.kakao.hbase:hbase-table-stat-0.98 >----------------
+[INFO] Building hbase-table-stat-0.98 1.6.0                               [3/4]
+[INFO]   from hbase-table-stat-0.98\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hbase-table-stat-0.98 ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-table-stat-0.98\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ hbase-table-stat-0.98 ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.2:compile (default-compile) @ hbase-table-stat-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 20 source files to D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-table-stat-0.98\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hbase-table-stat-0.98 ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-table-stat-0.98\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.2:testCompile (default-testCompile) @ hbase-table-stat-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-table-stat-0.98\target\test-classes
+[INFO] 
+[INFO] -----------------< com.kakao.hbase:hbase-manager-0.98 >-----------------
+[INFO] Building hbase-manager-0.98 1.6.0                                  [4/4]
+[INFO]   from hbase-manager-0.98\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ hbase-manager-0.98 ---
+[INFO] Deleting D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ hbase-manager-0.98 ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.2:compile (default-compile) @ hbase-manager-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ hbase-manager-0.98 ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.2:testCompile (default-testCompile) @ hbase-manager-0.98 ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 18 source files to D:\A_ThucNghiem\compiledrepos\46396068\hbase0.98\hbase-manager-0.98\target\test-classes
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for hbase-tools-0.98 1.6.0:
+[INFO] 
+[INFO] hbase-tools-0.98 ................................... SUCCESS [  0.199 s]
+[INFO] hbase-common-0.98 .................................. SUCCESS [  3.546 s]
+[INFO] hbase-table-stat-0.98 .............................. SUCCESS [  1.685 s]
+[INFO] hbase-manager-0.98 ................................. SUCCESS [  1.757 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.329 s
+[INFO] Finished at: 2026-07-23T21:07:23+07:00
+[INFO] ------------------------------------------------------------------------"
+46450575,maven:flo-workflow,flo-workflow,2,AsyncContext;TaskIds,Maven,1.8,"mvn -B -ntp -DskipTests -DskipITs -f ""D:\A_ThucNghiem\compiledrepos\46450575\pom.xml"" -pl flo-workflow -am clean test-compile",PASS,12.266," from root D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\main\java
+[INFO] Will search files to update from root D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\test\java
+[INFO] Scan 61 files header done in 90.865ms.
+[INFO] All files are up-to-date.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ flo-workflow ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\main\resources
+[INFO] 
+[INFO] --- compiler:3.5.1:compile (default-compile) @ flo-workflow ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 37 source files to D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\target\classes
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ flo-workflow ---
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.5.1:testCompile (default-testCompile) @ flo-workflow ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 24 source files to D:\A_ThucNghiem\compiledrepos\46450575\flo-workflow\target\test-classes
+21:07:34.576 [main] DEBUG org.trimou.engine.resolver.ReflectionResolver - Initialized [memberCacheMaxSize: 10000]
+21:07:34.581 [main] INFO org.trimou.engine.locator.PathTemplateLocator - ClassPathTemplateLocator initialized [virtualPathSeparator: /, defaultFileEncoding: UTF-8]
+21:07:34.583 [main] INFO org.trimou.engine.MustacheEngineBuilder - Engine built 2.0.1.Final (2016-05-19)
+21:07:34.584 [main] DEBUG org.trimou.engine.MustacheEngineBuilder - Engine configuration: 
+[Template locators]
+org.trimou.engine.locator.ClassPathTemplateLocator [priority: 1, suffix: mustache, rootPath: null]
+----------
+[Resolvers]
+org.trimou.engine.resolver.MapResolver [priority: 17]
+org.trimou.engine.resolver.ReflectionResolver [priority: 11]
+----------
+[Properties]
+org.trimou.engine.config.templateCacheExpirationTimeout=0
+org.trimou.engine.config.templateRecursiveInvocationLimit=10
+org.trimou.engine.config.removeStandaloneLines=true
+org.trimou.engine.config.resolverHintsEnabled=true
+org.trimou.engine.config.startDelimiter={{
+org.trimou.engine.locator.PathTemplateLocator.virtualPathSeparator=/
+org.trimou.engine.config.skipValueEscaping=false
+org.trimou.engine.config.endDelimiter=}}
+org.trimou.engine.config.cacheSectionLiteralBlock=false
+org.trimou.engine.config.reuseLineSeparatorSegments=true
+org.trimou.engine.config.defaultFileEncoding=UTF-8
+org.trimou.engine.config.removeUnnecessarySegments=true
+org.trimou.engine.config.noValueIndicatesProblem=false
+org.trimou.engine.config.nestedTemplateSupportEnabled=true
+org.trimou.engine.config.templateCacheEnabled=true
+org.trimou.engine.resolver.ReflectionResolver.memberCacheMaxSize=10000
+org.trimou.engine.config.precompileAllTemplates=false
+org.trimou.engine.config.debugMode=false
+org.trimou.engine.config.handlebarsSupportEnabled=true
+org.trimou.engine.config.iterationMetadataAlias=iter
+----------
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/context/ForwardingEvalContextTest.java:[26,26] org.mockito.Matchers in org.mockito has been deprecated
+[WARNING] /D:/A_ThucNghiem/compiledrepos/46450575/flo-workflow/src/test/java/com/spotify/flo/ControlledBlockingContext.java:[165,73] unchecked cast
+  required: com.spotify.flo.ControlledBlockingContext.Interceptor<T>
+  found:    com.spotify.flo.ControlledBlockingContext.Interceptor<capture#1 of ?>
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Flo 0.6.4-SNAPSHOT:
+[INFO] 
+[INFO] Flo ................................................ SUCCESS [  1.824 s]
+[INFO] Flo API Generator .................................. SUCCESS [  1.234 s]
+[INFO] Flo Workflow Definition ............................ SUCCESS [  3.726 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.076 s
+[INFO] Finished at: 2026-07-23T21:07:35+07:00
+[INFO] ------------------------------------------------------------------------
+
+SLF4J: Failed to load class ""org.slf4j.impl.StaticLoggerBinder"".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details."

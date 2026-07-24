@@ -1,0 +1,19 @@
+{
+  "timestamp_utc": "2026-07-23T10:26:28+00:00",
+  "manifest_rows": 300,
+  "manifest_repos": 30,
+  "recipe_rows": 48,
+  "recipe_scopes": 48,
+  "classes_per_repo_min": 10,
+  "classes_per_repo_max": 10,
+  "compiledrepos_root": "D:\\A_ThucNghiem\\compiledrepos",
+  "repo_missing_n": 0,
+  "focal_missing_n": 0,
+  "recipe_missing_n": 0,
+  "preflight_failed_class_n": 0,
+  "duplicate_class_key_rows": 0,
+  "duplicate_focal_path_rows": 0,
+  "missing_scope_recipes": [],
+  "prompt_hash_sha256": "af9bd7227ecbebf631af20b6a3b8bcc774bd14a5c9a3ae90baf77e8217293dd2",
+  "prompt_protocol": "AgoneTest base zero-shot prompt from proposal; no java_language_rules; no project_structure/dependencies."
+}

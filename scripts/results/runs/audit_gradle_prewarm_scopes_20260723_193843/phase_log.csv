@@ -1,0 +1,141 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T12:38:44+00:00,gradle_sandbox_prewarm,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,Solution,,START,,normalized Gradle wrapper D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\003_41627638_Solution_899cbe08\compiledrepos\41627638\gradlew.bat -> D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board\gradlew.bat; baseline cwd D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\003_41627638_Solution_899cbe08\compiledrepos\41627638 -> D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; compile Gradle sandbox before AgoneTest/EvoSuite
+2026-07-23T12:38:52+00:00,gradle_sandbox_prewarm,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,Solution,,PASS,8.76,"normalized Gradle wrapper D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\003_41627638_Solution_899cbe08\compiledrepos\41627638\gradlew.bat -> D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board\gradlew.bat; baseline cwd D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\003_41627638_Solution_899cbe08\compiledrepos\41627638 -> D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board; compile Gradle sandbox before AgoneTest/EvoSuite; classes_dir=D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\003_41627638_Solution_899cbe08\compiledrepos\41627638\leetcode\battleships-in-a-board\build\classes\main
+:clean UP-TO-DATE
+:compileJava
+:processResources UP-TO-DATE
+:classes
+:compileTestJava
+:processTestResources
+:testClasses
+
+BUILD SUCCESSFUL
+
+Total time: 5.995 secs"
+2026-07-23T12:40:39+00:00,gradle_sandbox_prewarm,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,ZKFSUtil,,START,,compile Gradle sandbox before AgoneTest/EvoSuite
+2026-07-23T12:41:42+00:00,gradle_sandbox_prewarm,6944525,d2,,97,6944525:d2/src/main/java/com/linkedin/d2/balancer/zkfs/zkfsutil.java,ZKFSUtil,,FAIL,62.942,"a:187: warning: [deprecation] ZooKeeperAnnouncer(com.linkedin.d2.balancer.servers.ZooKeeperServer,boolean) in com.linkedin.d2.balancer.servers.ZooKeeperAnnouncer has been deprecated
+      ZooKeeperAnnouncer announcer = new ZooKeeperAnnouncer(server, true);
+                                     ^
+D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\discovery\stores\zk\SharedZkConnectionProviderTest.java:282: warning: [deprecation] com.linkedin.d2.balancer.LastSeenBalancerWithFacilitiesFactory in com.linkedin.d2.balancer has been deprecated
+        .setLoadBalancerWithFacilitiesFactory(new LastSeenBalancerWithFacilitiesFactory())
+                                                  ^
+D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\discovery\stores\zk\SharedZkConnectionProviderTest.java:279: warning: [deprecation] setZkHosts(java.lang.String) in com.linkedin.d2.balancer.D2ClientBuilder has been deprecated
+    d2ClientBuilder.setZkHosts(""localhost:"" + ZK_PORT)
+                   ^
+D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\discovery\stores\zk\SharedZkConnectionProviderTest.java:280: warning: [deprecation] setZkSessionTimeout(long,java.util.concurrent.TimeUnit) in com.linkedin.d2.balancer.D2ClientBuilder has been deprecated
+        .setZkSessionTimeout(ZK_TIMEOUT, TimeUnit.MILLISECONDS)
+        ^
+D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\discovery\stores\zk\SharedZkConnectionProviderTest.java:281: warning: [deprecation] setZKConnectionForloadBalancer(com.linkedin.d2.discovery.stores.zk.ZKPersistentConnection) in com.linkedin.d2.balancer.D2ClientBuilder has been deprecated
+        .setZKConnectionForloadBalancer(zkConnectionToUse)
+        ^
+D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\discovery\util\TestD2Utils.java:59: warning: [unchecked] unchecked conversion
+    Map<String, String> env = mock(Map.class);
+                                  ^
+  required: java.util.Map<java.lang.String,java.lang.String>
+  found:    java.util.Map
+D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\jmx\D2LoadBalancerJmxTest.java:60: warning: [deprecation] com.linkedin.d2.balancer.LastSeenBalancerWithFacilitiesFactory in com.linkedin.d2.balancer has been deprecated
+    return new Object[][]{{new LastSeenBalancerWithFacilitiesFactory()}, {new ZKFSLoadBalancerWithFacilitiesFactory()}};
+                               ^
+D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\jmx\D2LoadBalancerJmxTest.java:60: warning: [deprecation] com.linkedin.d2.balancer.ZKFSLoadBalancerWithFacilitiesFactory in com.linkedin.d2.balancer has been deprecated
+    return new Object[][]{{new LastSeenBalancerWithFacilitiesFactory()}, {new ZKFSLoadBalancerWithFacilitiesFactory()}};
+                                                                              ^
+D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\097_6944525_ZKFSUtil_ba0e160d\compiledrepos\6944525\d2\src\test\java\com\linkedin\d2\jmx\D2LoadBalancerJmxTest.java:102: warning: [deprecation] setZkHosts(java.lang.String) in com.linkedin.d2.balancer.D2ClientBuilder has been deprecated
+                   .setZkHosts(""localhost:"" + ZK_PORT)
+                   ^
+D:\A_ThucNghiem\script"
+2026-07-23T12:41:46+00:00,gradle_sandbox_prewarm,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,ParsecAsyncCompletionHandlerBase,,START,,compile Gradle sandbox before AgoneTest/EvoSuite
+2026-07-23T12:41:58+00:00,gradle_sandbox_prewarm,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,ParsecAsyncCompletionHandlerBase,,PASS,11.581,"compile Gradle sandbox before AgoneTest/EvoSuite; classes_dir=D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\001_74999474_ParsecAsyncCompletionHandlerBase_d0018ed9\compiledrepos\74999474\parsec-clients\build\classes\java\main
+To honour the JVM settings for this build a new JVM will be forked. Please consider using the daemon: https://docs.gradle.org/5.2.1/userguide/gradle_daemon.html.
+Daemon will be stopped at the end of the build stopping after processing
+> Task :parsec-clients:clean UP-TO-DATE
+
+> Task :parsec-clients:compileJava
+
+> Task :parsec-clients:processResources NO-SOURCE
+> Task :parsec-clients:classes
+
+> Task :parsec-clients:compileTestJava
+
+> Task :parsec-clients:processTestResources
+> Task :parsec-clients:testClasses
+
+BUILD SUCCESSFUL in 10s
+4 actionable tasks: 3 executed, 1 up-to-date
+
+Note: D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\001_74999474_ParsecAsyncCompletionHandlerBase_d0018ed9\compiledrepos\74999474\parsec-clients\src\main\java\com\yahoo\parsec\clients\ParsecAsyncHttpClient.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details."
+2026-07-23T12:42:11+00:00,gradle_sandbox_prewarm,85795396,core,,23,85795396:core/src/main/java/org/apache/calcite/avatica/remote/protobufhandler.java,ProtobufHandler,,START,,compile Gradle sandbox before AgoneTest/EvoSuite
+2026-07-23T12:42:56+00:00,gradle_sandbox_prewarm,85795396,core,,23,85795396:core/src/main/java/org/apache/calcite/avatica/remote/protobufhandler.java,ProtobufHandler,,PASS,45.225,"compile Gradle sandbox before AgoneTest/EvoSuite; classes_dir=D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\023_85795396_ProtobufHandler_d33c3262\compiledrepos\85795396\core\build\classes\java\main
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.4/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Building Apache Calcite Avatica 1.29.0-SNAPSHOT
+
+> Task :core:clean UP-TO-DATE
+> Task :core:filterJava
+> Task :core:extractProto
+> Task :core:processResources
+> Task :core:extractTestProto
+> Task :core:processTestResources NO-SOURCE
+> Task :metrics:compileJava
+> Task :metrics:processResources NO-SOURCE
+> Task :core:extractIncludeProto
+> Task :core:generateProto
+
+> Task :core:compileJava
+
+> Task :core:classes
+> Task :core:extractIncludeTestProto
+> Task :core:generateTestProto NO-SOURCE
+
+> Task :core:compileTestJava
+
+> Task :core:testClasses
+
+[Incubating] Problems report is available at: file:///D:/A_ThucNghiem/scripts_v2/workspaces/audit_gradle_prewarm_scopes_20260723_193843/023_85795396_ProtobufHandler_d33c3262/compiledrepos/85795396/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.4/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 43s
+11 actionable tasks: 10 executed, 1 up-to-date
+
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details."
+2026-07-23T12:42:56+00:00,gradle_sandbox_prewarm,85795396,metrics-dropwizardmetrics,,14,85795396:metrics-dropwizardmetrics/src/main/java/org/apache/calcite/avatica/metrics/dropwizard/dropwizardgauge.java,DropwizardGauge,,START,,compile Gradle sandbox before AgoneTest/EvoSuite
+2026-07-23T12:43:12+00:00,gradle_sandbox_prewarm,85795396,metrics-dropwizardmetrics,,14,85795396:metrics-dropwizardmetrics/src/main/java/org/apache/calcite/avatica/metrics/dropwizard/dropwizardgauge.java,DropwizardGauge,,PASS,15.187,"compile Gradle sandbox before AgoneTest/EvoSuite; classes_dir=D:\A_ThucNghiem\scripts_v2\workspaces\audit_gradle_prewarm_scopes_20260723_193843\014_85795396_DropwizardGauge_3f1ba9c7\compiledrepos\85795396\metrics-dropwizardmetrics\build\classes\java\main
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.14.4/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Building Apache Calcite Avatica 1.29.0-SNAPSHOT
+
+> Task :metrics-dropwizardmetrics:clean UP-TO-DATE
+> Task :metrics-dropwizardmetrics:processResources
+> Task :metrics-dropwizardmetrics:processTestResources NO-SOURCE
+> Task :metrics:compileJava
+> Task :metrics-dropwizardmetrics:compileJava
+> Task :metrics-dropwizardmetrics:classes
+> Task :metrics-dropwizardmetrics:compileTestJava
+> Task :metrics-dropwizardmetrics:testClasses
+
+[Incubating] Problems report is available at: file:///D:/A_ThucNghiem/scripts_v2/workspaces/audit_gradle_prewarm_scopes_20260723_193843/014_85795396_DropwizardGauge_3f1ba9c7/compiledrepos/85795396/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.4/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 13s
+5 actionable tasks: 4 executed, 1 up-to-date"

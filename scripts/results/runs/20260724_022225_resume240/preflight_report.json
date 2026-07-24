@@ -1,0 +1,69 @@
+{
+  "timestamp_utc": "2026-07-23T18:00:28+00:00",
+  "manifest_csv": "D:\\A_ThucNghiem\\scripts_v2\\data_new\\class_sampling_manifest_remaining240_seed42.csv",
+  "manifest_sha256": "e4805ed13ef3ae667bc851df621575ca81265e23b8dc17b24d1891e5452c48ca",
+  "recipes_csv": "D:\\A_ThucNghiem\\scripts_v2\\data_new\\build_recipes_portable.csv",
+  "recipes_sha256": "3407de675ec6cb2798b8f96c2f7ff94004015d679eb9441ac9f993629d4d7a7f",
+  "manifest_rows": 240,
+  "manifest_repos": 30,
+  "recipe_rows": 48,
+  "recipe_scopes": 48,
+  "classes_per_repo_min": 8,
+  "classes_per_repo_max": 8,
+  "classes_per_repo": {
+    "3713233": 8,
+    "3847504": 8,
+    "39195736": 8,
+    "41547678": 8,
+    "41627638": 8,
+    "43105609": 8,
+    "44308560": 8,
+    "45997449": 8,
+    "46396068": 8,
+    "46450575": 8,
+    "48046454": 8,
+    "49384652": 8,
+    "558963": 8,
+    "60578004": 8,
+    "61565876": 8,
+    "6293402": 8,
+    "6437134": 8,
+    "64487983": 8,
+    "66303306": 8,
+    "6944525": 8,
+    "74999474": 8,
+    "77481567": 8,
+    "78444970": 8,
+    "81384608": 8,
+    "85795396": 8,
+    "95247959": 8,
+    "9619226": 8,
+    "97822421": 8,
+    "98410891": 8,
+    "9884445": 8
+  },
+  "selected_type_counts": {
+    "main": 240
+  },
+  "complexity_half_counts": {
+    "higher_complexity_half": 119,
+    "lower_complexity_half": 121
+  },
+  "build_tool_counts": {
+    "gradle": 32,
+    "maven": 208
+  },
+  "split_name_counts": {
+    "remaining240": 240
+  },
+  "compiledrepos_root": "D:\\A_ThucNghiem\\compiledrepos",
+  "repo_missing_n": 0,
+  "focal_missing_n": 0,
+  "recipe_missing_n": 0,
+  "preflight_failed_class_n": 0,
+  "duplicate_class_key_rows": 0,
+  "duplicate_focal_path_rows": 0,
+  "missing_scope_recipes": [],
+  "prompt_hash_sha256": "af9bd7227ecbebf631af20b6a3b8bcc774bd14a5c9a3ae90baf77e8217293dd2",
+  "prompt_protocol": "AgoneTest base zero-shot prompt from proposal; no java_language_rules; no project_structure/dependencies."
+}

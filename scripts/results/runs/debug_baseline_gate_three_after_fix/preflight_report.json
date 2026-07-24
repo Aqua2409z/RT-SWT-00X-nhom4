@@ -1,0 +1,40 @@
+{
+  "timestamp_utc": "2026-07-23T14:07:13+00:00",
+  "manifest_csv": "D:\\A_ThucNghiem\\scripts_v2\\results\\runs\\debug_baseline_gate_three_manifest.csv",
+  "manifest_sha256": "a8db65b351e620db97d0a93ca20e3bb6809297ba27d3c855b1a320b2b95cc9c6",
+  "recipes_csv": "D:\\A_ThucNghiem\\scripts_v2\\data_new\\build_recipes_portable.csv",
+  "recipes_sha256": "3407de675ec6cb2798b8f96c2f7ff94004015d679eb9441ac9f993629d4d7a7f",
+  "manifest_rows": 3,
+  "manifest_repos": 2,
+  "recipe_rows": 48,
+  "recipe_scopes": 48,
+  "classes_per_repo_min": 1,
+  "classes_per_repo_max": 2,
+  "classes_per_repo": {
+    "46396068": 1,
+    "46450575": 2
+  },
+  "selected_type_counts": {
+    "main": 3
+  },
+  "complexity_half_counts": {
+    "higher_complexity_half": 2,
+    "lower_complexity_half": 1
+  },
+  "build_tool_counts": {
+    "maven": 3
+  },
+  "split_name_counts": {
+    "pilot60": 3
+  },
+  "compiledrepos_root": "D:\\A_ThucNghiem\\compiledrepos",
+  "repo_missing_n": 0,
+  "focal_missing_n": 0,
+  "recipe_missing_n": 0,
+  "preflight_failed_class_n": 0,
+  "duplicate_class_key_rows": 0,
+  "duplicate_focal_path_rows": 0,
+  "missing_scope_recipes": [],
+  "prompt_hash_sha256": "af9bd7227ecbebf631af20b6a3b8bcc774bd14a5c9a3ae90baf77e8217293dd2",
+  "prompt_protocol": "AgoneTest base zero-shot prompt from proposal; no java_language_rules; no project_structure/dependencies."
+}

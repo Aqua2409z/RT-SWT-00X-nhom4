@@ -1,0 +1,16 @@
+check,value
+baseline_rows,300
+baseline_unique_classes,300
+baseline_pass_n,300
+metrics_rows,600
+metrics_unique_classes,300
+gpt_rows,300
+evosuite_rows,300
+api_log_rows,298
+api_unique_classes,298
+api_prompt_lines,298
+generated_tests_manifest_rows,537
+generated_tests_unique_classes,298
+classes_missing_api_log,"[""81384608:integrations/spark/spark-catalog/spark-catalog-core/src/main/java/com/thinkbiganalytics/kylo/catalog/spark/sources/spark/highwatermarkinputformat.java"", ""81384608:integrations/spark/spark-catalog/spark-catalog-core/src/main/java/com/thinkbiganalytics/kylo/catalog/spark/sources/spark/sparkdatasetcontext.java""]"
+classes_missing_generated_test_file,"[""81384608:integrations/spark/spark-catalog/spark-catalog-core/src/main/java/com/thinkbiganalytics/kylo/catalog/spark/sources/spark/highwatermarkinputformat.java"", ""81384608:integrations/spark/spark-catalog/spark-catalog-core/src/main/java/com/thinkbiganalytics/kylo/catalog/spark/sources/spark/sparkdatasetcontext.java""]"
+ready_for_full300_paper_tables,True

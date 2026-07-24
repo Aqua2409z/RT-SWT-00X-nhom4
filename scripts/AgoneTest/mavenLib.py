@@ -63,6 +63,44 @@ def evosuite_classpath_entries(items):
     return entries, skipped
 
 
+EVOSUITE_TEST_FRAMEWORK_JAR_PATTERNS = [
+    "junit",
+    "jupiter",
+    "hamcrest",
+    "mockito",
+    "byte-buddy",
+    "objenesis",
+    "opentest4j",
+    "apiguardian",
+]
+
+
+def sanitize_evosuite_generation_classpath(entries):
+    sanitized = []
+    skipped = []
+    for item in entries:
+        name = Path(item).name.lower()
+        if Path(item).is_file() and any(pattern in name for pattern in EVOSUITE_TEST_FRAMEWORK_JAR_PATTERNS):
+            skipped.append(item)
+        else:
+            sanitized.append(item)
+    return sanitized, skipped
+
+
+def should_retry_evosuite_with_sanitized_classpath(output):
+    text = str(output or "").lower()
+    retry_markers = [
+        "displaynamegenerator",
+        "innerclasses attribute",
+        "mockmethodadvice",
+        "mockmethoddispatcher",
+        "bytebuddy",
+        "should be in target project, but could not be found",
+        "error while initializing target class: org/mockito",
+    ]
+    return any(marker in text for marker in retry_markers)
+
+
 def java_command(system):
     java_home = os.environ.get("JAVA_HOME")
     executable = "java.exe" if system == "Windows" else "java"
@@ -115,6 +153,7 @@ def common_maven_skip_args():
     return [
         "-Drat.skip=true",
         "-DfailIfNoTests=false",
+        "-DfailIfNoSpecifiedTests=false",
         "-Dcheckstyle.skip=true",
         "-Dgpg.skip=true",
         "-Djavadoc.skip=true",
@@ -141,6 +180,7 @@ def common_maven_skip_args():
         "-Dspotless.version=2.30.0",
         "-Dspotless-maven-plugin.version=2.30.0",
         "-Dformatter.skip=true",
+        "-Dexec.skip=true",
     ]
 
 
@@ -792,28 +832,12 @@ def run_evosuite_generation_maven(path, focal_path, system):
         test_dir = str(Path(test_dir).resolve())
         os.makedirs(test_dir, exist_ok=True)
 
-        evosuite_command = [
-            java_command(system),
-            "-jar",
-            toolchains.evosuite_jar(),
-            "-class",
-            name_class_to_test,
-            "-projectCP",
-            project_cp,
-            "-Dtest_dir=" + test_dir,
-            "-Dreport_dir=" + str(Path(work_path, "evosuite-report").resolve()),
-            "-Duse_separate_classloader=false",
-            "-Dtest_archive=false",
-            "-Dcriterion=BRANCH",
-            "-Dassertions=false",
-            "-Dno_runtime_dependency=true",
-            "-Dtest_scaffolding=false",
-            "-Dsearch_budget=60",
-        ]
-        result_generate = subprocess.run(evosuite_command, cwd=work_path, capture_output=True, text=True, timeout=EVOSUITE_TIMEOUT_SECONDS)
         expected_name = f"{name_class_to_test.split('.')[-1]}_ESTest.java"
         expected_path = os.path.join(test_dir, *name_class_to_test.split(".")[:-1], expected_name)
-        if not os.path.exists(expected_path):
+
+        def copy_generated_test_if_needed():
+            if os.path.exists(expected_path):
+                return
             for root_dir, _, files in os.walk(test_dir):
                 if expected_name in files:
                     generated_path = os.path.join(root_dir, expected_name)
@@ -824,11 +848,57 @@ def run_evosuite_generation_maven(path, focal_path, system):
                         utils.write_text_file(expected_path, content)
                     break
 
+        def run_evosuite_with_classpath(classpath, retry_label="primary"):
+            evosuite_command = [
+                java_command(system),
+                "-jar",
+                toolchains.evosuite_jar(),
+                "-class",
+                name_class_to_test,
+                "-projectCP",
+                classpath,
+                "-Dtest_dir=" + test_dir,
+                "-Dreport_dir=" + str(Path(work_path, "evosuite-report").resolve()),
+                "-Duse_separate_classloader=false",
+                "-Dtest_archive=false",
+                "-Dcriterion=BRANCH",
+                "-Dassertions=false",
+                "-Dno_runtime_dependency=true",
+                "-Dtest_scaffolding=false",
+                "-Dsearch_budget=60",
+            ]
+            result = subprocess.run(evosuite_command, cwd=work_path, capture_output=True, text=True, timeout=EVOSUITE_TIMEOUT_SECONDS)
+            copy_generated_test_if_needed()
+            return result
+
+        result_generate = run_evosuite_with_classpath(project_cp)
+        output_text = (result_generate.stdout or "") + "\n" + (result_generate.stderr or "")
+        retry_detail = ""
+        if result_generate.returncode != 0 or not os.path.exists(expected_path):
+            sanitized_classpath_parts, sanitized_skipped_parts = sanitize_evosuite_generation_classpath(valid_classpath_parts)
+            sanitized_cp = os.pathsep.join(sanitized_classpath_parts)
+            if (
+                sanitized_cp
+                and sanitized_cp != project_cp
+                and should_retry_evosuite_with_sanitized_classpath(output_text)
+            ):
+                retry_detail = "sanitized retry; skipped test-framework jars: " + ", ".join(
+                    Path(part).name for part in sanitized_skipped_parts[:30]
+                )
+                if os.path.exists(expected_path):
+                    os.remove(expected_path)
+                result_generate = run_evosuite_with_classpath(sanitized_cp, retry_label="sanitized")
+                output_text = (result_generate.stdout or "") + "\n" + (result_generate.stderr or "")
+
         if result_generate.returncode == 0 and os.path.exists(expected_path):
-            utils.append_phase_log("evosuite_generate", project=project, arm="evosuite", focal_class=name_class_to_test.split(".")[-1], status="PASS", started_at=started_at, detail=name_class_to_test)
+            detail = name_class_to_test if not retry_detail else f"{name_class_to_test}; {retry_detail}"
+            utils.append_phase_log("evosuite_generate", project=project, arm="evosuite", focal_class=name_class_to_test.split(".")[-1], status="PASS", started_at=started_at, detail=detail)
             return True
         else:
-            utils.append_phase_log("evosuite_generate", project=project, arm="evosuite", focal_class=name_class_to_test.split(".")[-1], status="FAIL", started_at=started_at, detail=command_output_tail(result_generate))
+            detail = command_output_tail(result_generate)
+            if retry_detail:
+                detail = f"{retry_detail}\n{detail}"
+            utils.append_phase_log("evosuite_generate", project=project, arm="evosuite", focal_class=name_class_to_test.split(".")[-1], status="FAIL", started_at=started_at, detail=detail)
             return False
     except subprocess.TimeoutExpired as e:
         detail = f"EvoSuite generation timed out after {EVOSUITE_TIMEOUT_SECONDS}s\n{timeout_output_tail(e)}"

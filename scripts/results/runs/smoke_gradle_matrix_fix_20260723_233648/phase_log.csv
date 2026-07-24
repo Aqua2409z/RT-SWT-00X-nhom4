@@ -1,0 +1,23 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T16:36:59+00:00,gradle_test_jacoco,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,FAIL,4.858,"The following general errors were encountered during the Gradle build:
+
+- BUILD FAILED
+- 
+- Total time: 4.169 secs"
+2026-07-23T16:36:59+00:00,gradle_test_jacoco_pitest,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,FAIL,4.942,"The following general errors were encountered during the Gradle build:
+
+- BUILD FAILED
+- 
+- Total time: 4.169 secs"
+2026-07-23T16:36:59+00:00,coverage_metric_retrieval,74999474,parsec-clients,,1,74999474:parsec-clients/src/main/java/com/yahoo/parsec/clients/parsecasynccompletionhandlerbase.java,,,FAIL,,jacoco_report_missing: compiledrepos/74999474\parsec-clients
+2026-07-23T16:37:29+00:00,gradle_test_jacoco,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,,,FAIL,5.288,"The following general errors were encountered during the Gradle build:
+
+- BUILD FAILED
+- 
+- Total time: 4.564 secs"
+2026-07-23T16:37:29+00:00,gradle_test_jacoco_pitest,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,,,FAIL,5.415,"The following general errors were encountered during the Gradle build:
+
+- BUILD FAILED
+- 
+- Total time: 4.564 secs"
+2026-07-23T16:37:29+00:00,coverage_metric_retrieval,41627638,leetcode/battleships-in-a-board,,3,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/singlenumber/solution.java,,,FAIL,,jacoco_report_missing: compiledrepos/41627638\leetcode/battleships-in-a-board

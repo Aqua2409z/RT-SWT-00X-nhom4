@@ -1,0 +1,830 @@
+timestamp_utc,source,project,module,arm,sample_index,class_key,focal_class,test_class,phase,status,category,failure_owner,owner_note_vi,severity,explanation_vi,suggested_action_vi,detail
+2026-07-23T15:25:02+00:00,phase_log,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,,maven_reactor_prewarm,FAIL,maven_reactor_prewarm_failed,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,"Bước chuẩn bị dependency reactor trong sandbox thất bại, nên tool chưa tạo được điều kiện build tương đương baseline cho focal class.",Mở phase_log.csv ở dòng maven_reactor_prewarm để sửa recipe/module selector/JDK/dependency trước khi chạy GPT/EvoSuite.,"install (default-install) @ weblounge-base ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\002_3847504_QuartzJob_b84fb44f\compiledrepos\3847504\pom.xml to C:\Users\admin\.m2\repository\ch\entwine\weblounge\weblounge-base\4.0.0-SNAPSHOT\weblounge-base-4.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --- antrun:1.7:run (deploy) @ weblounge-base ---
+[INFO] Executing tasks
+
+[INFO] Deploy to stage:
+[INFO] Executed tasks
+[INFO] 
+[INFO] -------------< ch.entwine.weblounge:weblounge-common-api >--------------
+[INFO] Building Weblounge Common API 4.0.0-SNAPSHOT                       [2/3]
+[INFO]   from modules\weblounge-common-api\pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[WARNING] Parameter 'encoding' is unknown for plugin 'maven-surefire-plugin:2.16:test (default-test)'
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ weblounge-common-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ weblounge-common-api ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 147 source files to D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\002_3847504_QuartzJob_b84fb44f\compiledrepos\3847504\modules\weblounge-common-api\target\classes
+[INFO] 
+[INFO] --- resources:2.6:testResources (default-testResources) @ weblounge-common-api ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] skip non existing resourceDirectory D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\002_3847504_QuartzJob_b84fb44f\compiledrepos\3847504\modules\weblounge-common-api\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ weblounge-common-api ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\002_3847504_QuartzJob_b"
+2026-07-23T15:25:02+00:00,phase_log,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,QuartzJob_RBL4Test_b84fb44f,class_agone_run,FAIL,unclassified_runtime_issue,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,maven_reactor_prewarm_failed; AgoneTest was not invoked for this class
+2026-07-23T15:26:30+00:00,phase_log,39195736,jproperties-checks,,4,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/missingtranslationscheck.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/004_39195736_MissingTranslationsCheck_be7ec32e/compiledrepos/39195736/jproperties-checks/src/test/java/org/sonar/jproperties/checks/generic/MissingTranslationsCheck_RBL4Test_be7ec32e.java:[8,50] cannot find symbol
+- symbol:   class Context
+- location: package org.sonar.plugins.jproperties.api.visitors
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/004_39195736_MissingTranslationsCheck_be7ec32e/compiledrepos/39195736/jproperties-checks/src/test/java/org/sonar/jproperties/checks/generic/MissingTranslationsCheck_RBL4Test_be7ec32e.java:[20,13] cannot find symbol
+- symbol:   class Context
+- location: class org.sonar.jproperties.checks.generic.MissingTranslationsCheck_RBL4Test_be7ec32e
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/004_39195736_MissingTranslationsCheck_be7ec32e/compiledrepos/39195736/jproperties-checks/src/test/java/org/sonar/jproperties/checks/generic/MissingTranslationsCheck_RBL4Test_be7ec32e.java:[27,24] cannot find symbol
+- symbol:   class Context
+- location: class org.sonar.jproperties.checks.generic.MissingTranslationsCheck_RBL4Test_be7ec32e"
+2026-07-23T15:27:28+00:00,phase_log,3847504,modules/weblounge-common,,3,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/content/page/pageimpl.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/003_3847504_PageImpl_f985aed1/compiledrepos/3847504/modules/weblounge-common/src/test/java/ch/entwine/weblounge/common/impl/content/page/PageImpl_RBL4Test_f985aed1.java:[101,16] invalid method declaration; return type required
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/003_3847504_PageImpl_f985aed1/compiledrepos/3847504/modules/weblounge-common/src/test/java/ch/entwine/weblounge/common/impl/content/page/PageImpl_RBL4Test_f985aed1.java:[134,16] invalid method declaration; return type required"
+2026-07-23T15:27:51+00:00,phase_log,39195736,jproperties-checks,,5,39195736:jproperties-checks/src/main/java/org/sonar/jproperties/checks/generic/separatorconventioncheck.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/005_39195736_SeparatorConventionCheck_f2dcb8d8/compiledrepos/39195736/jproperties-checks/src/test/java/org/sonar/jproperties/checks/generic/SeparatorConventionCheck_RBL4Test_f2dcb8d8.java:[44,75] cannot find symbol
+- symbol:   class SeparatorToken
+- location: interface org.sonar.plugins.jproperties.api.tree.SeparatorTree
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/005_39195736_SeparatorConventionCheck_f2dcb8d8/compiledrepos/39195736/jproperties-checks/src/test/java/org/sonar/jproperties/checks/generic/SeparatorConventionCheck_RBL4Test_f2dcb8d8.java:[57,64] cannot find symbol
+- symbol:   class Value
+- location: interface org.sonar.plugins.jproperties.api.tree.PropertyTree
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/005_39195736_SeparatorConventionCheck_f2dcb8d8/compiledrepos/39195736/jproperties-checks/src/test/java/org/sonar/jproperties/checks/generic/SeparatorConventionCheck_RBL4Test_f2dcb8d8.java:[81,32] cannot find symbol
+- symbol:   method getSeparator()
+- location: variable check of type org.sonar.jproperties.checks.generic.SeparatorConventionCheck"
+2026-07-23T15:29:10+00:00,phase_log,41627638,leetcode/battleships-in-a-board,,9,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/maxpointonline/plainloop/solution.java,,,gradle_test_jacoco_pitest,FAIL,gradle_build_failed,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,Gradle build fail khi chạy test/JaCoCo/PIT; log hiện tại chỉ có stderr rút gọn nên chưa đủ nguyên nhân sâu.,"Chạy lại Gradle với --stacktrace/--info hoặc mở log thô của module để biết lỗi dependency, compile, plugin hay test runtime.","The following general errors were encountered during the Gradle build:
+
+- BUILD FAILED
+- 
+- Total time: 3.264 secs"
+2026-07-23T15:29:48+00:00,phase_log,41627638,leetcode/battleships-in-a-board,,8,41627638:leetcode/battleships-in-a-board/src/main/java/com/github/battleship/solution.java,,,gradle_test_jacoco_pitest,FAIL,gradle_build_failed,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,Gradle build fail khi chạy test/JaCoCo/PIT; log hiện tại chỉ có stderr rút gọn nên chưa đủ nguyên nhân sâu.,"Chạy lại Gradle với --stacktrace/--info hoặc mở log thô của module để biết lỗi dependency, compile, plugin hay test runtime.","The following general errors were encountered during the Gradle build:
+
+- BUILD FAILED
+- 
+- Total time: 4.308 secs"
+2026-07-23T15:29:52+00:00,phase_log,41547678,turin-compiler,,7,41547678:turin-compiler/src/main/java/me/tomassetti/turin/resolvers/srcsymbolresolver.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/007_41547678_SrcSymbolResolver_8fe4f5a7/compiledrepos/41547678/turin-compiler/src/test/java/me/tomassetti/turin/resolvers/SrcSymbolResolver_RBL4Test_8fe4f5a7.java:[33,49] constructor PropertyDefinition in class me.tomassetti.turin.parser.ast.properties.PropertyDefinition cannot be applied to given types;
+- required: java.lang.String,me.tomassetti.turin.parser.ast.typeusage.TypeUsageNode,java.util.Optional<me.tomassetti.turin.parser.ast.expressions.Expression>,java.util.Optional<me.tomassetti.turin.parser.ast.expressions.Expression>,java.util.List<me.tomassetti.turin.parser.ast.properties.PropertyConstraint>
+- found: java.lang.String,java.lang.String
+- reason: actual and formal argument lists differ in length
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/007_41547678_SrcSymbolResolver_8fe4f5a7/compiledrepos/41547678/turin-compiler/src/test/java/me/tomassetti/turin/resolvers/SrcSymbolResolver_RBL4Test_8fe4f5a7.java:[34,53] constructor FunctionDefinitionNode in class me.tomassetti.turin.parser.ast.invokables.FunctionDefinitionNode cannot be applied to given types;
+- required: java.lang.String,me.tomassetti.turin.parser.ast.typeusage.TypeUsageNode,java.util.List<me.tomassetti.turin.parser.ast.FormalParameterNode>,me.tomassetti.turin.parser.ast.statements.Statement
+- found: java.lang.String,java.lang.String
+- reason: actual and formal argument lists differ in length
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/007_41547678_SrcSymbolResolver_8fe4f5a7/compiledrepos/41547678/turin-compiler/src/test/java/me/tomassetti/turin/resolvers/SrcSymbolResolver_RBL4Test_8fe4f5a7.java:[35,45] me.tomassetti.turin.parser.ast.TypeDefinitionNode is abstract; cannot be instantiated
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/007_41547678_SrcSymbolResolver_8fe4f5a7/compiledrepos/41547678/"
+2026-07-23T15:30:36+00:00,phase_log,43105609,weixin-mp,,10,43105609:weixin-mp/src/main/java/com/riversoft/weixin/mp/care/caremessages.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/010_43105609_CareMessages_737b9436/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/care/CareMessages_RBL4Test_737b9436.java:[14,19] package org.mockito does not exist
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/010_43105609_CareMessages_737b9436/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/care/CareMessages_RBL4Test_737b9436.java:[15,19] package org.mockito does not exist
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/010_43105609_CareMessages_737b9436/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/care/CareMessages_RBL4Test_737b9436.java:[19,26] package org.mockito does not exist
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/010_43105609_CareMessages_737b9436/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/care/CareMessages_RBL4Test_737b9436.java:[28,20] cannot find symbol
+- symbol:   method mock(java.lang.Class<com.riversoft.weixin.common.WxClient>)
+- location: class com.riversoft.weixin.mp.care.CareMessages_RBL4Test_737b9436
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/010_43105609_CareMessages_737b9436/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/care/CareMessages_RBL4Test_737b9436.java:[39,31] cannot find symbol
+- symbol:   method anyString()
+- location: class com.riversoft.weixin.mp.care.CareMessages_RBL4Test_737b9436
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/010_43105609_CareMessages_737b9436/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/care/CareMessages_RBL4Test_737b9436.java:[39,44] cannot find symbol
+- symbol:   method anyString()
+- location: class com.riversoft.weixin.mp.care.CareMessages_RBL4Test_737b9436
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_cc"
+2026-07-23T15:32:05+00:00,phase_log,43105609,weixin-mp,,11,43105609:weixin-mp/src/main/java/com/riversoft/weixin/mp/media/materials.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/011_43105609_Materials_a90c8766/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/media/Materials_RBL4Test_a90c8766.java:[12,19] package org.mockito does not exist
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/011_43105609_Materials_a90c8766/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/media/Materials_RBL4Test_a90c8766.java:[19,26] package org.mockito does not exist
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/011_43105609_Materials_a90c8766/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/media/Materials_RBL4Test_a90c8766.java:[28,20] cannot find symbol
+- symbol:   variable Mockito
+- location: class com.riversoft.weixin.mp.media.Materials_RBL4Test_a90c8766
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/011_43105609_Materials_a90c8766/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/media/Materials_RBL4Test_a90c8766.java:[39,28] cannot find symbol
+- symbol:   method anyString()
+- location: class com.riversoft.weixin.mp.media.Materials_RBL4Test_a90c8766
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/011_43105609_Materials_a90c8766/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/media/Materials_RBL4Test_a90c8766.java:[39,41] cannot find symbol
+- symbol:   method any(java.lang.Class<java.io.InputStream>)
+- location: class com.riversoft.weixin.mp.media.Materials_RBL4Test_a90c8766
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/011_43105609_Materials_a90c8766/compiledrepos/43105609/weixin-mp/src/test/java/com/riversoft/weixin/mp/media/Materials_RBL4Test_a90c8766.java:[39,65] cannot find symbol
+- symbol:   method anyString()
+- location: class com.riversoft.weixin.mp.media.Materials_RBL4Test_a90c8766
+- /D:/A_ThucNghiem/scrip"
+2026-07-23T15:33:02+00:00,phase_log,44308560,src/RobotFrameworkCore/org.robotframework.ide.core-functions,,13,44308560:src/robotframeworkcore/org.robotframework.ide.core-functions/src/main/java/org/rf/ide/core/execution/debug/stackframevariables.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/013_44308560_StackFrameVariables_996db0ed/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/debug/StackFrameVariables_RBL4Test_996db0ed.java:[8,17] cannot find symbol
+- symbol:   class Test
+- location: package org.junit
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/013_44308560_StackFrameVariables_996db0ed/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/debug/StackFrameVariables_RBL4Test_996db0ed.java:[9,24] cannot find symbol
+- symbol:   class Assert
+- location: package org.junit
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/013_44308560_StackFrameVariables_996db0ed/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/debug/StackFrameVariables_RBL4Test_996db0ed.java:[20,4] cannot find symbol
+- symbol:   class Test
+- location: class org.rf.ide.core.execution.debug.StackFrameVariables_RBL4Test_996db0ed
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/013_44308560_StackFrameVariables_996db0ed/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/debug/StackFrameVariables_RBL4Test_996db0ed.java:[27,4] cannot find symbol
+- symbol:   class Test
+- location: class org.rf.ide.core.execution.debug.StackFrameVariables_RBL4Test_996db0ed
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/013_44308560_StackFrameVariables_996db0ed/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/debug/StackFrameVariables_RBL4Test_996db0ed.java:[35,4] cannot find symbol
+- symbol:   class Test
+- location: class org.rf.ide.core."
+2026-07-23T15:33:20+00:00,phase_log,45997449,WebRex,,14,45997449:webrex/src/main/java/com/ebayopensource/webrex/resource/resourcewrapper.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/014_45997449_ResourceWrapper_5b1f1ebf/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/ResourceWrapper_RBL4Test_5b1f1ebf.java:[4,26] package org.mockito does not exist
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/014_45997449_ResourceWrapper_5b1f1ebf/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/ResourceWrapper_RBL4Test_5b1f1ebf.java:[28,24] cannot find symbol
+- symbol:   method mock(java.lang.Class<com.ebayopensource.webrex.resource.api.IResource>)
+- location: class com.ebayopensource.webrex.resource.ResourceWrapper_RBL4Test_5b1f1ebf
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/014_45997449_ResourceWrapper_5b1f1ebf/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/ResourceWrapper_RBL4Test_5b1f1ebf.java:[34,36] cannot find symbol
+- symbol:   method mock(java.lang.Class<com.ebayopensource.webrex.resource.api.IResourceContext>)
+- location: class com.ebayopensource.webrex.resource.ResourceWrapper_RBL4Test_5b1f1ebf
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/014_45997449_ResourceWrapper_5b1f1ebf/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/ResourceWrapper_RBL4Test_5b1f1ebf.java:[36,9] cannot find symbol
+- symbol:   method when(byte[])
+- location: class com.ebayopensource.webrex.resource.ResourceWrapper_RBL4Test_5b1f1ebf
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/014_45997449_ResourceWrapper_5b1f1ebf/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/ResourceWrapper_RBL4Test_5b1f1ebf.java:[44,36] cannot find symbol
+- symbol:   method mock(java.lang.Class<com.ebayopensource.webrex.resource.api.IResourceContext>)
+- location: class com.ebayopensource.webrex.resource.ResourceWrapper_RBL4Test_5b1f1"
+2026-07-23T15:33:40+00:00,phase_log,44308560,src/RobotFrameworkCore/org.robotframework.ide.core-functions,,13,44308560:src/robotframeworkcore/org.robotframework.ide.core-functions/src/main/java/org/rf/ide/core/execution/debug/stackframevariables.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/013_44308560_StackFrameVariables_996db0ed/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/debug/StackFrameVariables_RBL4Test_996db0ed.java:[57,9] cannot find symbol
+- symbol:   class StackVariablesDelta
+- location: class org.rf.ide.core.execution.debug.StackFrameVariables_RBL4Test_996db0ed
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/013_44308560_StackFrameVariables_996db0ed/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/debug/StackFrameVariables_RBL4Test_996db0ed.java:[70,9] cannot find symbol
+- symbol:   class StackVariablesDelta
+- location: class org.rf.ide.core.execution.debug.StackFrameVariables_RBL4Test_996db0ed
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/013_44308560_StackFrameVariables_996db0ed/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/debug/StackFrameVariables_RBL4Test_996db0ed.java:[77,39] isAutomatic(java.lang.String) has private access in org.rf.ide.core.execution.debug.StackFrameVariables
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/013_44308560_StackFrameVariables_996db0ed/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/debug/StackFrameVariables_RBL4Test_996db0ed.java:[78,40] isAutomatic(java.lang.String) has private access in org.rf.ide.core.execution.debug.StackFrameVariables"
+2026-07-23T15:33:49+00:00,phase_log,44308560,src/RobotFrameworkCore/org.robotframework.ide.core-functions,,12,44308560:src/robotframeworkcore/org.robotframework.ide.core-functions/src/main/java/org/rf/ide/core/execution/argumentsfile.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/012_44308560_ArgumentsFile_19fe2f02/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/ArgumentsFile_RBL4Test_19fe2f02.java:[8,17] cannot find symbol
+- symbol:   class Test
+- location: package org.junit
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/012_44308560_ArgumentsFile_19fe2f02/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/ArgumentsFile_RBL4Test_19fe2f02.java:[9,24] cannot find symbol
+- symbol:   class Assert
+- location: package org.junit
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/012_44308560_ArgumentsFile_19fe2f02/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/ArgumentsFile_RBL4Test_19fe2f02.java:[18,4] cannot find symbol
+- symbol:   class Test
+- location: class org.rf.ide.core.execution.ArgumentsFile_RBL4Test_19fe2f02
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/012_44308560_ArgumentsFile_19fe2f02/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/ArgumentsFile_RBL4Test_19fe2f02.java:[40,4] cannot find symbol
+- symbol:   class Test
+- location: class org.rf.ide.core.execution.ArgumentsFile_RBL4Test_19fe2f02
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/012_44308560_ArgumentsFile_19fe2f02/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/ArgumentsFile_RBL4Test_19fe2f02.java:[47,4] cannot find symbol
+- symbol:   class Test
+- location: class org.rf.ide.core.execution.ArgumentsFile_RBL4Test_19fe2f02
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/012_44"
+2026-07-23T15:34:29+00:00,phase_log,44308560,src/RobotFrameworkCore/org.robotframework.ide.core-functions,,12,44308560:src/robotframeworkcore/org.robotframework.ide.core-functions/src/main/java/org/rf/ide/core/execution/argumentsfile.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/012_44308560_ArgumentsFile_19fe2f02/compiledrepos/44308560/src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/ArgumentsFile_RBL4Test_19fe2f02.java:[24,9] cannot find symbol
+- symbol:   variable RedTemporaryDirectory
+- location: class org.rf.ide.core.execution.ArgumentsFile_RBL4Test_19fe2f02"
+2026-07-23T15:35:21+00:00,phase_log,45997449,WebRex,,15,45997449:webrex/src/main/java/com/ebayopensource/webrex/resource/expression/resourceelevaluator.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/015_45997449_ResourceELEvaluator_44ed24a7/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/expression/ResourceELEvaluator_RBL4Test_44ed24a7.java:[25,37] no suitable constructor found for ResourceExpression(com.ebayopensource.webrex.resource.expression.ResourceExpressionType,java.lang.String,<nulltype>)
+- constructor com.ebayopensource.webrex.resource.expression.ResourceExpression.ResourceExpression(java.lang.String,com.ebayopensource.webrex.resource.expression.ResourceExpression,com.ebayopensource.webrex.resource.expression.ResourceExpressionType) is not applicable
+- (argument mismatch; com.ebayopensource.webrex.resource.expression.ResourceExpressionType cannot be converted to java.lang.String)
+- constructor com.ebayopensource.webrex.resource.expression.ResourceExpression.ResourceExpression(java.lang.String,com.ebayopensource.webrex.resource.expression.ResourceExpression,com.ebayopensource.webrex.resource.expression.ResourceExpressionType,java.lang.Object...) is not applicable
+- (argument mismatch; com.ebayopensource.webrex.resource.expression.ResourceExpressionType cannot be converted to java.lang.String)
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/015_45997449_ResourceELEvaluator_44ed24a7/compiledrepos/45997449/WebRex/src/test/java/com/ebayopensource/webrex/resource/expression/ResourceELEvaluator_RBL4Test_44ed24a7.java:[26,40] no suitable constructor found for ResourceExpression(com.ebayopensource.webrex.resource.expression.ResourceExpressionType,java.lang.String,com.ebayopensource.webrex.resource.expression.ResourceExpression)
+- constructor com.ebayopensource.webrex.resource.expression.ResourceExpression.ResourceExpression(java.lang.String,com.ebayopensource.webrex.resource.expression.ResourceExpression,com.ebayopensource.webrex.resource.expression.ResourceExpressionType"
+2026-07-23T15:35:36+00:00,phase_log,46396068,,evosuite,17,46396068:hbase0.98/hbase-manager-0.98/src/main/java/com/kakao/hbase/manager/command/mc.java,MC,,evosuite_generate,FAIL,project_dependency_resolution_error,repository_or_environment,"Lỗi nằm ở repo/dependency/JDK/recipe build đầu vào hoặc môi trường, không phải do năng lực sinh test.",error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","to execute goal on project hbase-manager-0.98: Could not collect dependencies for project com.kakao.hbase:hbase-manager-0.98:jar:1.6.0
+[ERROR] Failed to read artifact descriptor for com.kakao.hbase:hbase-common-0.98:jar:1.6.0
+[ERROR] 	Caused by: The following artifacts could not be resolved: com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} (absent): Could not transfer artifact com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} from/to cloudera-releases (https://repository.cloudera.com/artifactory/cloudera-repos): ClientProtocolException
+[ERROR] Failed to read artifact descriptor for com.kakao.hbase:hbase-common-0.98:jar:tests:1.6.0
+[ERROR] 	Caused by: The following artifacts could not be resolved: com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} (absent): com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} failed to transfer from https://repository.cloudera.com/artifactory/cloudera-repos during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of cloudera-releases has elapsed or updates are forced. Original error: Could not transfer artifact com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} from/to cloudera-releases (https://repository.cloudera.com/artifactory/cloudera-repos): ClientProtocolException
+[ERROR] Failed to read artifact descriptor for com.kakao.hbase:hbase-table-stat-0.98:jar:1.6.0
+[ERROR] 	Caused by: The following artifacts could not be resolved: com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} (absent): com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} failed to transfer from https://repository.cloudera.com/artifactory/cloudera-repos during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of cloudera-releases has elapsed or updates are forced. Original error: Could not transfer artifact com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} from/to clouder"
+2026-07-23T15:35:51+00:00,phase_log,46396068,hbase0.98/hbase-manager-0.98,,17,46396068:hbase0.98/hbase-manager-0.98/src/main/java/com/kakao/hbase/manager/command/mc.java,,,maven_verify_jacoco_pit,FAIL,project_dependency_resolution_error,repository_or_environment,"Lỗi nằm ở repo/dependency/JDK/recipe build đầu vào hoặc môi trường, không phải do năng lực sinh test.",error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","The following general errors were encountered during the Maven build:
+
+- Failed to execute goal on project hbase-manager-0.98: Could not collect dependencies for project com.kakao.hbase:hbase-manager-0.98:jar:1.6.0
+- Failed to read artifact descriptor for com.kakao.hbase:hbase-common-0.98:jar:1.6.0
+- Caused by: The following artifacts could not be resolved: com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} (absent): Could not transfer artifact com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} from/to cloudera-releases (https://repository.cloudera.com/artifactory/cloudera-repos): ClientProtocolException
+- Failed to read artifact descriptor for com.kakao.hbase:hbase-common-0.98:jar:tests:1.6.0
+- Caused by: The following artifacts could not be resolved: com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} (absent): com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} failed to transfer from https://repository.cloudera.com/artifactory/cloudera-repos during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of cloudera-releases has elapsed or updates are forced. Original error: Could not transfer artifact com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} from/to cloudera-releases (https://repository.cloudera.com/artifactory/cloudera-repos): ClientProtocolException
+- Failed to read artifact descriptor for com.kakao.hbase:hbase-table-stat-0.98:jar:1.6.0
+- Caused by: The following artifacts could not be resolved: com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} (absent): com.kakao.hbase:hbase-tools-0.98:pom:${version.unified} failed to transfer from https://repository.cloudera.com/artifactory/cloudera-repos during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of cloudera-releases has elapsed or updates are forced. Original error: Could not transfer artifact com.kakao.hbase:hbase-tools-0."
+2026-07-23T15:36:35+00:00,phase_log,46450575,flo-workflow,,19,46450575:flo-workflow/src/main/java/com/spotify/flo/taskids.java,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Failed to execute goal org.codehaus.mojo:license-maven-plugin:1.9:check-file-header (check-file-header) on project flo-workflow: There are 1 file(s) with no header :
+- D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\019_46450575_TaskIds_b7d06a10\compiledrepos\46450575\flo-workflow\src\test\java\com\spotify\flo\TaskIds_RBL4Test_b7d06a10.java
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException"
+2026-07-23T15:36:42+00:00,phase_log,46450575,flo-workflow,,18,46450575:flo-workflow/src/main/java/com/spotify/flo/context/asynccontext.java,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Failed to execute goal org.codehaus.mojo:license-maven-plugin:1.9:check-file-header (check-file-header) on project flo-workflow: There are 1 file(s) with no header :
+- D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\018_46450575_AsyncContext_acb5f0dc\compiledrepos\46450575\flo-workflow\src\test\java\com\spotify\flo\context\AsyncContext_RBL4Test_acb5f0dc.java
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException"
+2026-07-23T15:36:45+00:00,phase_log,46450575,flo-workflow,,19,46450575:flo-workflow/src/main/java/com/spotify/flo/taskids.java,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Failed to execute goal org.codehaus.mojo:license-maven-plugin:1.9:check-file-header (check-file-header) on project flo-workflow: There are 1 file(s) with no header :
+- D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\019_46450575_TaskIds_b7d06a10\compiledrepos\46450575\flo-workflow\src\test\java\com\spotify\flo\TaskIds_RBL4Test_b7d06a10.java
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException"
+2026-07-23T15:36:54+00:00,phase_log,46450575,flo-workflow,,18,46450575:flo-workflow/src/main/java/com/spotify/flo/context/asynccontext.java,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Failed to execute goal org.codehaus.mojo:license-maven-plugin:1.9:check-file-header (check-file-header) on project flo-workflow: There are 1 file(s) with no header :
+- D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\018_46450575_AsyncContext_acb5f0dc\compiledrepos\46450575\flo-workflow\src\test\java\com\spotify\flo\context\AsyncContext_RBL4Test_acb5f0dc.java
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException"
+2026-07-23T15:39:18+00:00,phase_log,49384652,niubi-job-framework/niubi-job-core,,22,49384652:niubi-job-framework/niubi-job-core/src/main/java/com/zuoxiaolong/niubi/job/core/helper/objecthelper.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/022_49384652_ObjectHelper_3f333538/compiledrepos/49384652/niubi-job-framework/niubi-job-core/src/test/java/com/zuoxiaolong/niubi/job/core/helper/ObjectHelper_RBL4Test_3f333538.java:[10,20] class com.zuoxiaolong.niubi.job.core.helper.ObjectHelper_RBL4Test_3f333538 is already defined in package com.zuoxiaolong.niubi.job.core.helper
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/022_49384652_ObjectHelper_3f333538/compiledrepos/49384652/niubi-job-framework/niubi-job-core/src/test/java/com/zuoxiaolong/niubi/job/core/helper/ObjectHelper_RBL4Test_3f333538.java:[11,10] cannot find symbol
+- symbol:   class Transient
+- location: class com.zuoxiaolong.niubi.job.core.helper.ObjectHelper_RBL4Test_3f333538.ObjectHelper_RBL4Test_3f333538
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/022_49384652_ObjectHelper_3f333538/compiledrepos/49384652/niubi-job-framework/niubi-job-core/src/test/java/com/zuoxiaolong/niubi/job/core/helper/ObjectHelper_RBL4Test_3f333538.java:[47,23] cannot find symbol
+- symbol:   class TestClass
+- location: class com.zuoxiaolong.niubi.job.core.helper.ObjectHelper_RBL4Test_3f333538
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/022_49384652_ObjectHelper_3f333538/compiledrepos/49384652/niubi-job-framework/niubi-job-core/src/test/java/com/zuoxiaolong/niubi/job/core/helper/ObjectHelper_RBL4Test_3f333538.java:[48,47] cannot find symbol
+- symbol:   class TestClass
+- location: class com.zuoxiaolong.niubi.job.core.helper.ObjectHelper_RBL4Test_3f333538
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/022_49384652_ObjectHelper_3f333538/compiledrepos/49384652/niubi-job-framework/niubi-job-core/src/test/java/com/zuoxiaolong/niubi/job/core/helper/ObjectHelper_RBL4Test_3f333538.java:[53,23] cannot find symbol
+- symbol:   class TestClass
+- location: class com.zu"
+2026-07-23T15:40:24+00:00,phase_log,48046454,hazelcast-jet-core,,21,48046454:hazelcast-jet-core/src/main/java/com/hazelcast/jet/impl/util/skewreductionpolicy.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/021_48046454_SkewReductionPolicy_80a96ca0/compiledrepos/48046454/hazelcast-jet-core/src/test/java/com/hazelcast/jet/impl/util/SkewReductionPolicy_RBL4Test_80a96ca0.java:[51,22] cannot find symbol
+- symbol:   class JetException
+- location: class com.hazelcast.jet.impl.util.SkewReductionPolicy_RBL4Test_80a96ca0"
+2026-07-23T15:40:45+00:00,phase_log,48046454,hazelcast-jet-core,,20,48046454:hazelcast-jet-core/src/main/java/com/hazelcast/jet/impl/jetclientinstanceimpl.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/020_48046454_JetClientInstanceImpl_5e8ad51c/compiledrepos/48046454/hazelcast-jet-core/src/test/java/com/hazelcast/jet/impl/JetClientInstanceImpl_RBL4Test_5e8ad51c.java:[46,82] cannot find symbol
+- symbol:   class Member
+- location: class com.hazelcast.jet.impl.JetClientInstanceImpl_RBL4Test_5e8ad51c
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/020_48046454_JetClientInstanceImpl_5e8ad51c/compiledrepos/48046454/hazelcast-jet-core/src/test/java/com/hazelcast/jet/impl/JetClientInstanceImpl_RBL4Test_5e8ad51c.java:[101,40] reference to getLogger is ambiguous
+- both method getLogger(java.lang.String) in com.hazelcast.logging.LoggingService and method getLogger(java.lang.Class) in com.hazelcast.logging.LoggingService match"
+2026-07-23T15:41:58+00:00,phase_log,49384652,niubi-job-framework/niubi-job-service,,23,49384652:niubi-job-framework/niubi-job-service/src/main/java/com/zuoxiaolong/niubi/job/service/impl/standbyjobserviceimpl.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/023_49384652_StandbyJobServiceImpl_06be1a5a/compiledrepos/49384652/niubi-job-framework/niubi-job-service/src/test/java/com/zuoxiaolong/niubi/job/service/impl/StandbyJobServiceImpl_RBL4Test_06be1a5a.java:[15,25] cannot find symbol
+- symbol:   class MockitoJUnitRunner
+- location: package org.mockito.junit
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/023_49384652_StandbyJobServiceImpl_06be1a5a/compiledrepos/49384652/niubi-job-framework/niubi-job-service/src/test/java/com/zuoxiaolong/niubi/job/service/impl/StandbyJobServiceImpl_RBL4Test_06be1a5a.java:[23,10] cannot find symbol
+- symbol: class MockitoJUnitRunner"
+2026-07-23T15:42:24+00:00,phase_log,558963,httpcache4j-api,,24,558963:httpcache4j-api/src/main/java/org/codehaus/httpcache4j/header.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/024_558963_Header_81a76271/compiledrepos/558963/httpcache4j-api/src/test/java/org/codehaus/httpcache4j/Header_RBL4Test_81a76271.java:[30,48] incompatible types: java.lang.String cannot be converted to java.lang.Iterable<org.codehaus.httpcache4j.Directive>
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/024_558963_Header_81a76271/compiledrepos/558963/httpcache4j-api/src/test/java/org/codehaus/httpcache4j/Header_RBL4Test_81a76271.java:[41,20] incompatible types: org.codehaus.httpcache4j.Directives cannot be converted to org.codehaus.httpcache4j.util.AuthDirectivesParser
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/024_558963_Header_81a76271/compiledrepos/558963/httpcache4j-api/src/test/java/org/codehaus/httpcache4j/Header_RBL4Test_81a76271.java:[49,20] incompatible types: org.codehaus.httpcache4j.Directives cannot be converted to org.codehaus.httpcache4j.util.DirectivesParser"
+2026-07-23T15:44:30+00:00,phase_log,61565876,injector,,28,61565876:injector/src/main/java/ch/jalu/injector/handlers/dependency/typesafeannotationhandler.java,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Failed to execute goal org.pitest:pitest-maven:1.16.0:mutationCoverage (default-cli) on project injector: Execution default-cli of goal org.pitest:pitest-maven:1.16.0:mutationCoverage failed: Coverage generation minion exited abnormally! (UNKNOWN_ERROR)
+- 
+- Please copy and paste the information and the complete stacktrace below when reporting an issue
+- VM : Java HotSpot(TM) 64-Bit Server VM
+- Vendor : Oracle Corporation
+- Version : 25.172-b11
+- Uptime : 8448
+- Input ->
+- 1 : -Dclassworlds.conf=C:\Program Files\Apache\maven\bin\m2.conf
+- 2 : -Dmaven.home=C:\Program Files\Apache\maven
+- 3 : -Dlibrary.jansi.path=C:\Program Files\Apache\maven\lib\jansi-native
+- 4 : -Dmaven.multiModuleProjectDirectory=D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\028_61565876_TypeSafeAnnotationHandler_35218d3d\compiledrepos\61565876\injector
+- BootClassPathSupported : true
+- 
+- 
+- Please copy and paste the information and the complete stacktrace below when reporting an issue
+- VM : Java HotSpot(TM) 64-Bit Server VM
+- Vendor : Oracle Corporation
+- Version : 25.172-b11
+- Uptime : 8449
+- Input ->
+- 1 : -Dclassworlds.conf=C:\Program Files\Apache\maven\bin\m2.conf
+- 2 : -Dmaven.home=C:\Program Files\Apache\maven
+- 3 : -Dlibrary.jansi.path=C:\Program Files\Apache\maven\lib\jansi-native
+- 4 : -Dmaven.multiModuleProjectDirectory=D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\028_61565876_TypeSafeAnnotationHandler_35218d3d\compiledrepos\61565876\injector
+- BootClassPathSupported : true
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginExecutionException"
+2026-07-23T15:44:44+00:00,phase_log,61565876,injector,,28,61565876:injector/src/main/java/ch/jalu/injector/handlers/dependency/typesafeannotationhandler.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/028_61565876_TypeSafeAnnotationHandler_35218d3d/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/handlers/dependency/TypeSafeAnnotationHandler_RBL4Test_35218d3d.java:[38,13] cannot find symbol
+- symbol:   class TestHandler
+- location: class ch.jalu.injector.handlers.dependency.TypeSafeAnnotationHandler_RBL4Test_35218d3d
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/028_61565876_TypeSafeAnnotationHandler_35218d3d/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/handlers/dependency/TypeSafeAnnotationHandler_RBL4Test_35218d3d.java:[24,13] class ch.jalu.injector.handlers.dependency.TypeSafeAnnotationHandler_RBL4Test_35218d3d is already defined in package ch.jalu.injector.handlers.dependency
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/028_61565876_TypeSafeAnnotationHandler_35218d3d/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/handlers/dependency/TypeSafeAnnotationHandler_RBL4Test_35218d3d.java:[33,20] ch.jalu.injector.handlers.instantiation.Resolution is abstract; cannot be instantiated
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/028_61565876_TypeSafeAnnotationHandler_35218d3d/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/handlers/dependency/TypeSafeAnnotationHandler_RBL4Test_35218d3d.java:[43,23] cannot find symbol
+- symbol:   class TestHandler
+- location: class ch.jalu.injector.handlers.dependency.TypeSafeAnnotationHandler_RBL4Test_35218d3d
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/028_61565876_TypeSafeAnnotationHandler_35218d3d/compiledrepos/61565876/injector/src/test/java/ch/jalu/injector/handlers/dependency/TypeSafeAnnotationHandler_RBL4Test_35218d3d.java:[49,71] cannot find symbol
+- symbol:   class Annotation
+- location: class ch.jalu.injector.handlers.dependency.TypeSafeAnno"
+2026-07-23T15:44:50+00:00,phase_log,60578004,elastic-jobx-core,,27,60578004:elastic-jobx-core/src/main/java/com/dangdang/ddframe/job/internal/server/serverservice.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/027_60578004_ServerService_c34449d1/compiledrepos/60578004/elastic-jobx-core/src/test/java/com/dangdang/ddframe/job/internal/server/ServerService_RBL4Test_c34449d1.java:[27,39] cannot find symbol
+- symbol:   method getJobNodeStorage(java.lang.String)
+- location: variable coordinatorRegistryCenter of type com.dangdang.ddframe.reg.base.CoordinatorRegistryCenter"
+2026-07-23T15:45:08+00:00,phase_log,61565876,injector,,29,61565876:injector/src/main/java/ch/jalu/injector/utils/injectorutils.java,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Failed to execute goal org.pitest:pitest-maven:1.16.0:mutationCoverage (default-cli) on project injector: Execution default-cli of goal org.pitest:pitest-maven:1.16.0:mutationCoverage failed: Coverage generation minion exited abnormally! (UNKNOWN_ERROR)
+- 
+- Please copy and paste the information and the complete stacktrace below when reporting an issue
+- VM : Java HotSpot(TM) 64-Bit Server VM
+- Vendor : Oracle Corporation
+- Version : 25.172-b11
+- Uptime : 9364
+- Input ->
+- 1 : -Dclassworlds.conf=C:\Program Files\Apache\maven\bin\m2.conf
+- 2 : -Dmaven.home=C:\Program Files\Apache\maven
+- 3 : -Dlibrary.jansi.path=C:\Program Files\Apache\maven\lib\jansi-native
+- 4 : -Dmaven.multiModuleProjectDirectory=D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\029_61565876_InjectorUtils_32d528d0\compiledrepos\61565876\injector
+- BootClassPathSupported : true
+- 
+- 
+- Please copy and paste the information and the complete stacktrace below when reporting an issue
+- VM : Java HotSpot(TM) 64-Bit Server VM
+- Vendor : Oracle Corporation
+- Version : 25.172-b11
+- Uptime : 9366
+- Input ->
+- 1 : -Dclassworlds.conf=C:\Program Files\Apache\maven\bin\m2.conf
+- 2 : -Dmaven.home=C:\Program Files\Apache\maven
+- 3 : -Dlibrary.jansi.path=C:\Program Files\Apache\maven\lib\jansi-native
+- 4 : -Dmaven.multiModuleProjectDirectory=D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\029_61565876_InjectorUtils_32d528d0\compiledrepos\61565876\injector
+- BootClassPathSupported : true
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginExecutionException"
+2026-07-23T15:45:26+00:00,phase_log,61565876,injector,,29,61565876:injector/src/main/java/ch/jalu/injector/utils/injectorutils.java,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Failed to execute goal org.pitest:pitest-maven:1.16.0:mutationCoverage (default-cli) on project injector: Execution default-cli of goal org.pitest:pitest-maven:1.16.0:mutationCoverage failed: Coverage generation minion exited abnormally! (UNKNOWN_ERROR)
+- 
+- Please copy and paste the information and the complete stacktrace below when reporting an issue
+- VM : Java HotSpot(TM) 64-Bit Server VM
+- Vendor : Oracle Corporation
+- Version : 25.172-b11
+- Uptime : 8341
+- Input ->
+- 1 : -Dclassworlds.conf=C:\Program Files\Apache\maven\bin\m2.conf
+- 2 : -Dmaven.home=C:\Program Files\Apache\maven
+- 3 : -Dlibrary.jansi.path=C:\Program Files\Apache\maven\lib\jansi-native
+- 4 : -Dmaven.multiModuleProjectDirectory=D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\029_61565876_InjectorUtils_32d528d0\compiledrepos\61565876\injector
+- BootClassPathSupported : true
+- 
+- 
+- Please copy and paste the information and the complete stacktrace below when reporting an issue
+- VM : Java HotSpot(TM) 64-Bit Server VM
+- Vendor : Oracle Corporation
+- Version : 25.172-b11
+- Uptime : 8343
+- Input ->
+- 1 : -Dclassworlds.conf=C:\Program Files\Apache\maven\bin\m2.conf
+- 2 : -Dmaven.home=C:\Program Files\Apache\maven
+- 3 : -Dlibrary.jansi.path=C:\Program Files\Apache\maven\lib\jansi-native
+- 4 : -Dmaven.multiModuleProjectDirectory=D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\029_61565876_InjectorUtils_32d528d0\compiledrepos\61565876\injector
+- BootClassPathSupported : true
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginExecutionException"
+2026-07-23T15:46:21+00:00,phase_log,6437134,enav-model,,32,6437134:enav-model/src/main/java/dk/dma/enav/safety/safetyzones.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/032_6437134_SafetyZones_d088ee82/compiledrepos/6437134/enav-model/src/test/java/dk/dma/enav/safety/SafetyZones_RBL4Test_d088ee82.java:[12,29] Position(double,double) is not public in dk.dma.enav.model.geometry.Position; cannot be accessed from outside package
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/032_6437134_SafetyZones_d088ee82/compiledrepos/6437134/enav-model/src/test/java/dk/dma/enav/safety/SafetyZones_RBL4Test_d088ee82.java:[21,48] cannot find symbol
+- symbol:   method getSemiMajorAxis()
+- location: variable ellipse of type dk.dma.enav.model.geometry.Ellipse
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/032_6437134_SafetyZones_d088ee82/compiledrepos/6437134/enav-model/src/test/java/dk/dma/enav/safety/SafetyZones_RBL4Test_d088ee82.java:[22,48] cannot find symbol
+- symbol:   method getSemiMinorAxis()
+- location: variable ellipse of type dk.dma.enav.model.geometry.Ellipse
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/032_6437134_SafetyZones_d088ee82/compiledrepos/6437134/enav-model/src/test/java/dk/dma/enav/safety/SafetyZones_RBL4Test_d088ee82.java:[27,38] Position(double,double) is not public in dk.dma.enav.model.geometry.Position; cannot be accessed from outside package
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/032_6437134_SafetyZones_d088ee82/compiledrepos/6437134/enav-model/src/test/java/dk/dma/enav/safety/SafetyZones_RBL4Test_d088ee82.java:[28,29] Position(double,double) is not public in dk.dma.enav.model.geometry.Position; cannot be accessed from outside package
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/032_6437134_SafetyZones_d088ee82/compiledrepos/6437134/enav-model/src/test/java/dk/dma/enav/safety/SafetyZones_RBL4Test_d088ee82.java:[38,27] cannot find symbol
+- symbol:   method getSemiMajorAxis()
+- loc"
+2026-07-23T15:49:12+00:00,phase_log,6293402,server,,31,6293402:server/src/main/java/com/vaadin/util/currentinstance.java,,,maven_verify_jacoco_pit,FAIL,pom_rewrite_namespace_error,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,"POM bị ghi lại với namespace/prefix không hợp lệ sau khi tool chèn plugin/dependency, khiến Maven không đọc được pom.xml.",Khôi phục pom.xml từ backup/source trước khi chạy lại; cần sửa bước rewrite POM để giữ đúng Maven namespace mặc định.,"The following general errors were encountered during the Maven build:
+
+- Some problems were encountered while processing the POMs:
+- [FATAL] Non-parseable POM D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\031_6293402_CurrentInstance_2f6a5671\compiledrepos\6293402\server\pom.xml: Duplicated tag: 'build' (position: START_TAG seen ...</pluginManagement>\n    </build>\n\n<build>... @316:8)  @ line 316, column 8
+- @
+- The build could not read 1 project -> [Help 1]
+- 
+- The project  (D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\031_6293402_CurrentInstance_2f6a5671\compiledrepos\6293402\server\pom.xml) has 1 error
+- Non-parseable POM D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\031_6293402_CurrentInstance_2f6a5671\compiledrepos\6293402\server\pom.xml: Duplicated tag: 'build' (position: START_TAG seen ...</pluginManagement>\n    </build>\n\n<build>... @316:8)  @ line 316, column 8 -> [Help 2]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+- [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/ModelParseException"
+2026-07-23T15:49:13+00:00,phase_log,6293402,server,,30,6293402:server/src/main/java/com/vaadin/data/provider/listdataprovider.java,,,maven_verify_jacoco_pit,FAIL,pom_rewrite_namespace_error,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,"POM bị ghi lại với namespace/prefix không hợp lệ sau khi tool chèn plugin/dependency, khiến Maven không đọc được pom.xml.",Khôi phục pom.xml từ backup/source trước khi chạy lại; cần sửa bước rewrite POM để giữ đúng Maven namespace mặc định.,"The following general errors were encountered during the Maven build:
+
+- Some problems were encountered while processing the POMs:
+- [FATAL] Non-parseable POM D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\030_6293402_ListDataProvider_d31191e9\compiledrepos\6293402\server\pom.xml: Duplicated tag: 'build' (position: START_TAG seen ...</pluginManagement>\n    </build>\n\n<build>... @316:8)  @ line 316, column 8
+- @
+- The build could not read 1 project -> [Help 1]
+- 
+- The project  (D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\030_6293402_ListDataProvider_d31191e9\compiledrepos\6293402\server\pom.xml) has 1 error
+- Non-parseable POM D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\030_6293402_ListDataProvider_d31191e9\compiledrepos\6293402\server\pom.xml: Duplicated tag: 'build' (position: START_TAG seen ...</pluginManagement>\n    </build>\n\n<build>... @316:8)  @ line 316, column 8 -> [Help 2]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+- [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/ModelParseException"
+2026-07-23T15:49:30+00:00,phase_log,64487983,hexagonal,,35,64487983:hexagonal/src/main/java/com/iluwatar/hexagonal/domain/lotteryticket.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/035_64487983_LotteryTicket_81d1374a/compiledrepos/64487983/hexagonal/src/test/java/com/iluwatar/hexagonal/domain/LotteryTicket_RBL4Test_81d1374a.java:[18,25] constructor PlayerDetails in class com.iluwatar.hexagonal.domain.PlayerDetails cannot be applied to given types;
+- required: java.lang.String,java.lang.String,java.lang.String
+- found: java.lang.String,java.lang.String
+- reason: actual and formal argument lists differ in length
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/035_64487983_LotteryTicket_81d1374a/compiledrepos/64487983/hexagonal/src/test/java/com/iluwatar/hexagonal/domain/LotteryTicket_RBL4Test_81d1374a.java:[19,45] incompatible types: int[] cannot be converted to java.util.Set<java.lang.Integer>
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/035_64487983_LotteryTicket_81d1374a/compiledrepos/64487983/hexagonal/src/test/java/com/iluwatar/hexagonal/domain/LotteryTicket_RBL4Test_81d1374a.java:[54,48] constructor PlayerDetails in class com.iluwatar.hexagonal.domain.PlayerDetails cannot be applied to given types;
+- required: java.lang.String,java.lang.String,java.lang.String
+- found: java.lang.String,java.lang.String
+- reason: actual and formal argument lists differ in length
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/035_64487983_LotteryTicket_81d1374a/compiledrepos/64487983/hexagonal/src/test/java/com/iluwatar/hexagonal/domain/LotteryTicket_RBL4Test_81d1374a.java:[61,69] incompatible types: int[] cannot be converted to java.util.Set<java.lang.Integer>"
+2026-07-23T15:53:44+00:00,phase_log,66303306,event,,36,66303306:event/src/main/java/com/bazaarvoice/emodb/event/db/astyanax/defaultslaballocator.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/036_66303306_DefaultSlabAllocator_b8c57976/compiledrepos/66303306/event/src/test/java/com/bazaarvoice/emodb/event/db/astyanax/DefaultSlabAllocator_RBL4Test_b8c57976.java:[39,37] cannot find symbol
+- symbol:   method getSlabRef()
+- location: variable allocation of type com.bazaarvoice.emodb.event.db.astyanax.SlabAllocation
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/036_66303306_DefaultSlabAllocator_b8c57976/compiledrepos/66303306/event/src/test/java/com/bazaarvoice/emodb/event/db/astyanax/DefaultSlabAllocator_RBL4Test_b8c57976.java:[57,9] cannot find symbol
+- symbol:   class Pair
+- location: class com.bazaarvoice.emodb.event.db.astyanax.DefaultSlabAllocator_RBL4Test_b8c57976
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/036_66303306_DefaultSlabAllocator_b8c57976/compiledrepos/66303306/event/src/test/java/com/bazaarvoice/emodb/event/db/astyanax/DefaultSlabAllocator_RBL4Test_b8c57976.java:[66,9] cannot find symbol
+- symbol:   class Pair
+- location: class com.bazaarvoice.emodb.event.db.astyanax.DefaultSlabAllocator_RBL4Test_b8c57976
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/036_66303306_DefaultSlabAllocator_b8c57976/compiledrepos/66303306/event/src/test/java/com/bazaarvoice/emodb/event/db/astyanax/DefaultSlabAllocator_RBL4Test_b8c57976.java:[77,22] closeChannelState(com.bazaarvoice.emodb.event.db.astyanax.ChannelAllocationState) has private access in com.bazaarvoice.emodb.event.db.astyanax.DefaultSlabAllocator
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/036_66303306_DefaultSlabAllocator_b8c57976/compiledrepos/66303306/event/src/test/java/com/bazaarvoice/emodb/event/db/astyanax/DefaultSlabAllocator_RBL4Test_b8c57976.java:[84,40] createSlab(java.lang.String) has private access in com.bazaarvoice.emodb.event.db.astyanax.DefaultSlabAllocator
+- /"
+2026-07-23T15:54:26+00:00,phase_log,66303306,web,,37,66303306:web/src/main/java/com/bazaarvoice/emodb/web/settings/settingsmanager.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/037_66303306_SettingsManager_92b68acb/compiledrepos/66303306/web/src/test/java/com/bazaarvoice/emodb/web/settings/SettingsManager_RBL4Test_92b68acb.java:[76,134] incompatible types: java.lang.Class<java.lang.String> cannot be converted to java.lang.Class<jnr.ffi.util.AnnotationProxy<jnr.ffi.util.AnnotationProxy>>"
+2026-07-23T15:54:48+00:00,phase_log,66303306,web,,37,66303306:web/src/main/java/com/bazaarvoice/emodb/web/settings/settingsmanager.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/037_66303306_SettingsManager_92b68acb/compiledrepos/66303306/web/src/test/java/com/bazaarvoice/emodb/web/settings/SettingsManager_RBL4Test_92b68acb.java:[53,108] cannot find symbol
+- symbol:   method of(java.lang.String,java.lang.String,java.lang.String,int)
+- location: interface java.util.Map"
+2026-07-23T15:55:47+00:00,phase_log,77481567,core,,43,77481567:core/src/main/java/de/voidnode/trading4j/api/failed.java,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Failed to execute goal org.apache.maven.plugins:maven-checkstyle-plugin:2.17:check (default) on project core: Execution default of goal org.apache.maven.plugins:maven-checkstyle-plugin:2.17:check failed: Plugin org.apache.maven.plugins:maven-checkstyle-plugin:2.17 or one of its dependencies could not be resolved:
+- Failed to read artifact descriptor for de.voidnode.trading4j:parent:jar:buildconfig:0.2-SNAPSHOT
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginResolutionException"
+2026-07-23T15:55:47+00:00,phase_log,77481567,core,,42,77481567:core/src/main/java/de/voidnode/trading4j/moneymanagement/standard/riskmoneyprovider.java,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Failed to execute goal org.apache.maven.plugins:maven-checkstyle-plugin:2.17:check (default) on project core: Execution default of goal org.apache.maven.plugins:maven-checkstyle-plugin:2.17:check failed: Plugin org.apache.maven.plugins:maven-checkstyle-plugin:2.17 or one of its dependencies could not be resolved:
+- Failed to read artifact descriptor for de.voidnode.trading4j:parent:jar:buildconfig:0.2-SNAPSHOT
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginResolutionException"
+2026-07-23T15:55:59+00:00,phase_log,78444970,examples/graph,,44,78444970:examples/graph/src/main/java/graph/algorithm/mst/boruvkakruskal.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/044_78444970_BoruvkaKruskal_9edb2ce5/compiledrepos/78444970/examples/graph/src/test/java/graph/algorithm/mst/BoruvkaKruskal_RBL4Test_9edb2ce5.java:[23,14] method addEdge in class graph.model.MutableUndirectedGraph<NODE> cannot be applied to given types;
+- required: java.lang.String,java.lang.String
+- found: java.lang.String,java.lang.String,int
+- reason: actual and formal argument lists differ in length
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/044_78444970_BoruvkaKruskal_9edb2ce5/compiledrepos/78444970/examples/graph/src/test/java/graph/algorithm/mst/BoruvkaKruskal_RBL4Test_9edb2ce5.java:[24,14] method addEdge in class graph.model.MutableUndirectedGraph<NODE> cannot be applied to given types;
+- required: java.lang.String,java.lang.String
+- found: java.lang.String,java.lang.String,int
+- reason: actual and formal argument lists differ in length
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/044_78444970_BoruvkaKruskal_9edb2ce5/compiledrepos/78444970/examples/graph/src/test/java/graph/algorithm/mst/BoruvkaKruskal_RBL4Test_9edb2ce5.java:[25,14] method addEdge in class graph.model.MutableUndirectedGraph<NODE> cannot be applied to given types;
+- required: java.lang.String,java.lang.String
+- found: java.lang.String,java.lang.String,int
+- reason: actual and formal argument lists differ in length
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/044_78444970_BoruvkaKruskal_9edb2ce5/compiledrepos/78444970/examples/graph/src/test/java/graph/algorithm/mst/BoruvkaKruskal_RBL4Test_9edb2ce5.java:[26,14] method addEdge in class graph.model.MutableUndirectedGraph<NODE> cannot be applied to given types;
+- required: java.lang.String,java.lang.String
+- found: java.lang.String,java.lang.String,int
+- reason: actual and formal argument lists differ in length
+- /D:/A_ThucNghiem/scripts_v2/"
+2026-07-23T15:56:28+00:00,phase_log,77481567,core,,42,77481567:core/src/main/java/de/voidnode/trading4j/moneymanagement/standard/riskmoneyprovider.java,,,maven_verify_jacoco_pit,FAIL,generated_test_assertion_failure,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Test compile và chạy được nhưng assertion fail, nên JaCoCo/PIT không được tính là pass đầy đủ.",Ghi nhận fail_stage; không sửa assertion nếu đang chạy protocol no-repair.,"The following general errors were encountered during the Maven build:
+
+- Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.132 s <<< FAILURE! - in de.voidnode.trading4j.moneymanagement.standard.RiskMoneyProvider_RBL4Test_040b3628
+- testCalculateMoneyToRiskWithDifferentCurrency(de.voidnode.trading4j.moneymanagement.standard.RiskMoneyProvider_RBL4Test_040b3628)  Time elapsed: 0.025 s  <<< FAILURE!
+- java.lang.AssertionError: expected: java.lang.String<EUR> but was: java.util.Currency<EUR>
+- at de.voidnode.trading4j.moneymanagement.standard.RiskMoneyProvider_RBL4Test_040b3628.testCalculateMoneyToRiskWithDifferentCurrency(RiskMoneyProvider_RBL4Test_040b3628.java:48)
+- 
+- Failures:
+- RiskMoneyProvider_RBL4Test_040b3628.testCalculateMoneyToRiskWithDifferentCurrency:48 expected: java.lang.String<EUR> but was: java.util.Currency<EUR>
+- Tests run: 6, Failures: 1, Errors: 0, Skipped: 0
+- There are test failures.
+- 
+- Please refer to D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\042_77481567_RiskMoneyProvider_040b3628\compiledrepos\77481567\core\target\surefire-reports for the individual test results.
+- Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+- Failed to execute goal org.apache.maven.plugins:maven-checkstyle-plugin:2.17:check (default) on project core: Execution default of goal org.apache.maven.plugins:maven-checkstyle-plugin:2.17:check failed: Plugin org.apache.maven.plugins:maven-checkstyle-plugin:2.17 or one of its dependencies could not be resolved:
+- Failed to read artifact descriptor for de.voidnode.trading4j:parent:jar:buildconfig:0.2-SNAPSHOT
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginResolutio"
+2026-07-23T15:56:31+00:00,phase_log,77481567,core,,43,77481567:core/src/main/java/de/voidnode/trading4j/api/failed.java,,,maven_verify_jacoco_pit,FAIL,unclassified_runtime_issue,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"The following general errors were encountered during the Maven build:
+
+- Failed to execute goal org.apache.maven.plugins:maven-checkstyle-plugin:2.17:check (default) on project core: Execution default of goal org.apache.maven.plugins:maven-checkstyle-plugin:2.17:check failed: Plugin org.apache.maven.plugins:maven-checkstyle-plugin:2.17 or one of its dependencies could not be resolved:
+- Failed to read artifact descriptor for de.voidnode.trading4j:parent:jar:buildconfig:0.2-SNAPSHOT
+- 
+- -> [Help 1]
+- 
+- To see the full stack trace of the errors, re-run Maven with the -e switch.
+- Re-run Maven using the -X switch to enable full debug logging.
+- 
+- For more information about the errors and possible solutions, please read the following articles:
+- [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/PluginResolutionException"
+2026-07-23T15:58:16+00:00,phase_log,85795396,metrics-dropwizardmetrics,,48,85795396:metrics-dropwizardmetrics/src/main/java/org/apache/calcite/avatica/metrics/dropwizard/dropwizardmetricssystemfactory.java,,,gradle_test_jacoco_pitest,FAIL,gradle_build_failed,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,Gradle build fail khi chạy test/JaCoCo/PIT; log hiện tại chỉ có stderr rút gọn nên chưa đủ nguyên nhân sâu.,"Chạy lại Gradle với --stacktrace/--info hoặc mở log thô của module để biết lỗi dependency, compile, plugin hay test runtime.","The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 7s"
+2026-07-23T16:00:39+00:00,phase_log,85795396,core,,49,85795396:core/src/main/java/org/apache/calcite/avatica/connectionconfigimpl.java,,,gradle_test_jacoco_pitest,FAIL,gradle_build_failed,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,Gradle build fail khi chạy test/JaCoCo/PIT; log hiện tại chỉ có stderr rút gọn nên chưa đủ nguyên nhân sâu.,"Chạy lại Gradle với --stacktrace/--info hoặc mở log thô của module để biết lỗi dependency, compile, plugin hay test runtime.","The following errors were encountered during the Gradle build (from stderr):
+
+- BUILD FAILED in 9s"
+2026-07-23T16:01:45+00:00,phase_log,81384608,,evosuite,47,81384608:integrations/spark/spark-catalog/spark-catalog-core/src/main/java/com/thinkbiganalytics/kylo/catalog/spark/sources/abstractjdbcdatasetprovider.java,AbstractJdbcDataSetProvider,,evosuite_generate,FAIL,unclassified_runtime_issue,unknown_needs_manual_review,"Chưa đủ dấu hiệu tự động để quy trách nhiệm, cần đọc log thô.",warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"ternal.Mirrors$RootsBase.getClassByName(Mirrors.scala:99)
+	at scala.reflect.internal.Mirrors$RootsBase.getRequiredClass(Mirrors.scala:102)
+	at scala.reflect.internal.Definitions$DefinitionsClass.NotNullClass$lzycompute(Definitions.scala:382)
+	at scala.reflect.internal.Definitions$DefinitionsClass.NotNullClass(Definitions.scala:382)
+	at scala.reflect.internal.Definitions$DefinitionsClass.AnyValClass$lzycompute(Definitions.scala:275)
+	at scala.reflect.internal.Definitions$DefinitionsClass.AnyValClass(Definitions.scala:275)
+	at scala.reflect.runtime.JavaMirrors$class.init(JavaMirrors.scala:50)
+	at scala.reflect.runtime.JavaUniverse.init(JavaUniverse.scala:12)
+	at scala.reflect.runtime.JavaUniverse.<init>(JavaUniverse.scala:26)
+	at scala.reflect.runtime.package$.universe$lzycompute(package.scala:16)
+	at scala.reflect.runtime.package$.universe(package.scala:16)
+	at org.apache.spark.sql.types.AtomicType.<init>(AbstractDataType.scala:134)
+	at org.apache.spark.sql.types.StringType.<init>(StringType.scala:32)
+	at org.apache.spark.sql.types.StringType$.<init>(StringType.scala:48)
+	at org.apache.spark.sql.types.StringType$.<clinit>(StringType.scala)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:348)
+	at org.evosuite.setup.TestClusterUtils.getClass(TestClusterUtils.java:301)
+	at org.evosuite.setup.TestClusterGenerator.initializeTargetMethods(TestClusterGenerator.java:614)
+	at org.evosuite.setup.TestClusterGenerator.generateCluster(TestClusterGenerator.java:119)
+	at org.evosuite.setup.DependencyAnalysis.analyze(DependencyAnalysis.java:120)
+	at org.evosuite.setup.DependencyAnalysis.analyzeClass(DependencyAnalysis.java:136)
+	at org.evosuite.TestSuiteGenerator.initializeTargetClass(TestSuiteGenerator.java:114)
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:135)
+	at org.evosuite.rmi.service.ClientNodeImpl.lambda$startNewSearch$0(ClientNodeImpl.java:140)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executo"
+2026-07-23T16:02:05+00:00,phase_log,81384608,integrations/spark/spark-catalog/spark-catalog-core,,47,81384608:integrations/spark/spark-catalog/spark-catalog-core/src/main/java/com/thinkbiganalytics/kylo/catalog/spark/sources/abstractjdbcdatasetprovider.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/047_81384608_AbstractJdbcDataSetProvider_afd5506e/compiledrepos/81384608/integrations/spark/spark-catalog/spark-catalog-core/src/test/java/com/thinkbiganalytics/kylo/catalog/spark/sources/AbstractJdbcDataSetProvider_RBL4Test_afd5506e.java:[78,22] cannot find symbol
+- symbol:   class KyloCatalogException
+- location: class com.thinkbiganalytics.kylo.catalog.spark.sources.AbstractJdbcDataSetProvider_RBL4Test_afd5506e
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/047_81384608_AbstractJdbcDataSetProvider_afd5506e/compiledrepos/81384608/integrations/spark/spark-catalog/spark-catalog-core/src/test/java/com/thinkbiganalytics/kylo/catalog/spark/sources/AbstractJdbcDataSetProvider_RBL4Test_afd5506e.java:[103,22] cannot find symbol
+- symbol:   class KyloCatalogException
+- location: class com.thinkbiganalytics.kylo.catalog.spark.sources.AbstractJdbcDataSetProvider_RBL4Test_afd5506e"
+2026-07-23T16:05:24+00:00,phase_log,,,evosuite,46,81384608:integrations/spark/spark-catalog/spark-catalog-core/src/main/java/com/thinkbiganalytics/kylo/catalog/spark/sources/spark/flaggingvisitor.java,,,evosuite_generate,ERROR,unclassified_runtime_issue,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"EvoSuite generation timed out after 240s
+erableIterator#copy2builder. The owner var map is {Coll=scala.collection.SortedMap<scala.Enumeration$ValueSet, scala.Enumeration$ValueSet>, Bld=scala.collection.generic.Growable<java.lang.Boolean>, U=class java.lang.Boolean}
+[MASTER] 23:05:03.390 [logback-1] WARN  CastClassManager - Nothing is assignable after adding scala.collection.parallel.ParMapLike<K, V, Repr, Sequential>.DefaultKeySet for type Variable CC with bounds [scala.collection.parallel.ParSet<java.lang.Object>] of declaration ParSetFactory. The owner var map is {T=class java.lang.Object, Elem=class java.lang.Boolean, To=scala.collection.mutable.Builder<java.lang.Boolean, java.lang.Boolean>}
+
+[Progress:==============================100%] [Cov:>                                  0%]
+* Search finished after 201s and 0 generations, 2 statements, best individual has fitness: 1.0
+[MASTER] 23:05:22.740 [logback-1] WARN  TimeController - Phase SEARCH lasted too long, 140 seconds more than allowed.
+* Minimizing test suite
+* Going to analyze the coverage criteria
+* Coverage analysis for criterion BRANCH
+* Coverage of criterion BRANCH: 0%
+* Total number of goals: 2
+* Number of covered goals: 0
+* Generated 0 tests with total length 0
+* Resulting test suite's coverage: 0%
+* Property NO_RUNTIME_DEPENDENCY is set to true - skipping JUnit compile check
+* WARNING: Not including the runtime dependencies is likely to lead to flaky tests!
+* Permissions denied during test execution: 
+  - javax.security.auth.AuthPermission: 
+         getSubject: 3
+* Writing tests to file
+* Writing JUnit test case 'FlaggingVisitor_ESTest' to D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\046_81384608_FlaggingVisitor_80a61f46\compiledrepos\81384608\integrations\spark\spark-catalog\spark-catalog-core\src\test\java
+* Done!
+
+
+[MASTER] 23:01:44.575 [logback-2] ERROR ConcreteClassAnalyzer - Problem for com.thinkbiganalytics.kylo.catalog.spark.sources.spark.FlaggingVisitor. Class not found: or"
+2026-07-23T16:05:38+00:00,phase_log,81384608,integrations/spark/spark-catalog/spark-catalog-core,,46,81384608:integrations/spark/spark-catalog/spark-catalog-core/src/main/java/com/thinkbiganalytics/kylo/catalog/spark/sources/spark/flaggingvisitor.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/046_81384608_FlaggingVisitor_80a61f46/compiledrepos/81384608/integrations/spark/spark-catalog/spark-catalog-core/src/test/java/com/thinkbiganalytics/kylo/catalog/spark/sources/spark/FlaggingVisitor_RBL4Test_80a61f46.java:[29,9] cannot find symbol
+- symbol:   method assertNull(java.lang.Object)
+- location: class com.thinkbiganalytics.kylo.catalog.spark.sources.spark.FlaggingVisitor_RBL4Test_80a61f46
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/046_81384608_FlaggingVisitor_80a61f46/compiledrepos/81384608/integrations/spark/spark-catalog/spark-catalog-core/src/test/java/com/thinkbiganalytics/kylo/catalog/spark/sources/spark/FlaggingVisitor_RBL4Test_80a61f46.java:[40,9] cannot find symbol
+- symbol:   method assertEquals(java.lang.Object,java.lang.Object)
+- location: class com.thinkbiganalytics.kylo.catalog.spark.sources.spark.FlaggingVisitor_RBL4Test_80a61f46"
+2026-07-23T16:05:41+00:00,phase_log,95247959,http-clients/netty-nio-client,,50,95247959:http-clients/netty-nio-client/src/main/java/software/amazon/awssdk/http/nio/netty/internal/http2/http2goawayeventlistener.java,Http2GoAwayEventListener,,maven_reactor_prewarm,FAIL,maven_reactor_prewarm_failed,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",error,"Bước chuẩn bị dependency reactor trong sandbox thất bại, nên tool chưa tạo được điều kiện build tương đương baseline cho focal class.",Mở phase_log.csv ở dòng maven_reactor_prewarm để sửa recipe/module selector/JDK/dependency trước khi chạy GPT/EvoSuite.,"2\workspaces\20260723_215359_ccfee980\050_95247959_Http2GoAwayEventListener_729d1168\compiledrepos\95247959\core\annotations\src\it\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ annotations ---
+[WARNING]  Parameter 'forceJavacCompilerUse' (user property 'maven.compiler.forceJavacCompilerUse') is deprecated: Use forceLegacyJavacApi instead
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ annotations ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ annotations ---
+[INFO] Building jar: D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\050_95247959_Http2GoAwayEventListener_729d1168\compiledrepos\95247959\core\annotations\target\aws-sdk-java-annotations-2.49.2-SNAPSHOT.jar
+[INFO] 
+[INFO] --- javadoc:3.4.1:jar (generate-javadocs) @ annotations ---
+[INFO] Skipping javadoc generation
+[INFO] 
+[INFO] --- jacoco:0.8.13:report (jacoco-site) @ annotations ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] 
+[INFO] --- jacoco:0.8.13:prepare-agent (pre-integration-test) @ annotations ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] 
+[INFO] --- jacoco:0.8.13:report (post-integration-test) @ annotations ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] 
+[INFO] --- dependency:3.1.1:analyze-only (default) @ annotations ---
+[INFO] No dependency problems found
+[INFO] 
+[INFO] --- japicmp:0.15.6:cmp (default) @ annotations ---
+[INFO] Written file 'D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\050_95247959_Http2GoAwayEventListener_729d1168\compiledrepos\95247959\core\annotations\target\japicmp\japicmp.diff'.
+[INFO] Written file 'D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\050_95247959_Http2GoAwayEventListener_729d1168\compiledrepos\95247959\core\annotations\target\japicmp\japicmp.xml'.
+[INFO] Written file 'D:\A_ThucNghiem\scripts_v2\workspaces\20260723"
+2026-07-23T16:05:41+00:00,phase_log,95247959,http-clients/netty-nio-client,,50,95247959:http-clients/netty-nio-client/src/main/java/software/amazon/awssdk/http/nio/netty/internal/http2/http2goawayeventlistener.java,Http2GoAwayEventListener,Http2GoAwayEventListener_RBL4Test_729d1168,class_agone_run,FAIL,unclassified_runtime_issue,agonetest_harness,"Lỗi nằm ở cách AgoneTest/RBL4 runner chuẩn bị sandbox, chỉnh POM/Gradle, chạy JaCoCo/PIT hoặc trích xuất metric.",warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,maven_reactor_prewarm_failed; AgoneTest was not invoked for this class
+2026-07-23T16:06:33+00:00,phase_log,95247959,,evosuite,51,95247959:http-clients/netty-nio-client/src/main/java/software/amazon/awssdk/http/nio/netty/internal/http2/httporhttp2channelpool.java,HttpOrHttp2ChannelPool,,evosuite_generate,FAIL,llm_api_error,llm_api_or_network,"Lỗi ở API/model/network/quota, không phản ánh chất lượng test đã sinh.",error,Có lỗi khi gọi model/API hoặc ghi nhận response.,"Kiểm tra OPENAI_API_KEY, quota, mạng và api_log.csv.","R]     'dependencies.dependency.version' for io.netty:netty-resolver:jar is missing. @ line 71, column 21
+[ERROR]     'dependencies.dependency.version' for io.netty:netty-resolver-dns:jar is missing. @ line 75, column 21
+[ERROR]     'dependencies.dependency.version' for org.reactivestreams:reactive-streams:jar is missing. @ line 82, column 21
+[ERROR]     'dependencies.dependency.version' for org.slf4j:slf4j-api:jar is missing. @ line 86, column 21
+[ERROR]     'dependencies.dependency.version' for com.github.tomakehurst:wiremock-jre8-standalone:jar is missing. @ line 98, column 21
+[ERROR]     'dependencies.dependency.version' for org.apache.commons:commons-lang3:jar is missing. @ line 103, column 21
+[ERROR]     'dependencies.dependency.version' for org.junit.jupiter:junit-jupiter:jar is missing. @ line 108, column 21
+[ERROR]     'dependencies.dependency.version' for org.junit.vintage:junit-vintage-engine:jar is missing. @ line 113, column 21
+[ERROR]     'dependencies.dependency.version' for org.testng:testng:jar is missing. @ line 118, column 21
+[ERROR]     'dependencies.dependency.version' for org.mockito:mockito-core:jar is missing. @ line 123, column 21
+[ERROR]     'dependencies.dependency.version' for org.assertj:assertj-core:jar is missing. @ line 128, column 21
+[ERROR]     'dependencies.dependency.version' for org.reactivestreams:reactive-streams-tck:jar is missing. @ line 133, column 21
+[ERROR]     'dependencies.dependency.version' for org.apache.logging.log4j:log4j-api:jar is missing. @ line 138, column 21
+[ERROR]     'dependencies.dependency.version' for org.apache.logging.log4j:log4j-core:jar is missing. @ line 143, column 21
+[ERROR]     'dependencies.dependency.version' for org.apache.logging.log4j:log4j-slf4j-impl:jar is missing. @ line 148, column 21
+[ERROR]     'dependencies.dependency.version' for io.netty:netty-tcnative-boringssl-static:jar is missing. @ line 153, column 21
+[ERROR]     'dependencies.dependency.version' for io.reactivex.rxjava2:rxjava:"
+2026-07-23T16:06:45+00:00,phase_log,95247959,http-clients/netty-nio-client,,51,95247959:http-clients/netty-nio-client/src/main/java/software/amazon/awssdk/http/nio/netty/internal/http2/httporhttp2channelpool.java,,,maven_verify_jacoco_pit,FAIL,project_dependency_resolution_error,repository_or_environment,"Lỗi nằm ở repo/dependency/JDK/recipe build đầu vào hoặc môi trường, không phải do năng lực sinh test.",error,"Maven/Gradle không resolve được dependency của project, thường gặp ở multi-module SNAPSHOT khi module phụ chưa được install hoặc thiếu repository nội bộ.","Build/install project từ root trước khi đo, ví dụ mvn install -DskipTests ở root, hoặc loại instance này khỏi sample nếu dependency không thể khôi phục.","The following general errors were encountered during the Maven build:
+
+- Some problems were encountered while processing the POMs:
+- Non-resolvable import POM: The following artifacts could not be resolved: software.amazon.awssdk:bom-internal:pom:2.49.2-SNAPSHOT (absent): Could not find artifact software.amazon.awssdk:bom-internal:pom:2.49.2-SNAPSHOT @ software.amazon.awssdk:http-clients:2.49.2-SNAPSHOT, D:\A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\051_95247959_HttpOrHttp2ChannelPool_7d118b37\compiledrepos\95247959\http-clients\pom.xml, line 42, column 25
+- 'dependencies.dependency.version' for io.netty:netty-codec-http:jar is missing. @ line 39, column 21
+- 'dependencies.dependency.version' for io.netty:netty-codec-http2:jar is missing. @ line 43, column 21
+- 'dependencies.dependency.version' for io.netty:netty-codec:jar is missing. @ line 47, column 21
+- 'dependencies.dependency.version' for io.netty:netty-transport:jar is missing. @ line 51, column 21
+- 'dependencies.dependency.version' for io.netty:netty-common:jar is missing. @ line 55, column 21
+- 'dependencies.dependency.version' for io.netty:netty-buffer:jar is missing. @ line 59, column 21
+- 'dependencies.dependency.version' for io.netty:netty-handler:jar is missing. @ line 63, column 21
+- 'dependencies.dependency.version' for io.netty:netty-transport-classes-epoll:jar is missing. @ line 67, column 21
+- 'dependencies.dependency.version' for io.netty:netty-resolver:jar is missing. @ line 71, column 21
+- 'dependencies.dependency.version' for io.netty:netty-resolver-dns:jar is missing. @ line 75, column 21
+- 'dependencies.dependency.version' for org.reactivestreams:reactive-streams:jar is missing. @ line 82, column 21
+- 'dependencies.dependency.version' for org.slf4j:slf4j-api:jar is missing. @ line 86, column 21
+- 'dependencies.dependency.version' for com.github.tomakehurst:wiremock-jre8-standalone:jar is missing. @ line 98, column 21
+- 'dependencies.dependency.version' for org.apache.common"
+2026-07-23T16:07:55+00:00,phase_log,97822421,infrastructure,,54,97822421:infrastructure/src/main/java/com/pchudzik/springmock/infrastructure/spring/doubledefinitionsregistrationcontext.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/054_97822421_DoubleDefinitionsRegistrationContext_a7437094/compiledrepos/97822421/infrastructure/src/test/java/com/pchudzik/springmock/infrastructure/spring/DoubleDefinitionsRegistrationContext_RBL4Test_a7437094.java:[31,46] no suitable method found for thenReturn(java.lang.Class<java.lang.Object>)
+- method org.mockito.stubbing.OngoingStubbing.thenReturn(java.lang.Class<capture#1 of ?>) is not applicable
+- (argument mismatch; java.lang.Class<java.lang.Object> cannot be converted to java.lang.Class<capture#1 of ?>)
+- method org.mockito.stubbing.OngoingStubbing.thenReturn(java.lang.Class<capture#1 of ?>,java.lang.Class<capture#1 of ?>...) is not applicable
+- (argument mismatch; java.lang.Class<java.lang.Object> cannot be converted to java.lang.Class<capture#1 of ?>)
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/054_97822421_DoubleDefinitionsRegistrationContext_a7437094/compiledrepos/97822421/infrastructure/src/test/java/com/pchudzik/springmock/infrastructure/spring/DoubleDefinitionsRegistrationContext_RBL4Test_a7437094.java:[42,46] no suitable method found for thenReturn(java.lang.Class<java.lang.Object>)
+- method org.mockito.stubbing.OngoingStubbing.thenReturn(java.lang.Class<capture#2 of ?>) is not applicable
+- (argument mismatch; java.lang.Class<java.lang.Object> cannot be converted to java.lang.Class<capture#2 of ?>)
+- method org.mockito.stubbing.OngoingStubbing.thenReturn(java.lang.Class<capture#2 of ?>,java.lang.Class<capture#2 of ?>...) is not applicable
+- (argument mismatch; java.lang.Class<java.lang.Object> cannot be converted to java.lang.Class<capture#2 of ?>)
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/054_97822421_DoubleDefinitionsRegistrationContext_a7437094/compiledrepos/97822421/infrastructure/src/test/java/com/pchudzik/springmock/infrastructure/spring/DoubleDefinitions"
+2026-07-23T16:07:57+00:00,phase_log,9619226,spring-data-simpledb-impl,,53,9619226:spring-data-simpledb-impl/src/main/java/org/springframework/data/simpledb/attributeutil/simpledbattributevaluesplitter.java,,,maven_verify_jacoco_pit,FAIL,java_source_level_incompatible,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Test/source đang dùng cú pháp Java mới hơn mức compiler của project, ví dụ diamond operator nhưng Maven compile với -source 1.6.",Dùng đúng JDK/source level theo project hoặc sửa/loại test sinh ra dùng cú pháp không tương thích; với thực nghiệm fairness thì nên ghi nhận fail_stage thay vì sửa test.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\053_9619226_SimpleDbAttributeValueSplitter_6248ee60\compiledrepos\9619226\spring-data-simpledb-impl\src\test\java\org\springframework\data\simpledb\attributeutil\SimpleDbAttributeValueSplitter_RBL4Test_6248ee60.java:[22,56] error: diamond operator is not supported in -source 1.6"
+2026-07-23T16:08:01+00:00,phase_log,9619226,spring-data-simpledb-impl,,52,9619226:spring-data-simpledb-impl/src/main/java/org/springframework/data/simpledb/query/simpledbqueryrunner.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\052_9619226_SimpleDbQueryRunner_6778b5de\compiledrepos\9619226\spring-data-simpledb-impl\src\test\java\org\springframework\data\simpledb\query\SimpleDbQueryRunner_RBL4Test_6778b5de.java:[38,57] error: no suitable method found for thenReturn(List<Object>)
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\052_9619226_SimpleDbQueryRunner_6778b5de\compiledrepos\9619226\spring-data-simpledb-impl\src\test\java\org\springframework\data\simpledb\query\SimpleDbQueryRunner_RBL4Test_6778b5de.java:[49,57] error: no suitable method found for thenReturn(List<Object>)
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\052_9619226_SimpleDbQueryRunner_6778b5de\compiledrepos\9619226\spring-data-simpledb-impl\src\test\java\org\springframework\data\simpledb\query\SimpleDbQueryRunner_RBL4Test_6778b5de.java:[59,57] error: no suitable method found for thenReturn(List<Object>)
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\052_9619226_SimpleDbQueryRunner_6778b5de\compiledrepos\9619226\spring-data-simpledb-impl\src\test\java\org\springframework\data\simpledb\query\SimpleDbQueryRunner_RBL4Test_6778b5de.java:[70,57] error: no suitable method found for thenReturn(List<Object>)
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\052_9619226_SimpleDbQueryRunner_6778b5de\compiledrepos\9619226\spring-data-simpledb-impl\src\test\java\org\springframework\data\simpledb\query\SimpleDbQueryRunner_RBL4Test_6778b5de.java:[117,80] error: no suitable method found for thenReturn(Page<Object>)"
+2026-07-23T16:09:56+00:00,phase_log,97822421,infrastructure,,55,97822421:infrastructure/src/main/java/com/pchudzik/springmock/infrastructure/spring/tospyreplacingprocessor.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/055_97822421_ToSpyReplacingProcessor_252c76a1/compiledrepos/97822421/infrastructure/src/test/java/com/pchudzik/springmock/infrastructure/spring/ToSpyReplacingProcessor_RBL4Test_252c76a1.java:[89,34] createSpy(java.lang.Object,com.pchudzik.springmock.infrastructure.definition.DoubleDefinition) has private access in com.pchudzik.springmock.infrastructure.spring.ToSpyReplacingProcessor
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/055_97822421_ToSpyReplacingProcessor_252c76a1/compiledrepos/97822421/infrastructure/src/test/java/com/pchudzik/springmock/infrastructure/spring/ToSpyReplacingProcessor_RBL4Test_252c76a1.java:[102,34] createSpy(java.lang.Object,com.pchudzik.springmock.infrastructure.definition.DoubleDefinition) has private access in com.pchudzik.springmock.infrastructure.spring.ToSpyReplacingProcessor
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/055_97822421_ToSpyReplacingProcessor_252c76a1/compiledrepos/97822421/infrastructure/src/test/java/com/pchudzik/springmock/infrastructure/spring/ToSpyReplacingProcessor_RBL4Test_252c76a1.java:[114,36] resolveBeanClass(java.lang.Object) has private access in com.pchudzik.springmock.infrastructure.spring.ToSpyReplacingProcessor
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/055_97822421_ToSpyReplacingProcessor_252c76a1/compiledrepos/97822421/infrastructure/src/test/java/com/pchudzik/springmock/infrastructure/spring/ToSpyReplacingProcessor_RBL4Test_252c76a1.java:[123,36] resolveBeanClass(java.lang.Object) has private access in com.pchudzik.springmock.infrastructure.spring.ToSpyReplacingProcessor"
+2026-07-23T16:10:37+00:00,phase_log,9884445,minnal-jaxrs/minnal-instrumentation-jaxrs,,58,9884445:minnal-jaxrs/minnal-instrumentation-jaxrs/src/main/java/org/minnal/instrument/entity/metadata/handler/secureannotationhandler.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\058_9884445_SecureAnnotationHandler_cedbf5e7\compiledrepos\9884445\minnal-jaxrs\minnal-instrumentation-jaxrs\src\test\java\org\minnal\instrument\entity\metadata\handler\SecureAnnotationHandler_RBL4Test_cedbf5e7.java:[8,16] error: package org.junit does not exist
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\058_9884445_SecureAnnotationHandler_cedbf5e7\compiledrepos\9884445\minnal-jaxrs\minnal-instrumentation-jaxrs\src\test\java\org\minnal\instrument\entity\metadata\handler\SecureAnnotationHandler_RBL4Test_cedbf5e7.java:[9,23] error: package org.junit does not exist
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\058_9884445_SecureAnnotationHandler_cedbf5e7\compiledrepos\9884445\minnal-jaxrs\minnal-instrumentation-jaxrs\src\test\java\org\minnal\instrument\entity\metadata\handler\SecureAnnotationHandler_RBL4Test_cedbf5e7.java:[16,3] error: cannot find symbol"
+2026-07-23T16:10:45+00:00,phase_log,9884445,,evosuite,59,9884445:minnal-jaxrs/minnal-instrumentation-jaxrs/src/main/java/org/minnal/instrument/entity/entitynode.java,EntityNode,,evosuite_generate,FAIL,unclassified_runtime_issue,unknown_needs_manual_review,"Chưa đủ dấu hiệu tự động để quy trách nhiệm, cần đọc log thô.",warning,Tool ghi nhận lỗi nhưng chưa phân loại được tự động.,Xem detail trong phase_log.csv/runtime_errors.csv để phân tích thủ công.,"uts(EntityWithParametersStatement.java:101)
+	at org.evosuite.testcase.statements.EntityWithParametersStatement.<init>(EntityWithParametersStatement.java:63)
+	at org.evosuite.testcase.statements.ConstructorStatement.<init>(ConstructorStatement.java:90)
+	at org.evosuite.testcase.TestFactory.changeCall(TestFactory.java:918)
+	at org.evosuite.testcase.TestFactory.changeRandomCall(TestFactory.java:994)
+	at org.evosuite.testcase.TestChromosome.mutationChange(TestChromosome.java:510)
+	at org.evosuite.testcase.TestChromosome.mutate(TestChromosome.java:323)
+	at org.evosuite.ga.metaheuristics.mosa.AbstractMOSA.mutate(AbstractMOSA.java:215)
+	at org.evosuite.ga.metaheuristics.mosa.AbstractMOSA.breedNextGeneration(AbstractMOSA.java:170)
+	at org.evosuite.ga.metaheuristics.mosa.DynaMOSA.evolve(DynaMOSA.java:72)
+	at org.evosuite.ga.metaheuristics.mosa.DynaMOSA.generateSolution(DynaMOSA.java:173)
+	at org.evosuite.ga.metaheuristics.TestSuiteAdapter.generateSolution(TestSuiteAdapter.java:136)
+	at org.evosuite.strategy.MOSuiteStrategy.generateTests(MOSuiteStrategy.java:122)
+	at org.evosuite.TestSuiteGenerator.generateTests(TestSuiteGenerator.java:630)
+	at org.evosuite.TestSuiteGenerator.generateTestSuite(TestSuiteGenerator.java:208)
+	at org.evosuite.rmi.service.ClientNodeImpl.lambda$startNewSearch$0(ClientNodeImpl.java:140)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+[MASTER] 23:10:39.314 [main] ERROR SearchStatistics - No obtained value for output variable: Total_Goals
+[MASTER] 23:10:41.334 [main] ERROR SearchStatistics - No obtained value for output variable: Total_Goals
+[MASTER] 23:10:42.339 [main] ERROR SearchStatistics - No obtained value for output variable: Total_Goals
+[MASTER] 23:1"
+2026-07-23T16:10:48+00:00,phase_log,98410891,core,,56,98410891:core/src/main/java/com/softavail/commsrouter/eval/jevalevaluator.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/056_98410891_JEvalEvaluator_306ef4d3/compiledrepos/98410891/core/src/test/java/com/softavail/commsrouter/eval/JEvalEvaluator_RBL4Test_306ef4d3.java:[32,9] cannot find symbol
+- symbol:   method assertSame(com.softavail.commsrouter.eval.JEvalEvaluator,com.softavail.commsrouter.eval.CommsRouterEvaluator)
+- location: class com.softavail.commsrouter.eval.JEvalEvaluator_RBL4Test_306ef4d3
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/056_98410891_JEvalEvaluator_306ef4d3/compiledrepos/98410891/core/src/test/java/com/softavail/commsrouter/eval/JEvalEvaluator_RBL4Test_306ef4d3.java:[51,55] cannot find symbol
+- symbol:   variable someValue
+- location: class com.softavail.commsrouter.eval.JEvalEvaluator_RBL4Test_306ef4d3
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/056_98410891_JEvalEvaluator_306ef4d3/compiledrepos/98410891/core/src/test/java/com/softavail/commsrouter/eval/JEvalEvaluator_RBL4Test_306ef4d3.java:[51,29] cannot find symbol
+- symbol:   method someMethod()
+- location: variable attributesGroup of type com.softavail.commsrouter.domain.AttributeGroup
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/056_98410891_JEvalEvaluator_306ef4d3/compiledrepos/98410891/core/src/test/java/com/softavail/commsrouter/eval/JEvalEvaluator_RBL4Test_306ef4d3.java:[55,9] cannot find symbol
+- symbol:   method assertTrue(boolean)
+- location: class com.softavail.commsrouter.eval.JEvalEvaluator_RBL4Test_306ef4d3
+- /D:/A_ThucNghiem/scripts_v2/workspaces/20260723_215359_ccfee980/056_98410891_JEvalEvaluator_306ef4d3/compiledrepos/98410891/core/src/test/java/com/softavail/commsrouter/eval/JEvalEvaluator_RBL4Test_306ef4d3.java:[64,9] cannot find symbol
+- symbol:   method assertFalse(boolean)
+- location: class com.softavail.commsrouter.eval.JEvalEvaluator_RBL4Test_306ef4d3"
+2026-07-23T16:11:00+00:00,phase_log,9884445,minnal-jaxrs/minnal-instrumentation-jaxrs,,59,9884445:minnal-jaxrs/minnal-instrumentation-jaxrs/src/main/java/org/minnal/instrument/entity/entitynode.java,,,maven_verify_jacoco_pit,FAIL,generated_test_compile_failed,generator_output,Test đã được sinh nhưng code test sai/không tương thích nên arm đó phải compilation=0 và strict metrics=0.,error,"Generated test đã được sinh ra nhưng không compile được trong module đo; đây là lỗi output test/harness đo, không phải bằng chứng repo gốc không build.",Giữ compilation=0 và strict metrics=0 cho arm tương ứng. Nếu lỗi do thiếu dependency harness như JUnit runtime thì sửa tool; nếu lỗi do symbol/API sai trong test thì ghi nhận là lỗi generator.,"The following compilation errors were encountered during the Maven build:
+
+- 
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\059_9884445_EntityNode_58c2959b\compiledrepos\9884445\minnal-jaxrs\minnal-instrumentation-jaxrs\src\test\java\org\minnal\instrument\entity\EntityNode_RBL4Test_58c2959b.java:[87,31] error: cannot find symbol
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\059_9884445_EntityNode_58c2959b\compiledrepos\9884445\minnal-jaxrs\minnal-instrumentation-jaxrs\src\test\java\org\minnal\instrument\entity\EntityNode_RBL4Test_58c2959b.java:[23,46] error: <anonymous org.minnal.instrument.entity.EntityNode_RBL4Test_58c2959b$1> is not abstract and does not override abstract method getResourceWrapperClassName(Class<?>) in NamingStrategy
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\059_9884445_EntityNode_58c2959b\compiledrepos\9884445\minnal-jaxrs\minnal-instrumentation-jaxrs\src\test\java\org\minnal\instrument\entity\EntityNode_RBL4Test_58c2959b.java:[49,22] error: cannot find symbol
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\059_9884445_EntityNode_58c2959b\compiledrepos\9884445\minnal-jaxrs\minnal-instrumentation-jaxrs\src\test\java\org\minnal\instrument\entity\EntityNode_RBL4Test_58c2959b.java:[108,75] error: cannot find symbol
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\059_9884445_EntityNode_58c2959b\compiledrepos\9884445\minnal-jaxrs\minnal-instrumentation-jaxrs\src\test\java\org\minnal\instrument\entity\EntityNode_RBL4Test_58c2959b.java:[116,75] error: cannot find symbol
+- \A_ThucNghiem\scripts_v2\workspaces\20260723_215359_ccfee980\059_9884445_EntityNode_58c2959b\compiledrepos\9884445\minnal-jaxrs\minnal-instrumentation-jaxrs\src\test\java\org\minnal\instrument\entity\EntityNode_RBL4Test_58c2959b.java:[125,75] error: cannot find symbol"

@@ -1,0 +1,53 @@
+timestamp_utc,phase,project,module,arm,sample_index,class_key,focal_class,test_class,status,duration_sec,detail
+2026-07-23T11:56:33+00:00,maven_reactor_prewarm,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,,START,,prewarm reactor dependencies for -pl modules/weblounge-common
+2026-07-23T11:56:46+00:00,maven_reactor_prewarm,3847504,modules/weblounge-common,,2,3847504:modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/scheduler/quartzjob.java,QuartzJob,,PASS,12.891,"uting tasks
+
+[INFO] Deploy to stage:
+     [copy] Copying 1 file to D:\A_ThucNghiem\scripts_v2\workspaces\debug_prewarm_3847504\002_3847504_QuartzJob_b84fb44f\compiledrepos\3847504\modules\weblounge-common-api\${env.WEBLOUNGE_HOME}\lib\weblounge
+[INFO] Executed tasks
+[INFO] 
+[INFO] ---------------< ch.entwine.weblounge:weblounge-common >----------------
+[INFO] Building Weblounge Common 4.0.0-SNAPSHOT                           [3/3]
+[INFO]   from modules\weblounge-common\pom.xml
+[INFO] -------------------------------[ bundle ]-------------------------------
+[WARNING] Parameter 'encoding' is unknown for plugin 'maven-surefire-plugin:2.16:test (default-test)'
+[INFO] 
+[INFO] --- resources:2.6:resources (default-resources) @ weblounge-common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 6 resources
+[INFO] 
+[INFO] --- compiler:3.1:compile (default-compile) @ weblounge-common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 185 source files to D:\A_ThucNghiem\scripts_v2\workspaces\debug_prewarm_3847504\002_3847504_QuartzJob_b84fb44f\compiledrepos\3847504\modules\weblounge-common\target\classes
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/debug_prewarm_3847504/002_3847504_QuartzJob_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockHttpSession.java: Some input files use or override a deprecated API.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/debug_prewarm_3847504/002_3847504_QuartzJob_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/testing/MockHttpSession.java: Recompile with -Xlint:deprecation for details.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/debug_prewarm_3847504/002_3847504_QuartzJob_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/site/SiteImpl.java: Some input files use unchecked or unsafe operations.
+[WARNING] /D:/A_ThucNghiem/scripts_v2/workspaces/debug_prewarm_3847504/002_3847504_QuartzJob_b84fb44f/compiledrepos/3847504/modules/weblounge-common/src/main/java/ch/entwine/weblounge/common/impl/site/SiteImpl.java: Recompile with -Xlint:unchecked for details.
+[INFO] 
+[INFO] --- resources:2.6:testResources (default-testResources) @ weblounge-common ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.1:testCompile (default-testCompile) @ weblounge-common ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] --- surefire:2.16:test (default-test) @ weblounge-common ---
+[WARNING]  Parameter 'systemProperties' is deprecated: Use systemPropertyVariables instead.
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- bundle:2.4.0:bundle (default-bundle) @ weblounge-common ---
+[INFO] 
+[INFO] --- checkstyle:2.11:check (default) @ weblounge-common ---
+[INFO] 
+[INFO] --- install:2.5.1:install (default-install) @ weblounge-common ---
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_prewarm_3847504\002_3847504_QuartzJob_b84fb44f\compiledrepos\3847504\modules\weblounge-common\target\weblounge-common-4.0.0-SNAPSHOT.jar to C:\Users\admin\.m2\repository\ch\entwine\weblounge\weblounge-common\4.0.0-SNAPSHOT\weblounge-common-4.0.0-SNAPSHOT.jar
+[INFO] Installing D:\A_ThucNghiem\scripts_v2\workspaces\debug_prewarm_3847504\002_3847504_QuartzJob_b84fb44f\compiledrepos\3847504\modules\weblounge-common\pom.xml to C:\Users\admin\.m2\repository\ch\entwine\weblounge\weblounge-common\4.0.0-SNAPSHOT\weblounge-common-4.0.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --- bundle:2.4.0:install (default-install) @ weblounge-common ---
+[INFO] Installing ch/entwine/weblounge/weblounge-common/4.0.0-SNAPSHOT/weblounge-common-4.0.0-SNAPSHOT.jar
+[INFO] Writing OBR metadata
+[INFO] 
+[INFO] --- antrun:1.7:run (deploy) @ weblounge-common ---
+[INFO] Executing tasks
+
+[INFO] Deploy to stage:
+     [copy] Copying 1 file to D:\A_ThucNghiem\scripts_v2\workspaces\debug_prewarm_3847504\002_3847504_QuartzJob_b84fb44f\compiledrepos\3847504\modu"

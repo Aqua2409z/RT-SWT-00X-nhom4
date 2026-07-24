@@ -1,0 +1,14 @@
+{
+  "run_id": "audit_full300_dryrun_after_gradle_prewarm",
+  "status": "completed",
+  "run_mode": "dry_run",
+  "sample_csv": "D:\\A_ThucNghiem\\scripts_v2\\data_new\\class_sampling_manifest_final_seed42.csv",
+  "model": "gpt-4o-mini-2024-07-18",
+  "prompt": "rbl4-zero-shot",
+  "created_at": "2026-07-23T12:47:58+00:00",
+  "started_at": "2026-07-23T12:47:58+00:00",
+  "pid": 16808,
+  "return_code": null,
+  "updated_at": "2026-07-23T12:47:59+00:00",
+  "error": null
+}
